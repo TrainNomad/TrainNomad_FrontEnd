@@ -1,0 +1,59 @@
+import { EuropeMap } from "./ui/EuropeMap";
+
+export function EuropeSection() {
+  const europeanCities = {
+    paris: { lat: 48.8566, lng: 2.3522, label: "Paris" },
+    rennes: { lat: 48.1173, lng: -1.6778, label: "Rennes" },
+    bordeaux: { lat: 44.8378, lng: -0.5792, label: "Bordeaux" },
+    lyon: { lat: 45.764, lng: 4.8357, label: "Lyon" },
+    london: { lat: 51.5074, lng: -0.1278, label: "Londres" },
+    milan: { lat: 45.4642, lng: 9.19, label: "Milan" },
+    madrid: { lat: 40.4168, lng: -3.7038, label: "Madrid" },
+    porto: { lat: 41.1579, lng: -8.6291, label: "Porto" },
+    barcelone: { lat: 41.3879, lng: 2.1699, label: "Barcelone" },
+    seville: { lat: 37.3891, lng: -5.9845, label: "Séville" },
+    amsterdam: { lat: 52.3676, lng: 4.9041, label: "Amsterdam" },
+    berlin: { lat: 52.52, lng: 13.405, label: "Berlin" },
+  };
+
+  const europeanDots = [
+    { start: europeanCities.paris, end: europeanCities.london },
+    { start: europeanCities.paris, end: europeanCities.rennes },
+    { start: europeanCities.paris, end: europeanCities.barcelone },
+    { start: europeanCities.paris, end: europeanCities.lyon },
+    { start: europeanCities.paris, end: europeanCities.milan },
+    { start: europeanCities.bordeaux, end: europeanCities.paris },
+    { start: europeanCities.madrid, end: europeanCities.porto },
+    { start: europeanCities.madrid, end: europeanCities.barcelone },
+    { start: europeanCities.madrid, end: europeanCities.seville },
+    { start: europeanCities.milan, end: europeanCities.lyon },
+    { start: europeanCities.london, end: europeanCities.amsterdam },
+    { start: europeanCities.berlin, end: europeanCities.paris },
+  ];
+
+  return (
+    <section className="w-full bg-slate-950 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        {/* Texte d'introduction */}
+        <div className="max-w-xl space-y-3">
+          <h3 className="text-3xl font-bold tracking-tight text-white">
+            Les trajets actuellement disponibles
+          </h3>
+          <p className="text-slate-300 text-sm leading-relaxed">
+            Parcourez les lignes déjà intégrées sur TrainNomad. De nouvelles liaisons et métropoles s'ajouteront progressivement à la carte.
+          </p>
+        </div>
+
+        {/* Carte en plein écran (sans les bordures de "box") */}
+        <div className="w-full aspect-[2/1] md:aspect-[2.2/1] relative font-sans overflow-hidden shadow-2xl">
+          <EuropeMap 
+            dots={europeanDots} 
+            lineColor="#10b981" // Tu peux ajuster la couleur des lignes ici
+          />
+        </div>
+
+      </div>
+    </section>
+  );
+}
