@@ -1,7 +1,8 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import TrajetsSearchBox from '../components/SearchBoxLight';
 import CardTrajet from '../components/CardTrajets';
 import CardLoad from '../components/TripSkeleton';
+import { searchTrips } from '../services/api'; // <-- Importation du fichier centralisé
 
 export default function Trajets() {
   const [trips, setTrips] = useState<any[]>([]);
@@ -12,10 +13,15 @@ export default function Trajets() {
     setIsLoading(true);
     setTrips([]);
     try {
-      const response = await fetch(
-        `/api/search?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&date=${date}&departure_time=${encodeURIComponent(departureTime)}&limit=20`
-      );
-      const data = await response.json();
+      // Utilisation de la fonction centralisée (pointe directement vers votre serveur Render)
+      const data = await searchTrips({
+        origin,
+        destination,
+        date,
+        time: departureTime,
+        limit: 20
+      });
+
       const results = data.results || data.journeys || data.trajets || [];
       setTrips(results);
     } catch (error) {
@@ -114,16 +120,11 @@ export default function Trajets() {
             </div>
           ) : (
             // État initial — avant toute recherche
-            // <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
-            //   <span className="material-symbols-outlined text-5xl text-slate-300 block mb-4">search</span>
-            //   <p className="text-slate-500 font-medium">Renseignez votre départ, votre arrivée et une date.</p>
-            // </div>
             <div className="space-y-4">
               {[...Array(5)].map((_, i) => (
                 <CardLoad key={i} />
               ))}
             </div>
-          
           )}
         </div>
 
