@@ -38,7 +38,7 @@ export default function CardTrajet({
   train2Name = null,
   train2Number = null,
   train2Dep = null,
-  train2Arr = null,
+  // train2Arr = null,
   layoverMinutes = 20,
 }: CardTrajetProps) {
   const [isExpanded, setIsExpanded] = useState(false);

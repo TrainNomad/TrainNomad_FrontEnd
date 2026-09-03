@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import TrajetsSearchBox from '../components/SearchBoxLight';
 import CardTrajet from '../components/CardTrajets';
 import CardLoad from '../components/TripSkeleton';
