@@ -6,7 +6,6 @@ import { Calendar } from './ui/calendar-rac';
 import { Dialog, DialogTrigger, Popover, Button, I18nProvider, DateValue } from 'react-aria-components';
 import { getLocalTimeZone, today as getToday, CalendarDate } from '@internationalized/date';
 
-// ✅ Interface du prop onSearch transmis depuis trajets.tsx
 interface Props {
   onSearch: (data: { origin: string; destination: string; date: string; time: string }) => void;
 }
@@ -22,12 +21,10 @@ export default function SearchBox({ onSearch }: Props) {
   const [_selectedFrom, setSelectedFrom] = useState<Station | null>(null);
   const [_selectedTo, setSelectedTo] = useState<Station | null>(null);
 
-  // ✅ Ref sur l'input heure pour lire sa valeur au clic (évite le state non-controlled)
   const timeRef = useRef<HTMLInputElement>(null);
 
   const isSearchEnabled = fromQuery.trim().length >= 2 && toQuery.trim().length >= 2;
 
-  // ✅ handleSearch appelle onSearch au lieu de window.location.href
   const handleSearch = useCallback(() => {
     if (!fromQuery || !toQuery) return;
     const time = timeRef.current?.value ? timeRef.current.value + ':00' : '06:00:00';
@@ -112,7 +109,8 @@ export default function SearchBox({ onSearch }: Props) {
                     aria-label="Date de départ"
                     minValue={getToday(getLocalTimeZone())}
                     value={departDate}
-                    onChange={(newDate: DateValue) => {
+                    onChange={(value: DateValue | readonly DateValue[]) => {
+                      const newDate = Array.isArray(value) ? value[0] : value;
                       if (newDate) {
                         const dateObj = newDate as CalendarDate;
                         setDepartDate(dateObj);
@@ -150,7 +148,8 @@ export default function SearchBox({ onSearch }: Props) {
                         aria-label="Date de retour"
                         minValue={departDate}
                         value={returnDate}
-                        onChange={(newDate: DateValue) => {
+                        onChange={(value: DateValue | readonly DateValue[]) => {
+                          const newDate = Array.isArray(value) ? value[0] : value;
                           if (newDate) {
                             setReturnDate(newDate as CalendarDate);
                           }
@@ -171,7 +170,6 @@ export default function SearchBox({ onSearch }: Props) {
               <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">Heure départ</label>
               <div className="flex items-center gap-2 w-full">
                 <span className="material-symbols-outlined text-slate-400 text-lg flex-shrink-0">schedule</span>
-                {/* ✅ ref au lieu de id pour lire la valeur proprement */}
                 <input
                   ref={timeRef}
                   type="time"

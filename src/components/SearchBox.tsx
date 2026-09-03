@@ -141,7 +141,8 @@ export default function SearchBox() {
                       aria-label="Date de départ"
                       minValue={getToday(getLocalTimeZone())}
                       value={departDate}
-                      onChange={(newDate: DateValue) => {
+                      onChange={(value: DateValue | readonly DateValue[]) => {
+                        const newDate = Array.isArray(value) ? value[0] : value;
                         if (newDate) {
                           const dateObj = newDate as CalendarDate;
                           setDepartDate(dateObj);
@@ -177,7 +178,8 @@ export default function SearchBox() {
                         aria-label="Date de retour"
                         minValue={departDate}
                         value={returnDate}
-                        onChange={(newDate: DateValue) => {
+                        onChange={(value: DateValue | readonly DateValue[]) => {
+                          const newDate = Array.isArray(value) ? value[0] : value;
                           if (newDate) {
                             setReturnDate(newDate as CalendarDate);
                           }
@@ -234,7 +236,8 @@ export default function SearchBox() {
                       aria-label="Date d'exploration"
                       minValue={getToday(getLocalTimeZone())}
                       value={departDate}
-                      onChange={(newDate: DateValue) => {
+                      onChange={(value: DateValue | readonly DateValue[]) => {
+                        const newDate = Array.isArray(value) ? value[0] : value;
                         if (newDate) {
                           setDepartDate(newDate as CalendarDate);
                         }
@@ -261,4 +264,3 @@ export default function SearchBox() {
     </I18nProvider>
   );
 }
-
