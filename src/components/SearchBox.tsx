@@ -37,7 +37,7 @@ export default function SearchBox() {
       ...(tripType === 'roundtrip' && { return_date: returnDate.toString() }),
       departure_time: '06:00:00',
     });
-    window.location.href = 'trajets.html?' + params.toString();
+    window.location.href = '/trajets?' + params.toString();
   }, [fromQuery, toQuery, departDate, returnDate, tripType]);
 
   const handleCarteSearch = useCallback(() => {
