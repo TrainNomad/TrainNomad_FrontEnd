@@ -6,6 +6,10 @@ export interface Station {
   country?: string;
   city?: string;
   uic?: string;
+  /** Valeur exacte attendue par l'API pour la recherche (fallback: label) */
+  search_val?: string;
+  lat?: number;
+  lon?: number;
 }
 
 export interface SelectedStop {

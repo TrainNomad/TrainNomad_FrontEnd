@@ -8,6 +8,7 @@ import { TGVMaxSection } from './components/TGVMaxSection';
 import { EuropeSection } from './components/EuropeSection';
 import Trajets from './pages/trajets';
 import './styles/global.css';
+import Explorer from './pages/explorer';
 
 function HomePage() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/trajets" element={<Trajets />} />
+        <Route path="/explorer" element={<Explorer />} />
       </Routes>
       <Footer />
     </div>

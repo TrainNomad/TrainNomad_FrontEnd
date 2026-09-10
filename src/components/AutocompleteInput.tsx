@@ -10,6 +10,12 @@ interface Props {
   withAnywhere?: boolean;
   onSelect: (station: Station | null) => void;
   onQueryChange?: (value: string) => void;
+  /** Affiche une pastille de validation quand une suggestion a été choisie */
+  isSelected?: boolean;
+  /** Appelé sur Entrée lorsqu'aucune suggestion n'est ouverte (validation) */
+  onSubmit?: () => void;
+  /** Padding réduit : gagne ~20px de hauteur (barre de recherche de l'explorer) */
+  compact?: boolean;
 }
 
 export function AutocompleteInput({
@@ -21,6 +27,9 @@ export function AutocompleteInput({
   withAnywhere = false,
   onSelect,
   onQueryChange,
+  isSelected = false,
+  onSubmit,
+  compact = false,
 }: Props) {
   const ac = useAutocomplete(onSelect, withAnywhere);
 
@@ -33,9 +42,28 @@ export function AutocompleteInput({
   // Use initialValue only once (controlled by parent via key if needed)
   const displayValue = ac.query || (ac.query === '' ? initialValue : ac.query);
 
+  // Entrée : la liste ouverte -> le hook sélectionne la suggestion active ;
+  // la liste fermée -> on valide le formulaire parent.
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !ac.isOpen && onSubmit) {
+      e.preventDefault();
+      onSubmit();
+      return;
+    }
+    ac.handleKeyDown(e);
+  };
+
   return (
-    <div className="flex flex-col items-start px-6 py-5 hover:bg-slate-50/50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100 relative">
-      <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">
+    <div
+      className={`flex flex-col items-start hover:bg-slate-50/50 rounded-2xl transition-colors cursor-pointer group relative ${
+        compact ? 'px-4 py-2' : 'px-6 py-5 border-r border-slate-100'
+      }`}
+    >
+      <span
+        className={`text-[10px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-primary transition-colors ${
+          compact ? 'mb-1' : 'mb-2'
+        }`}
+      >
         {label}
       </span>
       <div className="flex items-center gap-3 w-full input-ac-wrapper relative">
@@ -49,10 +77,24 @@ export function AutocompleteInput({
           placeholder={placeholder}
           value={displayValue}
           onChange={handleChange}
-          onKeyDown={ac.handleKeyDown}
+          onKeyDown={handleKeyDown}
           onBlur={ac.handleBlur}
-          className="w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold placeholder:text-slate-300 text-lg outline-none"
+          className={`w-full bg-transparent border-none p-0 focus:ring-0 text-midnight font-bold placeholder:text-slate-300 outline-none ${
+            compact ? 'text-base' : 'text-lg'
+          }`}
         />
+
+        {/* Pastille de validation : la gare vient bien de la liste de suggestions */}
+        {isSelected && (
+          <span
+            title="Gare sélectionnée"
+            className="flex-shrink-0 w-5 h-5 rounded-full bg-[#1d7a5a] flex items-center justify-center"
+          >
+            <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="m5 13 4 4L19 7" />
+            </svg>
+          </span>
+        )}
 
         {/* Suggestions dropdown */}
         {ac.isOpen && ac.suggestions.length > 0 && (

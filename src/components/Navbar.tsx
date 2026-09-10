@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 const NAV_LINKS = [
   { label: 'Voyager', href: '/trajets', icon: 'train' },
   { label: 'Explorer', href: '/explorer', icon: 'explore' },
-  { label: 'Guides', href: '/guide', icon: 'menu_book' },
-  { label: 'Outils TGVmax', href: '/tgvmax', icon: 'bolt' },
+  // { label: 'Guides', href: '/guide', icon: 'menu_book' },
+  // { label: 'Outils TGVmax', href: '/tgvmax', icon: 'bolt' },
 ];
 
 export default function Navbar() {
@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+      <nav className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
           {/* Logo - Redirige vers l'accueil (Route /) */}
