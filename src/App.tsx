@@ -6,6 +6,11 @@ import { DestinationsSection } from './components/DestinationsSection';
 import { GuidesSection } from './components/GuidesSection';
 import { TGVMaxSection } from './components/TGVMaxSection';
 import { EuropeSection } from './components/EuropeSection';
+import MentionLegal from './pages/MentionLegal';
+import Conditions from './pages/Conditions';
+import Confidentialités from './pages/Confidentialites';
+
+import AboutPage from './pages/about';
 import Trajets from './pages/trajets';
 import './styles/global.css';
 import Explorer from './pages/explorer';
@@ -30,6 +35,10 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/trajets" element={<Trajets />} />
         <Route path="/explorer" element={<Explorer />} />
+        <Route path="/a-propos" element={<AboutPage />} />
+        <Route path="/conditions" element={<Conditions />} />
+        <Route path="/confidentialite" element={<Confidentialités />} />
+        <Route path="/mentions-legales" element={<MentionLegal />} />
       </Routes>
       <Footer />
     </div>

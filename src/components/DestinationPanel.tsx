@@ -1,13 +1,15 @@
 import { DestinationList } from './DestinationList';
 import { DestinationDetail } from './DestinationDetail';
 import type { Destination } from '../types/explorer';
+import type { Place } from '../types/api';
 
 interface Props {
   destinations: Destination[];
   selected: Destination | null;
   loading: boolean;
   searched: boolean;
-  originName: string;
+  origin: Place | null;
+  date: string;
   onSelect: (dest: Destination) => void;
   onClose: () => void;
 }
@@ -22,14 +24,15 @@ export function DestinationPanel({
   selected,
   loading,
   searched,
-  originName,
+  origin,
+  date,
   onSelect,
   onClose,
 }: Props) {
   return (
     <aside className="w-full flex flex-col overflow-hidden bg-white z-10">
       {selected ? (
-        <DestinationDetail dest={selected} origin={originName} onClose={onClose} />
+        <DestinationDetail dest={selected} origin={origin} date={date} onClose={onClose} />
       ) : (
         <DestinationList
           destinations={destinations}

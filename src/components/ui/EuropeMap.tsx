@@ -27,9 +27,9 @@ export function EuropeMap({
 
   const projection = useMemo(() => {
     return geoMercator()
-      .center([3, 46.5])
+      .center([3, 49])
       .scale(800)
-      .translate([400, 200]);
+      .translate([400, 240]);
   }, []);
 
   const pathGenerator = useMemo(() => geoPath().projection(projection), [projection]);
@@ -78,7 +78,7 @@ export function EuropeMap({
     <div className="w-full h-full relative font-sans overflow-hidden">
       <svg
         ref={svgRef}
-        viewBox="0 0 800 400"
+        viewBox="0 0 800 500"
         className="w-full h-full absolute inset-0 pointer-events-auto select-none z-10"
         preserveAspectRatio="xMidYMid meet"
       >
@@ -97,23 +97,24 @@ export function EuropeMap({
             </feMerge>
           </filter>
 
+          {/* Points de fond en blanc pur avec l'opacité souhaitée */}
           <pattern id="dot-texture" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
-            <circle cx="2" cy="2" r="1" fill="#ffffff" opacity="0.2" />
+            <circle cx="2" cy="2" r="1" fill="#ffffff" opacity="0.4" />
           </pattern>
         </defs>
 
-        {/* Tracé des continents */}
+        {/* Tracé unique des continents (optimisé) */}
         {landGeoJson && (
           <path
             d={pathGenerator(landGeoJson) || ""}
             fill="url(#dot-texture)"
             stroke="#ffffff"
-            strokeWidth="0.3"
-            strokeOpacity="0.1"
+            strokeWidth="0.5"
+            strokeOpacity="0.3"
           />
         )}
 
-        {/* Lignes de trajet animées */}
+        {/* Lignes de trajet animées (le point mobile a été retiré ici) */}
         {dots.map((dot, i) => {
           const startPoint = projectPoint(dot.start.lat, dot.start.lng);
           const endPoint = projectPoint(dot.end.lat, dot.end.lng);
@@ -142,28 +143,6 @@ export function EuropeMap({
                   ease: "easeInOut",
                 }}
               />
-
-              {loop && (
-                <motion.circle
-                  r="3.5"
-                  fill={lineColor}
-                  filter="url(#glow-europe)"
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    offsetDistance: ["0%", "0%", "100%", "100%", "100%"],
-                    opacity: [0, 0, 1, 0, 0],
-                  }}
-                  transition={{
-                    duration: fullCycleDuration,
-                    times: [0, startTime, endTime, resetTime, 1],
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                  }}
-                  style={{
-                    offsetPath: `path('${createCurvedPath(startPoint, endPoint)}')`,
-                  }}
-                />
-              )}
             </g>
           );
         })}

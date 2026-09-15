@@ -1,15 +1,28 @@
 // ─── Station / Autocomplete ───────────────────────────────────────────────────
 
-export interface Station {
-  label: string;
-  type: 'city' | 'station';
-  country?: string;
-  city?: string;
-  uic?: string;
-  /** Valeur exacte attendue par l'API pour la recherche (fallback: label) */
-  search_val?: string;
-  lat?: number;
-  lon?: number;
+import type { Place } from './api';
+
+/**
+ * Ville ou gare proposée par l'autocomplétion (format de l'API /stations).
+ * `id` ("city:…" / "station:…") est la valeur à envoyer à /search et /explorer.
+ */
+export type Station = Place;
+
+/** Pseudo-destination « N'importe où » : redirige vers la carte d'exploration. */
+export const ANYWHERE_ID = 'anywhere';
+
+export const ANYWHERE_STATION: Station = {
+  type: 'city',
+  id: ANYWHERE_ID,
+  name: "N'importe où 🗺️",
+  country: 'Inspiration & Explorations',
+  lat: 0,
+  lon: 0,
+};
+
+/** Valeur à envoyer à l'API : l'identifiant de la suggestion choisie, sinon le texte saisi. */
+export function placeParam(selected: Station | null, typed: string): string {
+  return selected && selected.id !== ANYWHERE_ID ? selected.id : typed.trim();
 }
 
 export interface SelectedStop {

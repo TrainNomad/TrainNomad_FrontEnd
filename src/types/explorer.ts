@@ -1,18 +1,11 @@
 // ─── Domain types ─────────────────────────────────────────────────────────────
 
-export interface Destination {
-  dest_name: string;
-  dest_lat: number;
-  dest_lon: number;
-  duration: number; // minutes
-  train1_dep: string;
-  train2_arr: string;
-  transfers: number;
-  train1_no: string;
-  train1_type: string;
-  co2?: number;
-  price_min?: number;
-}
+import type { ExplorerDestination } from './api';
+
+/** Destination renvoyée par /explorer : ville (ou gare isolée) + trajet le plus court. */
+export type Destination = ExplorerDestination;
+
+export { formatDuration, formatTime } from '../lib/format';
 
 export interface OriginCoords {
   lat: number;
@@ -43,18 +36,6 @@ export function getDurationLabel(minutes: number): string {
   if (minutes <= 180) return '2h–3h';
   if (minutes <= 300) return '3h–5h';
   return '> 5h';
-}
-
-// ─── Formatting helpers ───────────────────────────────────────────────────────
-
-export function formatDuration(minutes: number): string {
-  const h = Math.floor(minutes / 60);
-  const m = minutes % 60;
-  return h > 0 ? `${h}h${m.toString().padStart(2, '0')}` : `${m} min`;
-}
-
-export function formatTime(t: string): string {
-  return t ? t.slice(0, 5) : '';
 }
 
 // ─── Legend items (static, used by MapLegend) ─────────────────────────────────

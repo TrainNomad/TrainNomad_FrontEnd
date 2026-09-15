@@ -1,4 +1,5 @@
 import type { Station } from '../types';
+import { ANYWHERE_ID } from '../types';
 import { useAutocomplete } from '../hooks/useAutocomplete';
 
 interface Props {
@@ -101,7 +102,7 @@ export function AutocompleteInput({
           <div className="suggestions-container">
             {ac.suggestions.map((station, idx) => (
               <SuggestionRow
-                key={`${station.type}-${station.label}-${idx}`}
+                key={`${station.id}-${idx}`}
                 station={station}
                 isActive={idx === ac.activeIndex}
                 onMouseDown={(e) => {
@@ -126,9 +127,13 @@ interface SuggestionRowProps {
 }
 
 function SuggestionRow({ station, isActive, onMouseDown }: SuggestionRowProps) {
-  const isAnywhere = station.label.includes("N'importe où");
+  const isAnywhere = station.id === ANYWHERE_ID;
   const isCity = station.type === 'city' && !isAnywhere;
   const isStation = station.type === 'station';
+
+  let subtitle = station.country;
+  if (isCity) subtitle = `Toutes les gares${station.stations ? ` (${station.stations})` : ''} · ${station.country}`;
+  else if (isStation && station.city && station.city !== station.name) subtitle = `${station.city} · ${station.country}`;
 
   const rowClass = [
     'ac-row',
@@ -146,12 +151,8 @@ function SuggestionRow({ station, isActive, onMouseDown }: SuggestionRowProps) {
         {isAnywhere ? 'explore' : isCity ? 'location_on' : 'train'}
       </span>
       <div className="ac-details">
-        <div className="ac-title-main">{station.label}</div>
-        {station.country && (
-          <div className="ac-line-sub">
-            {isCity ? `Toutes les gares (${station.country})` : station.country}
-          </div>
-        )}
+        <div className="ac-title-main">{station.name}</div>
+        {subtitle && <div className="ac-line-sub">{subtitle}</div>}
       </div>
     </div>
   );

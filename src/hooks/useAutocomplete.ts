@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import type { Station } from '../types';
-
-const API_BASE_URL = 'https://trainnomad-sql.onrender.com';
+import { ANYWHERE_STATION } from '../types';
+import { searchStations } from '../services/api';
 
 export interface AutocompleteHook {
   query: string;
@@ -25,6 +25,7 @@ export function useAutocomplete(
   const [activeIndex, setActiveIndex] = useState(-1);
   const [isOpen, setIsOpen] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
   const closeSuggestions = useCallback(() => {
     setIsOpen(false);
@@ -36,8 +37,7 @@ export function useAutocomplete(
     async (q: string) => {
       if (q.length < 2) {
         if (withAnywhere) {
-          // Show "N'importe où" option only
-          setSuggestions([{ label: "N'importe où 🗺️", type: 'city', country: 'Inspiration & Explorations' }]);
+          setSuggestions([ANYWHERE_STATION]);
           setIsOpen(true);
         } else {
           closeSuggestions();
@@ -45,37 +45,32 @@ export function useAutocomplete(
         return;
       }
 
-      try {
-        const res = await fetch(
-          `${API_BASE_URL}/stations?q=${encodeURIComponent(q)}&limit=6`,
-        );
-        const data = await res.json();
-        const items: Station[] = data.results || data.stops || data || [];
+      // Annule la requête précédente si l'utilisateur tape plus vite que l'API ne répond
+      abortRef.current?.abort();
+      const controller = new AbortController();
+      abortRef.current = controller;
 
-        // Build tree: cities first, then their stations grouped below
+      try {
+        const items = await searchStations(q, 8, controller.signal);
+
+        // Villes d'abord, avec leurs gares juste en dessous
         const cities = items.filter((s) => s.type === 'city');
         const stations = items.filter((s) => s.type === 'station');
 
         const ordered: Station[] = [];
-        if (withAnywhere) {
-          ordered.push({ label: "N'importe où 🗺️", type: 'city', country: 'Inspiration & Explorations' });
-        }
+        if (withAnywhere) ordered.push(ANYWHERE_STATION);
         cities.forEach((city) => {
           ordered.push(city);
-          const children = stations.filter((s) => s.city === city.label);
-          ordered.push(...children);
+          ordered.push(...stations.filter((s) => s.city === city.name));
         });
-        // Stations without a parent city
-        const orphans = stations.filter(
-          (s) => !cities.some((c) => c.label === s.city),
-        );
-        ordered.push(...orphans);
+        // Gares sans ville proposée
+        ordered.push(...stations.filter((s) => !cities.some((c) => c.name === s.city)));
 
         setSuggestions(ordered);
         setIsOpen(ordered.length > 0);
         setActiveIndex(-1);
       } catch (err) {
-        console.error('Autocomplete error:', err);
+        if ((err as Error).name !== 'AbortError') console.error('Autocomplete error:', err);
       }
     },
     [withAnywhere, closeSuggestions],
@@ -94,7 +89,7 @@ export function useAutocomplete(
 
   const selectSuggestion = useCallback(
     (station: Station) => {
-      setQuery(station.label);
+      setQuery(station.name);
       onSelect(station);
       closeSuggestions();
     },

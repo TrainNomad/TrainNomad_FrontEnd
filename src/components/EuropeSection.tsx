@@ -14,6 +14,11 @@ export function EuropeSection() {
     seville: { lat: 37.3891, lng: -5.9845, label: "Séville" },
     amsterdam: { lat: 52.3676, lng: 4.9041, label: "Amsterdam" },
     berlin: { lat: 52.52, lng: 13.405, label: "Berlin" },
+    bruxelles: { lat: 50.8503, lng: 4.3517, label: "Bruxelles" },
+    prague: { lat: 50.0755, lng: 14.4378, label: "Prague" },
+    edinbourg: { lat: 55.9533, lng: -3.1883, label: "Édimbourg" },
+    rome: { lat: 41.9029, lng: 12.4964, label: "Rome" },
+    palerme: { lat: 38.1939, lng: 13.3612, label: "Palerme" },
   };
 
   const europeanDots = [
@@ -28,7 +33,11 @@ export function EuropeSection() {
     { start: europeanCities.madrid, end: europeanCities.seville },
     { start: europeanCities.milan, end: europeanCities.lyon },
     { start: europeanCities.london, end: europeanCities.amsterdam },
-    { start: europeanCities.berlin, end: europeanCities.paris },
+    { start: europeanCities.berlin, end: europeanCities.bruxelles },
+    { start: europeanCities.bruxelles, end: europeanCities.prague },
+    { start: europeanCities.edinbourg, end: europeanCities.london },
+    { start: europeanCities.rome, end: europeanCities.palerme },
+    { start: europeanCities.rome, end: europeanCities.milan },
   ];
 
   return (

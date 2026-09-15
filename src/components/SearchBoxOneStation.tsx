@@ -9,7 +9,7 @@ import { getLocalTimeZone, today as getToday, CalendarDate } from '@internationa
 export interface ExplorerSearchPayload {
   /** Gare choisie dans l'autocomplétion (source de vérité de la recherche) */
   station: Station;
-  /** Libellé exact envoyé à l'API (station.search_val ?? station.label) */
+  /** Identifiant envoyé à l'API ("city:…" / "station:…") */
   origin: string;
   date: string;
   time: string;
@@ -32,10 +32,10 @@ export function SearchBoxOneStation({ onSearch }: Props) {
 
   const handleSearch = () => {
     if (!selectedFrom) return;
-    const time = timeRef.current?.value ? timeRef.current.value + ':00' : '06:00:00';
+    const time = timeRef.current?.value || '06:00';
     onSearch({
       station: selectedFrom,
-      origin: selectedFrom.search_val || selectedFrom.label,
+      origin: selectedFrom.id,
       date: departDate.toString(),
       time,
     });

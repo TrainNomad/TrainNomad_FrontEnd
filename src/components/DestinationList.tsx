@@ -56,21 +56,21 @@ export function DestinationList({ destinations, loading, searched, onSelect }: P
     );
   }
 
-  const sorted = [...destinations].sort((a, b) => a.duration - b.duration);
+  const sorted = [...destinations].sort((a, b) => a.duration_min - b.duration_min);
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
       <div className="p-4 border-b border-slate-50 flex-shrink-0">
-        <h2 className="font-bold text-[#1A2B3C] text-base">Destinations</h2>
+        <h2 className="font-bold text-[#1A2B3C] text-base">{sorted.length} destinations</h2>
         <p className="text-xs text-slate-400 mt-0.5">Cliquez sur une destination pour les détails</p>
       </div>
 
       <div className="overflow-y-auto flex-1 p-3 flex flex-col gap-1.5">
-        {sorted.map((d, i) => {
-          const color = getDurationColor(d.duration);
+        {sorted.map((d) => {
+          const color = getDurationColor(d.duration_min);
           return (
             <button
-              key={i}
+              key={d.place.id}
               onClick={() => onSelect(d)}
               className="w-full text-left flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-slate-50 transition-colors group border border-transparent hover:border-slate-100"
             >
@@ -80,20 +80,21 @@ export function DestinationList({ destinations, loading, searched, onSelect }: P
               />
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-[#1A2B3C] text-sm truncate group-hover:text-[#1d7a5a] transition-colors">
-                  {d.dest_name}
+                  {d.place.name}
                 </p>
                 <p className="text-xs text-slate-400 mt-0.5">
                   {d.transfers === 0
                     ? 'Direct'
                     : `${d.transfers} correspondance${d.transfers > 1 ? 's' : ''}`}
-                  {d.train1_dep && ` · départ ${formatTime(d.train1_dep)}`}
+                  {` · départ ${formatTime(d.departure)}`}
+                  {d.transfers > 0 && d.direct && ` · direct en ${formatDuration(d.direct.duration_min)}`}
                 </p>
               </div>
               <span
                 className="flex-shrink-0 text-xs font-bold px-2 py-1 rounded-lg"
                 style={{ background: color + '22', color }}
               >
-                {formatDuration(d.duration)}
+                {formatDuration(d.duration_min)}
               </span>
             </button>
           );

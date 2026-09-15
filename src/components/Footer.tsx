@@ -9,9 +9,9 @@ const NAV_LINKS = [
 ];
 
 const LEGAL_LINKS = [
-  { label: 'Mentions Légales', href: '../mention_legal.html' },
-  { label: 'Confidentialité', href: '../confidentialite.html' },
-  { label: 'Conditions', href: '../conditions.html' },
+  { label: 'Mentions Légales', href: '/mentions-legales' },
+  { label: 'Confidentialité', href: '/confidentialite' },
+  { label: 'Conditions', href: '/conditions' },
 ];
 
 export function Footer() {

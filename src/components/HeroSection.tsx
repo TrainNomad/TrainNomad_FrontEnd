@@ -2,7 +2,7 @@ import SearchBox from './SearchBox';
 
 export function HeroSection() {
   return (
-    <section className="relative z-20 pt-24 pb-40 hero-gradient">
+    <section className="relative z-20 pt-24 hero-gradient">
       <div className="max-w-7xl mx-auto px-6 text-center">
 
         {/* Badge */}

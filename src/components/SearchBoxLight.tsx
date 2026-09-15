@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
 import { AutocompleteInput } from './AutocompleteInput';
 import type { Station, TripType } from '../types';
+import { ANYWHERE_ID, placeParam } from '../types';
 
 import { Calendar } from './ui/calendar-rac';
 import { Dialog, DialogTrigger, Popover, Button, I18nProvider, DateValue } from 'react-aria-components';
@@ -18,23 +19,31 @@ export default function SearchBox({ onSearch }: Props) {
 
   const [fromQuery, setFromQuery] = useState('');
   const [toQuery, setToQuery] = useState('');
-  const [_selectedFrom, setSelectedFrom] = useState<Station | null>(null);
-  const [_selectedTo, setSelectedTo] = useState<Station | null>(null);
+  const [selectedFrom, setSelectedFrom] = useState<Station | null>(null);
+  const [selectedTo, setSelectedTo] = useState<Station | null>(null);
 
   const timeRef = useRef<HTMLInputElement>(null);
 
-  const isSearchEnabled = fromQuery.trim().length >= 2 && toQuery.trim().length >= 2;
+  const isAnywhere = selectedTo?.id === ANYWHERE_ID;
+  const isSearchEnabled = fromQuery.trim().length >= 2 && (isAnywhere || toQuery.trim().length >= 2);
 
   const handleSearch = useCallback(() => {
-    if (!fromQuery || !toQuery) return;
-    const time = timeRef.current?.value ? timeRef.current.value + ':00' : '06:00:00';
+    if (!isSearchEnabled) return;
+    const time = timeRef.current?.value || '06:00';
+    const origin = placeParam(selectedFrom, fromQuery);
+    if (isAnywhere) {
+      // « N'importe où » : carte de toutes les destinations depuis la gare de départ
+      const params = new URLSearchParams({ from: origin, date: departDate.toString(), time });
+      window.location.href = '/explorer?' + params.toString();
+      return;
+    }
     onSearch({
-      origin: fromQuery,
-      destination: toQuery,
+      origin,
+      destination: placeParam(selectedTo, toQuery),
       date: departDate.toString(),
       time,
     });
-  }, [fromQuery, toQuery, departDate, onSearch]);
+  }, [isSearchEnabled, isAnywhere, selectedFrom, selectedTo, fromQuery, toQuery, departDate, onSearch]);
 
   const tripBtnClass = (type: TripType) =>
     type === tripType
@@ -43,10 +52,10 @@ export default function SearchBox({ onSearch }: Props) {
 
   return (
     <I18nProvider locale="fr-FR">
-      <div className="w-full max-w-7xl mx-auto px-6 py-6">
+      <div className="w-full max-w-7xl mx-auto px-6 py-2">
         
         {/* Toggle type de voyage */}
-        <div className="flex items-center gap-2 mb-3 ml-1">
+        <div className="flex items-center gap-2 mb-2 ml-1">
           <button onClick={() => setTripType('oneway')} className={tripBtnClass('oneway')}>
             <i className="fa-solid fa-arrow-right text-[10px]" aria-hidden="true" />
             Aller simple
@@ -58,10 +67,10 @@ export default function SearchBox({ onSearch }: Props) {
         </div>
 
         {/* Barre unifiée */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-2 flex flex-wrap lg:flex-nowrap items-center gap-2">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-1 flex flex-wrap lg:flex-nowrap items-center gap-1">
           
           {/* Départ */}
-          <div className="flex-1 min-w-[200px] px-4 py-2">
+          <div className="flex-1 min-w-[200px] px-2 py-1">
             <AutocompleteInput
               id="input-from"
               label="Départ"
@@ -72,10 +81,10 @@ export default function SearchBox({ onSearch }: Props) {
             />
           </div>
 
-          <div className="w-px bg-slate-100 my-2 hidden lg:block h-10"></div>
+          <div className="w-px bg-slate-100 my-1 hidden lg:block h-8"></div>
 
           {/* Arrivée */}
-          <div className="flex-1 min-w-[200px] px-4 py-2">
+          <div className="flex-1 min-w-[200px] px-2 py-1">
             <AutocompleteInput
               id="input-to"
               label="Arrivée"
@@ -87,10 +96,10 @@ export default function SearchBox({ onSearch }: Props) {
             />
           </div>
 
-          <div className="w-px bg-slate-100 my-2 hidden lg:block h-10"></div>
+          <div className="w-px bg-slate-100 my-1 hidden lg:block h-8"></div>
 
           {/* Date aller */}
-          <div className="w-full lg:w-44 px-4 py-2 relative group">
+          <div className="w-full lg:w-44 px-2 py-1 relative group">
             <DialogTrigger>
               <Button className="flex flex-col items-start w-full text-left outline-none border-none bg-transparent cursor-pointer">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">Date aller</span>
@@ -162,13 +171,13 @@ export default function SearchBox({ onSearch }: Props) {
             </>
           )}
 
-          <div className="w-px bg-slate-100 my-2 hidden lg:block h-10"></div>
+          <div className="w-px bg-slate-100 my-1 hidden lg:block h-8"></div>
 
           {/* Heure départ */}
-          <div className="w-full lg:w-36 px-4 py-2 relative group">
+          <div className="w-full lg:w-36 px-2 py-1 relative group">
             <div className="flex flex-col items-start w-full">
-              <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">Heure départ</label>
-              <div className="flex items-center gap-2 w-full">
+              <label className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-0.5">Heure départ</label>
+              <div className="flex items-center gap-1 w-full">
                 <span className="material-symbols-outlined text-slate-400 text-lg flex-shrink-0">schedule</span>
                 <input
                   ref={timeRef}
@@ -181,13 +190,13 @@ export default function SearchBox({ onSearch }: Props) {
           </div>
 
           {/* Bouton recherche */}
-          <div className="w-full lg:w-auto p-1">
+          <div className="w-full lg:w-auto p-0.5">
             <button
               onClick={handleSearch}
               disabled={!isSearchEnabled}
-              className="bg-slate-900 hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed text-white px-8 py-3.5 rounded-xl font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap shadow-md w-full lg:w-auto"
+              className="bg-slate-900 hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-2.5 rounded-xl font-bold transition-all flex items-center justify-center gap-1 whitespace-nowrap shadow-md w-full lg:w-auto text-xs"
             >
-              <span className="material-symbols-outlined">search</span>RECHERCHER
+              <span className="material-symbols-outlined text-sm">search</span>RECHERCHER
             </button>
           </div>
 

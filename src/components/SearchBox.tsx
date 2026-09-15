@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { AutocompleteInput } from './AutocompleteInput';
 import type { ActiveTab, Station, TripType } from '../types';
+import { ANYWHERE_ID, placeParam } from '../types';
 
 // Importer le calendrier et les composants popover de react-aria-components
 import { Calendar } from './ui/calendar-rac';
@@ -16,37 +17,44 @@ export default function SearchBox() {
   const [returnDate, setReturnDate] = useState<CalendarDate>(getToday(getLocalTimeZone()));
 
   // From/to pour l'onglet Europe
-  const [fromQuery, setFromQuery] = useState('Paris');
+  const [fromQuery, setFromQuery] = useState('');
   const [toQuery, setToQuery] = useState('');
-  const [_selectedFrom, setSelectedFrom] = useState<Station | null>(null);
-  const [_selectedTo, setSelectedTo] = useState<Station | null>(null);
+  const [selectedFrom, setSelectedFrom] = useState<Station | null>(null);
+  const [selectedTo, setSelectedTo] = useState<Station | null>(null);
 
   // From pour l'onglet Carte
   const [carteFromQuery, setCarteFromQuery] = useState('');
-  const [_carteSelectedFrom, setCarteSelectedFrom] = useState<Station | null>(null);
+  const [carteSelectedFrom, setCarteSelectedFrom] = useState<Station | null>(null);
 
-  const isSearchEnabled = fromQuery.trim().length >= 2 && toQuery.trim().length >= 2;
+  const isAnywhere = selectedTo?.id === ANYWHERE_ID;
+  const isSearchEnabled = fromQuery.trim().length >= 2 && (isAnywhere || toQuery.trim().length >= 2);
   const isCarteEnabled = carteFromQuery.trim().length >= 2;
 
+  const goToExplorer = useCallback((from: string) => {
+    const params = new URLSearchParams({ from, date: departDate.toString() });
+    window.location.href = '/explorer?' + params.toString();
+  }, [departDate]);
+
   const handleSearch = useCallback(() => {
-    if (!fromQuery || !toQuery) return;
+    if (!isSearchEnabled) return;
+    const departure = placeParam(selectedFrom, fromQuery);
+    if (isAnywhere) {
+      goToExplorer(departure);
+      return;
+    }
     const params = new URLSearchParams({
-      departure: fromQuery,
-      arrival: toQuery,
+      departure,
+      arrival: placeParam(selectedTo, toQuery),
       date: departDate.toString(),
       ...(tripType === 'roundtrip' && { return_date: returnDate.toString() }),
-      departure_time: '06:00:00',
+      departure_time: '06:00',
     });
     window.location.href = '/trajets?' + params.toString();
-  }, [fromQuery, toQuery, departDate, returnDate, tripType]);
+  }, [isSearchEnabled, isAnywhere, selectedFrom, selectedTo, fromQuery, toQuery, departDate, returnDate, tripType, goToExplorer]);
 
   const handleCarteSearch = useCallback(() => {
-    const params = new URLSearchParams({ 
-      from: carteFromQuery, 
-      date: departDate.toString() 
-    });
-    window.location.href = 'explorer.html?' + params.toString();
-  }, [carteFromQuery, departDate]);
+    goToExplorer(placeParam(carteSelectedFrom, carteFromQuery));
+  }, [carteSelectedFrom, carteFromQuery, goToExplorer]);
 
   const tabClass = (tab: ActiveTab) =>
     tab === activeTab

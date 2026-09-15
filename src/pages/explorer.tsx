@@ -1,77 +1,95 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import type { Destination, OriginCoords } from '../types/explorer';
+import type { Place } from '../types/api';
 import { ExplorerSearch } from '../components/SearchBoxOneStation';
 import type { ExplorerSearchPayload } from '../components/SearchBoxOneStation';
 import { ExplorerMap } from '../components/ExplorerMap';
 import { DestinationPanel } from '../components/DestinationPanel';
-
-const API_BASE = 'https://trainnomad-sql.onrender.com';
+import { exploreDestinations } from '../services/api';
+import { EXPLORER_MAX_TRANSFERS } from '../config';
 
 /**
  * /explorer page.
  *
  * Responsibilities:
- *  - Hold all shared state (destinations, selected, loading, originCoords…)
- *  - Fetch /explorer from the API (la gare provient de l'autocomplétion)
+ *  - Hold all shared state (destinations, selected, loading, origin…)
+ *  - Fetch /explorer from the API (gare choisie dans l'autocomplétion ou ?from= dans l'URL)
  *  - Pass data down to ExplorerSearch, ExplorerMap, DestinationPanel
  */
 export default function Explorer() {
-  const [destinations, setDestinations]   = useState<Destination[]>([]);
-  const [selected, setSelected]           = useState<Destination | null>(null);
-  const [loading, setLoading]             = useState(false);
-  const [searched, setSearched]           = useState(false);
-  const [originCoords, setOriginCoords]   = useState<OriginCoords | null>(null);
-  const [originName, setOriginName]       = useState('');
+  const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [selected, setSelected]         = useState<Destination | null>(null);
+  const [loading, setLoading]           = useState(false);
+  const [searched, setSearched]         = useState(false);
+  const [origin, setOrigin]             = useState<Place | null>(null);
+  const [date, setDate]                 = useState('');
+  const [error, setError]               = useState<string | null>(null);
 
   // ── API calls ──────────────────────────────────────────────────────────────
 
-  // La gare vient de la sélection dans l'autocomplétion : plus besoin de
-  // re-deviner la gare officielle via /stations à partir du texte saisi.
-  const handleSearch = useCallback(async ({ station, origin, date }: ExplorerSearchPayload) => {
+  const runSearch = useCallback(async (from: string, day: string, time?: string) => {
     setLoading(true);
     setDestinations([]);
     setSelected(null);
     setSearched(true);
-    setOriginName(station.label);
-
-    // /stations ne renvoie pas de coordonnées aujourd'hui : on n'affiche le
-    // marqueur d'origine que si l'API finit par en fournir.
-    setOriginCoords(
-      station.lat != null && station.lon != null &&
-      Number.isFinite(Number(station.lat)) && Number.isFinite(Number(station.lon))
-        ? { lat: Number(station.lat), lon: Number(station.lon) }
-        : null,
-    );
+    setError(null);
 
     try {
-      const res = await fetch(
-        `${API_BASE}/explorer?from=${encodeURIComponent(origin)}&date=${encodeURIComponent(date)}`,
-      );
-      const data = await res.json();
-
-      const results: Destination[] = Array.isArray(data)
-        ? data
-        : (Array.isArray(data.results) ? data.results : (Array.isArray(data.destinations) ? data.destinations : []));
-
-      setDestinations(results);
+      const data = await exploreDestinations({
+        from,
+        date: day,
+        time,
+        maxTransfers: EXPLORER_MAX_TRANSFERS,
+      });
+      // L'API renvoie la gare / ville d'origine résolue, avec ses coordonnées
+      setOrigin(data.from);
+      setDate(data.date);
+      setDestinations(data.destinations);
     } catch (e) {
       console.error('[Explorer] fetch error:', e);
+      setError((e as Error).message);
       setDestinations([]);
     } finally {
       setLoading(false);
     }
   }, []);
 
+  const handleSearch = useCallback(
+    ({ station, origin: from, date: day, time }: ExplorerSearchPayload) => {
+      setOrigin(station);
+      runSearch(from, day, time);
+    },
+    [runSearch],
+  );
+
+  // Arrivée depuis la page d'accueil : /explorer?from=city:TL4916&date=2026-09-17
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get('from');
+    if (from) runSearch(from, params.get('date') || '', params.get('time') || undefined);
+  }, [runSearch]);
+
+  // Mémorisé : un nouvel objet à chaque rendu relançait le recadrage de la carte
+  // (par exemple à chaque clic sur une destination).
+  const originCoords = useMemo<OriginCoords | null>(
+    () =>
+      origin && Number.isFinite(origin.lat) && Number.isFinite(origin.lon) && (origin.lat !== 0 || origin.lon !== 0)
+        ? { lat: origin.lat, lon: origin.lon }
+        : null,
+    [origin?.lat, origin?.lon],
+  );
+
   // ── Render ─────────────────────────────────────────────────────────────────
 
   return (
     <div className="flex flex-col h-[calc(100vh-5rem)] bg-slate-50 overflow-hidden">
-      
+
       {/* Barre de recherche : z-30 pour passer au-dessus de la carte (z-10) mais
           rester sous la navbar sticky (z-100). L'autocomplétion et le calendrier
           sont confinés dans ce contexte d'empilement. */}
       <div className="w-full px-4 pt-3 pb-3 flex-shrink-0 relative z-30">
         <ExplorerSearch onSearch={handleSearch} />
+        {error && <p className="text-sm text-red-500 font-medium mt-2 px-2">{error}</p>}
       </div>
 
       {/* Corps principal : Carte + Panneau latéral (z-index plus bas) */}
@@ -81,7 +99,7 @@ export default function Explorer() {
             destinations={destinations}
             selected={selected}
             originCoords={originCoords}
-            originName={originName}
+            originName={origin?.name ?? ''}
             searched={searched}
             onSelect={setSelected}
           />
@@ -93,7 +111,8 @@ export default function Explorer() {
             selected={selected}
             loading={loading}
             searched={searched}
-            originName={originName}
+            origin={origin}
+            date={date}
             onSelect={setSelected}
             onClose={() => setSelected(null)}
           />

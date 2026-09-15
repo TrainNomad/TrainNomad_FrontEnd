@@ -6,21 +6,32 @@ import {
   formatTime,
 } from '../types/explorer';
 import type { Destination } from '../types/explorer';
+import type { Place } from '../types/api';
 
 interface Props {
   dest: Destination;
-  origin: string;
+  origin: Place | null;
+  date: string;
   onClose: () => void;
 }
 
 /**
  * Right-panel detail view for a single destination.
- * Shows duration, departure/arrival times, train info,
+ * Shows duration, departure/arrival times, the fastest direct train if any,
  * a visual timeline, and a CTA link to the timetable page.
  */
-export function DestinationDetail({ dest, origin, onClose }: Props) {
-  const color = getDurationColor(dest.duration);
-  const label = getDurationLabel(dest.duration);
+export function DestinationDetail({ dest, origin, date, onClose }: Props) {
+  const color = getDurationColor(dest.duration_min);
+  const label = getDurationLabel(dest.duration_min);
+  const originName = origin?.name ?? '';
+  const direct = dest.direct;
+
+  const timetableParams = new URLSearchParams({
+    departure: origin?.id ?? originName,
+    arrival: dest.place.id,
+    date: date || dest.departure.slice(0, 10),
+    departure_time: formatTime(dest.departure),
+  });
 
   return (
     <div className="flex flex-col h-full">
@@ -40,9 +51,13 @@ export function DestinationDetail({ dest, origin, onClose }: Props) {
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-xs text-slate-400 font-medium mb-1">
-              Depuis <span className="text-[#1d7a5a] font-semibold">{origin}</span>
+              Depuis <span className="text-[#1d7a5a] font-semibold">{originName}</span>
             </p>
-            <h2 className="text-2xl font-black text-[#1A2B3C] leading-tight">{dest.dest_name}</h2>
+            <h2 className="text-2xl font-black text-[#1A2B3C] leading-tight">{dest.place.name}</h2>
+            <p className="text-xs text-slate-400 mt-0.5">
+              {dest.place.type === 'city' && dest.place.stations ? `${dest.place.stations} gares · ` : ''}
+              {dest.place.country}
+            </p>
           </div>
           <span
             className="flex-shrink-0 text-sm font-bold px-3 py-1.5 rounded-xl mt-1"
@@ -70,23 +85,15 @@ export function DestinationDetail({ dest, origin, onClose }: Props) {
             </svg>
           </div>
           <div>
-            <p className="text-xs font-medium text-slate-500 mb-0.5">Durée</p>
-            <p className="text-2xl font-black" style={{ color }}>{formatDuration(dest.duration)}</p>
+            <p className="text-xs font-medium text-slate-500 mb-0.5">Trajet le plus rapide</p>
+            <p className="text-2xl font-black" style={{ color }}>{formatDuration(dest.duration_min)}</p>
           </div>
         </div>
 
         {/* Stat grid */}
         <div className="grid grid-cols-2 gap-3">
-          <InfoCard
-            icon={<ClockIcon />}
-            label="Départ"
-            value={formatTime(dest.train1_dep)}
-          />
-          <InfoCard
-            icon={<ArrowRightIcon />}
-            label="Arrivée"
-            value={formatTime(dest.train2_arr || dest.train1_dep)}
-          />
+          <InfoCard icon={<ClockIcon />} label="Départ" value={formatTime(dest.departure)} />
+          <InfoCard icon={<ArrowRightIcon />} label="Arrivée" value={formatTime(dest.arrival)} />
           <InfoCard
             icon={<TransferIcon />}
             label="Correspondances"
@@ -95,32 +102,20 @@ export function DestinationDetail({ dest, origin, onClose }: Props) {
           />
           <InfoCard
             icon={<TrainIcon />}
-            label="Train"
-            value={dest.train1_type || 'TGV'}
+            label="Train direct"
+            value={direct ? formatDuration(direct.duration_min) : 'Aucun'}
+            accent={!!direct}
           />
         </div>
 
-        {/* Train details + timeline */}
+        {/* Timeline du meilleur trajet */}
         <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
-          <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Détails du train</p>
+          <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Meilleur trajet de la journée</p>
 
           <div className="flex items-center gap-3">
-            <div className="flex-1">
-              <p className="text-sm font-semibold text-[#1A2B3C]">{dest.train1_type}</p>
-              <p className="text-xs text-slate-400">n° {dest.train1_no}</p>
-            </div>
-            {dest.transfers === 0 && (
-              <span className="text-xs font-bold text-[#1d7a5a] bg-[#1d7a5a]/10 px-2 py-1 rounded-lg">
-                Direct
-              </span>
-            )}
-          </div>
-
-          {/* Visual timeline */}
-          <div className="mt-4 flex items-center gap-3">
             <div className="text-right flex-shrink-0">
-              <p className="text-base font-black text-[#1A2B3C]">{formatTime(dest.train1_dep)}</p>
-              <p className="text-xs text-slate-400">{origin}</p>
+              <p className="text-base font-black text-[#1A2B3C]">{formatTime(dest.departure)}</p>
+              <p className="text-xs text-slate-400">{originName}</p>
             </div>
             <div className="flex-1 flex items-center gap-1">
               <div className="w-2 h-2 rounded-full bg-[#1A2B3C] flex-shrink-0" />
@@ -128,15 +123,22 @@ export function DestinationDetail({ dest, origin, onClose }: Props) {
               <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: color }} />
             </div>
             <div className="flex-shrink-0">
-              <p className="text-base font-black" style={{ color }}>{formatTime(dest.train2_arr)}</p>
-              <p className="text-xs text-slate-400">{dest.dest_name}</p>
+              <p className="text-base font-black" style={{ color }}>{formatTime(dest.arrival)}</p>
+              <p className="text-xs text-slate-400">{dest.place.name}</p>
             </div>
           </div>
+
+          {direct && dest.transfers > 0 && (
+            <p className="text-xs text-slate-500 mt-3">
+              Train direct le plus rapide : {formatTime(direct.departure)} → {formatTime(direct.arrival)}
+              {` (${formatDuration(direct.duration_min)})`}
+            </p>
+          )}
         </div>
 
         {/* CTA */}
         <a
-          href={`/trajets?departure=${encodeURIComponent(origin)}&arrival=${encodeURIComponent(dest.dest_name)}&departure_time=${dest.train1_dep}`}
+          href={`/trajets?${timetableParams.toString()}`}
           className="block w-full text-center bg-[#1A2B3C] hover:bg-[#1d7a5a] text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-300 shadow-md hover:-translate-y-0.5 text-sm"
         >
           Voir les horaires →

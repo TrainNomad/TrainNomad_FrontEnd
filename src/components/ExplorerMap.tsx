@@ -1,12 +1,13 @@
 import { MapContainer, CircleMarker, Tooltip, useMap } from 'react-leaflet';
-import { useCallback, useEffect, useRef } from 'react';
-import { latLngBounds } from 'leaflet';
-import type { Map as LeafletMap, LatLngTuple } from 'leaflet';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { canvas, circleMarker, latLngBounds, layerGroup } from 'leaflet';
+import type { CircleMarker as LeafletCircleMarker, Map as LeafletMap, LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MaptilerLayer } from '@maptiler/leaflet-maptilersdk';
 import { MapLegend } from './MapLegend';
 import { getDurationColor, formatDuration } from '../types/explorer';
 import type { Destination, OriginCoords } from '../types/explorer';
+import { MAPTILER_API_KEY } from '../config';
 
 interface Props {
   destinations: Destination[];
@@ -21,6 +22,8 @@ interface Props {
 
 const isCoord = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v);
 
+const hasCoords = (d: Destination) => isCoord(d.place.lat) && isCoord(d.place.lon);
+
 /** Tous les points affichés sur la carte (origine + destinations valides). */
 function collectPoints(
   destinations: Destination[],
@@ -32,24 +35,57 @@ function collectPoints(
   }
   if (Array.isArray(destinations)) {
     for (const d of destinations) {
-      if (isCoord(d.dest_lat) && isCoord(d.dest_lon)) pts.push([d.dest_lat, d.dest_lon]);
+      if (hasCoords(d)) pts.push([d.place.lat, d.place.lon]);
     }
   }
   return pts;
 }
 
-/** Recadre la carte sur l'ensemble des points. No-op s'il n'y en a aucun. */
+/**
+ * Recadre la carte sur l'ensemble des points. No-op s'il n'y en a aucun ou si la
+ * carte n'a pas encore de taille (le ResizeObserver recadrera dès qu'elle en aura une).
+ */
 function fitToPoints(map: LeafletMap, pts: LatLngTuple[]) {
-  if (pts.length === 0) return;
+  const size = map.getSize();
+  if (pts.length === 0 || !size.x || !size.y) return;
   map.fitBounds(latLngBounds(pts), {
     padding: [56, 56],
     maxZoom: pts.length === 1 ? 10 : 12,
   });
 }
 
+// ─── Marqueurs ────────────────────────────────────────────────────────────────
+
+/** Rayon des points selon le zoom : fins à l'échelle de l'Europe, plus gros en zoomant. */
+function markerRadius(zoom: number): number {
+  if (zoom <= 4) return 2;
+  if (zoom <= 5) return 2.5;
+  if (zoom <= 6) return 3.5;
+  if (zoom <= 7) return 4.5;
+  if (zoom <= 9) return 6;
+  return 7;
+}
+
+const markerWeight = (zoom: number) => (zoom <= 5 ? 0.5 : 1);
+
+/** Contenu de l'infobulle, construit seulement au survol. */
+function tooltipContent(d: Destination): HTMLElement {
+  const el = document.createElement('div');
+  const name = document.createElement('span');
+  name.className = 'font-bold';
+  name.textContent = d.place.name;
+  el.append(
+    name,
+    document.createElement('br'),
+    `${formatDuration(d.duration_min)} · ${d.transfers === 0 ? 'Direct' : `${d.transfers} corresp.`}`,
+  );
+  return el;
+}
+
 // ─── Contenu interne (a accès à useMap) ───────────────────────────────────────
 
 interface InnerProps extends Props {
+  points: LatLngTuple[];
   mapRef: React.MutableRefObject<LeafletMap | null>;
 }
 
@@ -59,9 +95,16 @@ function MapContent({
   originCoords,
   originName,
   onSelect,
+  points,
   mapRef,
 }: InnerProps) {
   const map = useMap();
+  const pointsRef = useRef(points);
+  const onSelectRef = useRef(onSelect);
+  useEffect(() => {
+    pointsRef.current = points;
+    onSelectRef.current = onSelect;
+  });
 
   // Expose l'instance Leaflet au composant parent (bouton « Recentrer »)
   useEffect(() => {
@@ -71,13 +114,37 @@ function MapContent({
     };
   }, [map, mapRef]);
 
+  // Leaflet et MapTiler ne mesurent le conteneur qu'au montage : si sa taille change
+  // ensuite (mise en page flex, animation…), la carte restait vide jusqu'au prochain
+  // redimensionnement de la fenêtre (ouverture de l'inspecteur, par exemple).
+  useEffect(() => {
+    const container = map.getContainer();
+    const isEmpty = () => container.clientWidth === 0 || container.clientHeight === 0;
+    let wasEmpty = isEmpty();
+    let frame = 0;
+    const observer = new ResizeObserver(() => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        map.invalidateSize({ pan: false });
+        const empty = isEmpty();
+        if (wasEmpty && !empty) fitToPoints(map, pointsRef.current);
+        wasEmpty = empty;
+      });
+    });
+    observer.observe(container);
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
+  }, [map]);
+
   // Fond de carte MapTiler
   useEffect(() => {
     // Pas de `style` : on garde le fond MapTiler par défaut (MapTiler Streets),
     // celui qui était réellement rendu avant (MapStyle.LIGHT n'existe pas et
     // valait donc undefined).
     const mtLayer = new MaptilerLayer({
-      apiKey: 'sBZIT01ONEm9wMymYCwd',
+      apiKey: MAPTILER_API_KEY,
     });
     mtLayer.addTo(map);
     return () => {
@@ -87,16 +154,59 @@ function MapContent({
 
   // Auto-recadrage à chaque nouveau jeu de résultats
   useEffect(() => {
-    fitToPoints(map, collectPoints(destinations, originCoords));
-  }, [map, destinations, originCoords]);
+    fitToPoints(map, points);
+  }, [map, points]);
 
   // Recentrage doux sur la destination sélectionnée
   useEffect(() => {
-    if (!selected || !isCoord(selected.dest_lat) || !isCoord(selected.dest_lon)) return;
-    map.flyTo([selected.dest_lat, selected.dest_lon], Math.max(map.getZoom(), 8), {
+    if (!selected || !hasCoords(selected)) return;
+    map.flyTo([selected.place.lat, selected.place.lon], Math.max(map.getZoom(), 8), {
       duration: 0.6,
     });
   }, [map, selected]);
+
+  // Destinations : plusieurs milliers de points, créés directement en Leaflet sur un
+  // canvas plutôt qu'en composants React (un CircleMarker + Tooltip chacun était très lent).
+  const renderer = useMemo(() => canvas({ padding: 0.5, tolerance: 4 }), []);
+  useEffect(() => {
+    const group = layerGroup();
+    const markers: LeafletCircleMarker[] = [];
+    let weight = markerWeight(map.getZoom());
+
+    // Les plus longues d'abord : les destinations proches restent visibles par-dessus
+    const sorted = destinations.filter(hasCoords).sort((a, b) => b.duration_min - a.duration_min);
+    for (const d of sorted) {
+      const marker = circleMarker([d.place.lat, d.place.lon], {
+        renderer,
+        radius: markerRadius(map.getZoom()),
+        weight,
+        color: '#fff',
+        fillColor: getDurationColor(d.duration_min),
+        fillOpacity: 0.9,
+      });
+      marker.bindTooltip(() => tooltipContent(d), { direction: 'top', offset: [0, -4] });
+      marker.on('click', () => onSelectRef.current(d));
+      markers.push(marker);
+      group.addLayer(marker);
+    }
+    group.addTo(map);
+
+    const onZoom = () => {
+      const zoom = map.getZoom();
+      const radius = markerRadius(zoom);
+      const newWeight = markerWeight(zoom);
+      for (const marker of markers) {
+        marker.setRadius(radius);
+        if (newWeight !== weight) marker.setStyle({ weight: newWeight });
+      }
+      weight = newWeight;
+    };
+    map.on('zoomend', onZoom);
+    return () => {
+      map.off('zoomend', onZoom);
+      group.remove();
+    };
+  }, [map, renderer, destinations]);
 
   return (
     <>
@@ -104,7 +214,7 @@ function MapContent({
       {originCoords && isCoord(originCoords.lat) && isCoord(originCoords.lon) && (
         <CircleMarker
           center={[originCoords.lat, originCoords.lon]}
-          radius={9}
+          radius={8}
           pathOptions={{ fillColor: '#1A2B3C', color: '#fff', weight: 2.5, fillOpacity: 1 }}
         >
           <Tooltip permanent direction="top" offset={[0, -10]}>
@@ -113,33 +223,27 @@ function MapContent({
         </CircleMarker>
       )}
 
-      {/* Destination markers */}
-      {Array.isArray(destinations) && destinations.map((d, i) => {
-        if (!isCoord(d.dest_lat) || !isCoord(d.dest_lon)) return null;
-        const color = getDurationColor(d.duration);
-        const isSelected = selected?.dest_name === d.dest_name;
-        return (
-          <CircleMarker
-            key={i}
-            center={[d.dest_lat, d.dest_lon]}
-            radius={isSelected ? 12 : 8}
-            pathOptions={{
-              fillColor: color,
-              color: isSelected ? '#1A2B3C' : '#fff',
-              weight: isSelected ? 3 : 1.5,
-              fillOpacity: 0.9,
-            }}
-            eventHandlers={{ click: () => onSelect(d) }}
-          >
-            <Tooltip direction="top" offset={[0, -6]}>
-              <span className="font-bold">{d.dest_name}</span>
-              <br />
-              {formatDuration(d.duration)} ·{' '}
-              {d.transfers === 0 ? 'Direct' : `${d.transfers} corresp.`}
-            </Tooltip>
-          </CircleMarker>
-        );
-      })}
+      {/* Destination sélectionnée, au-dessus des autres points */}
+      {selected && hasCoords(selected) && (
+        <CircleMarker
+          key={selected.place.id}
+          center={[selected.place.lat, selected.place.lon]}
+          radius={9}
+          pathOptions={{
+            fillColor: getDurationColor(selected.duration_min),
+            color: '#1A2B3C',
+            weight: 3,
+            fillOpacity: 1,
+          }}
+        >
+          <Tooltip direction="top" offset={[0, -8]}>
+            <span className="font-bold">{selected.place.name}</span>
+            <br />
+            {formatDuration(selected.duration_min)} ·{' '}
+            {selected.transfers === 0 ? 'Direct' : `${selected.transfers} corresp.`}
+          </Tooltip>
+        </CircleMarker>
+      )}
     </>
   );
 }
@@ -162,11 +266,12 @@ export function ExplorerMap({
   onSelect,
 }: Props) {
   const mapRef = useRef<LeafletMap | null>(null);
-  const canRecenter = collectPoints(destinations, originCoords).length > 0;
+  const points = useMemo(() => collectPoints(destinations, originCoords), [destinations, originCoords]);
+  const canRecenter = points.length > 0;
 
   const handleRecenter = useCallback(() => {
-    if (mapRef.current) fitToPoints(mapRef.current, collectPoints(destinations, originCoords));
-  }, [destinations, originCoords]);
+    if (mapRef.current) fitToPoints(mapRef.current, points);
+  }, [points]);
 
   return (
     <div className="flex-1 relative">
@@ -175,6 +280,7 @@ export function ExplorerMap({
         zoom={6}
         className="w-full h-full"
         zoomControl
+        preferCanvas // des milliers de destinations : le rendu canvas est bien plus fluide que SVG
       >
         <MapContent
           destinations={destinations}
@@ -183,6 +289,7 @@ export function ExplorerMap({
           originName={originName}
           searched={searched}
           onSelect={onSelect}
+          points={points}
           mapRef={mapRef}
         />
       </MapContainer>
