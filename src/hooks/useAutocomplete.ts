@@ -51,7 +51,7 @@ export function useAutocomplete(
       abortRef.current = controller;
 
       try {
-        const items = await searchStations(q, 8, controller.signal);
+        const items = await searchStations(q, 20, controller.signal);
 
         // Villes d'abord, avec leurs gares juste en dessous
         const cities = items.filter((s) => s.type === 'city');

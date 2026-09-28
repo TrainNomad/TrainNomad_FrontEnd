@@ -37,29 +37,29 @@ input[type="date"] {
 
 .suggestions-container {
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  min-width: 320px;
-  margin-top: 8px;
-  background-color: #f7f4ed;
+  top: calc(100% + 4px);
+  left: -12px;
+  width: 420px;
+  min-width: 380px;
+  background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
-  box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.18);
-  z-index: 999;
-  padding: 6px;
-  max-height: 360px;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  z-index: 9999;
+  padding: 10px;
+  max-height: 520px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .ac-row {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 12px;
+  padding: 10px 14px;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 100ms ease;
+  transition: all 120ms ease;
 }
 
 .ac-row:hover,
@@ -67,11 +67,20 @@ input[type="date"] {
   background-color: #f1f5f9;
 }
 
+/* ── Villes ─────────────────────────────────────────────────────────────────── */
 .ac-row.ac-city {
-  margin-top: 6px;
+  margin-top: 8px;
+  padding: 12px 14px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
 }
 .ac-row.ac-city:first-child {
   margin-top: 0;
+}
+.ac-row.ac-city:hover,
+.ac-row.ac-city.ac-active {
+  background-color: #ecfdf5;
+  border-color: #1d7a5a;
 }
 .ac-row.ac-city .ac-title-main {
   font-weight: 700;
@@ -79,38 +88,88 @@ input[type="date"] {
   font-size: 15px;
 }
 .ac-row.ac-city .ac-icon {
-  color: #006d36;
+  color: #1d7a5a;
+  font-size: 22px;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  padding: 6px;
+  border-radius: 8px;
+}
+.ac-row.ac-city .ac-line-sub {
+  color: #1d7a5a;
+  font-weight: 500;
 }
 
+/* ── Gares (indentées sous leur ville) ──────────────────────────────────────── */
 .ac-row.ac-station {
-  margin-left: 20px;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  border-left: 2px solid #e2e8f0;
-  border-radius: 0 8px 8px 0;
+  margin-left: 28px;
+  padding: 8px 12px;
+  padding-left: 16px;
+  border-left: 3px solid #1d7a5a;
+  border-radius: 0 10px 10px 0;
+  background-color: transparent;
+}
+.ac-row.ac-station:hover,
+.ac-row.ac-station.ac-active {
+  background-color: #f0fdf4;
+  border-left-color: #15803d;
 }
 .ac-row.ac-station .ac-title-main {
   font-weight: 500;
-  color: #475569;
-  font-size: 13px;
+  color: #374151;
+  font-size: 14px;
 }
 .ac-row.ac-station .ac-icon {
-  color: #94a3b8;
+  color: #6b7280;
   font-size: 18px;
+  background: #f3f4f6;
+  padding: 4px;
+  border-radius: 6px;
+}
+.ac-row.ac-station:hover .ac-icon,
+.ac-row.ac-station.ac-active .ac-icon {
+  color: #1d7a5a;
+  background: #ecfdf5;
 }
 
 .ac-details {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.ac-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .ac-line-sub {
   font-size: 11px;
   color: #64748b;
+  margin-top: 2px;
 }
 .ac-title-main {
   font-size: 14px;
   font-weight: 600;
   color: #1e293b;
+}
+
+/* ── Badges distinctifs ─────────────────────────────────────────────────────── */
+.ac-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.ac-badge-city {
+  background: linear-gradient(135deg, #1d7a5a 0%, #15803d 100%);
+  color: #ffffff;
+}
+.ac-badge-station {
+  background: #e2e8f0;
+  color: #475569;
 }
 
 .ac-anywhere {
@@ -212,4 +271,27 @@ input[type="date"] {
 /* Mobile nav separator */
 #mobile-nav {
   border-bottom: 1px solid #f1f5f9;
+}
+
+/* ── Range Calendar - sélection de dates ─────────────────────────────────────── */
+[data-selected] {
+  background-color: #1d7a5a !important;
+  color: white !important;
+}
+
+[data-selection-start],
+[data-selection-end] {
+  background-color: #1d7a5a !important;
+  color: white !important;
+  font-weight: 700;
+}
+
+[data-selected]:not([data-selection-start]):not([data-selection-end]) {
+  background-color: #ecfdf5 !important;
+  color: #1d7a5a !important;
+}
+
+/* Indicateur "aujourd'hui" */
+[data-today]::after {
+  background-color: #1d7a5a !important;
 }

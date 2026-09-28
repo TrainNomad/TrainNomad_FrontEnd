@@ -174,7 +174,7 @@ export default function Trajets() {
     const origin = params.get('departure') || params.get('origin');
     const destination = params.get('arrival') || params.get('destination');
     const date = params.get('date') || ''; // vide : l'API prend la date du jour (heure locale du départ)
-    const time = params.get('departure_time') || params.get('time') || '06:00';
+    const time = params.get('departure_time') || params.get('time') || '02:00';
 
     if (origin && destination) {
       setCurrentDate(date);
@@ -183,15 +183,29 @@ export default function Trajets() {
   }, []);
 
   // Déclenché au clic sur "Rechercher" dans la SearchBox
-  const handleSearchSubmit = (searchData: { origin: string; destination: string; date: string; time: string }) => {
+  const handleSearchSubmit = (searchData: {
+    origin: string;
+    destination: string;
+    originName: string;
+    destinationName: string;
+    date: string;
+    returnDate?: string
+  }) => {
     const params = new URLSearchParams({
       departure: searchData.origin,
+      departure_name: searchData.originName,
       arrival: searchData.destination,
+      arrival_name: searchData.destinationName,
       date: searchData.date,
-      departure_time: searchData.time,
+      departure_time: '02:00',
     });
     window.history.pushState({}, '', `/trajets?${params.toString()}`);
-    fetchTrips(searchData);
+    fetchTrips({
+      origin: searchData.origin,
+      destination: searchData.destination,
+      date: searchData.date,
+      time: '02:00'
+    });
     
     // Réinitialiser les filtres et la date à chaque nouvelle recherche
     setFilters({

@@ -12,6 +12,8 @@ import Confidentialités from './pages/Confidentialites';
 
 import AboutPage from './pages/about';
 import Trajets from './pages/trajets';
+import GuidesPage from './pages/Guides';
+import GuideDetailPage from './pages/GuideDetail';
 import './styles/global.css';
 import Explorer from './pages/explorer';
 
@@ -35,6 +37,8 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/trajets" element={<Trajets />} />
         <Route path="/explorer" element={<Explorer />} />
+        <Route path="/guides" element={<GuidesPage />} />
+        <Route path="/guides/:slug" element={<GuideDetailPage />} />
         <Route path="/a-propos" element={<AboutPage />} />
         <Route path="/conditions" element={<Conditions />} />
         <Route path="/confidentialite" element={<Confidentialités />} />

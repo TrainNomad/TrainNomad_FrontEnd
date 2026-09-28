@@ -24,19 +24,19 @@ type RangeCalendarProps = ComponentProps<typeof RangeCalendarRac> &
   BaseCalendarProps;
 
 const CalendarHeader = () => (
-  <header className="flex w-full items-center gap-1 pb-1">
+  <header className="flex w-full items-center gap-1 pb-3">
     <Button
       slot="previous"
-      className="flex size-9 items-center justify-center rounded-lg text-muted-foreground/80 outline-offset-2 transition-colors hover:bg-accent hover:text-foreground focus:outline-none data-[focus-visible]:outline data-[focus-visible]:outline-2 data-[focus-visible]:outline-ring/70"
+      className="flex size-10 items-center justify-center rounded-lg text-slate-600 outline-offset-2 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none"
     >
-      <ChevronLeftIcon width={16} height={16} />
+      <ChevronLeftIcon width={20} height={20} />
     </Button>
-    <HeadingRac className="grow text-center text-sm font-medium" />
+    <HeadingRac className="grow text-center text-base font-semibold text-slate-900" />
     <Button
       slot="next"
-      className="flex size-9 items-center justify-center rounded-lg text-muted-foreground/80 outline-offset-2 transition-colors hover:bg-accent hover:text-foreground focus:outline-none data-[focus-visible]:outline data-[focus-visible]:outline-2 data-[focus-visible]:outline-ring/70"
+      className="flex size-10 items-center justify-center rounded-lg text-slate-600 outline-offset-2 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none"
     >
-      <ChevronRightIcon width={16} height={16} />
+      <ChevronRightIcon width={20} height={20} />
     </Button>
   </header>
 );
@@ -45,29 +45,32 @@ const CalendarGridComponent = ({ isRange = false }: { isRange?: boolean }) => {
   const now = today(getLocalTimeZone());
 
   return (
-    <CalendarGridRac>
+    <CalendarGridRac className="w-full border-separate border-spacing-1">
       <CalendarGridHeaderRac>
         {(day) => (
-          <CalendarHeaderCellRac className="size-9 rounded-lg p-0 text-xs font-medium text-muted-foreground/80">
+          <CalendarHeaderCellRac className="w-10 h-10 rounded-lg p-0 text-sm font-semibold text-slate-500">
             {day}
           </CalendarHeaderCellRac>
         )}
       </CalendarGridHeaderRac>
-      <CalendarGridBodyRac className="[&_td]:px-0">
+      <CalendarGridBodyRac className="[&_td]:p-0">
         {(date) => (
           <CalendarCellRac
             date={date}
             className={cn(
-              "relative flex size-9 items-center justify-center whitespace-nowrap rounded-lg border border-transparent p-0 text-sm font-normal outline-offset-2 duration-150 [transition-property:color,background-color,border-radius,box-shadow] focus:outline-none data-[disabled]:pointer-events-none data-[unavailable]:pointer-events-none data-[focus-visible]:z-10 data-[hovered]:bg-accent data-[selected]:bg-primary data-[hovered]:text-foreground data-[selected]:text-primary-foreground data-[unavailable]:line-through data-[disabled]:opacity-30 data-[unavailable]:opacity-30 data-[focus-visible]:outline data-[focus-visible]:outline-2 data-[focus-visible]:outline-ring/70",
-              isRange &&
-                "data-[selected]:rounded-none data-[selection-end]:rounded-e-lg data-[selection-start]:rounded-s-lg data-[invalid]:bg-red-100 data-[selected]:bg-accent data-[selected]:text-foreground data-[invalid]:data-[selection-end]:[&:not([data-hover])]:bg-destructive data-[invalid]:data-[selection-start]:[&:not([data-hover])]:bg-destructive data-[selection-end]:[&:not([data-hover])]:bg-primary data-[selection-start]:[&:not([data-hover])]:bg-primary data-[invalid]:data-[selection-end]:[&:not([data-hover])]:text-destructive-foreground data-[invalid]:data-[selection-start]:[&:not([data-hover])]:text-destructive-foreground data-[selection-end]:[&:not([data-hover])]:text-primary-foreground data-[selection-start]:[&:not([data-hover])]:text-primary-foreground",
-              date.compare(now) === 0 &&
-                cn(
-                  "after:pointer-events-none after:absolute after:bottom-1 after:start-1/2 after:z-10 after:size-[3px] after:-translate-x-1/2 after:rounded-full after:bg-primary",
-                  isRange
-                    ? "data-[selection-end]:[&:not([data-hover])]:after:bg-background data-[selection-start]:[&:not([data-hover])]:after:bg-background"
-                    : "data-[selected]:after:bg-background",
-                ),
+              "relative flex w-10 h-10 items-center justify-center whitespace-nowrap rounded-lg border border-transparent p-0 text-sm font-medium outline-offset-2 transition-all duration-100 focus:outline-none cursor-pointer",
+              "data-[disabled]:pointer-events-none data-[unavailable]:pointer-events-none",
+              "hover:bg-slate-100 hover:text-slate-900",
+              "data-[selected]:bg-[#1d7a5a] data-[selected]:text-white data-[selected]:font-semibold",
+              "data-[unavailable]:line-through data-[disabled]:opacity-30 data-[unavailable]:opacity-30",
+              "data-[outside-month]:text-slate-300 data-[outside-month]:pointer-events-none",
+              isRange && cn(
+                "data-[selected]:rounded-none",
+                "data-[selection-start]:rounded-l-lg data-[selection-start]:bg-[#1d7a5a] data-[selection-start]:text-white",
+                "data-[selection-end]:rounded-r-lg data-[selection-end]:bg-[#1d7a5a] data-[selection-end]:text-white",
+                "data-[selected]:not([data-selection-start]):not([data-selection-end]):bg-[#ecfdf5] data-[selected]:not([data-selection-start]):not([data-selection-end]):text-[#1d7a5a]",
+              ),
+              date.compare(now) === 0 && "ring-2 ring-[#1d7a5a] ring-offset-1",
             )}
           />
         )}
@@ -81,7 +84,7 @@ const Calendar = ({ className, ...props }: CalendarProps) => {
     <CalendarRac
       {...props}
       className={composeRenderProps(className, (className) =>
-        cn("w-fit", className),
+        cn("w-full min-w-[320px]", className),
       )}
     >
       <CalendarHeader />
@@ -95,7 +98,7 @@ const RangeCalendar = ({ className, ...props }: RangeCalendarProps) => {
     <RangeCalendarRac
       {...props}
       className={composeRenderProps(className, (className) =>
-        cn("w-fit", className),
+        cn("w-full min-w-[320px]", className),
       )}
     >
       <CalendarHeader />

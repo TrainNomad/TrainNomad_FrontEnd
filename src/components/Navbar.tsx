@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom';
 const NAV_LINKS = [
   { label: 'Voyager', href: '/trajets', icon: 'train' },
   { label: 'Explorer', href: '/explorer', icon: 'explore' },
-  // { label: 'Guides', href: '/guide', icon: 'menu_book' },
-  // { label: 'Outils TGVmax', href: '/tgvmax', icon: 'bolt' },
+  { label: 'Guides', href: '/guides', icon: 'menu_book' },
 ];
 
 export default function Navbar() {

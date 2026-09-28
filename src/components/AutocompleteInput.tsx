@@ -132,8 +132,8 @@ function SuggestionRow({ station, isActive, onMouseDown }: SuggestionRowProps) {
   const isStation = station.type === 'station';
 
   let subtitle = station.country;
-  if (isCity) subtitle = `Toutes les gares${station.stations ? ` (${station.stations})` : ''} · ${station.country}`;
-  else if (isStation && station.city && station.city !== station.name) subtitle = `${station.city} · ${station.country}`;
+  if (isCity) subtitle = `${station.stations ? `${station.stations} gares` : 'Toutes les gares'} · ${station.country}`;
+  else if (isStation && station.city && station.city !== station.name) subtitle = station.country;
 
   const rowClass = [
     'ac-row',
@@ -148,10 +148,14 @@ function SuggestionRow({ station, isActive, onMouseDown }: SuggestionRowProps) {
   return (
     <div className={rowClass} onMouseDown={onMouseDown}>
       <span className="material-symbols-outlined ac-icon">
-        {isAnywhere ? 'explore' : isCity ? 'location_on' : 'train'}
+        {isAnywhere ? 'explore' : isCity ? 'location_city' : 'train'}
       </span>
       <div className="ac-details">
-        <div className="ac-title-main">{station.name}</div>
+        <div className="ac-title-row">
+          <span className="ac-title-main">{station.name}</span>
+          {isCity && <span className="ac-badge ac-badge-city">Ville</span>}
+          {isStation && <span className="ac-badge ac-badge-station">Gare</span>}
+        </div>
         {subtitle && <div className="ac-line-sub">{subtitle}</div>}
       </div>
     </div>

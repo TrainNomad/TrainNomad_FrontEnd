@@ -1,28 +1,37 @@
 import { useState, useCallback } from 'react';
 import { AutocompleteInput } from './AutocompleteInput';
-import type { ActiveTab, Station, TripType } from '../types';
+import type { ActiveTab, Station } from '../types';
 import { ANYWHERE_ID, placeParam } from '../types';
 
-// Importer le calendrier et les composants popover de react-aria-components
-import { Calendar } from './ui/calendar-rac';
-import { Dialog, DialogTrigger, Popover, Button, I18nProvider, DateValue } from 'react-aria-components';
+import { I18nProvider } from 'react-aria-components';
 import { getLocalTimeZone, today as getToday, CalendarDate } from '@internationalized/date';
+
+import { DateRangePicker } from './ui/DateRangePicker';
 
 export default function SearchBox() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('europe');
-  const [tripType, setTripType] = useState<TripType>('oneway');
-  
-  // Dates gérées sous forme d'objets CalendarDate pour react-aria
-  const [departDate, setDepartDate] = useState<CalendarDate>(getToday(getLocalTimeZone()));
-  const [returnDate, setReturnDate] = useState<CalendarDate>(getToday(getLocalTimeZone()));
 
-  // From/to pour l'onglet Europe
+  const [departDate, setDepartDate] = useState<CalendarDate>(getToday(getLocalTimeZone()));
+  const [returnDate, setReturnDate] = useState<CalendarDate | null>(null);
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+
+  const isRoundTrip = returnDate !== null;
+
+  const clearReturnDate = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    setReturnDate(null);
+  }, []);
+
+  const handleDateChange = useCallback((depart: CalendarDate, retour: CalendarDate | null) => {
+    setDepartDate(depart);
+    setReturnDate(retour);
+  }, []);
+
   const [fromQuery, setFromQuery] = useState('');
   const [toQuery, setToQuery] = useState('');
   const [selectedFrom, setSelectedFrom] = useState<Station | null>(null);
   const [selectedTo, setSelectedTo] = useState<Station | null>(null);
 
-  // From pour l'onglet Carte
   const [carteFromQuery, setCarteFromQuery] = useState('');
   const [carteSelectedFrom, setCarteSelectedFrom] = useState<Station | null>(null);
 
@@ -30,30 +39,37 @@ export default function SearchBox() {
   const isSearchEnabled = fromQuery.trim().length >= 2 && (isAnywhere || toQuery.trim().length >= 2);
   const isCarteEnabled = carteFromQuery.trim().length >= 2;
 
-  const goToExplorer = useCallback((from: string) => {
-    const params = new URLSearchParams({ from, date: departDate.toString() });
+  const goToExplorer = useCallback((from: string, fromName: string) => {
+    const params = new URLSearchParams({ from, from_name: fromName, date: departDate.toString() });
     window.location.href = '/explorer?' + params.toString();
   }, [departDate]);
 
   const handleSearch = useCallback(() => {
     if (!isSearchEnabled) return;
     const departure = placeParam(selectedFrom, fromQuery);
+    const departureName = selectedFrom?.name || fromQuery;
     if (isAnywhere) {
-      goToExplorer(departure);
+      goToExplorer(departure, departureName);
       return;
     }
+    const arrival = placeParam(selectedTo, toQuery);
+    const arrivalName = selectedTo?.name || toQuery;
     const params = new URLSearchParams({
       departure,
-      arrival: placeParam(selectedTo, toQuery),
+      departure_name: departureName,
+      arrival,
+      arrival_name: arrivalName,
       date: departDate.toString(),
-      ...(tripType === 'roundtrip' && { return_date: returnDate.toString() }),
-      departure_time: '06:00',
+      ...(isRoundTrip && returnDate && { return_date: returnDate.toString() }),
+      departure_time: '02:00',
     });
     window.location.href = '/trajets?' + params.toString();
-  }, [isSearchEnabled, isAnywhere, selectedFrom, selectedTo, fromQuery, toQuery, departDate, returnDate, tripType, goToExplorer]);
+  }, [isSearchEnabled, isAnywhere, selectedFrom, selectedTo, fromQuery, toQuery, departDate, returnDate, isRoundTrip, goToExplorer]);
 
   const handleCarteSearch = useCallback(() => {
-    goToExplorer(placeParam(carteSelectedFrom, carteFromQuery));
+    const from = placeParam(carteSelectedFrom, carteFromQuery);
+    const fromName = carteSelectedFrom?.name || carteFromQuery;
+    goToExplorer(from, fromName);
   }, [carteSelectedFrom, carteFromQuery, goToExplorer]);
 
   const tabClass = (tab: ActiveTab) =>
@@ -61,15 +77,9 @@ export default function SearchBox() {
       ? 'tab-btn flex items-center gap-2 px-5 py-2.5 rounded-t-2xl text-midnight bg-white font-bold transition-all border-b-2 border-emerald-500 shadow-[0_-4px_12px_rgba(0,0,0,0.03)]'
       : 'tab-btn flex items-center gap-2 px-5 py-2.5 rounded-t-2xl text-slate-500 text-sm font-bold transition-all border-b-2 border-transparent bg-white/50 hover:bg-white';
 
-  const tripBtnClass = (type: TripType) =>
-    type === tripType
-      ? 'flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all bg-midnight text-white'
-      : 'flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all bg-slate-100 text-slate-500 hover:bg-slate-200';
-
   return (
     <I18nProvider locale="fr-FR">
-      <div className="max-w-5xl mx-auto">
-        {/* Onglets */}
+      <div className="max-w-5xl mx-auto relative z-30">
         <div className="flex items-center gap-2 mb-0 ml-2">
           <button onClick={() => setActiveTab('europe')} className={tabClass('europe')}>
             <span className="material-symbols-outlined text-xl">
@@ -86,29 +96,8 @@ export default function SearchBox() {
         </div>
 
         <div className="bg-white rounded-3xl rounded-tl-none shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] p-3 border border-slate-100">
-          {/* Toggle type de voyage */}
           {activeTab === 'europe' && (
-            <div className="flex items-center gap-1 px-3 pt-2 pb-2">
-              <button onClick={() => setTripType('oneway')} className={tripBtnClass('oneway')}>
-                <i className="fa-solid fa-arrow-right text-[10px]" />
-                Aller simple
-              </button>
-              <button onClick={() => setTripType('roundtrip')} className={tripBtnClass('roundtrip')}>
-                <i className="fa-solid fa-arrow-right-arrow-left text-[10px]" />
-                Aller-retour
-              </button>
-            </div>
-          )}
-
-          {/* Grille Europe */}
-          {activeTab === 'europe' && (
-            <div
-              className={`grid grid-cols-1 gap-0 relative ${
-                tripType === 'roundtrip'
-                  ? 'md:grid-cols-[1fr_1fr_1fr_1fr_auto]'
-                  : 'md:grid-cols-[1fr_1fr_1fr_auto]'
-              }`}
-            >
+            <div className="grid grid-cols-1 gap-0 relative md:grid-cols-[1fr_1fr_auto_auto]">
               <AutocompleteInput
                 id="input-from"
                 label="Départ"
@@ -128,77 +117,53 @@ export default function SearchBox() {
                 onQueryChange={setToQuery}
               />
 
-              {/* Calendar Popover Aller */}
-              <DialogTrigger>
-                <Button className="flex flex-col items-start px-6 py-5 hover:bg-slate-50/50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100 h-full text-left outline-none">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">
-                    {tripType === 'roundtrip' ? 'Aller' : 'Date'}
+              <div className="flex items-center border-r border-slate-100 relative">
+                <button
+                  onClick={() => setIsCalendarOpen(true)}
+                  className="flex flex-col items-start px-5 py-4 hover:bg-slate-50/50 rounded-2xl transition-colors cursor-pointer group h-full text-left"
+                >
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1.5 group-hover:text-primary transition-colors">
+                    {isRoundTrip ? 'Dates' : 'Date aller'}
                   </span>
-                  <div className="flex items-center gap-3 w-full">
-                    <span className="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors flex-shrink-0">
+                  <div className="flex items-center gap-2">
+                    <span className="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors flex-shrink-0 text-xl">
                       calendar_month
                     </span>
-                    <span className="text-midnight font-bold text-lg">
-                      {departDate ? departDate.toString() : 'Choisir une date'}
-                    </span>
-                  </div>
-                </Button>
-                <Popover className="bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-50">
-                  <Dialog>
-                    <Calendar
-                      aria-label="Date de départ"
-                      minValue={getToday(getLocalTimeZone())}
-                      value={departDate}
-                      onChange={(value: DateValue | readonly DateValue[]) => {
-                        const newDate = Array.isArray(value) ? value[0] : value;
-                        if (newDate) {
-                          const dateObj = newDate as CalendarDate;
-                          setDepartDate(dateObj);
-                          if (returnDate.compare(dateObj) < 0) {
-                            setReturnDate(dateObj);
-                          }
-                        }
-                      }}
-                    />
-                  </Dialog>
-                </Popover>
-              </DialogTrigger>
-
-              {/* Calendar Popover Retour */}
-              {tripType === 'roundtrip' && (
-                <DialogTrigger>
-                  <Button className="flex flex-col items-start px-6 py-5 hover:bg-slate-50/50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100 h-full text-left outline-none">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">
-                      Retour
-                    </span>
-                    <div className="flex items-center gap-3 w-full">
-                      <span className="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors flex-shrink-0">
-                        calendar_month
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-base text-midnight">
+                        {departDate.toString()}
                       </span>
-                      <span className="text-midnight font-bold text-lg">
-                        {returnDate ? returnDate.toString() : 'Choisir une date'}
-                      </span>
+                      {isRoundTrip && returnDate && (
+                        <>
+                          <span className="text-slate-400">→</span>
+                          <span className="font-bold text-base text-primary">
+                            {returnDate.toString()}
+                          </span>
+                          <button
+                            onClick={clearReturnDate}
+                            className="ml-1 w-5 h-5 rounded-full bg-slate-200 hover:bg-red-100 flex items-center justify-center transition-colors group/x"
+                            title="Supprimer le retour"
+                          >
+                            <svg className="w-3 h-3 text-slate-500 group-hover/x:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                          </button>
+                        </>
+                      )}
                     </div>
-                  </Button>
-                  <Popover className="bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-50">
-                    <Dialog>
-                      <Calendar
-                        aria-label="Date de retour"
-                        minValue={departDate}
-                        value={returnDate}
-                        onChange={(value: DateValue | readonly DateValue[]) => {
-                          const newDate = Array.isArray(value) ? value[0] : value;
-                          if (newDate) {
-                            setReturnDate(newDate as CalendarDate);
-                          }
-                        }}
-                      />
-                    </Dialog>
-                  </Popover>
-                </DialogTrigger>
-              )}
+                  </div>
+                </button>
 
-              {/* Bouton de recherche */}
+                {isCalendarOpen && (
+                  <DateRangePicker
+                    departDate={departDate}
+                    returnDate={returnDate}
+                    onChange={handleDateChange}
+                    onClose={() => setIsCalendarOpen(false)}
+                  />
+                )}
+              </div>
+
               <div className="flex p-1.5">
                 <button
                   onClick={handleSearch}
@@ -212,9 +177,8 @@ export default function SearchBox() {
             </div>
           )}
 
-          {/* Grille Carte */}
           {activeTab === 'carte' && (
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-0 relative">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-0 relative">
               <AutocompleteInput
                 id="carte-input-from"
                 label="Départ"
@@ -224,8 +188,11 @@ export default function SearchBox() {
                 onQueryChange={setCarteFromQuery}
               />
 
-              <DialogTrigger>
-                <Button className="flex flex-col items-start px-6 py-5 hover:bg-slate-50/50 rounded-2xl transition-colors cursor-pointer group border-r border-slate-100 h-full text-left outline-none">
+              <div className="flex items-center border-r border-slate-100 relative">
+                <button
+                  onClick={() => setIsCalendarOpen(true)}
+                  className="flex flex-col items-start px-6 py-5 hover:bg-slate-50/50 rounded-2xl transition-colors cursor-pointer group h-full text-left"
+                >
                   <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 group-hover:text-primary transition-colors">
                     Date
                   </span>
@@ -234,26 +201,21 @@ export default function SearchBox() {
                       calendar_month
                     </span>
                     <span className="text-midnight font-bold text-lg">
-                      {departDate ? departDate.toString() : 'Choisir une date'}
+                      {departDate.toString()}
                     </span>
                   </div>
-                </Button>
-                <Popover className="bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-50">
-                  <Dialog>
-                    <Calendar
-                      aria-label="Date d'exploration"
-                      minValue={getToday(getLocalTimeZone())}
-                      value={departDate}
-                      onChange={(value: DateValue | readonly DateValue[]) => {
-                        const newDate = Array.isArray(value) ? value[0] : value;
-                        if (newDate) {
-                          setDepartDate(newDate as CalendarDate);
-                        }
-                      }}
-                    />
-                  </Dialog>
-                </Popover>
-              </DialogTrigger>
+                </button>
+
+                {isCalendarOpen && (
+                  <DateRangePicker
+                    departDate={departDate}
+                    returnDate={null}
+                    onChange={(d) => { setDepartDate(d); }}
+                    onClose={() => setIsCalendarOpen(false)}
+                    singleDate
+                  />
+                )}
+              </div>
 
               <div className="flex p-1.5">
                 <button

@@ -4,7 +4,7 @@ const NAV_LINKS = [
   { label: 'À propos', href: '/a-propos' },
   { label: 'Destinations', href: '/trajets' },
   { label: 'Explorer', href: '/explorer' },
-  { label: 'Guides', href: '/guide' },
+  { label: 'Guides', href: '/guides' },
   { label: 'Outils TGVMax', href: '/tgvmax' },
 ];
 

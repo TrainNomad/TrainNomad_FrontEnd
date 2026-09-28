@@ -131,7 +131,8 @@ function TrainSegment({ leg, journeyStart, isFirst, isLast, totalDuration }: Tra
         <div className="mt-2 inline-flex flex-wrap items-center gap-x-3 gap-y-1 bg-slate-50 border border-slate-100 rounded-xl px-3 py-2">
           <TrainLogo trainType={leg.train_type} operator={leg.operator} className="h-4" textFallback={false} />
           <span className="text-xs font-bold text-slate-700">
-            {leg.train_type} {leg.train_number && `N° ${leg.train_number}`}
+            {leg.train_number && `N° ${leg.train_number}`}
+            {/* {leg.train_type} {leg.train_number && `N° ${leg.train_number}`} */}
           </span>
           <span className="text-xs text-slate-500">Direction {leg.headsign}</span>
           <span className="text-[11px] text-slate-400">{leg.operator_name}</span>

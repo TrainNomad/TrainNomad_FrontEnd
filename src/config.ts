@@ -8,6 +8,11 @@ export const API_BASE_URL = withoutTrailingSlash(
   import.meta.env.VITE_API_URL || 'https://trainnomad-go.onrender.com',
 );
 
+/** URL de l'API des guides TrainNomad (service Go). */
+export const GUIDES_API_URL = withoutTrailingSlash(
+  import.meta.env.VITE_GUIDES_API_URL || 'https://trainnomad-guide.onrender.com',
+);
+
 /** Clé MapTiler (fond de carte de l'explorateur). */
 export const MAPTILER_API_KEY = import.meta.env.VITE_MAPTILER_KEY || '';
 

@@ -11,7 +11,7 @@ const GUIDES: Guide[] = [
     title: 'Gaudí, tapas et soleil catalan',
     subtitle: '3 jours à Barcelone',
     image: `${guidepath}/barcelone-cover.webp`,
-    href: 'guide/guide.html?ville=barcelone',
+    href: '/guides/barcelone',
     duration: '6h50',
     price: '79€',
     badge: 'Train direct',
@@ -25,7 +25,7 @@ const GUIDES: Guide[] = [
     title: 'Alsace, cathédrale et tarte flambée',
     subtitle: '2 jours à Strasbourg',
     image: `${guidepath}/strasbourg-cover.webp`,
-    href: 'guide/guide.html?ville=strasbourg',
+    href: '/guides/strasbourg',
     duration: '1h46',
     price: '10€',
     badge: 'Train direct',
@@ -39,7 +39,7 @@ const GUIDES: Guide[] = [
     title: 'Vinho do Porto, azulejos et Douro',
     subtitle: '2 jours à Porto',
     image: `${guidepath}/porto-cover.webp`,
-    href: 'guide/guide.html?ville=porto',
+    href: '/guides/porto',
     duration: '~2 jours',
     price: '110€',
     badge: 'Train de nuit',
@@ -63,7 +63,7 @@ export function GuidesSection() {
             </p>
           </div>
           <a
-            href="guide/index.html"
+            href="/guides"
             className="text-sm font-bold border-b-2 pb-1 hover:text-primary transition-colors whitespace-nowrap ml-8"
             style={{ borderColor: '#1d7a5a' }}
           >
