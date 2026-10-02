@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { GuideCard, GuideCardFeatured } from '../components/GuideCard';
 import { useGuides } from '../hooks/useGuides';
+import { WakeUpNotice } from '../components/WakeUpNotice';
 
 // Composant Skeleton pour les cards de guides
 function GuideCardSkeleton() {
@@ -188,6 +189,7 @@ export default function GuidesPage() {
             </div>
           ) : loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="col-span-full"><WakeUpNotice loading={loading} /></div>
               {[...Array(8)].map((_, i) => (
                 <GuideCardSkeleton key={i} />
               ))}

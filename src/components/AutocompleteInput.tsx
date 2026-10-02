@@ -67,7 +67,11 @@ export function AutocompleteInput({
       >
         {label}
       </span>
-      <div className="flex items-center gap-3 w-full input-ac-wrapper relative">
+      {/* Liste ouverte : passe au-dessus des champs voisins (chacun a son propre z-index) */}
+      <div
+        className="flex items-center gap-3 w-full input-ac-wrapper relative"
+        style={ac.isOpen ? { zIndex: 60 } : undefined}
+      >
         <span className="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors flex-shrink-0">
           {icon}
         </span>
@@ -89,7 +93,7 @@ export function AutocompleteInput({
         {isSelected && (
           <span
             title="Gare sélectionnée"
-            className="flex-shrink-0 w-5 h-5 rounded-full bg-[#1d7a5a] flex items-center justify-center"
+            className="flex-shrink-0 w-5 h-5 rounded-full bg-brand flex items-center justify-center"
           >
             <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
               <path strokeLinecap="round" strokeLinejoin="round" d="m5 13 4 4L19 7" />

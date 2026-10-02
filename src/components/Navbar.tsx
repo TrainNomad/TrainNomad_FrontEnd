@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { label: 'Voyager', href: '/trajets', icon: 'train' },
   { label: 'Explorer', href: '/explorer', icon: 'explore' },
   { label: 'Guides', href: '/guides', icon: 'menu_book' },
+  { label: 'Outils TGVmax', href: '/tgvmax', icon: 'bolt' },
 ];
 
 export default function Navbar() {
@@ -67,7 +68,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               to={link.href}
-              onClick={() => setMobileOpen(false)} // Ferme le menu mobile au clic
+              onClick={() => setMobileOpen(false)}
               className="flex items-center gap-3 py-3 text-sm font-bold text-midnight hover:text-primary transition-colors"
             >
               <span className="material-symbols-outlined text-xl">{link.icon}</span>

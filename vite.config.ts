@@ -1,28 +1,29 @@
 import path from "path"
 import react from "@vitejs/plugin-react"
-import { defineConfig, loadEnv } from "vite"
+import { defineConfig } from "vite"
 
-export default defineConfig(({ mode }) => {
-  // Même configuration que le front : fichier .env (VITE_API_URL)
-  const env = loadEnv(mode, process.cwd(), "")
-
-  return {
-    plugins: [react()],
-    resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "./src"),
-      },
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
     },
-    server: {
-      port: 5174,
-      proxy: {
-        // Redirige /api vers votre backend Render en masquant l'URL publique
-        '/api': {
-          target: env.VITE_API_URL || 'https://trainnomad-go.onrender.com',
-          changeOrigin: true,
-          rewrite: (p) => p.replace(/^\/api/, ''),
+  },
+  server: {
+    port: 5174,
+  },
+  build: {
+    // Fichiers générés (noms avec empreinte) dans /build, à part des images de public/assets :
+    // render.yaml peut ainsi les mettre en cache longtemps.
+    assetsDir: 'build',
+    rollupOptions: {
+      output: {
+        // Bibliothèques lourdes dans des fichiers à part : mises en cache indépendamment du code du site
+        manualChunks: {
+          react: ['react', 'react-dom', 'react-router-dom'],
+          map: ['leaflet', 'react-leaflet', '@maptiler/leaflet-maptilersdk', '@maptiler/sdk'],
         },
       },
     },
-  }
+  },
 })

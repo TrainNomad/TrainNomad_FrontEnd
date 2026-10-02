@@ -2,6 +2,8 @@ import { useRef, useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
+// Contours des terres (paquet world-atlas), copiés dans le build : plus d'appel à jsDelivr
+import landUrl from 'world-atlas/land-50m.json?url';
 
 interface MapProps {
   dots?: Array<{
@@ -35,7 +37,7 @@ export function EuropeMap({
   const pathGenerator = useMemo(() => geoPath().projection(projection), [projection]);
 
   useEffect(() => {
-    fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/land-50m.json")
+    fetch(landUrl)
       .then((res) => res.json())
       .then((data) => {
         const land = feature(data, data.objects.land);

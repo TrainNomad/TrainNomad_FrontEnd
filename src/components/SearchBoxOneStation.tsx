@@ -172,7 +172,7 @@ export function SearchBoxOneStation({ onSearch }: Props) {
               onClick={handleSearch}
               disabled={!isSearchEnabled}
               title={isSearchEnabled ? undefined : 'Sélectionnez une gare dans la liste'}
-              className="bg-[#1d7a5a] hover:bg-[#155d44] disabled:opacity-50 disabled:cursor-not-allowed text-white px-8 py-3.5 rounded-xl font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap shadow-sm w-full lg:w-auto"
+              className="bg-brand hover:bg-brand-dark disabled:opacity-50 disabled:cursor-not-allowed text-white px-8 py-3.5 rounded-xl font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap shadow-sm w-full lg:w-auto"
             >
               <span className="material-symbols-outlined text-sm">search</span>
               Rechercher

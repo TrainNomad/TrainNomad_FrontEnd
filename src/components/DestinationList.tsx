@@ -1,5 +1,6 @@
 import { getDurationColor, formatDuration, formatTime } from '../types/explorer';
 import type { Destination } from '../types/explorer';
+import { WakeUpNotice } from './WakeUpNotice';
 
 interface Props {
   destinations: Destination[];
@@ -17,6 +18,7 @@ export function DestinationList({ destinations, loading, searched, onSelect }: P
   if (loading) {
     return (
       <div className="flex flex-col gap-3 p-4 overflow-y-auto flex-1">
+        <WakeUpNotice loading={loading} />
         {Array.from({ length: 8 }).map((_, i) => (
           <div key={i} className="animate-pulse rounded-xl bg-slate-100 h-[72px]" />
         ))}
@@ -79,7 +81,7 @@ export function DestinationList({ destinations, loading, searched, onSelect }: P
                 style={{ background: color }}
               />
               <div className="flex-1 min-w-0">
-                <p className="font-semibold text-[#1A2B3C] text-sm truncate group-hover:text-[#1d7a5a] transition-colors">
+                <p className="font-semibold text-[#1A2B3C] text-sm truncate group-hover:text-brand transition-colors">
                   {d.place.name}
                 </p>
                 <p className="text-xs text-slate-400 mt-0.5">

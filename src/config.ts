@@ -3,14 +3,31 @@
 
 const withoutTrailingSlash = (url: string) => url.replace(/\/+$/, '');
 
-/** URL de l'API de routage TrainNomad (service Go). */
-export const API_BASE_URL = withoutTrailingSlash(
-  import.meta.env.VITE_API_URL || 'https://trainnomad-go.onrender.com',
-);
+/**
+ * Site ouvert en local (`pnpm dev`, `pnpm preview`) : les API sont alors celles lancées sur la machine
+ * (`python run_local.py`), sinon celles de Render. Décidé dans le navigateur, au chargement de la page :
+ * le même build fonctionne donc en local comme en ligne.
+ */
+const IS_LOCALHOST =
+  typeof window !== 'undefined' &&
+  /^(localhost|127\.0\.0\.1|\[::1\]|.+\.localhost)$/.test(window.location.hostname);
 
-/** URL de l'API des guides TrainNomad (service Go). */
-export const GUIDES_API_URL = withoutTrailingSlash(
-  import.meta.env.VITE_GUIDES_API_URL || 'https://trainnomad-guide.onrender.com',
+/** URL d'une API : variable d'environnement si elle est définie, sinon localhost ou Render. */
+function apiUrl(envValue: string | undefined, renderUrl: string, localPort: number): string {
+  return withoutTrailingSlash(envValue || (IS_LOCALHOST ? `http://localhost:${localPort}` : renderUrl));
+}
+
+/** URL de l'API de routage TrainNomad (service Go Backend/Europe). */
+export const API_BASE_URL = apiUrl(import.meta.env.VITE_API_URL, 'https://trainnomad-go.onrender.com', 8000);
+
+/** URL de l'API des guides TrainNomad (service Go Backend/guide). */
+export const GUIDES_API_URL = apiUrl(import.meta.env.VITE_GUIDES_API_URL, 'https://trainnomad-guide.onrender.com', 8001);
+
+/** URL de l'API TGVmax (service Go Backend/tgvmax). */
+export const TGVMAX_API_URL = apiUrl(
+  import.meta.env.VITE_TGVMAX_API_URL,
+  'https://trainnomad-tgvmax-api.onrender.com',
+  8002,
 );
 
 /** Clé MapTiler (fond de carte de l'explorateur). */

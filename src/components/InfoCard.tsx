@@ -19,7 +19,7 @@ export function InfoCard({ icon, label, value, accent = false }: Props) {
       </div>
       <p
         className="font-bold text-base"
-        style={{ color: accent ? '#1d7a5a' : '#1A2B3C' }}
+        style={{ color: accent ? 'var(--brand)' : '#1A2B3C' }}
       >
         {value}
       </p>

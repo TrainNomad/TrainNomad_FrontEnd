@@ -20,7 +20,7 @@ export function TGVMaxSection() {
 
           <div className="pt-4">
             <a
-              href="TGVMax/outilstgvmax.html"
+              href="/tgvmax"
               className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-white text-[#ea5541] font-bold text-sm tracking-wide uppercase hover:bg-orange-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               Voir les disponibilités
@@ -84,7 +84,7 @@ export function TGVMaxSection() {
 
             {/* Pied du ticket */}
             <a
-              href="TGVMax/outilstgvmax.html"
+              href="/tgvmax"
               className="block w-full py-3 text-center border border-dashed border-[#ea5541]/40 text-[#ea5541] rounded-2xl text-[11px] font-extrabold uppercase tracking-wider hover:bg-[#ea5541]/10 transition-colors"
             >
               Rechercher d'autres disponibilités

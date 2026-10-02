@@ -7,6 +7,7 @@ import {
 } from '../types/explorer';
 import type { Destination } from '../types/explorer';
 import type { Place } from '../types/api';
+import { useNetwork } from '../network/NetworkContext';
 
 interface Props {
   dest: Destination;
@@ -21,6 +22,7 @@ interface Props {
  * a visual timeline, and a CTA link to the timetable page.
  */
 export function DestinationDetail({ dest, origin, date, onClose }: Props) {
+  const { network } = useNetwork();
   const color = getDurationColor(dest.duration_min);
   const label = getDurationLabel(dest.duration_min);
   const originName = origin?.name ?? '';
@@ -51,7 +53,7 @@ export function DestinationDetail({ dest, origin, date, onClose }: Props) {
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-xs text-slate-400 font-medium mb-1">
-              Depuis <span className="text-[#1d7a5a] font-semibold">{originName}</span>
+              Depuis <span className="text-brand font-semibold">{originName}</span>
             </p>
             <h2 className="text-2xl font-black text-[#1A2B3C] leading-tight">{dest.place.name}</h2>
             <p className="text-xs text-slate-400 mt-0.5">
@@ -119,7 +121,7 @@ export function DestinationDetail({ dest, origin, date, onClose }: Props) {
             </div>
             <div className="flex-1 flex items-center gap-1">
               <div className="w-2 h-2 rounded-full bg-[#1A2B3C] flex-shrink-0" />
-              <div className="flex-1 h-0.5 bg-gradient-to-r from-[#1A2B3C] to-[#1d7a5a] rounded-full" />
+              <div className="flex-1 h-0.5 bg-gradient-to-r from-[#1A2B3C] to-brand rounded-full" />
               <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: color }} />
             </div>
             <div className="flex-shrink-0">
@@ -138,8 +140,8 @@ export function DestinationDetail({ dest, origin, date, onClose }: Props) {
 
         {/* CTA */}
         <a
-          href={`/trajets?${timetableParams.toString()}`}
-          className="block w-full text-center bg-[#1A2B3C] hover:bg-[#1d7a5a] text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-300 shadow-md hover:-translate-y-0.5 text-sm"
+          href={`${network.paths.trajets}?${timetableParams.toString()}`}
+          className="block w-full text-center bg-[#1A2B3C] hover:bg-brand text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-300 shadow-md hover:-translate-y-0.5 text-sm"
         >
           Voir les horaires →
         </a>

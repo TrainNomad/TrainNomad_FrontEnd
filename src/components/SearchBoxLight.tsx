@@ -6,6 +6,7 @@ import { ANYWHERE_ID, placeParam } from '../types';
 import { I18nProvider } from 'react-aria-components';
 import { getLocalTimeZone, today as getToday, CalendarDate, parseDate } from '@internationalized/date';
 import { DateRangePicker } from './ui/DateRangePicker';
+import { useNetwork } from '../network/NetworkContext';
 
 interface Props {
   onSearch: (data: {
@@ -19,6 +20,7 @@ interface Props {
 }
 
 export default function SearchBox({ onSearch }: Props) {
+  const { network } = useNetwork();
   const [departDate, setDepartDate] = useState<CalendarDate>(getToday(getLocalTimeZone()));
   const [returnDate, setReturnDate] = useState<CalendarDate | null>(null);
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
@@ -87,7 +89,7 @@ export default function SearchBox({ onSearch }: Props) {
         date: departDate.toString(),
         ...(isRoundTrip && returnDate && { return_date: returnDate.toString() }),
       });
-      window.location.href = '/explorer?' + params.toString();
+      window.location.href = `${network.paths.explorer}?${params.toString()}`;
       return;
     }
     const destination = placeParam(selectedTo, toQuery);
@@ -100,7 +102,7 @@ export default function SearchBox({ onSearch }: Props) {
       date: departDate.toString(),
       ...(returnDate && { returnDate: returnDate.toString() }),
     });
-  }, [isSearchEnabled, isAnywhere, selectedFrom, selectedTo, fromQuery, toQuery, departDate, returnDate, isRoundTrip, onSearch]);
+  }, [isSearchEnabled, isAnywhere, selectedFrom, selectedTo, fromQuery, toQuery, departDate, returnDate, isRoundTrip, onSearch, network]);
 
   return (
     <I18nProvider locale="fr-FR">

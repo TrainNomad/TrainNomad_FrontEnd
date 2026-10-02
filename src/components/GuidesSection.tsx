@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { Guide } from '../types';
 
-const guidepath = 'assets/guides';
+const guidepath = '/assets/guides';
 
 const GUIDES: Guide[] = [
   {
@@ -19,32 +20,32 @@ const GUIDES: Guide[] = [
     emoji: '🏖️',
   },
   {
-    id: 'strasbourg',
-    city: 'Strasbourg',
+    id: 'lyon',
+    city: 'Lyon',
     country: 'France',
-    title: 'Alsace, cathédrale et tarte flambée',
-    subtitle: '2 jours à Strasbourg',
-    image: `${guidepath}/strasbourg-cover.webp`,
-    href: '/guides/strasbourg',
-    duration: '1h46',
-    price: '10€',
+    title: 'Bouchons, traboules et Fourvière',
+    subtitle: '2 jours à Lyon',
+    image: `${guidepath}/lyon-cover.webp`,
+    href: '/guides/lyon',
+    duration: '2h00',
+    price: '19€',
     badge: 'Train direct',
     badgeStyle: 'direct',
-    emoji: '🥨',
+    emoji: '🍷',
   },
   {
-    id: 'porto',
-    city: 'Porto',
-    country: 'Portugal',
-    title: 'Vinho do Porto, azulejos et Douro',
-    subtitle: '2 jours à Porto',
-    image: `${guidepath}/porto-cover.webp`,
-    href: '/guides/porto',
-    duration: '~2 jours',
-    price: '110€',
-    badge: 'Train de nuit',
-    badgeStyle: 'night',
-    emoji: '🍷',
+    id: 'berlin',
+    city: 'Berlin',
+    country: 'Allemagne',
+    title: 'Histoire et avant-garde',
+    subtitle: '3 jours à Berlin',
+    image: `${guidepath}/berlin-cover.webp`,
+    href: '/guides/berlin',
+    duration: '8h00',
+    price: '59€',
+    badge: 'Train direct',
+    badgeStyle: 'direct',
+    emoji: '🐻',
   },
 ];
 
@@ -62,13 +63,13 @@ export function GuidesSection() {
               Itinéraires à lire comme un carnet. Conseils, bonnes adresses et budget à bord.
             </p>
           </div>
-          <a
-            href="/guides"
+          <Link
+            to="/guides"
             className="text-sm font-bold border-b-2 pb-1 hover:text-primary transition-colors whitespace-nowrap ml-8"
             style={{ borderColor: '#1d7a5a' }}
           >
             Tous les guides →
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
@@ -96,7 +97,7 @@ function GuideCard({ guide }: GuideCardProps) {
       : { background: '#1e1b4b', color: '#a5b4fc' };
 
   return (
-    <a href={guide.href} className="group block text-inherit no-underline">
+    <Link to={guide.href} className="group block text-inherit no-underline">
       <div className="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5 bg-slate-100">
         {!imgError ? (
           <img
@@ -144,6 +145,6 @@ function GuideCard({ guide }: GuideCardProps) {
       </div>
       <h3 className="font-bold text-xl text-midnight mb-1">{guide.title}</h3>
       <p className="text-sm text-slate-500">{guide.subtitle}</p>
-    </a>
+    </Link>
   );
 }

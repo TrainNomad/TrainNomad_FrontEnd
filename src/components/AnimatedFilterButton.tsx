@@ -29,7 +29,7 @@ export default function AnimatedFilterButton({
   children,
   className = '',
 }: AnimatedFilterButtonProps) {
-  const baseColor = isActive ? 'bg-[#1d7a5a] text-white' : 'bg-slate-100 text-slate-600';
+  const baseColor = isActive ? 'bg-brand text-white' : 'bg-slate-100 text-slate-600';
 
   return (
     <button

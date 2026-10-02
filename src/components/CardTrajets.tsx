@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Journey } from '../types/api';
-import { isTrainLeg } from '../types/api';
+import { isSeatChange, isTrainLeg } from '../types/api';
+import { useNetwork } from '../network/NetworkContext';
 import { dayOffset, formatDate, formatDuration, formatTime } from '../lib/format';
 import { JourneySteps } from './JourneySteps';
 import { TrainLogo } from './TrainLogo';
@@ -11,10 +12,16 @@ interface CardTrajetProps {
 
 export default function CardTrajet({ journey }: CardTrajetProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { network } = useNetwork();
 
   const trains = journey.legs.filter(isTrainLeg);
   const isDirect = journey.transfers === 0;
-  const viaStations = trains.slice(0, -1).map((t) => t.to.name);
+  const seatChanges = journey.seat_changes ?? 0;
+  // Gares intermédiaires : correspondance classique ou changement de siège (TGVmax, même train)
+  const via = journey.legs
+    .filter((l) => l.type === 'transfer')
+    .map((l) => ({ name: l.from.name, seat: isSeatChange(l) }));
+  const viaLabel = via.map((v) => (v.seat ? `${v.name} (changement de siège)` : v.name)).join(', ');
   const arrivalOffset = dayOffset(journey.departure, journey.arrival);
 
   return (
@@ -23,14 +30,24 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
       {/* En-tête de la carte */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
+          {network.badge && (
+            <span className="bg-brand text-white px-2.5 py-1 rounded-full text-[10px] font-extrabold tracking-wider uppercase">
+              {network.badge}
+            </span>
+          )}
           {isDirect ? (
-            <span className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Direct
+            <span className="bg-tone-50 text-tone-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-tone-500"></span> Direct
             </span>
           ) : (
             <span className="bg-amber-50 text-amber-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
               {journey.transfers} correspondance{journey.transfers > 1 ? 's' : ''}
+              {/* « 1 correspondance · changement de siège » / « 2 correspondances · dont 1 changement de siège » */}
+              {seatChanges > 0 &&
+                (seatChanges === journey.transfers
+                  ? ` · changement${seatChanges > 1 ? 's' : ''} de siège`
+                  : ` · dont ${seatChanges} changement${seatChanges > 1 ? 's' : ''} de siège`)}
             </span>
           )}
           <span className="text-xs font-medium text-slate-400 first-letter:uppercase">{formatDate(journey.departure)}</span>
@@ -61,18 +78,21 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
         <div className="flex-1 flex flex-col items-center px-4 w-full max-w-md">
           <span className="text-xs font-medium text-slate-500 mb-1.5">{formatDuration(journey.duration_min)}</span>
           <div className="w-full flex items-center relative">
-            <div className="w-2.5 h-2.5 rounded-full border-2 border-emerald-500 bg-white z-10"></div>
-            {viaStations.map((name, i) => (
+            <div className="w-2.5 h-2.5 rounded-full border-2 border-tone-500 bg-white z-10"></div>
+            {via.map((v, i) => (
               <div key={i} className="flex-1 flex items-center">
-                <div className="flex-1 h-0.5 bg-emerald-300"></div>
-                <div title={name} className="w-2.5 h-2.5 rounded-full border-2 border-amber-500 bg-white z-10"></div>
+                <div className="flex-1 h-0.5 bg-tone-300"></div>
+                <div
+                  title={v.seat ? `${v.name} : changement de siège` : v.name}
+                  className="w-2.5 h-2.5 rounded-full border-2 border-amber-500 bg-white z-10"
+                ></div>
               </div>
             ))}
-            <div className="flex-1 h-0.5 bg-emerald-300"></div>
-            <div className="w-2.5 h-2.5 rounded-full border-2 border-emerald-500 bg-emerald-500 z-10"></div>
+            <div className="flex-1 h-0.5 bg-tone-300"></div>
+            <div className="w-2.5 h-2.5 rounded-full border-2 border-tone-500 bg-tone-500 z-10"></div>
           </div>
-          <span className="text-[11px] font-bold text-emerald-600 uppercase tracking-wider mt-1.5 text-center">
-            {isDirect ? 'Sans changement' : `Via ${viaStations.join(', ')}`}
+          <span className="text-[11px] font-bold text-tone-600 uppercase tracking-wider mt-1.5 text-center">
+            {isDirect ? 'Sans changement' : `Via ${viaLabel}`}
           </span>
         </div>
 

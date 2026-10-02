@@ -51,8 +51,11 @@ export interface TrainLeg {
   stops: StopTime[];
 }
 
-/** same_station : changement de quai · walk : gares proches à pied · city : traversée de ville */
-export type TransferKind = 'same_station' | 'walk' | 'city';
+/**
+ * same_station : changement de quai · walk : gares proches à pied · city : traversée de ville ·
+ * seat_change : (TGVmax) on reste dans le même train et on change de place pour le billet suivant
+ */
+export type TransferKind = 'same_station' | 'walk' | 'city' | 'seat_change';
 
 export interface TransferLeg {
   type: 'transfer';
@@ -73,6 +76,8 @@ export interface Journey {
   arrival: string;
   duration_min: number;
   transfers: number;
+  /** Parmi les correspondances, changements de siège dans le même train (TGVmax) */
+  seat_changes?: number;
   from: StopRef;
   to: StopRef;
   operators: string[];
@@ -111,9 +116,20 @@ export interface ExplorerResponse {
   destinations: ExplorerDestination[];
 }
 
+/** GET /featured (TGVmax) : trajets tirés au sort chaque jour parmi les départs des prochains jours */
+export interface FeaturedResponse {
+  date: string;
+  built_at: string;
+  count: number;
+  journeys: Journey[];
+}
+
 export interface ApiErrorBody {
   error: string;
   detail?: string;
 }
 
 export const isTrainLeg = (leg: Leg): leg is TrainLeg => leg.type === 'train';
+
+export const isSeatChange = (leg?: Leg): leg is TransferLeg =>
+  leg?.type === 'transfer' && leg.transfer_kind === 'seat_change';

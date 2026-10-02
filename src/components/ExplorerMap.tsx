@@ -4,10 +4,15 @@ import { canvas, circleMarker, latLngBounds, layerGroup } from 'leaflet';
 import type { CircleMarker as LeafletCircleMarker, Map as LeafletMap, LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MaptilerLayer } from '@maptiler/leaflet-maptilersdk';
+import { config as maptilerConfig } from '@maptiler/sdk';
+
+// Pas de télémétrie MapTiler (envoi de statistiques d'usage à api.maptiler.com) : voir la page Confidentialité.
+maptilerConfig.telemetry = false;
 import { MapLegend } from './MapLegend';
 import { getDurationColor, formatDuration } from '../types/explorer';
 import type { Destination, OriginCoords } from '../types/explorer';
 import { MAPTILER_API_KEY } from '../config';
+import { useNetwork } from '../network/NetworkContext';
 
 interface Props {
   destinations: Destination[];
@@ -265,6 +270,7 @@ export function ExplorerMap({
   searched,
   onSelect,
 }: Props) {
+  const { network } = useNetwork();
   const mapRef = useRef<LeafletMap | null>(null);
   const points = useMemo(() => collectPoints(destinations, originCoords), [destinations, originCoords]);
   const canRecenter = points.length > 0;
@@ -317,15 +323,13 @@ export function ExplorerMap({
       {!searched && (
         <div className="absolute inset-0 flex items-center justify-center z-[500] pointer-events-none">
           <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 text-center max-w-xs border border-slate-100">
-            <div className="w-14 h-14 rounded-full bg-[#1d7a5a]/10 flex items-center justify-center mx-auto mb-4">
-              <svg className="w-7 h-7 text-[#1d7a5a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+            <div className="w-14 h-14 rounded-full bg-brand/10 flex items-center justify-center mx-auto mb-4">
+              <svg className="w-7 h-7 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c-.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
               </svg>
             </div>
-            <p className="font-bold text-[#1A2B3C] mb-1">Explorer l'Europe en train</p>
-            <p className="text-sm text-slate-500">
-              Saisissez une gare de départ pour découvrir toutes les destinations accessibles.
-            </p>
+            <p className="font-bold text-[#1A2B3C] mb-1">{network.texts.explorerTitle}</p>
+            <p className="text-sm text-slate-500">{network.texts.explorerHint}</p>
           </div>
         </div>
       )}

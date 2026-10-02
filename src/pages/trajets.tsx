@@ -3,8 +3,9 @@ import TrajetsSearchBox from '../components/SearchBoxLight';
 import CardTrajet from '../components/CardTrajets';
 import CardLoad from '../components/TripSkeleton';
 import JourneyFilters from '../components/JourneyFilters';
-import { searchTrips } from '../services/api';
+import { useNetwork } from '../network/NetworkContext';
 import type { Journey, SearchResponse } from '../types/api';
+import { WakeUpNotice } from '../components/WakeUpNotice';
 
 interface Query {
   origin: string;
@@ -13,7 +14,9 @@ interface Query {
   time: string;
 }
 
+/** Page de recherche de trajets, commune aux réseaux Europe (/trajets) et TGVmax (/tgvmax/trajets). */
 export default function Trajets() {
+  const { api, network } = useNetwork();
   const [allTrips, setAllTrips] = useState<Journey[]>([]);
   const [meta, setMeta] = useState<Pick<SearchResponse, 'from' | 'to' | 'next'> | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +42,7 @@ export default function Trajets() {
     setLastQuery(query);
     setCurrentDate(query.date);
     try {
-      const data = await searchTrips({
+      const data = await api.searchTrips({
         from: query.origin,
         to: query.destination,
         date: query.date,
@@ -71,7 +74,7 @@ export default function Trajets() {
     if (!lastQuery || !meta?.next) return;
     setIsLoadingMore(true);
     try {
-      const data = await searchTrips({
+      const data = await api.searchTrips({
         from: lastQuery.origin,
         to: lastQuery.destination,
         date: meta.next.date,
@@ -106,7 +109,7 @@ export default function Trajets() {
       // Si on n'a pas encore de données pour ce jour, on les charge
       const hasNextDayData = allTrips.some(trip => trip.departure.startsWith(nextDateStr));
       if (!hasNextDayData) {
-        const data = await searchTrips({
+        const data = await api.searchTrips({
           from: lastQuery.origin,
           to: lastQuery.destination,
           date: nextDateStr,
@@ -127,7 +130,7 @@ export default function Trajets() {
         date: nextDateStr,
         departure_time: '00:00',
       });
-      window.history.pushState({}, '', `/trajets?${params.toString()}`);
+      window.history.pushState({}, '', `${network.paths.trajets}?${params.toString()}`);
       
       // Réinitialiser les filtres
       setFilters({
@@ -199,7 +202,7 @@ export default function Trajets() {
       date: searchData.date,
       departure_time: '02:00',
     });
-    window.history.pushState({}, '', `/trajets?${params.toString()}`);
+    window.history.pushState({}, '', `${network.paths.trajets}?${params.toString()}`);
     fetchTrips({
       origin: searchData.origin,
       destination: searchData.destination,
@@ -237,6 +240,7 @@ export default function Trajets() {
         <div className="mt-4 px-6">
           {isLoading ? (
             <div className="space-y-4">
+              <WakeUpNotice loading={isLoading} />
               {[...Array(5)].map((_, i) => (
                 <CardLoad key={i} />
               ))}
@@ -311,7 +315,7 @@ export default function Trajets() {
           ) : hasSearched ? (
             <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
               <span className="material-symbols-outlined text-5xl text-slate-300 block mb-4">train</span>
-              <p className="text-slate-500 font-medium">Aucun trajet trouvé pour cette recherche.</p>
+              <p className="text-slate-500 font-medium">{network.texts.noTrip}</p>
               <p className="text-slate-400 text-sm mt-1">Essayez une autre date ou un autre itinéraire.</p>
             </div>
           ) : (

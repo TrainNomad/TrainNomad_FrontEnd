@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useGuideDetail } from '../hooks/useGuides';
+import { usePageMeta } from '../hooks/usePageMeta';
 import PhotoSpots from '../components/PhotoSpots';
 
 const FLAGS: Record<string, string> = {
@@ -17,6 +18,7 @@ const STEP_COLORS: Record<string, string> = {
 export default function GuideDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const { guide, loading, error } = useGuideDetail(slug);
+  usePageMeta(guide ? `Guide ${guide.name}` : 'Guides de voyage en train', guide?.description);
 
   if (loading) {
     return (

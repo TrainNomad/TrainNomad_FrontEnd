@@ -1,0 +1,67 @@
+# Site statique trainnomad.eu sur Render (Blueprint). À défaut de Blueprint, reporter ces réglages
+# à la main dans le tableau de bord : Build Command, Publish Directory, Environment, Redirects/Rewrites, Headers.
+# Render n'applique pas les règles à une URL qui correspond à un fichier existant de dist/.
+services:
+  - type: web
+    name: trainnomad-front
+    runtime: static
+    buildCommand: npx --yes pnpm@11.24.0 install --frozen-lockfile && npx --yes pnpm@11.24.0 build
+    staticPublishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # Clé MapTiler (fond de carte de l'explorateur) : à saisir dans le tableau de bord Render
+      - key: VITE_MAPTILER_KEY
+        sync: false
+    headers:
+      # index.html toujours revalidé : un nouveau déploiement est vu immédiatement
+      - path: /
+        name: Cache-Control
+        value: no-cache
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
+      # fichiers du build (nom avec empreinte) : cache long
+      - path: /build/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+    routes:
+      # Anciennes pages du site statique (redirections permanentes, conservent le référencement)
+      - type: redirect
+        source: /trajets.html
+        destination: /trajets
+      - type: redirect
+        source: /explorer.html
+        destination: /explorer
+      - type: redirect
+        source: /outilstgvmax.html
+        destination: /tgvmax
+      - type: redirect
+        source: /guide/index.html
+        destination: /guides
+      - type: redirect
+        source: /A_propos.html
+        destination: /a-propos
+      - type: redirect
+        source: /conditions.html
+        destination: /conditions
+      - type: redirect
+        source: /confidentialite.html
+        destination: /confidentialite
+      - type: redirect
+        source: /mention_legal.html
+        destination: /mentions-legales
+      - type: redirect
+        source: /404.html
+        destination: /
+      # /guide/guide.html?ville=… : Render ne lit pas la query string, l'application redirige
+      # vers le guide s'il existe encore, sinon vers /guides (src/pages/LegacyRedirects.tsx).
+      - type: rewrite
+        source: /*
+        destination: /index.html

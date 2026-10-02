@@ -5,11 +5,10 @@ import { ExplorerSearch } from '../components/SearchBoxOneStation';
 import type { ExplorerSearchPayload } from '../components/SearchBoxOneStation';
 import { ExplorerMap } from '../components/ExplorerMap';
 import { DestinationPanel } from '../components/DestinationPanel';
-import { exploreDestinations } from '../services/api';
-import { EXPLORER_MAX_TRANSFERS } from '../config';
+import { useNetwork } from '../network/NetworkContext';
 
 /**
- * /explorer page.
+ * Page /explorer (réseau Europe) et /tgvmax/explorer (réseau TGVmax) : mêmes composants.
  *
  * Responsibilities:
  *  - Hold all shared state (destinations, selected, loading, origin…)
@@ -17,6 +16,7 @@ import { EXPLORER_MAX_TRANSFERS } from '../config';
  *  - Pass data down to ExplorerSearch, ExplorerMap, DestinationPanel
  */
 export default function Explorer() {
+  const { api, network } = useNetwork();
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [selected, setSelected]         = useState<Destination | null>(null);
   const [loading, setLoading]           = useState(false);
@@ -35,11 +35,11 @@ export default function Explorer() {
     setError(null);
 
     try {
-      const data = await exploreDestinations({
+      const data = await api.exploreDestinations({
         from,
         date: day,
         time,
-        maxTransfers: EXPLORER_MAX_TRANSFERS,
+        maxTransfers: network.explorerMaxTransfers,
       });
       // L'API renvoie la gare / ville d'origine résolue, avec ses coordonnées
       setOrigin(data.from);
@@ -52,7 +52,7 @@ export default function Explorer() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [api, network.explorerMaxTransfers]);
 
   const handleSearch = useCallback(
     ({ station, origin: from, date: day, time }: ExplorerSearchPayload) => {
@@ -92,9 +92,10 @@ export default function Explorer() {
         {error && <p className="text-sm text-red-500 font-medium mt-2 px-2">{error}</p>}
       </div>
 
-      {/* Corps principal : Carte + Panneau latéral (z-index plus bas) */}
-      <div className="flex flex-1 min-h-0 relative px-4 pb-4 gap-4 z-10">
-        <div className="flex-1 flex bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm relative z-0">
+      {/* Corps principal : Carte + Panneau latéral (z-index plus bas).
+          Mobile : carte au-dessus, liste en dessous ; à partir de md : côte à côte. */}
+      <div className="flex flex-col md:flex-row flex-1 min-h-0 relative px-4 pb-4 gap-4 z-10">
+        <div className="flex-1 min-h-[40%] flex bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm relative z-0">
           <ExplorerMap
             destinations={destinations}
             selected={selected}
@@ -105,7 +106,7 @@ export default function Explorer() {
           />
         </div>
 
-        <div className="w-[400px] flex-shrink-0 flex bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm relative z-10">
+        <div className="h-[45%] md:h-auto w-full md:w-[400px] flex-shrink-0 flex bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm relative z-10">
           <DestinationPanel
             destinations={destinations}
             selected={selected}

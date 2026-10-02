@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { getLocalTimeZone, today as getToday, CalendarDate } from '@internationalized/date';
 import { ChevronLeftIcon, ChevronRightIcon, Cross2Icon } from '@radix-ui/react-icons';
+import { useNetwork } from '../../network/NetworkContext';
 
 interface DateRangePickerProps {
   departDate: CalendarDate;
@@ -18,6 +19,8 @@ export function DateRangePicker({
   onClose,
   singleDate = false,
 }: DateRangePickerProps) {
+  // Le calendrier est rendu dans <body> (portal) : on lui réapplique le thème du réseau courant.
+  const { network } = useNetwork();
   const [tempDepart, setTempDepart] = useState<CalendarDate>(initialDepart);
   const [tempReturn, setTempReturn] = useState<CalendarDate | null>(initialReturn);
   const [activeTab, setActiveTab] = useState<'depart' | 'return'>('depart');
@@ -117,7 +120,7 @@ export function DateRangePicker({
 
   // Utilisation de React Portal pour détacher le modal du flux HTML et le superposer à tout (z-index maximal)
   return createPortal(
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/30 backdrop-blur-xs p-4">
+    <div className={`${network.themeClass} fixed inset-0 z-[99999] flex items-center justify-center bg-black/30 backdrop-blur-xs p-4`}>
       <div
         ref={modalRef}
         className="bg-white rounded-3xl shadow-2xl border border-slate-100 p-6 w-full max-w-[380px] animate-in fade-in zoom-in-95 duration-150"
@@ -129,7 +132,7 @@ export function DateRangePicker({
               onClick={() => setActiveTab('depart')}
               className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition-all ${
                 activeTab === 'depart'
-                  ? 'bg-[#1d7a5a] text-white shadow-sm'
+                  ? 'bg-brand text-white shadow-sm'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
@@ -141,7 +144,7 @@ export function DateRangePicker({
                 onClick={() => setActiveTab('return')}
                 className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-between cursor-pointer transition-all ${
                   activeTab === 'return'
-                    ? 'bg-[#1d7a5a] text-white shadow-sm'
+                    ? 'bg-brand text-white shadow-sm'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                 }`}
               >
@@ -158,7 +161,7 @@ export function DateRangePicker({
                 onClick={() => setActiveTab('return')}
                 className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold transition-all border border-dashed ${
                   activeTab === 'return'
-                    ? 'border-[#1d7a5a] text-[#1d7a5a] bg-emerald-50/50'
+                    ? 'border-brand text-brand bg-tone-50/50'
                     : 'border-slate-300 text-slate-500 hover:bg-slate-50'
                 }`}
               >
@@ -215,11 +218,10 @@ export function DateRangePicker({
                 className={`
                   h-10 w-10 rounded-xl text-xs font-semibold transition-all relative flex items-center justify-center mx-auto
                   ${disabled ? 'text-slate-300 cursor-not-allowed' : 'cursor-pointer hover:bg-slate-100'}
-                  ${start ? 'bg-[#1d7a5a] text-white shadow-sm' : ''}
-                  ${end ? 'bg-[#1d7a5a] text-white shadow-sm' : ''}
-                  ${inRange ? 'bg-emerald-50 text-[#1d7a5a] font-bold' : ''}
+                  ${start || end ? 'bg-brand text-white shadow-sm' : ''}
+                  ${inRange ? 'bg-tone-50 text-brand font-bold' : ''}
                   ${!start && !end && !inRange && !disabled ? 'text-slate-700' : ''}
-                  ${today && !start && !end ? 'ring-2 ring-[#1d7a5a] ring-offset-1' : ''}
+                  ${today && !start && !end ? 'ring-2 ring-brand ring-offset-1' : ''}
                 `}
               >
                 {date.day}
@@ -238,7 +240,7 @@ export function DateRangePicker({
           </button>
           <button
             onClick={handleConfirm}
-            className="px-6 py-2.5 rounded-xl text-xs font-bold bg-[#1d7a5a] text-white hover:bg-[#155d44] transition-all shadow-md hover:shadow-lg"
+            className="px-6 py-2.5 rounded-xl text-xs font-bold bg-brand text-white hover:bg-brand-dark transition-all shadow-md hover:shadow-lg"
           >
             OK
           </button>

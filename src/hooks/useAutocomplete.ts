@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import type { Station } from '../types';
 import { ANYWHERE_STATION } from '../types';
-import { searchStations } from '../services/api';
+import { useNetwork } from '../network/NetworkContext';
 
 export interface AutocompleteHook {
   query: string;
@@ -26,6 +26,8 @@ export function useAutocomplete(
   const [isOpen, setIsOpen] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const abortRef = useRef<AbortController | null>(null);
+  // Gares du réseau courant (Europe, ou TGVmax sous /tgvmax)
+  const { api } = useNetwork();
 
   const closeSuggestions = useCallback(() => {
     setIsOpen(false);
@@ -51,7 +53,7 @@ export function useAutocomplete(
       abortRef.current = controller;
 
       try {
-        const items = await searchStations(q, 20, controller.signal);
+        const items = await api.searchStations(q, 20, controller.signal);
 
         // Villes d'abord, avec leurs gares juste en dessous
         const cities = items.filter((s) => s.type === 'city');
@@ -73,7 +75,7 @@ export function useAutocomplete(
         if ((err as Error).name !== 'AbortError') console.error('Autocomplete error:', err);
       }
     },
-    [withAnywhere, closeSuggestions],
+    [withAnywhere, closeSuggestions, api],
   );
 
   const handleInputChange = useCallback(

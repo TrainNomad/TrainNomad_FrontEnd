@@ -1,5 +1,13 @@
 // src/pages/Conditions.tsx
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { CONTACT_EMAIL, PUBLISHER_NAME } from '../lib/siteInfo';
+
+function Contact() {
+  return CONTACT_EMAIL
+    ? <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#1d7a5a] font-semibold underline">{CONTACT_EMAIL}</a>
+    : <span>adresse de contact à venir</span>;
+}
 
 export default function Conditions() {
   useEffect(() => {
@@ -27,8 +35,8 @@ export default function Conditions() {
         <section className="relative pt-16 pb-20 overflow-hidden hero-gradient">
           <div className="max-w-4xl mx-auto px-6 text-center fade-up">
             <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">Conditions <span className="text-[#1d7a5a]">d'utilisation</span></h1>
-            <p className="text-xl text-slate-500 max-w-2xl mx-auto">En accédant à TrainNomad, vous acceptez les présentes conditions. Elles sont rédigées pour être claires et honnêtes.</p>
-            <p className="text-sm text-slate-400 mt-4 font-semibold">Dernière mise à jour : mars 2026</p>
+            <p className="text-xl text-slate-500 max-w-2xl mx-auto">En utilisant TrainNomad, vous acceptez les présentes conditions.</p>
+            <p className="text-sm text-slate-400 mt-4 font-semibold">Dernière mise à jour : octobre 2026</p>
           </div>
         </section>
 
@@ -44,12 +52,12 @@ export default function Conditions() {
               <div className="text-center p-6">
                 <span className="material-symbols-outlined text-[#4ade80] text-4xl mb-3 block">handshake</span>
                 <p className="text-white font-extrabold text-lg mb-1">Indépendant</p>
-                <p className="text-slate-400 text-sm mb-0">Aucune affiliation avec les opérateurs ferroviaires</p>
+                <p className="text-slate-400 text-sm mb-0">Aucun lien avec SNCF Voyageurs ni avec les opérateurs ferroviaires</p>
               </div>
               <div className="text-center p-6">
                 <span className="material-symbols-outlined text-[#4ade80] text-4xl mb-3 block">info</span>
                 <p className="text-white font-extrabold text-lg mb-1">Informatif</p>
-                <p className="text-slate-400 text-sm mb-0">Outil de consultation uniquement, pas de réservation</p>
+                <p className="text-slate-400 text-sm mb-0">Consultation uniquement : ni vente, ni réservation</p>
               </div>
             </div>
           </div>
@@ -67,15 +75,17 @@ export default function Conditions() {
                 </div>
                 <h2 className="text-2xl font-extrabold text-midnight">Nature du service</h2>
               </div>
-              <p>TrainNomad est un outil d'information indépendant, gratuit et accessible sans inscription. Il permet de visualiser les destinations accessibles en train à travers l'Europe, d'explorer les réseaux ferroviaires de plusieurs pays, et de faciliter la planification d'itinéraires via une carte interactive.</p>
-              <p>Le service s'appuie sur deux types de sources de données :</p>
+              <p>TrainNomad est un site d'information indépendant, gratuit, non commercial et accessible sans inscription, édité par un particulier. Il propose une recherche d'itinéraires en train en Europe, un outil de consultation des places TGVmax (MAX JEUNE / MAX SENIOR) disponibles, une carte d'exploration des destinations et des guides de villes.</p>
+              <p>Le service s'appuie sur des données ouvertes, notamment :</p>
               <ul>
-                <li><strong className="text-midnight">API SNCF</strong> — pour la fonctionnalité TGVmax, permettant de visualiser les disponibilités de billets en France en temps réel</li>
-                <li><strong className="text-midnight">Flux GTFS publics</strong> — pour les réseaux ferroviaires européens : Renfe (Espagne), CP (Portugal), SNCB (Belgique), et d'autres opérateurs en cours d'intégration</li>
+                <li><strong className="text-midnight">SNCF Voyageurs</strong> — horaires et disponibilités TGVmax / MAX (licence ODbL)</li>
+                <li><strong className="text-midnight">Autres opérateurs et plateformes de données ouvertes</strong> — Renfe, Ouigo España, Trenitalia, Italo, CP, données suisses, National Rail Enquiries, Eurostar, European Sleeper</li>
+                <li><strong className="text-midnight">Référentiels et cartographie</strong> — gares Trainline (ODbL), Wikidata (CC0), fonds de carte © MapTiler © contributeurs OpenStreetMap</li>
               </ul>
+              <p className="mt-2">La liste complète des sources et de leurs licences figure dans les <Link to="/mentions-legales" className="text-[#1d7a5a] font-semibold underline">mentions légales</Link>.</p>
               <div className="bg-white rounded-2xl p-6 border border-[#4ade80]/30 mt-4">
                 <p className="text-[#1d7a5a] font-bold mb-1">⚠ Pas de réservation</p>
-                <p className="mb-0">TrainNomad n'est pas une plateforme de réservation. Aucune transaction financière n'est réalisée sur le site. Pour réserver un billet, vous devez vous rendre sur les plateformes officielles des opérateurs : SNCF, Renfe, CP, SNCB, Eurostar, ou tout autre opérateur européen concerné.</p>
+                <p className="mb-0">TrainNomad ne vend rien et n'effectue aucune réservation. Aucune transaction financière n'est réalisée sur le site. Pour réserver un billet, rendez-vous sur les sites officiels des opérateurs ferroviaires concernés.</p>
               </div>
             </div>
 
@@ -85,16 +95,10 @@ export default function Conditions() {
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
                   <span className="material-symbols-outlined text-[#1d7a5a] text-2xl">domain_disabled</span>
                 </div>
-                <h2 className="text-2xl font-extrabold text-midnight">Non-affiliation</h2>
+                <h2 className="text-2xl font-extrabold text-midnight">Non-affiliation et marques</h2>
               </div>
-              <p>TrainNomad est un projet indépendant, développé et maintenu par un particulier. Il n'est affilié à aucun opérateur ferroviaire européen, ni à aucune autorité de transport. Les marques mentionnées sur le site appartiennent à leurs propriétaires respectifs :</p>
-              <ul>
-                <li>TGVmax est une marque déposée de la SNCF</li>
-                <li>Renfe est une marque de l'opérateur ferroviaire national espagnol</li>
-                <li>CP (Comboios de Portugal) est une marque de l'opérateur ferroviaire portugais</li>
-                <li>SNCB est une marque de l'opérateur ferroviaire belge</li>
-                <li>Eurostar est une marque de la société Eurostar International Limited</li>
-              </ul>
+              <p>TrainNomad est un site indépendant, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire.</p>
+              <p className="mb-0">TGV INOUI, OUIGO, Intercités, TER, MAX JEUNE, MAX SENIOR et TGVmax sont des marques de SNCF Voyageurs ; les noms et logos des opérateurs ferroviaires appartiennent à leurs titulaires respectifs et sont reproduits à seule fin d'identification des trains.</p>
             </div>
 
             {/* 3. Exactitude des données */}
@@ -105,14 +109,14 @@ export default function Conditions() {
                 </div>
                 <h2 className="text-2xl font-extrabold text-midnight">Exactitude des données</h2>
               </div>
-              <p>Les informations de disponibilité TGVmax proviennent de l'API publique de la SNCF et sont susceptibles de varier en temps réel. Les données des réseaux européens proviennent de flux GTFS mis à disposition par les autorités compétentes et sont actualisées périodiquement, sans garantie de mise à jour en temps réel.</p>
+              <p>Les horaires et disponibilités sont indicatifs et mis à jour une fois par jour : seule la réservation auprès de l'opérateur fait foi. Les trains OUIGO ne figurent pas dans les données de disponibilité TGVmax.</p>
               <p>TrainNomad ne garantit pas :</p>
               <ul>
-                <li>L'exactitude ou l'exhaustivité des disponibilités de billets affichées</li>
-                <li>La correspondance entre les horaires affichés et les horaires effectivement en vigueur</li>
-                <li>La disponibilité continue des données en cas de modification des API ou flux GTFS sources</li>
+                <li>L'exactitude ou l'exhaustivité des disponibilités affichées</li>
+                <li>La correspondance entre les horaires affichés et ceux effectivement en vigueur</li>
+                <li>La disponibilité continue des données en cas de modification ou d'interruption des sources</li>
               </ul>
-              <p className="mt-2 mb-0">Pour toute réservation ou information officielle, veuillez consulter directement les opérateurs ferroviaires concernés.</p>
+              <p className="mt-2 mb-0">Dans les limites permises par la loi, l'éditeur ne saurait être tenu responsable des conséquences d'une décision prise sur la base de ces informations (train manqué, place indisponible, frais engagés, etc.). Vérifiez toujours auprès de l'opérateur avant de voyager.</p>
             </div>
 
             {/* 4. Usage autorisé */}
@@ -123,14 +127,13 @@ export default function Conditions() {
                 </div>
                 <h2 className="text-2xl font-extrabold text-midnight">Usage autorisé</h2>
               </div>
-              <p>Le site est destiné à un usage strictement personnel et non commercial. Il est interdit de :</p>
+              <p>Le site est destiné à un usage personnel. Il est interdit de :</p>
               <ul>
-                <li>Utiliser TrainNomad pour extraire, reproduire ou revendre les données affichées</li>
-                <li>Automatiser des requêtes vers le site de manière abusive (scraping, bots)</li>
-                <li>Tenter de contourner les mécanismes de sécurité du site ou du serveur</li>
-                <li>Utiliser les données affichées à des fins commerciales sans autorisation préalable</li>
-                <li>Reproduire le code source, le design ou les éléments graphiques du site sans autorisation</li>
+                <li>Automatiser des requêtes vers le site ou ses API de manière abusive (scraping, bots)</li>
+                <li>Tenter de contourner les mécanismes de sécurité du site ou des serveurs</li>
+                <li>Reproduire le code source, les textes ou le design du site sans autorisation</li>
               </ul>
+              <p className="mt-2 mb-0">Les données ouvertes sous-jacentes restent réutilisables directement auprès de leurs producteurs, selon leurs propres licences.</p>
             </div>
 
             {/* 5. Disponibilité du service */}
@@ -141,8 +144,8 @@ export default function Conditions() {
                 </div>
                 <h2 className="text-2xl font-extrabold text-midnight">Disponibilité du service</h2>
               </div>
-              <p>TrainNomad est un projet solo en constante évolution. L'éditeur se réserve le droit de modifier, suspendre ou interrompre tout ou partie du service à tout moment, sans préavis ni indemnité. Aucune garantie de disponibilité continue n'est offerte.</p>
-              <p className="mb-0">Des interruptions ponctuelles peuvent survenir en raison de maintenance, de mises à jour ou d'indisponibilité des sources de données tierces (API SNCF, flux GTFS européens). L'éditeur s'efforce de maintenir le service en ligne mais ne peut être tenu responsable des interruptions hors de son contrôle.</p>
+              <p>TrainNomad est un projet personnel en évolution. L'éditeur peut modifier, suspendre ou interrompre tout ou partie du service à tout moment, sans préavis. Aucune garantie de disponibilité continue n'est offerte.</p>
+              <p className="mb-0">Des interruptions peuvent survenir en raison de maintenance, de mises à jour ou de l'indisponibilité des sources de données ou de l'hébergeur.</p>
             </div>
 
             {/* 6. Propriété intellectuelle */}
@@ -153,8 +156,8 @@ export default function Conditions() {
                 </div>
                 <h2 className="text-2xl font-extrabold text-midnight">Propriété intellectuelle</h2>
               </div>
-              <p>Le code source, le design, les textes et les éléments graphiques du site TrainNomad sont la propriété exclusive de Goulven ROBIN. Toute reproduction, adaptation ou utilisation sans autorisation écrite préalable est interdite.</p>
-              <p className="mb-0">Les données ferroviaires utilisées (GTFS, API SNCF) sont issues de sources publiques et restent la propriété de leurs émetteurs respectifs. TrainNomad en fait un usage conforme aux conditions de mise à disposition de chaque opérateur.</p>
+              <p>Les textes, la mise en forme et le code source du site sont la propriété de {PUBLISHER_NAME}, à l'exception des données et éléments appartenant à des tiers (données ferroviaires, fonds de carte, marques, logos et photographies).</p>
+              <p className="mb-0">Les données ferroviaires restent la propriété de leurs producteurs et sont réutilisées conformément à leurs licences. Les photographies sont utilisées à titre d'illustration ; tout ayant droit peut demander leur retrait ou l'ajout d'un crédit via l'adresse de contact (<Contact />).</p>
             </div>
 
             {/* 7. Droit applicable */}

@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const NAV_LINKS = [
   { label: 'À propos', href: '/a-propos' },
@@ -25,7 +25,7 @@ export function Footer() {
         >
           {/* Brand */}
           <div className="col-span-1">
-            <a href="../index.html" className="flex items-center gap-2 mb-8 group w-fit">
+            <Link to="/" className="flex items-center gap-2 mb-8 group w-fit">
               <img
                 src="/assets/Logo/SVG/Trainnomad_blanc_svg.svg"
                 alt="TrainNomad Logo"
@@ -34,7 +34,7 @@ export function Footer() {
               <span className="text-xl font-extrabold tracking-tight text-white">
                 TrainNomad<span className="text-emerald-500">.eu</span>
               </span>
-            </a>
+            </Link>
             <p className="text-slate-400 text-base leading-relaxed">
               Simplifier le rail européen pour donner envie d'aller plus loin, avec une empreinte plus légère.
             </p>
@@ -46,9 +46,9 @@ export function Footer() {
             <ul className="flex flex-col gap-5 text-base text-slate-400">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="hover:text-emerald-400 transition-colors">
+                  <Link to={link.href} className="hover:text-emerald-400 transition-colors">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -63,14 +63,22 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Indépendance et sources (détail dans les mentions légales) */}
+        <p className="text-xs text-slate-500 leading-relaxed mb-10 max-w-4xl">
+          TrainNomad est un site indépendant, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire : il ne vend
+          aucun billet. Horaires et disponibilités indicatifs, issus de données ouvertes mises à jour chaque jour.
+          Contient des données SNCF Voyageurs, disponibles sous licence ODbL.{' '}
+          <Link to="/mentions-legales" className="underline hover:text-white">Sources et licences</Link>
+        </p>
+
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] text-slate-500 uppercase tracking-[0.2em] font-bold">
           <p>© 2026 TrainNomad.eu - Engagé pour un futur durable.</p>
-          <div className="flex gap-10">
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-3">
             {LEGAL_LINKS.map((link) => (
-              <a key={link.href} href={link.href} className="hover:text-white transition-colors">
+              <Link key={link.href} to={link.href} className="hover:text-white transition-colors">
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

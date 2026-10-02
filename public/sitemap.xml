@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://trainnomad.eu/</loc><priority>1.0</priority></url>
+  <url><loc>https://trainnomad.eu/trajets</loc><priority>0.9</priority></url>
+  <url><loc>https://trainnomad.eu/explorer</loc><priority>0.9</priority></url>
+  <url><loc>https://trainnomad.eu/tgvmax</loc><priority>0.9</priority></url>
+  <url><loc>https://trainnomad.eu/tgvmax/explorer</loc><priority>0.8</priority></url>
+  <url><loc>https://trainnomad.eu/guides</loc><priority>0.9</priority></url>
+  <url><loc>https://trainnomad.eu/a-propos</loc><priority>0.5</priority></url>
+  <url><loc>https://trainnomad.eu/mentions-legales</loc><priority>0.3</priority></url>
+  <url><loc>https://trainnomad.eu/conditions</loc><priority>0.3</priority></url>
+  <url><loc>https://trainnomad.eu/confidentialite</loc><priority>0.3</priority></url>
+  <url><loc>https://trainnomad.eu/guides/berlin</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/bruxelles</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/barcelone</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/angers</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/lyon</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/marseille</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/paris</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/milan</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/palermo</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/rome</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/amsterdam</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/lisbonne</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/edinburgh</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/prague</loc><priority>0.7</priority></url>
+</urlset>

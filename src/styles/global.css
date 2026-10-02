@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+
 /* ── Base ───────────────────────────────────────────────────────────────────── */
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -13,6 +16,48 @@ body {
 :root {
   --color-primary: #1d7a5a;
   --color-midnight: #1A2B3C;
+}
+
+/* ── Thèmes par réseau ──────────────────────────────────────────────────────────
+   Les composants communs (trajets, explorer, autocomplétion, calendrier…) utilisent
+   ces variables via les couleurs Tailwind `brand` et `tone-*` (voir tailwind.config.js).
+   Europe (défaut) : vert TrainNomad + échelle emerald. TGVmax : orange.
+   <NetworkScope network="tgvmax"> applique la classe .theme-tgvmax. */
+:root,
+.theme-europe {
+  --brand: #1d7a5a;
+  --brand-rgb: 29 122 90;
+  --brand-dark: #155d44;
+  --brand-2: #15803d;
+  --brand-soft: #ecfdf5;
+  --brand-soft-2: #d1fae5;
+  --tone-50: 236 253 245;
+  --tone-100: 209 250 229;
+  --tone-200: 167 243 208;
+  --tone-300: 110 231 183;
+  --tone-400: 52 211 153;
+  --tone-500: 16 185 129;
+  --tone-600: 5 150 105;
+  --tone-700: 4 120 87;
+  --tone-900: 6 78 59;
+}
+
+.theme-tgvmax {
+  --brand: #f97316;
+  --brand-rgb: 249 115 22;
+  --brand-dark: #ea580c;
+  --brand-2: #ea580c;
+  --brand-soft: #fff7ed;
+  --brand-soft-2: #ffedd5;
+  --tone-50: 255 247 237;
+  --tone-100: 255 237 213;
+  --tone-200: 254 215 170;
+  --tone-300: 253 186 116;
+  --tone-400: 251 146 60;
+  --tone-500: 249 115 22;
+  --tone-600: 234 88 12;
+  --tone-700: 194 65 12;
+  --tone-900: 124 45 18;
 }
 
 /* ── Hero gradient ──────────────────────────────────────────────────────────── */
@@ -39,8 +84,7 @@ input[type="date"] {
   position: absolute;
   top: calc(100% + 4px);
   left: -12px;
-  width: 420px;
-  min-width: 380px;
+  width: min(420px, calc(100vw - 32px));
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 16px;
@@ -79,8 +123,8 @@ input[type="date"] {
 }
 .ac-row.ac-city:hover,
 .ac-row.ac-city.ac-active {
-  background-color: #ecfdf5;
-  border-color: #1d7a5a;
+  background-color: var(--brand-soft);
+  border-color: var(--brand);
 }
 .ac-row.ac-city .ac-title-main {
   font-weight: 700;
@@ -88,14 +132,14 @@ input[type="date"] {
   font-size: 15px;
 }
 .ac-row.ac-city .ac-icon {
-  color: #1d7a5a;
+  color: var(--brand);
   font-size: 22px;
-  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  background: linear-gradient(135deg, var(--brand-soft) 0%, var(--brand-soft-2) 100%);
   padding: 6px;
   border-radius: 8px;
 }
 .ac-row.ac-city .ac-line-sub {
-  color: #1d7a5a;
+  color: var(--brand);
   font-weight: 500;
 }
 
@@ -104,14 +148,14 @@ input[type="date"] {
   margin-left: 28px;
   padding: 8px 12px;
   padding-left: 16px;
-  border-left: 3px solid #1d7a5a;
+  border-left: 3px solid var(--brand);
   border-radius: 0 10px 10px 0;
   background-color: transparent;
 }
 .ac-row.ac-station:hover,
 .ac-row.ac-station.ac-active {
-  background-color: #f0fdf4;
-  border-left-color: #15803d;
+  background-color: var(--brand-soft);
+  border-left-color: var(--brand-2);
 }
 .ac-row.ac-station .ac-title-main {
   font-weight: 500;
@@ -127,8 +171,8 @@ input[type="date"] {
 }
 .ac-row.ac-station:hover .ac-icon,
 .ac-row.ac-station.ac-active .ac-icon {
-  color: #1d7a5a;
-  background: #ecfdf5;
+  color: var(--brand);
+  background: var(--brand-soft);
 }
 
 .ac-details {
@@ -164,7 +208,7 @@ input[type="date"] {
   flex-shrink: 0;
 }
 .ac-badge-city {
-  background: linear-gradient(135deg, #1d7a5a 0%, #15803d 100%);
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
   color: #ffffff;
 }
 .ac-badge-station {
@@ -181,75 +225,6 @@ input[type="date"] {
   background-color: #fce7f3;
 }
 
-/* ── TGVMax card ─────────────────────────────────────────────────────────────── */
-.trainmax-card-container {
-  position: relative;
-  margin: 40px auto;
-  max-width: 1100px;
-  min-height: 350px;
-  border-radius: 24px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  background:
-    linear-gradient(105deg, rgba(14, 55, 33, 0.95) 30%, rgba(34, 139, 34, 0.4) 100%),
-    url('assets/TGVMax/TGVMax-Section.jpg') center / cover no-repeat;
-  color: #ffffff;
-}
-
-.trainmax-card-content {
-  padding: 40px 60px;
-  z-index: 2;
-  width: 60%;
-}
-
-.trainmax-badge {
-  display: inline-block;
-  background: #e8007d;
-  color: white;
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-}
-
-.trainmax-card-content__title {
-  font-size: 2.2rem;
-  margin: 0 0 15px 0;
-  line-height: 1.2;
-}
-.trainmax-card-content__title span {
-  color: #1d7a5a;
-}
-
-.trainmax-card-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.trainmax-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #ffffff;
-  color: #0e3721;
-  padding: 14px 28px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 700;
-  transition: transform 0.2s, background 0.2s;
-}
-.trainmax-button:hover {
-  transform: translateY(-3px);
-  background: #1d7a5a;
-  color: #ffffff;
-}
-
 /* ── Footer quote ────────────────────────────────────────────────────────────── */
 .footer-quote {
   color: #a0aec0;
@@ -259,13 +234,13 @@ input[type="date"] {
 
 /* ── Tailwind aliases (used in JSX) ─────────────────────────────────────────── */
 .text-midnight { color: #1A2B3C; }
-.text-primary  { color: #1d7a5a; }
-.bg-primary    { background-color: #1d7a5a; }
-.border-primary { border-color: #1d7a5a; }
+.text-primary  { color: var(--brand); }
+.bg-primary    { background-color: var(--brand); }
+.border-primary { border-color: var(--brand); }
 .bg-primary\/10 { background-color: rgba(74,222,128,0.1); }
 .border-primary\/20 { border-color: rgba(74,222,128,0.2); }
 .bg-midnight   { background-color: #1A2B3C; }
-.hover\:bg-primary:hover { background-color: #1d7a5a; }
+.hover\:bg-primary:hover { background-color: var(--brand); }
 .bg-background-light { background-color: #f7f4ed; }
 
 /* Mobile nav separator */
@@ -275,23 +250,26 @@ input[type="date"] {
 
 /* ── Range Calendar - sélection de dates ─────────────────────────────────────── */
 [data-selected] {
-  background-color: #1d7a5a !important;
+  background-color: var(--brand) !important;
   color: white !important;
 }
 
 [data-selection-start],
 [data-selection-end] {
-  background-color: #1d7a5a !important;
+  background-color: var(--brand) !important;
   color: white !important;
   font-weight: 700;
 }
 
 [data-selected]:not([data-selection-start]):not([data-selection-end]) {
-  background-color: #ecfdf5 !important;
-  color: #1d7a5a !important;
+  background-color: var(--brand-soft) !important;
+  color: var(--brand) !important;
 }
 
 /* Indicateur "aujourd'hui" */
 [data-today]::after {
-  background-color: #1d7a5a !important;
+  background-color: var(--brand) !important;
 }
+
+/* Utilitaires en dernier : ils l'emportent sur les styles ci-dessus (comme avec l'ancien Tailwind CDN). */
+@tailwind utilities;

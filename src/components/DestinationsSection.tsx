@@ -1,6 +1,11 @@
+import { Link, useNavigate } from 'react-router-dom';
 import type { Destination } from '../types';
 
-const DESTINATIONS_PATH = 'assets/Destinations';
+const DESTINATIONS_PATH = '/assets/Destinations';
+
+/** Recherche Paris → destination sur la page Trajets (identifiants renvoyés par /stations de l'API Europe). */
+const trajetsHref = (arrival: string, arrivalName: string) =>
+  `/trajets?${new URLSearchParams({ departure: 'city:TL4916', departure_name: 'Paris', arrival, arrival_name: arrivalName })}`;
 
 const DESTINATIONS: Destination[] = [
   {
@@ -10,7 +15,7 @@ const DESTINATIONS: Destination[] = [
     description: 'La Bretagne à portée de main pour un week-end',
     duration: '1h25',
     image: `${DESTINATIONS_PATH}/rennes.webp`,
-    href: 'trajets.html?to=stop_area%3AOCE87471003&toName=Rennes&carte=Tarif%20Normal&tripType=oneway',
+    href: trajetsHref('city:TL10736', 'Rennes'),
   },
   {
     id: 'milan',
@@ -19,7 +24,7 @@ const DESTINATIONS: Destination[] = [
     description: 'La Dolce Vita italienne en direct',
     duration: '7h00',
     image: `${DESTINATIONS_PATH}/milan.webp`,
-    href: 'trajets.html?to=stop_area%3AOCE83000455&toName=Milano%20Centrale&carte=Tarif%20Normal&tripType=oneway',
+    href: trajetsHref('station:8301700', 'Milano Centrale'),
   },
   {
     id: 'geneve',
@@ -28,7 +33,7 @@ const DESTINATIONS: Destination[] = [
     description: 'Évasion immédiate entre lac et montagnes',
     duration: '3h10',
     image: `${DESTINATIONS_PATH}/geneve.webp`,
-    href: 'trajets.html?to=stop_area%3AOCE85010086&toName=Gen%C3%A8ve&carte=Tarif%20Normal&tripType=oneway',
+    href: trajetsHref('station:8501008', 'Genève'),
   },
   {
     id: 'amsterdam',
@@ -37,14 +42,13 @@ const DESTINATIONS: Destination[] = [
     description: 'Les canaux et l\'ambiance unique du Nord',
     duration: '3h20',
     image: `${DESTINATIONS_PATH}/amsterdam.webp`,
-    href: 'trajets.html?to=stop_area%3AOCE84000582&toName=Amsterdam-Centraal&carte=Tarif%20Normal&tripType=oneway',
+    href: trajetsHref('station:8400058', 'Amsterdam-Centraal'),
   },
 ];
 
 export function DestinationsSection() {
-  const handleCardClick = (href: string) => {
-    window.location.href = href;
-  };
+  const navigate = useNavigate();
+  const handleCardClick = (href: string) => navigate(href);
 
   return (
     <section className="bg-transparent py-16">
@@ -57,12 +61,12 @@ export function DestinationsSection() {
             </h2>
             <p className="text-slate-500">Explorez l'Europe sans compromis pour la planète.</p>
           </div>
-          <a
-            href="explorer.html"
+          <Link
+            to="/explorer"
             className="text-sm font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors"
           >
             Explorer la carte
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
