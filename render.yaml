@@ -5,6 +5,9 @@ services:
   - type: web
     name: trainnomad-front
     runtime: static
+    # Site réel : déploiement manuel uniquement (Manual Deploy dans Render), après validation
+    # sur le site de test trainnomad-frontend.onrender.com qui, lui, se déploie à chaque push.
+    autoDeploy: false
     buildCommand: npx --yes pnpm@11.24.0 install --frozen-lockfile && npx --yes pnpm@11.24.0 build
     staticPublishPath: ./dist
     envVars:

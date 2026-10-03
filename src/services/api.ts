@@ -65,7 +65,7 @@ export function createApiClient(baseUrl: string): ApiClient {
       try {
         body = await response.json();
       } catch {
-        // réponse non JSON (ex. service Render en cours de démarrage)
+        // réponse non JSON (ex. API en cours de redémarrage)
       }
       throw new ApiError(
         response.status,

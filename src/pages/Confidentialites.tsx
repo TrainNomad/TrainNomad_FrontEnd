@@ -92,7 +92,7 @@ export default function Confidentialite() {
               </div>
               <p>TrainNomad ne demande aucun compte, aucune inscription et aucun formulaire ne collecte votre nom ou votre adresse e-mail. Les seules données traitées sont les suivantes :</p>
               <ul>
-                <li><strong className="text-midnight">Journaux techniques des hébergeurs</strong> — adresse IP, date et heure, page ou ressource demandée, type de navigateur. Ils sont enregistrés automatiquement par Render et Cloudflare pour assurer le fonctionnement et la sécurité du site (prévention des abus et des attaques).</li>
+                <li><strong className="text-midnight">Journaux techniques des hébergeurs</strong> — adresse IP, date et heure, page ou ressource demandée, type de navigateur. Ils sont enregistrés automatiquement par Render, Cloudflare et Oracle pour assurer le fonctionnement et la sécurité du site (prévention des abus et des attaques).</li>
                 <li><strong className="text-midnight">Recherches</strong> — les gares et dates saisies sont envoyées aux API de TrainNomad pour calculer les trajets et afficher les disponibilités. Elles ne sont associées à aucune identité et ne sont pas conservées au-delà des journaux techniques de l'hébergeur.</li>
                 <li><strong className="text-midnight">Fonds de carte</strong> — l'affichage de la carte d'exploration charge des tuiles auprès de MapTiler, qui reçoit à cette occasion votre adresse IP. La télémétrie de MapTiler est désactivée.</li>
               </ul>
@@ -121,7 +121,8 @@ export default function Confidentialite() {
               </div>
               <p>Les données décrites ci-dessus ne sont ni vendues ni partagées à des fins commerciales. Elles sont traitées uniquement par les prestataires techniques suivants :</p>
               <ul>
-                <li><strong className="text-midnight">Render Services, Inc.</strong> (États-Unis) — hébergement du site et des API, <a href="https://render.com" target="_blank" rel="noopener noreferrer" className={linkClass}>render.com</a></li>
+                <li><strong className="text-midnight">Render Services, Inc.</strong> (États-Unis) — hébergement du site, <a href="https://render.com" target="_blank" rel="noopener noreferrer" className={linkClass}>render.com</a></li>
+                <li><strong className="text-midnight">Oracle France SAS</strong> (France, serveurs situés à Paris) — hébergement des API, <a href="https://www.oracle.com/fr/cloud/" target="_blank" rel="noopener noreferrer" className={linkClass}>oracle.com</a></li>
                 <li><strong className="text-midnight">Cloudflare, Inc.</strong> (États-Unis) — réseau de diffusion et protection du site, <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" className={linkClass}>cloudflare.com</a></li>
                 <li><strong className="text-midnight">MapTiler AG</strong> (Suisse) — fonds de carte de la carte d'exploration, <a href="https://www.maptiler.com" target="_blank" rel="noopener noreferrer" className={linkClass}>maptiler.com</a></li>
               </ul>

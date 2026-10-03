@@ -47,9 +47,6 @@ importers:
       lucide-react:
         specifier: ^1.46.0
         version: 1.46.0(react@18.3.1)
-      material-symbols:
-        specifier: ^0.47.5
-        version: 0.47.5
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -105,6 +102,9 @@ importers:
       autoprefixer:
         specifier: ^10.6.1
         version: 10.6.1(postcss@8.5.28)
+      material-symbols:
+        specifier: ^0.47.5
+        version: 0.47.5
       postcss:
         specifier: ^8.5.28
         version: 8.5.28

@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import type { ReactNode } from 'react';
-import { Navigate, Routes, Route } from 'react-router-dom';
+import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HeroSection } from './components/HeroSection';
@@ -49,6 +49,8 @@ const TGVMAX_DESCRIPTION =
   'Repérez les trains TGV INOUI et Intercités avec des places MAX JEUNE / MAX SENIOR disponibles. Site indépendant, données SNCF Voyageurs.';
 
 export default function App() {
+  const isMapPage = useLocation().pathname.replace(/\/$/, '').endsWith('/explorer');
+
   return (
     <div className="bg-white text-midnight font-display">
       <Navbar />
@@ -77,7 +79,11 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-      <Footer />
+      {/* Explorer sur téléphone : carte plein écran façon application, sans pied de page
+          (les liens légaux sont dans le menu de la Navbar) */}
+      <div className={isMapPage ? 'hidden md:block' : undefined}>
+        <Footer />
+      </div>
     </div>
   );
 }

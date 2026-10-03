@@ -3,7 +3,7 @@
 import { writeFileSync } from 'node:fs';
 
 const SITE = 'https://trainnomad.eu';
-const GUIDES_API = process.env.VITE_GUIDES_API_URL || 'https://trainnomad-guide.onrender.com';
+const GUIDES_API = process.env.VITE_GUIDES_API_URL || 'https://guides-api.trainnomad.eu';
 const PAGES = [
   ['/', '1.0'],
   ['/trajets', '0.9'],

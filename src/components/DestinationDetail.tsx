@@ -13,6 +13,8 @@ interface Props {
   dest: Destination;
   origin: Place | null;
   date: string;
+  /** Durée maximale choisie (minutes) : fixe l'échelle de couleurs */
+  scaleMax: number;
   onClose: () => void;
 }
 
@@ -21,10 +23,10 @@ interface Props {
  * Shows duration, departure/arrival times, the fastest direct train if any,
  * a visual timeline, and a CTA link to the timetable page.
  */
-export function DestinationDetail({ dest, origin, date, onClose }: Props) {
+export function DestinationDetail({ dest, origin, date, scaleMax, onClose }: Props) {
   const { network } = useNetwork();
-  const color = getDurationColor(dest.duration_min);
-  const label = getDurationLabel(dest.duration_min);
+  const color = getDurationColor(dest.duration_min, scaleMax);
+  const label = getDurationLabel(dest.duration_min, scaleMax);
   const originName = origin?.name ?? '';
   const direct = dest.direct;
 

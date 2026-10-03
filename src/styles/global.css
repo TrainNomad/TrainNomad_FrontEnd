@@ -8,7 +8,32 @@ body {
   color: #1A2B3C;
 }
 
+/* Icônes Material Symbols : police réduite aux icônes utilisées (scripts/subset-icons.py, ~100 Ko au lieu de 4 Mo).
+   Nouvelle icône -> relancer le script, sinon `pnpm build` s'arrête (scripts/check-icons.mjs). */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url('../assets/fonts/material-symbols-subset.woff2') format('woff2');
+}
+
 .material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
@@ -269,6 +294,53 @@ input[type="date"] {
 /* Indicateur "aujourd'hui" */
 [data-today]::after {
   background-color: var(--brand) !important;
+}
+
+/* Curseur de durée de l'explorateur : la piste colorée est dessinée par MapLegend, derrière */
+.duration-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1.75rem;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+.duration-slider:focus {
+  outline: none;
+}
+.duration-slider::-webkit-slider-runnable-track {
+  height: 1.75rem;
+  background: transparent;
+}
+.duration-slider::-moz-range-track {
+  height: 1.75rem;
+  background: transparent;
+}
+.duration-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 2px solid #1a2b3c;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.3);
+}
+.duration-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 2px solid #1a2b3c;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.3);
+}
+.duration-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(var(--brand-rgb) / 0.4);
+}
+.duration-slider:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 3px rgba(var(--brand-rgb) / 0.4);
 }
 
 /* Utilitaires en dernier : ils l'emportent sur les styles ci-dessus (comme avec l'ancien Tailwind CDN). */

@@ -1,9 +1,14 @@
-import { getDurationColor, formatDuration, formatTime } from '../types/explorer';
+import { getDurationColor, formatDuration, formatHours, formatTime } from '../types/explorer';
 import type { Destination } from '../types/explorer';
 import { WakeUpNotice } from './WakeUpNotice';
 
 interface Props {
+  /** Destinations dans la durée maximale choisie */
   destinations: Destination[];
+  /** Nombre de destinations avant filtrage par durée */
+  total: number;
+  /** Durée maximale choisie (minutes) : fixe l'échelle de couleurs */
+  scaleMax: number;
   loading: boolean;
   searched: boolean;
   onSelect: (dest: Destination) => void;
@@ -13,7 +18,7 @@ interface Props {
  * Scrollable list panel showing all destinations sorted by duration.
  * Handles three states: loading skeleton, empty (no results), and the list itself.
  */
-export function DestinationList({ destinations, loading, searched, onSelect }: Props) {
+export function DestinationList({ destinations, total, scaleMax, loading, searched, onSelect }: Props) {
 
   if (loading) {
     return (
@@ -41,6 +46,15 @@ export function DestinationList({ destinations, loading, searched, onSelect }: P
     );
   }
 
+  if (destinations.length === 0 && total > 0) {
+    return (
+      <div className="flex flex-col items-center justify-center flex-1 p-8 text-center gap-3">
+        <p className="text-slate-500 font-medium text-sm">Aucune destination à moins de {formatHours(scaleMax)}.</p>
+        <p className="text-slate-400 text-xs">Augmentez la durée maximale avec le curseur de la carte.</p>
+      </div>
+    );
+  }
+
   if (destinations.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center flex-1 p-8 text-center gap-3">
@@ -64,12 +78,16 @@ export function DestinationList({ destinations, loading, searched, onSelect }: P
     <div className="flex flex-col h-full overflow-hidden">
       <div className="p-4 border-b border-slate-50 flex-shrink-0">
         <h2 className="font-bold text-[#1A2B3C] text-base">{sorted.length} destinations</h2>
-        <p className="text-xs text-slate-400 mt-0.5">Cliquez sur une destination pour les détails</p>
+        <p className="text-xs text-slate-400 mt-0.5">
+          {sorted.length < total
+            ? `À moins de ${formatHours(scaleMax)} · ${total} au total`
+            : 'Cliquez sur une destination pour les détails'}
+        </p>
       </div>
 
       <div className="overflow-y-auto flex-1 p-3 flex flex-col gap-1.5">
         {sorted.map((d) => {
-          const color = getDurationColor(d.duration_min);
+          const color = getDurationColor(d.duration_min, scaleMax);
           return (
             <button
               key={d.place.id}

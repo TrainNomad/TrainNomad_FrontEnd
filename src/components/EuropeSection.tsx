@@ -1,6 +1,5 @@
-import { EuropeMap } from "./ui/EuropeMap";
+import { EuropeGlobe } from "./ui/EuropeGlobe";
 
-export function EuropeSection() {
   const europeanCities = {
     paris: { lat: 48.8566, lng: 2.3522, label: "Paris" },
     rennes: { lat: 48.1173, lng: -1.6778, label: "Rennes" },
@@ -40,6 +39,7 @@ export function EuropeSection() {
     { start: europeanCities.rome, end: europeanCities.milan },
   ];
 
+export function EuropeSection() {
   return (
     <section className="w-full bg-slate-950 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -54,13 +54,13 @@ export function EuropeSection() {
           </p>
         </div>
 
-        {/* Carte en plein écran (sans les bordures de "box") */}
-        <div className="w-full aspect-[2/1] md:aspect-[2.2/1] relative font-sans overflow-hidden shadow-2xl">
-          <EuropeMap 
-            dots={europeanDots} 
-            lineColor="#10b981" // Tu peux ajuster la couleur des lignes ici
-          />
-        </div>
+        {/* Globe zoomé sur l'Europe, qui se balance doucement */}
+        <EuropeGlobe
+          dots={europeanDots}
+          lineColor="#10b981" // Tu peux ajuster la couleur des lignes ici
+          className="w-full aspect-[3/4] md:aspect-[16/9]"
+        />
+
 
       </div>
     </section>

@@ -4,7 +4,12 @@ import type { Destination } from '../types/explorer';
 import type { Place } from '../types/api';
 
 interface Props {
+  /** Destinations dans la durée maximale choisie */
   destinations: Destination[];
+  /** Nombre de destinations avant filtrage par durée */
+  total: number;
+  /** Durée maximale choisie (minutes) : fixe l'échelle de couleurs */
+  scaleMax: number;
   selected: Destination | null;
   loading: boolean;
   searched: boolean;
@@ -21,6 +26,8 @@ interface Props {
  */
 export function DestinationPanel({
   destinations,
+  total,
+  scaleMax,
   selected,
   loading,
   searched,
@@ -32,10 +39,12 @@ export function DestinationPanel({
   return (
     <aside className="w-full flex flex-col overflow-hidden bg-white z-10">
       {selected ? (
-        <DestinationDetail dest={selected} origin={origin} date={date} onClose={onClose} />
+        <DestinationDetail dest={selected} origin={origin} date={date} scaleMax={scaleMax} onClose={onClose} />
       ) : (
         <DestinationList
           destinations={destinations}
+          total={total}
+          scaleMax={scaleMax}
           loading={loading}
           searched={searched}
           onSelect={onSelect}

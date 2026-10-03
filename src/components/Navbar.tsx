@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { LEGAL_LINKS } from './Footer';
 // import type { NavLink } from '../pages';
 
 // Changer les hrefs dans NAV_LINKS
@@ -75,6 +76,18 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <div className="flex flex-wrap gap-x-5 gap-y-2 pt-3 mt-1 border-t border-slate-100">
+            {LEGAL_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="text-xs font-medium text-slate-500 hover:text-primary transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </>

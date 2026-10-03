@@ -8,7 +8,9 @@ const NAV_LINKS = [
   { label: 'Outils TGVMax', href: '/tgvmax' },
 ];
 
-const LEGAL_LINKS = [
+// Aussi affichés dans le menu mobile de la Navbar : ils restent accessibles sur les pages
+// sans pied de page (carte Explorer sur téléphone).
+export const LEGAL_LINKS = [
   { label: 'Mentions Légales', href: '/mentions-legales' },
   { label: 'Confidentialité', href: '/confidentialite' },
   { label: 'Conditions', href: '/conditions' },

@@ -76,7 +76,7 @@ export default function MentionsLegales() {
                 <p><span className="font-bold text-midnight">Adresse :</span> 525 Brannan Street, Suite 300, San Francisco, CA 94107, États-Unis</p>
                 <p><span className="font-bold text-midnight">Site web :</span> <a href="https://render.com" target="_blank" rel="noopener noreferrer" className={linkClass}>render.com</a></p>
               </div>
-              <p className="mt-4 mb-0">Le site et ses services de données (itinéraires, guides, TGVmax) sont hébergés par Render. Le site est diffusé via le réseau de diffusion de contenu de Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, États-Unis (<a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" className={linkClass}>cloudflare.com</a>).</p>
+              <p className="mt-4 mb-0">Le site est hébergé par Render et diffusé via le réseau de diffusion de contenu de Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, États-Unis (<a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" className={linkClass}>cloudflare.com</a>). Ses services de données (itinéraires, guides, TGVmax) sont hébergés par Oracle France SAS, 6 avenue de Messine, 75008 Paris, France (<a href="https://www.oracle.com/fr/cloud/" target="_blank" rel="noopener noreferrer" className={linkClass}>oracle.com</a>), sur des serveurs situés à Paris.</p>
             </div>
 
             {/* 3. Objet du site */}
