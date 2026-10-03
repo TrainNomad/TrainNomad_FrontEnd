@@ -182,7 +182,7 @@ const BY_OPERATOR: Record<string, string> = {
   TRENITALIA: 'trenitalia.png',
   ITALO: 'italo.png',
   CP: 'Comboios-de-Portugal.png',
-  SWISS: 'SNCB.png', // SBB/CFF/FFS Swiss Railways
+  SWISS: 'SBB.png', // SBB/CFF/FFS Swiss Railways
   OUIGO_ES: 'ouigo.png',
 };
 
