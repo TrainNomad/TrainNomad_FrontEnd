@@ -79,6 +79,8 @@ export default function App() {
 
           {/* Anciennes URLs du site statique */}
           <Route path="/guide/guide.html" element={<LegacyGuideRedirect />} />
+          {/* cible de la redirection Render de /guide/guide.html (render.yaml) */}
+          <Route path="/guide/guide" element={<LegacyGuideRedirect />} />
           {Object.entries(LEGACY_PAGES).map(([from, to]) => (
             <Route key={from} path={from} element={<Navigate to={to} replace />} />
           ))}

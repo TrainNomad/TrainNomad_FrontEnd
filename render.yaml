@@ -1,14 +1,15 @@
-# Site statique trainnomad.eu sur Render (Blueprint). À défaut de Blueprint, reporter ces réglages
-# à la main dans le tableau de bord : Build Command, Publish Directory, Environment, Redirects/Rewrites, Headers.
+# Sites statiques TrainNomad sur Render (Blueprint) : le site réel et le site de test, construits à
+# partir du même code. Les deux services ont les mêmes réglages, hormis le déploiement automatique
+# et l'indexation par les moteurs de recherche.
 # Render n'applique pas les règles à une URL qui correspond à un fichier existant de dist/.
 services:
+  # ── Site réel : trainnomad.eu ────────────────────────────────────────────────
   - type: web
-    # Même nom que l'ancien site de test : l'adresse trainnomad-frontend.onrender.com est conservée
-    name: trainnomad-frontend
+    name: trainnomad-front
+    # Déploiement manuel uniquement (Manual Deploy dans Render), après validation sur le site de test.
+    # Les domaines trainnomad.eu et www.trainnomad.eu se rattachent dans Settings > Custom Domains.
+    autoDeploy: false
     runtime: static
-    # Se déploie à chaque push sur main. Une fois le domaine trainnomad.eu rattaché à ce service,
-    # passer à `false` pour ne mettre en ligne qu'à la main (Manual Deploy dans Render).
-    autoDeploy: true
     branch: main
     buildCommand: npx --yes pnpm@11.24.0 install --frozen-lockfile && npx --yes pnpm@11.24.0 build
     staticPublishPath: ./dist
@@ -36,7 +37,7 @@ services:
       - path: /*
         name: Referrer-Policy
         value: strict-origin-when-cross-origin
-    routes:
+    routes: &routes
       # Anciennes pages du site statique (redirections permanentes, conservent le référencement)
       - type: redirect
         source: /trajets.html
@@ -65,11 +66,53 @@ services:
       - type: redirect
         source: /404.html
         destination: /
-      # /guide/guide.html?ville=… : Render ne lit pas la query string, l'application redirige
-      # vers le guide s'il existe encore, sinon vers /guides (src/pages/LegacyRedirects.tsx).
-      - type: rewrite
+      # /guide/guide.html?ville=… : Render ne réécrit pas les URL avec extension (404) et ne lit pas
+      # la query string, mais la conserve en redirigeant. On redirige donc vers /guide/guide?ville=…,
+      # d'où l'application envoie vers le guide s'il existe encore, sinon vers /guides
+      # (src/pages/LegacyRedirects.tsx).
+      - type: redirect
         source: /guide/guide.html
-        destination: /index.html
+        destination: /guide/guide
       - type: rewrite
         source: /*
         destination: /index.html
+
+  # ── Site de test : trainnomad-frontend.onrender.com ──────────────────────────
+  - type: web
+    name: trainnomad-frontend
+    # Se déploie à chaque push sur main.
+    autoDeploy: true
+    runtime: static
+    branch: main
+    buildCommand: npx --yes pnpm@11.24.0 install --frozen-lockfile && npx --yes pnpm@11.24.0 build
+    staticPublishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # Clé MapTiler (fond de carte de l'explorateur) : à saisir dans le tableau de bord Render
+      - key: VITE_MAPTILER_KEY
+        sync: false
+    headers:
+      # index.html toujours revalidé : un nouveau déploiement est vu immédiatement
+      - path: /
+        name: Cache-Control
+        value: no-cache
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
+      # fichiers du build (nom avec empreinte) : cache long
+      - path: /build/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      # site de test : jamais indexé par les moteurs de recherche
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex
+    # mêmes redirections que le site réel
+    routes: *routes
