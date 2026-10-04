@@ -178,7 +178,7 @@ const BY_OPERATOR: Record<string, string> = {
   EUROSTAR: 'eurostar.png',
   RENFE: 'renfe.png',
   EUROPEAN_SLEEPER: 'european_sleeper.png',
-  NATIONAL_RAIL: 'SNCB.png',
+  NATIONAL_RAIL: '',
   TRENITALIA: 'trenitalia.png',
   ITALO: 'italo.png',
   CP: 'Comboios-de-Portugal.png',
