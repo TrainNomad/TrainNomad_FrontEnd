@@ -1,13 +1,13 @@
-# Sites statiques TrainNomad sur Render (Blueprint) : le site réel et le site de test, construits à
-# partir du même code. Les deux services ont les mêmes réglages, hormis le déploiement automatique
-# et l'indexation par les moteurs de recherche.
+# Site statique trainnomad.eu sur Render (Blueprint).
 # Render n'applique pas les règles à une URL qui correspond à un fichier existant de dist/.
+# Le site de test est un service à part, créé à la main dans Render (hors Blueprint) : même dépôt,
+# déploiement automatique, une seule règle de réécriture /* -> /index.html.
 services:
-  # ── Site réel : trainnomad.eu ────────────────────────────────────────────────
   - type: web
-    name: trainnomad-front
-    # Déploiement manuel uniquement (Manual Deploy dans Render), après validation sur le site de test.
-    # Les domaines trainnomad.eu et www.trainnomad.eu se rattachent dans Settings > Custom Domains.
+    name: trainnomad-frontend
+    # Site réel : déploiement manuel uniquement (Manual Deploy dans Render), après validation sur le
+    # site de test. Les domaines trainnomad.eu et www.trainnomad.eu se rattachent dans
+    # Settings > Custom Domains.
     autoDeploy: false
     runtime: static
     branch: main
@@ -37,7 +37,7 @@ services:
       - path: /*
         name: Referrer-Policy
         value: strict-origin-when-cross-origin
-    routes: &routes
+    routes:
       # Anciennes pages du site statique (redirections permanentes, conservent le référencement)
       - type: redirect
         source: /trajets.html
@@ -76,43 +76,3 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
-
-  # ── Site de test : trainnomad-frontend.onrender.com ──────────────────────────
-  - type: web
-    name: trainnomad-frontend
-    # Se déploie à chaque push sur main.
-    autoDeploy: true
-    runtime: static
-    branch: main
-    buildCommand: npx --yes pnpm@11.24.0 install --frozen-lockfile && npx --yes pnpm@11.24.0 build
-    staticPublishPath: ./dist
-    envVars:
-      - key: NODE_VERSION
-        value: "22"
-      # Clé MapTiler (fond de carte de l'explorateur) : à saisir dans le tableau de bord Render
-      - key: VITE_MAPTILER_KEY
-        sync: false
-    headers:
-      # index.html toujours revalidé : un nouveau déploiement est vu immédiatement
-      - path: /
-        name: Cache-Control
-        value: no-cache
-      - path: /index.html
-        name: Cache-Control
-        value: no-cache
-      # fichiers du build (nom avec empreinte) : cache long
-      - path: /build/*
-        name: Cache-Control
-        value: public, max-age=31536000, immutable
-      - path: /*
-        name: X-Content-Type-Options
-        value: nosniff
-      - path: /*
-        name: Referrer-Policy
-        value: strict-origin-when-cross-origin
-      # site de test : jamais indexé par les moteurs de recherche
-      - path: /*
-        name: X-Robots-Tag
-        value: noindex
-    # mêmes redirections que le site réel
-    routes: *routes
