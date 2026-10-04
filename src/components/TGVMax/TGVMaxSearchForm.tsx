@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { AutocompleteInput } from '../AutocompleteInput';
 import { DateRangePicker } from '../ui/DateRangePicker';
+import { SwapButton } from '../ui/SwapButton';
 import { I18nProvider } from 'react-aria-components';
 import { getLocalTimeZone, today as getToday, CalendarDate } from '@internationalized/date';
 import type { Station } from '../../types';
@@ -22,6 +23,18 @@ export function TGVMaxSearchForm() {
   const isRoundTrip = returnDate !== null;
   const isAnywhere = selectedTo?.id === ANYWHERE_ID;
   const isSearchEnabled = fromQuery.trim().length >= 2 && (isAnywhere || toQuery.trim().length >= 2);
+
+  // Inversion départ / arrivée : les champs sont remontés (key) avec leur nouvelle valeur initiale
+  const [swapKey, setSwapKey] = useState(0);
+  const canSwap = !isAnywhere && (fromQuery.trim() !== '' || toQuery.trim() !== '');
+  const handleSwap = useCallback(() => {
+    // Une gare choisie dans la liste garde son nom complet (la saisie, elle, peut être partielle : « par »)
+    setFromQuery(selectedTo?.name ?? toQuery);
+    setToQuery(selectedFrom?.name ?? fromQuery);
+    setSelectedFrom(selectedTo);
+    setSelectedTo(selectedFrom);
+    setSwapKey((k) => k + 1);
+  }, [fromQuery, toQuery, selectedFrom, selectedTo]);
 
   const handleDateChange = useCallback((depart: CalendarDate, retour: CalendarDate | null) => {
     setDepartDate(depart);
@@ -64,23 +77,32 @@ export function TGVMaxSearchForm() {
           {/* Départ */}
           <div>
             <AutocompleteInput
+              key={`from-${swapKey}`}
               id="tgvmax-input-from"
               label="Départ"
               placeholder="D'où partez-vous ?"
               icon="trip_origin"
+              initialValue={fromQuery}
               onSelect={setSelectedFrom}
               onQueryChange={setFromQuery}
             />
           </div>
 
-          {/* Arrivée */}
-          <div>
+          {/* Arrivée, avec le bouton d'inversion posé entre les deux champs */}
+          <div className="relative">
+            <SwapButton
+              onClick={handleSwap}
+              disabled={!canSwap}
+              className="absolute z-10 right-6 -top-2 -translate-y-1/2 rotate-90 hover:!text-[#F97316] hover:!border-[#F97316]"
+            />
             <AutocompleteInput
+              key={`to-${swapKey}`}
               id="tgvmax-input-to"
               label="Arrivée"
               placeholder="Où allez-vous ?"
               icon="location_on"
               withAnywhere
+              initialValue={toQuery}
               onSelect={setSelectedTo}
               onQueryChange={setToQuery}
             />

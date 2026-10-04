@@ -1,6 +1,7 @@
 // src/pages/Confidentialite.tsx
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { CONTACT_EMAIL, PUBLISHER_NAME } from '../lib/siteInfo';
+import { ANALYTICS_ENABLED, isOptedOut, setOptedOut } from '../lib/analytics';
 
 function Contact() {
   return CONTACT_EMAIL
@@ -11,6 +12,8 @@ function Contact() {
 const linkClass = 'text-[#1d7a5a] font-semibold underline';
 
 export default function Confidentialite() {
+  const [optedOut, setOptedOutState] = useState(isOptedOut);
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -52,8 +55,8 @@ export default function Confidentialite() {
               </div>
               <div className="text-center p-6">
                 <span className="material-symbols-outlined text-[#4ade80] text-4xl mb-3 block">visibility_off</span>
-                <p className="text-white font-extrabold text-lg mb-1">Pas de tracking</p>
-                <p className="text-slate-400 text-sm mb-0">Aucun cookie, aucune mesure d'audience</p>
+                <p className="text-white font-extrabold text-lg mb-1">Pas de pistage</p>
+                <p className="text-slate-400 text-sm mb-0">{ANALYTICS_ENABLED ? "Aucun cookie, statistiques d'audience anonymes" : "Aucun cookie, aucune mesure d'audience"}</p>
               </div>
               <div className="text-center p-6">
                 <span className="material-symbols-outlined text-[#4ade80] text-4xl mb-3 block">sell</span>
@@ -93,7 +96,10 @@ export default function Confidentialite() {
               <p>TrainNomad ne demande aucun compte, aucune inscription et aucun formulaire ne collecte votre nom ou votre adresse e-mail. Les seules données traitées sont les suivantes :</p>
               <ul>
                 <li><strong className="text-midnight">Journaux techniques des hébergeurs</strong> — adresse IP, date et heure, page ou ressource demandée, type de navigateur. Ils sont enregistrés automatiquement par Render, Cloudflare et Oracle pour assurer le fonctionnement et la sécurité du site (prévention des abus et des attaques).</li>
-                <li><strong className="text-midnight">Recherches</strong> — les gares et dates saisies sont envoyées aux API de TrainNomad pour calculer les trajets et afficher les disponibilités. Elles ne sont associées à aucune identité et ne sont pas conservées au-delà des journaux techniques de l'hébergeur.</li>
+                <li><strong className="text-midnight">Recherches</strong> — les gares et dates saisies sont envoyées aux API de TrainNomad pour calculer les trajets et afficher les disponibilités. Elles ne sont associées à aucune identité et ne sont pas conservées au-delà des journaux techniques de l'hébergeur{ANALYTICS_ENABLED && " et des statistiques d'audience décrites ci-dessous"}.</li>
+                {ANALYTICS_ENABLED && (
+                  <li><strong className="text-midnight">Mesure d'audience</strong> — le site utilise Umami pour compter les visites : page consultée, site de provenance, type d'appareil et de navigateur, langue, pays, ainsi que les villes de départ et d'arrivée des recherches (sans la date). Votre adresse IP sert uniquement à déduire le pays et à calculer un identifiant anonyme renouvelé chaque mois ; elle n'est pas enregistrée. Ces statistiques sont agrégées et ne permettent ni de vous identifier ni de vous suivre d'un site à l'autre.</li>
+                )}
                 <li><strong className="text-midnight">Fonds de carte</strong> — l'affichage de la carte d'exploration charge des tuiles auprès de MapTiler, qui reçoit à cette occasion votre adresse IP. La télémétrie de MapTiler est désactivée.</li>
               </ul>
               <p className="mt-2 mb-0"><span className="font-bold text-midnight">Base légale :</span> intérêt légitime de l'éditeur à fournir le service et à en assurer la sécurité (article 6.1.f du RGPD).</p>
@@ -107,8 +113,23 @@ export default function Confidentialite() {
                 </div>
                 <h2 className="text-2xl font-extrabold text-midnight">Cookies et stockage local</h2>
               </div>
-              <p>TrainNomad ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience, de publicité ou de suivi.</p>
-              <p className="mb-0">Pour accélérer l'autocomplétion, votre navigateur conserve en stockage local (localStorage, clé <code>stations_cache</code>) une copie de la liste des gares. Ce cache ne contient aucune donnée personnelle, reste sur votre appareil et peut être effacé à tout moment via les réglages de votre navigateur (suppression des données du site).</p>
+              {ANALYTICS_ENABLED
+                ? <p>TrainNomad ne dépose aucun cookie et n'utilise aucun outil de publicité. La mesure d'audience (Umami) fonctionne sans cookie et sans rien enregistrer sur votre appareil : aucun bandeau de consentement n'est donc affiché.</p>
+                : <p>TrainNomad ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience, de publicité ou de suivi.</p>}
+              <p className={ANALYTICS_ENABLED ? undefined : 'mb-0'}>Pour accélérer l'autocomplétion, votre navigateur conserve en stockage local (localStorage, clé <code>stations_cache</code>) une copie de la liste des gares. Ce cache ne contient aucune donnée personnelle, reste sur votre appareil et peut être effacé à tout moment via les réglages de votre navigateur (suppression des données du site).</p>
+              {ANALYTICS_ENABLED && (
+                <>
+                  <p>Vous pouvez refuser la mesure d'audience sur cet appareil. Ce choix est mémorisé dans le stockage local de votre navigateur (clé <code>umami.disabled</code>) ; le réglage « Ne pas me pister » de votre navigateur est également respecté.</p>
+                  <button
+                    type="button"
+                    onClick={() => { setOptedOut(!optedOut); setOptedOutState(!optedOut); }}
+                    className="bg-[#1A2B3C] hover:bg-[#1d7a5a] text-white font-bold py-3 px-6 rounded-xl transition-colors text-sm"
+                  >
+                    {optedOut ? "Réactiver la mesure d'audience" : "Désactiver la mesure d'audience"}
+                  </button>
+                  <p className="mt-3 mb-0 text-sm" aria-live="polite">{optedOut ? "Mesure d'audience désactivée sur cet appareil." : "Mesure d'audience active."}</p>
+                </>
+              )}
             </div>
 
             {/* 4. Destinataires et transferts */}
@@ -125,6 +146,9 @@ export default function Confidentialite() {
                 <li><strong className="text-midnight">Oracle France SAS</strong> (France, serveurs situés à Paris) — hébergement des API, <a href="https://www.oracle.com/fr/cloud/" target="_blank" rel="noopener noreferrer" className={linkClass}>oracle.com</a></li>
                 <li><strong className="text-midnight">Cloudflare, Inc.</strong> (États-Unis) — réseau de diffusion et protection du site, <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" className={linkClass}>cloudflare.com</a></li>
                 <li><strong className="text-midnight">MapTiler AG</strong> (Suisse) — fonds de carte de la carte d'exploration, <a href="https://www.maptiler.com" target="_blank" rel="noopener noreferrer" className={linkClass}>maptiler.com</a></li>
+                {ANALYTICS_ENABLED && (
+                  <li><strong className="text-midnight">Umami Software, Inc.</strong> (États-Unis) — mesure d'audience, données hébergées dans l'Union européenne, <a href="https://umami.is" target="_blank" rel="noopener noreferrer" className={linkClass}>umami.is</a></li>
+                )}
               </ul>
               <p className="mt-2 mb-0">Les transferts de données hors de l'Union européenne sont encadrés par le Data Privacy Framework UE–États-Unis pour Render et Cloudflare, et par la décision d'adéquation de la Commission européenne concernant la Suisse pour MapTiler.</p>
             </div>
@@ -137,7 +161,7 @@ export default function Confidentialite() {
                 </div>
                 <h2 className="text-2xl font-extrabold text-midnight">Durée de conservation</h2>
               </div>
-              <p className="mb-0">Les journaux techniques sont conservés pendant la durée définie par chaque hébergeur, puis supprimés automatiquement. L'éditeur ne constitue aucune base de données d'utilisateurs ni d'historique des recherches.</p>
+              <p className="mb-0">Les journaux techniques sont conservés pendant la durée définie par chaque hébergeur, puis supprimés automatiquement. L'éditeur ne constitue aucune base de données d'utilisateurs ni d'historique des recherches par personne.{ANALYTICS_ENABLED && " Les statistiques d'audience, anonymes, sont conservées six mois, puis supprimées."}</p>
             </div>
 
             {/* 6. Droits RGPD */}

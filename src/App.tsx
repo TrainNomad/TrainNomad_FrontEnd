@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -49,7 +49,13 @@ const TGVMAX_DESCRIPTION =
   'Repérez les trains TGV INOUI et Intercités avec des places MAX JEUNE / MAX SENIOR disponibles. Site indépendant, données SNCF Voyageurs.';
 
 export default function App() {
-  const isMapPage = useLocation().pathname.replace(/\/$/, '').endsWith('/explorer');
+  const { pathname } = useLocation();
+  const isMapPage = pathname.replace(/\/$/, '').endsWith('/explorer');
+
+  // Changement de page : on repart du haut (pas lors d'un simple changement de paramètres de recherche)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className="bg-white text-midnight font-display">

@@ -15,8 +15,7 @@ services:
         value: "22"
       # Clé MapTiler (fond de carte de l'explorateur) : à saisir dans le tableau de bord Render
       - key: VITE_MAPTILER_KEY
-        sync: false
-    headers:
+        sync: false    headers:
       # index.html toujours revalidé : un nouveau déploiement est vu immédiatement
       - path: /
         name: Cache-Control

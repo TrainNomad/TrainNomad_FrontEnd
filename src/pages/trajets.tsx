@@ -4,6 +4,7 @@ import CardTrajet from '../components/CardTrajets';
 import CardLoad from '../components/TripSkeleton';
 import JourneyFilters from '../components/JourneyFilters';
 import { useNetwork } from '../network/NetworkContext';
+import { track } from '../lib/analytics';
 import type { Journey, SearchResponse } from '../types/api';
 import { WakeUpNotice } from '../components/WakeUpNotice';
 
@@ -51,6 +52,12 @@ export default function Trajets() {
       });
       setAllTrips(data.journeys);
       setMeta({ from: data.from, to: data.to, next: data.next });
+      track('recherche-trajet', {
+        reseau: network.id,
+        de: data.from.name,
+        vers: data.to.name,
+        resultats: data.journeys.length,
+      });
     } catch (err) {
       console.error('Erreur lors de la récupération des trajets :', err);
       setError((err as Error).message || 'Impossible de contacter le serveur.');

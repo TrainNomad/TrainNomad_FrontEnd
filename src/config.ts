@@ -33,5 +33,9 @@ export const TGVMAX_API_URL = apiUrl(
 /** Clé MapTiler (fond de carte de l'explorateur). */
 export const MAPTILER_API_KEY = import.meta.env.VITE_MAPTILER_KEY || '';
 
+/** Mesure d'audience Umami Cloud (région Europe) : identifiant public du site et adresse du script. */
+export const UMAMI_WEBSITE_ID = import.meta.env.VITE_UMAMI_WEBSITE_ID || '88798394-67c9-408f-a7fc-f4b33c91ee57';
+export const UMAMI_SCRIPT_URL = import.meta.env.VITE_UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js';
+
 /** Nombre maximal de correspondances affichées sur la carte d'exploration. */
 export const EXPLORER_MAX_TRANSFERS = Number(import.meta.env.VITE_EXPLORER_MAX_TRANSFERS ?? 2);

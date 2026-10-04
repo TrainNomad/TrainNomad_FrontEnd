@@ -7,6 +7,7 @@ import { I18nProvider } from 'react-aria-components';
 import { getLocalTimeZone, today as getToday, CalendarDate } from '@internationalized/date';
 
 import { DateRangePicker } from './ui/DateRangePicker';
+import { SwapButton } from './ui/SwapButton';
 
 export default function SearchBox() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('europe');
@@ -38,6 +39,18 @@ export default function SearchBox() {
   const isAnywhere = selectedTo?.id === ANYWHERE_ID;
   const isSearchEnabled = fromQuery.trim().length >= 2 && (isAnywhere || toQuery.trim().length >= 2);
   const isCarteEnabled = carteFromQuery.trim().length >= 2;
+
+  // Inversion départ / arrivée : les champs sont remontés (key) avec leur nouvelle valeur initiale
+  const [swapKey, setSwapKey] = useState(0);
+  const canSwap = !isAnywhere && (fromQuery.trim() !== '' || toQuery.trim() !== '');
+  const handleSwap = useCallback(() => {
+    // Une gare choisie dans la liste garde son nom complet (la saisie, elle, peut être partielle : « par »)
+    setFromQuery(selectedTo?.name ?? toQuery);
+    setToQuery(selectedFrom?.name ?? fromQuery);
+    setSelectedFrom(selectedTo);
+    setSelectedTo(selectedFrom);
+    setSwapKey((k) => k + 1);
+  }, [fromQuery, toQuery, selectedFrom, selectedTo]);
 
   const goToExplorer = useCallback((from: string, fromName: string) => {
     const params = new URLSearchParams({ from, from_name: fromName, date: departDate.toString() });
@@ -99,23 +112,35 @@ export default function SearchBox() {
           {activeTab === 'europe' && (
             <div className="grid grid-cols-1 gap-0 relative md:grid-cols-[1fr_1fr_auto_auto]">
               <AutocompleteInput
+                key={`from-${swapKey}`}
                 id="input-from"
                 label="Départ"
                 placeholder="D'où partez-vous ?"
                 icon="trip_origin"
+                initialValue={fromQuery}
                 onSelect={setSelectedFrom}
                 onQueryChange={setFromQuery}
               />
 
-              <AutocompleteInput
-                id="input-to"
-                label="Arrivée"
-                placeholder="Où allez-vous ?"
-                icon="location_on"
-                withAnywhere
-                onSelect={setSelectedTo}
-                onQueryChange={setToQuery}
-              />
+              {/* Bouton d'inversion posé sur la limite entre les deux champs (au-dessus en mobile, à gauche sinon) */}
+              <div className="relative grid">
+                <AutocompleteInput
+                  key={`to-${swapKey}`}
+                  id="input-to"
+                  label="Arrivée"
+                  placeholder="Où allez-vous ?"
+                  icon="location_on"
+                  withAnywhere
+                  initialValue={toQuery}
+                  onSelect={setSelectedTo}
+                  onQueryChange={setToQuery}
+                />
+                <SwapButton
+                  onClick={handleSwap}
+                  disabled={!canSwap}
+                  className="absolute z-10 right-5 top-0 -translate-y-1/2 rotate-90 md:rotate-0 md:right-auto md:left-0 md:top-1/2 md:-translate-x-1/2"
+                />
+              </div>
 
               <div className="flex items-center border-r border-slate-100 relative">
                 <button

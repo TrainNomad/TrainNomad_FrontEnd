@@ -10,6 +10,9 @@ import '@fontsource/plus-jakarta-sans/700.css';
 import '@fontsource/plus-jakarta-sans/800.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import App from './App';
+import { initAnalytics } from './lib/analytics';
+
+initAnalytics();
 
 const container = document.getElementById('root');
 if (!container) throw new Error('Root element #root not found');

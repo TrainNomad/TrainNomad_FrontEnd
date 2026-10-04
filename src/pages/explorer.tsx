@@ -13,6 +13,7 @@ import type { SheetHeights, SheetSnap } from '../components/ui/BottomSheet';
 import { useNetwork } from '../network/NetworkContext';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { formatDate } from '../lib/format';
+import { track } from '../lib/analytics';
 
 // Téléphone : hauteur occupée en haut de la carte par la recherche repliée (marges comprises),
 // et hauteur de la feuille réduite (poignée + titre de la liste).
@@ -72,6 +73,11 @@ export default function Explorer() {
       setDate(data.date);
       setDestinations(data.destinations);
       setMaxDuration(defaultMaxDuration(data.destinations));
+      track('recherche-explorer', {
+        reseau: network.id,
+        de: data.from.name,
+        resultats: data.destinations.length,
+      });
     } catch (e) {
       console.error('[Explorer] fetch error:', e);
       setError((e as Error).message);
@@ -79,7 +85,7 @@ export default function Explorer() {
     } finally {
       setLoading(false);
     }
-  }, [api, network.explorerMaxTransfers]);
+  }, [api, network.id, network.explorerMaxTransfers]);
 
   const handleSearch = useCallback(
     ({ station, origin: from, date: day, time }: ExplorerSearchPayload) => {

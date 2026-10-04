@@ -7,6 +7,7 @@ import { I18nProvider } from 'react-aria-components';
 import { getLocalTimeZone, today as getToday, CalendarDate, parseDate } from '@internationalized/date';
 import { DateRangePicker } from './ui/DateRangePicker';
 import { useNetwork } from '../network/NetworkContext';
+import { SwapButton } from './ui/SwapButton';
 
 interface Props {
   onSearch: (data: {
@@ -78,6 +79,18 @@ export default function SearchBox({ onSearch }: Props) {
   const isAnywhere = selectedTo?.id === ANYWHERE_ID;
   const isSearchEnabled = fromQuery.trim().length >= 2 && (isAnywhere || toQuery.trim().length >= 2);
 
+  // Inversion départ / arrivée : les champs sont remontés (key) avec leur nouvelle valeur initiale
+  const [swapKey, setSwapKey] = useState(0);
+  const canSwap = !isAnywhere && (fromQuery.trim() !== '' || toQuery.trim() !== '');
+  const handleSwap = useCallback(() => {
+    // Une gare choisie dans la liste garde son nom complet (la saisie, elle, peut être partielle : « par »)
+    setFromQuery(selectedTo?.name ?? toQuery);
+    setToQuery(selectedFrom?.name ?? fromQuery);
+    setSelectedFrom(selectedTo);
+    setSelectedTo(selectedFrom);
+    setSwapKey((k) => k + 1);
+  }, [fromQuery, toQuery, selectedFrom, selectedTo]);
+
   const handleSearch = useCallback(() => {
     if (!isSearchEnabled) return;
     const origin = placeParam(selectedFrom, fromQuery);
@@ -112,7 +125,7 @@ export default function SearchBox({ onSearch }: Props) {
           {/* Départ */}
           <div className="flex-1 min-w-[180px] px-2 py-1">
             <AutocompleteInput
-              key={`from-${mountKey.current}`}
+              key={`from-${mountKey.current}-${swapKey}`}
               id="input-from"
               label="Départ"
               placeholder="Ville de départ"
@@ -123,12 +136,12 @@ export default function SearchBox({ onSearch }: Props) {
             />
           </div>
 
-          <div className="w-px bg-slate-100 my-1 hidden lg:block h-8"></div>
+          <SwapButton onClick={handleSwap} disabled={!canSwap} />
 
           {/* Arrivée */}
           <div className="flex-1 min-w-[180px] px-2 py-1">
             <AutocompleteInput
-              key={`to-${mountKey.current}`}
+              key={`to-${mountKey.current}-${swapKey}`}
               id="input-to"
               label="Arrivée"
               placeholder="Ville d'arrivée"

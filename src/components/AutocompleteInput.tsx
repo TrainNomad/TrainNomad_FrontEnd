@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Station } from '../types';
 import { ANYWHERE_ID } from '../types';
 import { useAutocomplete } from '../hooks/useAutocomplete';
@@ -34,14 +35,15 @@ export function AutocompleteInput({
 }: Props) {
   const ac = useAutocomplete(onSelect, withAnywhere);
 
-  // Sync initial value once
+  // initialValue n'est affiché que tant que le champ n'a pas été modifié (le parent le remonte via `key`)
+  const [touched, setTouched] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTouched(true);
     ac.handleInputChange(e.target.value);
     onQueryChange?.(e.target.value);
   };
 
-  // Use initialValue only once (controlled by parent via key if needed)
-  const displayValue = ac.query || (ac.query === '' ? initialValue : ac.query);
+  const displayValue = touched || ac.query ? ac.query : initialValue;
 
   // Entrée : la liste ouverte -> le hook sélectionne la suggestion active ;
   // la liste fermée -> on valide le formulaire parent.
