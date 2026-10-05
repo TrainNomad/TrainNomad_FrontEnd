@@ -2,10 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useGuideDetail } from '../hooks/useGuides';
 import { usePageMeta } from '../hooks/usePageMeta';
 import PhotoSpots from '../components/PhotoSpots';
-
-const FLAGS: Record<string, string> = {
-  FR: '', ES: '', PT: '', IT: '', DE: '', BE: '', NL: '', CH: '', GB: '', AT: '',
-};
+import { CountryFlag } from '../components/CountryFlag';
 
 const STEP_ICONS: Record<string, string> = {
   transport: 'fa-train', visit: 'fa-landmark', food: 'fa-utensils', leisure: 'fa-mug-hot',
@@ -49,7 +46,6 @@ export default function GuideDetailPage() {
     );
   }
 
-  const flag = FLAGS[guide.countryCode] || '';
 
   return (
     <>
@@ -61,7 +57,7 @@ export default function GuideDetailPage() {
           <div className="max-w-5xl mx-auto">
             <div className="flex flex-wrap items-center gap-2 mb-4">
               <span className="flex items-center gap-1.5 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-bold text-slate-700">
-                {flag && <span>{flag}</span>}
+                <CountryFlag code={guide.countryCode} className="h-3.5" />
                 <span>{guide.country}</span>
               </span>
               {guide.tags?.filter(tag => tag !== 'Gastronomie').map(tag => (

@@ -1,27 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { GuideDestination } from '../types';
+import { CountryFlag } from './CountryFlag';
 
 interface GuideCardProps {
   guide: GuideDestination;
 }
 
-const FLAGS: Record<string, string> = {
-  FR: '🇫🇷',
-  ES: '🇪🇸',
-  PT: '🇵🇹',
-  IT: '🇮🇹',
-  DE: '🇩🇪',
-  BE: '🇧🇪',
-  NL: '🇳🇱',
-  CH: '🇨🇭',
-  GB: '🇬🇧',
-  AT: '🇦🇹',
-};
-
 export function GuideCard({ guide }: GuideCardProps) {
   const [imgError, setImgError] = useState(false);
-  const flag = FLAGS[guide.countryCode] || '🏳️';
 
   return (
     <Link
@@ -39,12 +26,12 @@ export function GuideCard({ guide }: GuideCardProps) {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-200 to-slate-300">
-            <span className="text-4xl">{flag}</span>
+            <CountryFlag code={guide.countryCode} className="h-10" />
           </div>
         )}
 
         <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-bold text-slate-700 shadow-sm">
-          <span>{flag}</span>
+          <CountryFlag code={guide.countryCode} />
           <span>{guide.country}</span>
         </div>
 
@@ -71,7 +58,6 @@ export function GuideCard({ guide }: GuideCardProps) {
 
 export function GuideCardFeatured({ guide }: GuideCardProps) {
   const [imgError, setImgError] = useState(false);
-  const flag = FLAGS[guide.countryCode] || '🏳️';
 
   return (
     <Link
@@ -89,7 +75,7 @@ export function GuideCardFeatured({ guide }: GuideCardProps) {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-700 to-slate-800">
-              <span className="text-6xl">{flag}</span>
+              <CountryFlag code={guide.countryCode} className="h-14" />
             </div>
           )}
           <div className="absolute top-4 left-4">
