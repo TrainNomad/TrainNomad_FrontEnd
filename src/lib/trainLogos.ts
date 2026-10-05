@@ -135,6 +135,18 @@ const BY_TYPE: Record<string, string> = {
   'SBB S-Bahn': 'sbb.png',
   'SBB Nightjet': 'nightjet.png',
 
+  // --- SNCB/NMBS Belgique ---
+  'SNCB InterCity': 'SNCB.png',
+  'SNCB Local': 'SNCB.png',
+  'SNCB Heure de pointe': 'SNCB.png',
+  'SNCB S-Train': 'SNCB.png',
+  'SNCB Touristique': 'SNCB.png',
+  'SNCB Extra': 'SNCB.png',
+  'SNCB Train': 'SNCB.png',
+  'SNCB EuroCity': 'eurocity.png',
+  'SNCB ICE': 'ice.png',
+  'SNCB Nightjet': 'nightjet.png',
+
   // --- National Rail (UK Operators by Name) ---
   'Transport for Wales': 'transport_for_wales.png',
   c2c: 'c2c.png',
@@ -184,6 +196,7 @@ const BY_OPERATOR: Record<string, string> = {
   CP: 'Comboios-de-Portugal.png',
   SWISS: 'SBB.png', // SBB/CFF/FFS Swiss Railways
   OUIGO_ES: 'ouigo.png',
+  SNCB: 'SNCB.png',
 };
 
 /** Chemin du logo, ou null si aucun logo n'est disponible (afficher alors le nom du train). */
