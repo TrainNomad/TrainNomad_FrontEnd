@@ -130,10 +130,11 @@ export default function CommentCaMarche() {
                 <li><strong className="text-midnight">France</strong> — SNCF Voyageurs (TGV INOUI, OUIGO, Intercités, TER)</li>
                 <li><strong className="text-midnight">Espagne et Portugal</strong> — Renfe, Ouigo España, CP</li>
                 <li><strong className="text-midnight">Italie</strong> — Trenitalia et Italo</li>
+                <li><strong className="text-midnight">Belgique</strong> — SNCB (InterCity, trains L, P et S, EuroCity)</li>
                 <li><strong className="text-midnight">Suisse et Royaume-Uni</strong> — données nationales suisses, National Rail</li>
                 <li><strong className="text-midnight">Trains internationaux</strong> — Eurostar, European Sleeper</li>
               </ul>
-              <p className="mt-2 mb-0">Les réseaux intérieurs d'autres pays (Allemagne, Belgique, Pays-Bas, Autriche…) ne sont pas intégrés : ces pays ne sont desservis sur le site que par les trains des opérateurs ci-dessus. La liste complète des sources et de leurs licences figure dans les <Link to="/mentions-legales" className={linkClass}>mentions légales</Link>.</p>
+              <p className="mt-2 mb-0">Les réseaux intérieurs d'autres pays (Allemagne, Pays-Bas, Autriche…) ne sont pas intégrés : ces pays ne sont desservis sur le site que par les trains des opérateurs ci-dessus. La liste complète des sources et de leurs licences figure dans les <Link to="/mentions-legales" className={linkClass}>mentions légales</Link>.</p>
             </Section>
 
             {/* 2. Assemblage */}

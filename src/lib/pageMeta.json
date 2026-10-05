@@ -70,7 +70,7 @@
     "description": "D'où viennent les données de TrainNomad, comment les trajets et les places TGVmax sont calculés, et ce que le site ne sait pas faire.",
     "heading": "Comment ça marche",
     "intro": [
-      "TrainNomad réutilise les horaires ouverts publiés par les opérateurs ferroviaires : SNCF Voyageurs, Renfe, Ouigo España, CP, Trenitalia, Italo, les données nationales suisses, National Rail, Eurostar et European Sleeper. Ils sont réunis en un seul réseau, réassemblé chaque semaine.",
+      "TrainNomad réutilise les horaires ouverts publiés par les opérateurs ferroviaires : SNCF Voyageurs, Renfe, Ouigo España, CP, Trenitalia, Italo, SNCB, les données nationales suisses, National Rail, Eurostar et European Sleeper. Ils sont réunis en un seul réseau, réassemblé chaque semaine.",
       "Les trajets sont calculés avec RAPTOR, un algorithme public conçu pour les transports en commun, jusqu'à six correspondances. Une correspondance demande au moins 10 minutes dans la même gare, 15 dans les grandes gares.",
       "Les places TGVmax viennent du jeu de données ouvert de SNCF Voyageurs, publié chaque matin. La disponibilité dépend du trajet demandé et non du train : quand un trajet est complet, le site peut proposer deux billets MAX dans le même train, avec un simple changement de siège à un arrêt intermédiaire.",
       "Chaque trajet affiche une estimation de ses émissions de CO₂e, comparée à la voiture ou, au-delà de 700 km, à l'avion, à partir des facteurs d'émission de l'ADEME (Impact CO2).",

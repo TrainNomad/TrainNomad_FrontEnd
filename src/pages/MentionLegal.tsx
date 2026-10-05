@@ -88,7 +88,7 @@ export default function MentionsLegales() {
                 <h2 className="text-2xl font-extrabold text-midnight">Objet du site</h2>
               </div>
               <p>TrainNomad est un site d'information gratuit d'aide à la planification de voyages en train en Europe. Il propose une recherche d'itinéraires, un outil de consultation des places TGVmax (MAX JEUNE / MAX SENIOR) disponibles, une carte d'exploration des destinations et des guides de villes.</p>
-              <p>Les données couvrent principalement la France, l'Espagne, le Portugal, l'Italie, la Suisse et le Royaume-Uni, ainsi que la Belgique, les Pays-Bas et l'Allemagne via les trains internationaux (Eurostar, European Sleeper).</p>
+              <p>Les données couvrent principalement la France, la Belgique, l'Espagne, le Portugal, l'Italie, la Suisse et le Royaume-Uni, ainsi que les Pays-Bas et l'Allemagne via les trains internationaux (Eurostar, European Sleeper, EuroCity, ICE).</p>
               <div className="bg-white rounded-2xl p-6 border border-[#4ade80]/30 mt-4">
                 <p className="text-[#1d7a5a] font-bold mb-1">⚠ Important</p>
                 <p className="mb-0">TrainNomad est un site indépendant, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire. Le site ne vend aucun billet et n'effectue aucune réservation. La réservation se fait auprès de l'opérateur concerné ou d'un distributeur agréé.</p>
@@ -111,6 +111,7 @@ export default function MentionsLegales() {
                 <li><strong className="text-midnight">Ouigo España</strong> — données ouvertes publiées via le Punto de Acceso Nacional espagnol, <a href="https://nap.transportes.gob.es" target="_blank" rel="noopener noreferrer" className={linkClass}>nap.transportes.gob.es</a></li>
                 <li><strong className="text-midnight">Trenitalia et Italo</strong> — données ouvertes publiées via le Punto di Accesso Nazionale italien</li>
                 <li><strong className="text-midnight">CP – Comboios de Portugal</strong> — données ouvertes publiées par CP</li>
+                <li><strong className="text-midnight">SNCB / NMBS</strong> — données ouvertes (GTFS) publiées par la SNCB, <a href="https://www.belgiantrain.be" target="_blank" rel="noopener noreferrer" className={linkClass}>belgiantrain.be</a></li>
                 <li><strong className="text-midnight">Suisse</strong> — données ouvertes publiées sur <a href="https://opentransportdata.swiss" target="_blank" rel="noopener noreferrer" className={linkClass}>opentransportdata.swiss</a></li>
                 <li><strong className="text-midnight">Royaume-Uni</strong> — données ouvertes publiées par National Rail Enquiries</li>
                 <li><strong className="text-midnight">Eurostar</strong> — données ouvertes publiées par Eurostar</li>

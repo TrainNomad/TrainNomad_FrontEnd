@@ -13,7 +13,7 @@
   },
   {
     "question": "Quels pays et quels trains sont couverts ?",
-    "answer": "Les trains de SNCF Voyageurs (TGV INOUI, OUIGO, Intercités, TER), de Renfe, Ouigo España et CP, de Trenitalia et Italo, les réseaux suisse et britannique, ainsi qu'Eurostar et European Sleeper. Les réseaux intérieurs d'autres pays, comme l'Allemagne, la Belgique ou les Pays-Bas, ne sont pas intégrés : ces pays ne sont desservis que par les trains des opérateurs cités."
+    "answer": "Les trains de SNCF Voyageurs (TGV INOUI, OUIGO, Intercités, TER), de Renfe, Ouigo España et CP, de Trenitalia et Italo, de la SNCB (Belgique), les réseaux suisse et britannique, ainsi qu'Eurostar et European Sleeper. Les réseaux intérieurs d'autres pays, comme l'Allemagne, les Pays-Bas ou l'Autriche, ne sont pas intégrés : ces pays ne sont desservis que par les trains des opérateurs cités."
   },
   {
     "question": "Les horaires sont-ils fiables et à jour ?",
