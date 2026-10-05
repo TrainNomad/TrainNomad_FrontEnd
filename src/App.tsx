@@ -12,6 +12,7 @@ import { NetworkScope } from './network/NetworkContext';
 import { usePageMeta } from './hooks/usePageMeta';
 import { LEGACY_PAGES, LegacyGuideRedirect } from './pages/LegacyRedirects';
 import NotFound from './pages/NotFound';
+import PAGE_META from './lib/pageMeta.json';
 import './styles/global.css';
 
 // Pages chargées à la demande : la carte (Leaflet, MapTiler) et les pages secondaires
@@ -27,7 +28,7 @@ const TGVMaxPage = lazy(() => import('./pages/tgvmax'));
 const Explorer = lazy(() => import('./pages/explorer'));
 
 function HomePage() {
-  usePageMeta();
+  usePageMeta(undefined, PAGE_META['/'].description);
   return (
     <>
       <HeroSection />
@@ -39,14 +40,15 @@ function HomePage() {
   );
 }
 
-/** Titre de l'onglet et description de la page. */
-function Page({ title, description, children }: { title: string; description?: string; children: ReactNode }) {
+/**
+ * Titre de l'onglet et description de la page, lus dans src/lib/pageMeta.json
+ * (même source que les pages HTML générées par scripts/prerender.mjs).
+ */
+function Page({ path, children }: { path: Exclude<keyof typeof PAGE_META, '/'>; children: ReactNode }) {
+  const { title, description } = PAGE_META[path];
   usePageMeta(title, description);
   return <>{children}</>;
 }
-
-const TGVMAX_DESCRIPTION =
-  'Repérez les trains TGV INOUI et Intercités avec des places MAX JEUNE / MAX SENIOR disponibles. Site indépendant, données SNCF Voyageurs.';
 
 export default function App() {
   const { pathname } = useLocation();
@@ -63,19 +65,19 @@ export default function App() {
       <Suspense fallback={<div className="min-h-[60vh]" />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/trajets" element={<Page title="Trajets en train"><Trajets /></Page>} />
-          <Route path="/explorer" element={<Page title="Explorer l'Europe en train"><Explorer /></Page>} />
+          <Route path="/trajets" element={<Page path="/trajets"><Trajets /></Page>} />
+          <Route path="/explorer" element={<Page path="/explorer"><Explorer /></Page>} />
           {/* TGVmax : mêmes pages et composants, API et couleurs du réseau TGVmax */}
-          <Route path="/tgvmax" element={<Page title="Places TGVmax disponibles" description={TGVMAX_DESCRIPTION}><NetworkScope network="tgvmax"><TGVMaxPage /></NetworkScope></Page>} />
-          <Route path="/tgvmax/trajets" element={<Page title="Trajets TGVmax" description={TGVMAX_DESCRIPTION}><NetworkScope network="tgvmax"><Trajets /></NetworkScope></Page>} />
-          <Route path="/tgvmax/explorer" element={<Page title="Où partir avec TGVmax ?" description={TGVMAX_DESCRIPTION}><NetworkScope network="tgvmax"><Explorer /></NetworkScope></Page>} />
-          <Route path="/guides" element={<Page title="Guides de voyage en train"><GuidesPage /></Page>} />
+          <Route path="/tgvmax" element={<Page path="/tgvmax"><NetworkScope network="tgvmax"><TGVMaxPage /></NetworkScope></Page>} />
+          <Route path="/tgvmax/trajets" element={<Page path="/tgvmax/trajets"><NetworkScope network="tgvmax"><Trajets /></NetworkScope></Page>} />
+          <Route path="/tgvmax/explorer" element={<Page path="/tgvmax/explorer"><NetworkScope network="tgvmax"><Explorer /></NetworkScope></Page>} />
+          <Route path="/guides" element={<Page path="/guides"><GuidesPage /></Page>} />
           {/* le titre est posé par la page elle-même, avec le nom de la ville */}
           <Route path="/guides/:slug" element={<GuideDetailPage />} />
-          <Route path="/a-propos" element={<Page title="À propos"><AboutPage /></Page>} />
-          <Route path="/conditions" element={<Page title="Conditions d'utilisation"><Conditions /></Page>} />
-          <Route path="/confidentialite" element={<Page title="Confidentialité"><Confidentialites /></Page>} />
-          <Route path="/mentions-legales" element={<Page title="Mentions légales"><MentionLegal /></Page>} />
+          <Route path="/a-propos" element={<Page path="/a-propos"><AboutPage /></Page>} />
+          <Route path="/conditions" element={<Page path="/conditions"><Conditions /></Page>} />
+          <Route path="/confidentialite" element={<Page path="/confidentialite"><Confidentialites /></Page>} />
+          <Route path="/mentions-legales" element={<Page path="/mentions-legales"><MentionLegal /></Page>} />
 
           {/* Anciennes URLs du site statique */}
           <Route path="/guide/guide.html" element={<LegacyGuideRedirect />} />

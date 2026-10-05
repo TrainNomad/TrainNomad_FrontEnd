@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { formatDateShort } from '../../lib/format';
 import { AutocompleteInput } from '../AutocompleteInput';
 import { DateRangePicker } from '../ui/DateRangePicker';
 import { SwapButton } from '../ui/SwapButton';
@@ -123,13 +124,13 @@ export function TGVMaxSearchForm() {
                 </span>
                 <div className="flex items-center gap-2">
                   <span className="font-bold text-base text-slate-900">
-                    {departDate.toString()}
+                    {formatDateShort(departDate.toString())}
                   </span>
                   {isRoundTrip && returnDate && (
                     <>
                       <span className="text-slate-400">→</span>
                       <span className="font-bold text-base text-[#F97316]">
-                        {returnDate.toString()}
+                        {formatDateShort(returnDate.toString())}
                       </span>
                       <button
                         onClick={clearReturnDate}

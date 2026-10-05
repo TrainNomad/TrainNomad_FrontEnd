@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 
 const NAV_LINKS = [
   { label: 'À propos', href: '/a-propos' },
-  { label: 'Destinations', href: '/trajets' },
+  { label: 'Voyager', href: '/trajets' },
   { label: 'Explorer', href: '/explorer' },
   { label: 'Guides', href: '/guides' },
-  { label: 'Outils TGVMax', href: '/tgvmax' },
+  { label: 'Outils TGVmax', href: '/tgvmax' },
 ];
 
 // Aussi affichés dans le menu mobile de la Navbar : ils restent accessibles sur les pages

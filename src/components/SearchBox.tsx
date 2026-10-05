@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { formatDateShort } from '../lib/format';
 import { AutocompleteInput } from './AutocompleteInput';
 import type { ActiveTab, Station } from '../types';
 import { ANYWHERE_ID, placeParam } from '../types';
@@ -156,13 +157,13 @@ export default function SearchBox() {
                     </span>
                     <div className="flex items-center gap-2">
                       <span className="font-bold text-base text-midnight">
-                        {departDate.toString()}
+                        {formatDateShort(departDate.toString())}
                       </span>
                       {isRoundTrip && returnDate && (
                         <>
                           <span className="text-slate-400">→</span>
                           <span className="font-bold text-base text-primary">
-                            {returnDate.toString()}
+                            {formatDateShort(returnDate.toString())}
                           </span>
                           <button
                             onClick={clearReturnDate}
@@ -226,7 +227,7 @@ export default function SearchBox() {
                       calendar_month
                     </span>
                     <span className="text-midnight font-bold text-lg">
-                      {departDate.toString()}
+                      {formatDateShort(departDate.toString())}
                     </span>
                   </div>
                 </button>

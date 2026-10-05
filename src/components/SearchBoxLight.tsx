@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { formatDateShort } from '../lib/format';
 import { AutocompleteInput } from './AutocompleteInput';
 import type { Station } from '../types';
 import { ANYWHERE_ID, placeParam } from '../types';
@@ -169,13 +170,13 @@ export default function SearchBox({ onSearch }: Props) {
                   <i className="fa-regular fa-calendar fa-xs" aria-hidden="true" />
                 </span>
                 <span className="text-sm font-semibold text-slate-900">
-                  {departDate.toString()}
+                  {formatDateShort(departDate.toString())}
                 </span>
                 {isRoundTrip && returnDate && (
                   <>
                     <span className="text-slate-400 text-xs">→</span>
                     <span className="text-sm font-semibold text-primary">
-                      {returnDate.toString()}
+                      {formatDateShort(returnDate.toString())}
                     </span>
                     <button
                       onClick={clearReturnDate}

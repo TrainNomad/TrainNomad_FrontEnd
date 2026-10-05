@@ -201,6 +201,7 @@ function MapContent({
     // valait donc undefined).
     const mtLayer = new MaptilerLayer({
       apiKey: MAPTILER_API_KEY,
+      language: 'fr',
     });
     mtLayer.addTo(map);
     return () => {

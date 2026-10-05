@@ -50,7 +50,7 @@ export function EuropeSection() {
             Les trajets actuellement disponibles
           </h3>
           <p className="text-slate-300 text-sm leading-relaxed">
-            Parcourez les lignes déjà intégrées sur TrainNomad. De nouvelles liaisons et métropoles s'ajouteront progressivement à la carte.
+            Parcourez les lignes intégrées sur TrainNomad, d'un pays à l'autre.
           </p>
         </div>
 

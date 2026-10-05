@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-icons.mjs && node scripts/sitemap.mjs && tsc && vite build",
+    "build": "node scripts/check-icons.mjs && node scripts/sitemap.mjs && tsc && vite build && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

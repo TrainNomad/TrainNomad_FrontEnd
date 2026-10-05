@@ -25,7 +25,7 @@ export default function TGVMaxPage() {
             <div>
               <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-[1.1]">
                 Les places à{' '}
-                <span className="text-[#F97316]">o€</span>
+                <span className="text-[#F97316]">0 €</span>
                 <br />
                 sont là.
               </h1>

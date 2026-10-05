@@ -35,3 +35,9 @@ export function formatDate(iso: string): string {
     timeZone: 'UTC',
   });
 }
+
+/** "2026-10-05" -> "lun. 5 oct." (date choisie dans les formulaires de recherche) */
+export function formatDateShort(iso: string): string {
+  const d = new Date(`${iso.slice(0, 10)}T12:00:00Z`);
+  return d.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+}

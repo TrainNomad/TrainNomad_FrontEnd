@@ -1,15 +1,44 @@
 // src/pages/About.tsx
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { API_BASE_URL } from '../config';
+
+/** Statistiques de compilation du réseau, renvoyées par /health de l'API de routage. */
+interface NetworkStats {
+  cities: number;
+  stops: number;
+  trips: number;
+  routes: number;
+}
+
+const formatCount = (n: number) => n.toLocaleString('fr-FR');
+
 export default function AboutPage() {
+  const [stats, setStats] = useState<NetworkStats | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch(`${API_BASE_URL}/health`, { signal: controller.signal })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.build?.stops) setStats(data.build);
+      })
+      .catch(() => {
+        // API injoignable : la section des chiffres n'est pas affichée
+      });
+    return () => controller.abort();
+  }, []);
+
   return (
     <>
       {/* HERO SECTION (Centré) */}
       <section className="relative z-20 pt-24 pb-16 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
-            Goulven <span className="text-[#1d7a5a]">ROBIN</span>
+            À propos de <span className="text-[#1d7a5a]">TrainNomad</span>
           </h1>
           <p className="text-xl text-slate-700 max-w-2xl mx-auto font-semibold mb-6">
-            Créateur et développeur de TrainNomad
+            Créé et développé par Goulven Robin
           </p>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             À 24 ans, entre mes racines bretonnes et ma conviction que le voyage de demain doit simplifier notre façon de traverser les frontières, j'ai imaginé TrainNomad. Un outil que j'ai développé de zéro en solo, de la conception initiale jusqu'à l'expérience utilisateur finale.
@@ -43,29 +72,26 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* STATS SECTION (Centré) */}
-      <section className="py-16 bg-white border-y border-slate-100">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="p-4">
-              <div className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">6 662</div>
-              <div className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wider">Villes desservies</div>
-            </div>
-            <div className="p-4">
-              <div className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">7 058</div>
-              <div className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wider">Gares référencées</div>
-            </div>
-            <div className="p-4">
-              <div className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">264k+</div>
-              <div className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wider">Trajets unifiés</div>
-            </div>
-            <div className="p-4">
-              <div className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">34k+</div>
-              <div className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wider">Lignes (Routes)</div>
+      {/* STATS SECTION (Centré) : chiffres du réseau chargé par l'API, à jour à chaque import des horaires */}
+      {stats && (
+        <section className="py-16 bg-white border-y border-slate-100">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {[
+                { value: stats.cities, label: 'Villes desservies' },
+                { value: stats.stops, label: 'Gares référencées' },
+                { value: stats.trips, label: 'Circulations de trains' },
+                { value: stats.routes, label: 'Lignes' },
+              ].map((stat) => (
+                <div key={stat.label} className="p-4">
+                  <div className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2">{formatCount(stat.value)}</div>
+                  <div className="text-xs md:text-sm font-semibold text-slate-500 uppercase tracking-wider">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* EUROPE & CORRESPONDENCES SECTION (Centré) */}
       <section className="py-20 bg-slate-50">
@@ -86,7 +112,7 @@ export default function AboutPage() {
               <div className="text-4xl mb-4">♻️</div>
               <h3 className="text-xl font-bold mb-3 text-slate-900">Durabilité</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Promouvoir une mobilité bas carbone et responsable. Le train émet 90% moins de CO₂ que l'avion.
+                Promouvoir une mobilité bas carbone et responsable : le train reste le mode de transport le plus sobre sur les longues distances.
               </p>
             </div>
 
@@ -101,10 +127,10 @@ export default function AboutPage() {
 
             {/* Card 3 */}
             <div className="bg-white rounded-2xl p-8 shadow-sm flex flex-col items-center text-center">
-              <div className="text-4xl mb-4">🛒</div>
-              <h3 className="text-xl font-bold mb-3 text-slate-900">Le Panier de Voyage</h3>
+              <div className="text-4xl mb-4">🧭</div>
+              <h3 className="text-xl font-bold mb-3 text-slate-900">Indépendance</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Une volonté unique de créer un véritable panier de voyage : piochez des trajets et composez votre périple sur-mesure.
+                Un site gratuit, sans inscription et sans lien avec les opérateurs, construit sur des données ouvertes.
               </p>
             </div>
           </div>
@@ -119,10 +145,10 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
             <p>
-              Actuellement étudiant aux Arts et Métiers à Angers (76 An 224), ma formation d'ingénieur m'a apporté la rigueur indispensable pour donner vie à ce projet.
+              Actuellement étudiant aux Arts et Métiers à Angers, ma formation d'ingénieur m'a apporté la rigueur indispensable pour donner vie à ce projet.
             </p>
             <p>
-              Le transport aérien intra-européen a normalisé une aberration écologique et une complexité de voyage subie. Notre vision est de prouver que le train n'est pas seulement une alternative par dépit, mais qu'il est infiniment plus inspirant pour redécouvrir le temps long : là où l'avion isole le voyageur dans le vide, le train transforme chaque fenêtre en un cadre photographique vivant, au plus près des territoires.
+              Le transport aérien intra-européen a normalisé une aberration écologique et une complexité de voyage subie. Ma vision est de prouver que le train n'est pas seulement une alternative par dépit, mais qu'il est infiniment plus inspirant pour redécouvrir le temps long : là où l'avion isole le voyageur dans le vide, le train transforme chaque fenêtre en un cadre photographique vivant, au plus près des territoires.
             </p>
             <p>
               Alors, ouvrez votre livre, savourez un café avec une généreuse madeleine, et apprêtez-vous à voyager autrement. Bon voyage !
@@ -142,18 +168,18 @@ export default function AboutPage() {
             Planifiez votre prochain trajet ferroviaire dès maintenant.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <a
-              href="/trajets"
+            <Link
+              to="/trajets"
               className="px-8 py-3 bg-white text-slate-950 font-bold rounded-full hover:bg-slate-100 transition-colors shadow-lg"
             >
               Chercher un trajet
-            </a>
-            <a
-              href="/explorer"
+            </Link>
+            <Link
+              to="/explorer"
               className="px-8 py-3 border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-colors"
             >
               Explorer la carte
-            </a>
+            </Link>
           </div>
         </div>
       </section>

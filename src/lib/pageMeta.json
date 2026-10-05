@@ -1,0 +1,91 @@
+{
+  "/": {
+    "title": "",
+    "description": "Trouvez vos trajets en train en Europe, explorez les destinations sur une carte et repérez les places TGVmax disponibles. Site indépendant, aucun billet vendu.",
+    "heading": "La voie vers l'Europe.",
+    "intro": [
+      "Itinéraires inspirants, correspondances entre réseaux et places TGVmax disponibles : tout ce qu'il faut pour préférer le rail, sans se compliquer le voyage.",
+      "TrainNomad calcule des trajets en train avec correspondances entre villes et gares d'Europe, affiche sur une carte les destinations accessibles depuis une gare, repère les places MAX JEUNE et MAX SENIOR disponibles et propose des guides de villes."
+    ]
+  },
+  "/trajets": {
+    "title": "Trajets en train",
+    "description": "Recherchez un trajet en train en Europe : horaires, durées et correspondances entre les réseaux de plusieurs pays, sans inscription.",
+    "heading": "Trajets en train en Europe",
+    "intro": [
+      "Saisissez une ville ou une gare de départ et d'arrivée : TrainNomad calcule les itinéraires en train, avec les correspondances entre opérateurs et entre pays.",
+      "Les horaires proviennent de données ouvertes mises à jour chaque jour. Ils sont indicatifs : seule la réservation auprès de l'opérateur fait foi."
+    ]
+  },
+  "/explorer": {
+    "title": "Explorer l'Europe en train",
+    "description": "Choisissez une gare de départ et découvrez sur une carte toutes les destinations accessibles en train, classées par durée de trajet.",
+    "heading": "Explorer l'Europe en train",
+    "intro": [
+      "Saisissez une gare de départ pour découvrir sur une carte toutes les destinations accessibles en train, avec la durée du trajet et le nombre de correspondances."
+    ]
+  },
+  "/tgvmax": {
+    "title": "Places TGVmax disponibles",
+    "description": "Repérez les trains TGV INOUI et Intercités avec des places MAX JEUNE / MAX SENIOR disponibles. Site indépendant, données SNCF Voyageurs.",
+    "heading": "Les places TGVmax disponibles",
+    "intro": [
+      "Repérez les trains TGV INOUI et Intercités sur lesquels il reste des places MAX JEUNE ou MAX SENIOR, d'après les données ouvertes de SNCF Voyageurs mises à jour chaque matin.",
+      "Quand le trajet direct affiche complet, le moteur combine deux billets MAX dans le même train : vous changez simplement de siège à un arrêt intermédiaire.",
+      "Site indépendant, sans lien avec SNCF Voyageurs. TGVmax, MAX JEUNE et MAX SENIOR sont des marques de SNCF Voyageurs."
+    ]
+  },
+  "/tgvmax/trajets": {
+    "title": "Trajets TGVmax",
+    "description": "Repérez les trains TGV INOUI et Intercités avec des places MAX JEUNE / MAX SENIOR disponibles. Site indépendant, données SNCF Voyageurs.",
+    "prerender": false
+  },
+  "/tgvmax/explorer": {
+    "title": "Où partir avec TGVmax ?",
+    "description": "Choisissez une gare de départ et découvrez sur une carte les destinations où il reste des places MAX JEUNE / MAX SENIOR.",
+    "heading": "Où partir avec TGVmax ?",
+    "intro": [
+      "Saisissez une gare de départ pour voir sur une carte toutes les destinations avec des places TGVmax disponibles."
+    ]
+  },
+  "/guides": {
+    "title": "Guides de voyage en train",
+    "description": "Guides de villes à rejoindre en train : quoi voir, itinéraires jour par jour et conseils pratiques pour un week-end en Europe.",
+    "heading": "Guides de voyage en train",
+    "intro": [
+      "Des guides de villes à rejoindre en train : incontournables, itinéraires jour par jour et conseils pratiques pour préparer un week-end en Europe."
+    ]
+  },
+  "/a-propos": {
+    "title": "À propos",
+    "description": "TrainNomad est un site indépendant et gratuit pour préparer un voyage en train en Europe, créé et développé par Goulven Robin.",
+    "heading": "À propos de TrainNomad",
+    "intro": [
+      "TrainNomad est un site indépendant, gratuit et sans inscription, créé et développé par Goulven Robin. Né autour de l'abonnement TGVmax, il s'est élargi aux trajets en train à travers l'Europe, avec de véritables correspondances entre compagnies."
+    ]
+  },
+  "/conditions": {
+    "title": "Conditions d'utilisation",
+    "description": "Conditions d'utilisation de TrainNomad : nature du service, exactitude des données, usage autorisé.",
+    "heading": "Conditions d'utilisation",
+    "intro": [
+      "TrainNomad est un site d'information indépendant, gratuit et accessible sans inscription. Il ne vend aucun billet et n'effectue aucune réservation. Les horaires et disponibilités sont indicatifs."
+    ]
+  },
+  "/confidentialite": {
+    "title": "Confidentialité",
+    "description": "Politique de confidentialité de TrainNomad : aucun compte, aucun cookie, aucune donnée vendue.",
+    "heading": "Politique de confidentialité",
+    "intro": [
+      "TrainNomad fonctionne sans compte, ne dépose aucun cookie et ne vend aucune donnée. Cette page décrit les données traitées lors de l'utilisation du site et vos droits."
+    ]
+  },
+  "/mentions-legales": {
+    "title": "Mentions légales",
+    "description": "Mentions légales de TrainNomad : éditeur, hébergement, sources des données et licences.",
+    "heading": "Mentions légales",
+    "intro": [
+      "Éditeur, hébergement, sources des données ouvertes réutilisées par TrainNomad et leurs licences."
+    ]
+  }
+}

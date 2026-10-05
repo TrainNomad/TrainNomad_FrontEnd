@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import type { Destination } from '../types';
 
 const DESTINATIONS_PATH = '/assets/Destinations';
@@ -47,9 +47,6 @@ const DESTINATIONS: Destination[] = [
 ];
 
 export function DestinationsSection() {
-  const navigate = useNavigate();
-  const handleCardClick = (href: string) => navigate(href);
-
   return (
     <section className="bg-transparent py-16">
       <div className="max-w-7xl mx-auto px-6">
@@ -71,11 +68,7 @@ export function DestinationsSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {DESTINATIONS.map((dest) => (
-            <DestinationCard
-              key={dest.id}
-              destination={dest}
-              onClick={() => handleCardClick(dest.href)}
-            />
+            <DestinationCard key={dest.id} destination={dest} />
           ))}
         </div>
       </div>
@@ -87,12 +80,11 @@ export function DestinationsSection() {
 
 interface DestinationCardProps {
   destination: Destination;
-  onClick: () => void;
 }
 
-function DestinationCard({ destination, onClick }: DestinationCardProps) {
+function DestinationCard({ destination }: DestinationCardProps) {
   return (
-    <div className="group cursor-pointer" onClick={onClick}>
+    <Link to={destination.href} className="group block">
       <div className="relative aspect-[4/5] rounded-3xl overflow-hidden mb-5">
         <img
           alt={destination.name}
@@ -109,6 +101,6 @@ function DestinationCard({ destination, onClick }: DestinationCardProps) {
       </div>
       <h3 className="font-bold text-xl text-midnight mb-1">{destination.name}</h3>
       <p className="text-sm text-slate-500">{destination.description}</p>
-    </div>
+    </Link>
   );
 }

@@ -119,11 +119,6 @@ export interface GuideDetail extends GuideDestination {
   photoSpots?: PhotoSpot[];
 }
 
-interface GuidesListResponse {
-  guides: GuideDestination[];
-  total: number;
-}
-
 interface UseGuidesResult {
   guides: GuideDestination[];
   loading: boolean;
@@ -159,8 +154,23 @@ export function useGuides(options?: { country?: string; search?: string; feature
         throw new Error(`Erreur ${res.status}: ${res.statusText}`);
       }
 
-      const data: GuidesListResponse = await res.json();
-      setGuides(data.guides);
+      const data = await res.json();
+
+      // Mapper les noms de champs snake_case vers camelCase
+      const mapped: GuideDestination[] = (data.guides || []).map((g: any) => ({
+        slug: g.slug,
+        name: g.name,
+        country: g.country,
+        countryCode: g.country_code,
+        image: g.image,
+        description: g.description,
+        readingTime: g.reading_time,
+        featured: g.featured,
+        featuredTitle: g.featured_title,
+        featuredSubtitle: g.featured_subtitle,
+        tags: g.tags || [],
+      }));
+      setGuides(mapped);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erreur inconnue');
       setGuides([]);
@@ -197,7 +207,7 @@ export function useGuideDetail(slug: string | undefined): UseGuideDetailResult {
 
         if (!res.ok) {
           if (res.status === 404) {
-            throw new Error('Guide non trouve');
+            throw new Error('Guide non trouvé');
           }
           throw new Error(`Erreur ${res.status}: ${res.statusText}`);
         }

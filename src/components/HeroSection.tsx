@@ -17,7 +17,7 @@ export function HeroSection() {
         </h1>
 
         <p className="text-slate-500 text-lg md:text-xl max-w-3xl mx-auto mb-16 leading-relaxed">
-          Itinéraires inspirants, connexions simplifiées et intégration de vos abonnements : tout ce qu'il faut pour préférer le rail, sans se compliquer le voyage.
+          Itinéraires inspirants, correspondances entre réseaux et places TGVmax disponibles : tout ce qu'il faut pour préférer le rail, sans se compliquer le voyage.
         </p>
 
         <SearchBox />
