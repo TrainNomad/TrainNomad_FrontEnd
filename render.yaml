@@ -106,9 +106,51 @@ services:
       - type: rewrite
         source: /mentions-legales
         destination: /mentions-legales/index.html
+      # Un guide = une règle. Pas de règle générique /guides/:slug : pour un guide inexistant, Render
+      # renverrait une page vide au lieu de laisser l'application afficher « guide introuvable ».
+      # scripts/prerender.mjs signale au build tout guide sans règle ici.
       - type: rewrite
-        source: /guides/:slug
-        destination: /guides/:slug/index.html
+        source: /guides/berlin
+        destination: /guides/berlin/index.html
+      - type: rewrite
+        source: /guides/bruxelles
+        destination: /guides/bruxelles/index.html
+      - type: rewrite
+        source: /guides/barcelone
+        destination: /guides/barcelone/index.html
+      - type: rewrite
+        source: /guides/angers
+        destination: /guides/angers/index.html
+      - type: rewrite
+        source: /guides/lyon
+        destination: /guides/lyon/index.html
+      - type: rewrite
+        source: /guides/marseille
+        destination: /guides/marseille/index.html
+      - type: rewrite
+        source: /guides/paris
+        destination: /guides/paris/index.html
+      - type: rewrite
+        source: /guides/milan
+        destination: /guides/milan/index.html
+      - type: rewrite
+        source: /guides/palermo
+        destination: /guides/palermo/index.html
+      - type: rewrite
+        source: /guides/rome
+        destination: /guides/rome/index.html
+      - type: rewrite
+        source: /guides/amsterdam
+        destination: /guides/amsterdam/index.html
+      - type: rewrite
+        source: /guides/lisbonne
+        destination: /guides/lisbonne/index.html
+      - type: rewrite
+        source: /guides/edinburgh
+        destination: /guides/edinburgh/index.html
+      - type: rewrite
+        source: /guides/prague
+        destination: /guides/prague/index.html
       # Tout le reste (résultats de recherche, anciennes adresses, pages inconnues) : l'application
       - type: rewrite
         source: /*

@@ -27,7 +27,7 @@ export function TGVMaxSection() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#ea5541] text-white py-20 my-16 w-full">
+    <section className="relative overflow-hidden bg-[#ea5541] text-white py-20 mt-16 w-full">
       {/* Cercles décoratifs en arrière-plan à droite */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] rounded-full border-[60px] border-white/10 pointer-events-none" />
       <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 w-[400px] h-[400px] rounded-full border-[40px] border-white/10 pointer-events-none" />

@@ -1,0 +1,54 @@
+[
+  {
+    "question": "TrainNomad, c'est quoi ?",
+    "answer": "Un site pour préparer un voyage en train en Europe. Il calcule des trajets avec correspondances entre villes et gares de plusieurs pays, montre sur une carte les destinations accessibles depuis une gare, repère les places MAX JEUNE et MAX SENIOR disponibles et propose des guides de villes."
+  },
+  {
+    "question": "Est-ce gratuit ? Faut-il créer un compte ?",
+    "answer": "Le site est gratuit et s'utilise sans inscription : aucune adresse e-mail ni aucun compte ne sont demandés."
+  },
+  {
+    "question": "Peut-on réserver un billet sur TrainNomad ?",
+    "answer": "Non. TrainNomad ne vend aucun billet et n'effectue aucune réservation : il sert à trouver le bon trajet. La réservation se fait ensuite auprès de l'opérateur ferroviaire ou d'un distributeur."
+  },
+  {
+    "question": "Quels pays et quels trains sont couverts ?",
+    "answer": "Les trains de SNCF Voyageurs (TGV INOUI, OUIGO, Intercités, TER), de Renfe, Ouigo España et CP, de Trenitalia et Italo, les réseaux suisse et britannique, ainsi qu'Eurostar et European Sleeper. Les réseaux intérieurs d'autres pays, comme l'Allemagne, la Belgique ou les Pays-Bas, ne sont pas intégrés : ces pays ne sont desservis que par les trains des opérateurs cités."
+  },
+  {
+    "question": "Les horaires sont-ils fiables et à jour ?",
+    "answer": "Ils proviennent des données ouvertes publiées par les opérateurs eux-mêmes et sont réassemblés chaque semaine. Ils restent indicatifs : le site n'affiche ni retards, ni suppressions, ni travaux de dernière minute. Vérifiez toujours auprès de l'opérateur avant de voyager.",
+    "link": { "to": "/comment-ca-marche", "label": "Comment ça marche" }
+  },
+  {
+    "question": "Comment trouver une place MAX JEUNE ou MAX SENIOR ?",
+    "answer": "L'outil TGVmax n'affiche que les trajets sur lesquels une place MAX est disponible, d'après les données publiées chaque matin par SNCF Voyageurs pour les trente prochains jours. Vous pouvez chercher un trajet précis ou partir d'une gare pour voir toutes les destinations ouvertes sur une carte.",
+    "link": { "to": "/tgvmax", "label": "Ouvrir l'outil TGVmax" }
+  },
+  {
+    "question": "Qu'est-ce que le changement de siège ?",
+    "answer": "Quand un trajet affiche complet en MAX, il reste parfois des places sur ses deux moitiés dans le même train : par exemple Paris → Limoges puis Limoges → Toulouse. Le site propose alors deux billets MAX : vous restez à bord et changez simplement de place à l'arrêt intermédiaire."
+  },
+  {
+    "question": "Pourquoi une place MAX affichée n'est-elle plus disponible à la réservation ?",
+    "answer": "Les disponibilités sont une photo du matin : la place a pu être réservée entre-temps, et le nombre de places restantes n'est pas connu. À l'inverse, des places peuvent se libérer dans la journée sans apparaître avant le lendemain. Les trains OUIGO ne figurent pas dans ces données et ne peuvent donc pas être affichés."
+  },
+  {
+    "question": "Comment est calculée l'empreinte carbone d'un trajet ?",
+    "answer": "C'est une estimation par voyageur, établie à partir des facteurs d'émission de l'ADEME et de la distance parcourue d'arrêt en arrêt. Elle est comparée au même déplacement en voiture thermique avec une personne à bord ou, au-delà de 700 km, en avion. C'est un ordre de grandeur, pas une mesure.",
+    "link": { "to": "/comment-ca-marche", "label": "Voir la méthode" }
+  },
+  {
+    "question": "Mes recherches sont-elles enregistrées ?",
+    "answer": "Le site fonctionne sans compte et ne dépose aucun cookie. La mesure d'audience est anonyme et agrégée, et aucune donnée n'est vendue.",
+    "link": { "to": "/confidentialite", "label": "Politique de confidentialité" }
+  },
+  {
+    "question": "TrainNomad est-il lié à la SNCF ?",
+    "answer": "Non. TrainNomad est un site indépendant, créé et développé par une seule personne, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire. Il réutilise leurs données ouvertes, dans le respect de leurs licences."
+  },
+  {
+    "question": "J'ai repéré une erreur, comment la signaler ?",
+    "answer": "Une gare mal placée, un trajet impossible, une correspondance trop courte ? Écrivez à contact@trainnomad.eu en indiquant le trajet et la date recherchés : ces retours servent directement à corriger les données."
+  }
+]

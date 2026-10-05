@@ -8,6 +8,7 @@ import { DestinationsSection } from './components/DestinationsSection';
 import { GuidesSection } from './components/GuidesSection';
 import { TGVMaxSection } from './components/TGVMaxSection';
 import { EuropeSection } from './components/EuropeSection';
+import { FaqSection } from './components/FaqSection';
 import { NetworkScope } from './network/NetworkContext';
 import { usePageMeta } from './hooks/usePageMeta';
 import { LEGACY_PAGES, LegacyGuideRedirect } from './pages/LegacyRedirects';
@@ -37,6 +38,7 @@ function HomePage() {
       <GuidesSection />
       <TGVMaxSection />
       <EuropeSection />
+      <FaqSection />
     </>
   );
 }

@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom';
+import { CONTACT_EMAIL } from '../lib/siteInfo';
 
+// Mêmes entrées que le menu du haut (Navbar)
 const NAV_LINKS = [
-  { label: 'À propos', href: '/a-propos' },
-  { label: 'Comment ça marche', href: '/comment-ca-marche' },
   { label: 'Voyager', href: '/trajets' },
   { label: 'Explorer', href: '/explorer' },
   { label: 'Guides', href: '/guides' },
   { label: 'Outils TGVmax', href: '/tgvmax' },
+];
+
+const SITE_LINKS = [
+  { label: 'À propos', href: '/a-propos' },
+  { label: 'Comment ça marche', href: '/comment-ca-marche' },
+  { label: 'Questions fréquentes', href: '/#faq' },
 ];
 
 // Aussi affichés dans le menu mobile de la Navbar : ils restent accessibles sur les pages
@@ -57,10 +63,29 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Le site */}
+          <div>
+            <h5 className="font-bold mb-8 text-lg">Le site</h5>
+            <ul className="flex flex-col gap-5 text-base text-slate-400">
+              {SITE_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link to={link.href} className="hover:text-emerald-400 transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-emerald-400 transition-colors">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
           {/* Quote */}
-          <div className="md:col-span-2">
+          <div>
             <h5 className="font-bold mb-8 text-lg">Notre Engagement</h5>
-            <p className="text-base text-slate-300 italic max-w-lg leading-relaxed">
+            <p className="text-base text-slate-300 italic leading-relaxed">
               "Choisir le train, c’est faire du chemin autrement : avec curiosité, confort et conscience."
             </p>
           </div>

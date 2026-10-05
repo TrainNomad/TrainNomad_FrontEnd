@@ -10,6 +10,7 @@ const SITE_NAME = 'TrainNomad.eu';
 const GUIDES_API = process.env.VITE_GUIDES_API_URL || 'https://guides-api.trainnomad.eu';
 const DIST = new URL('../dist/', import.meta.url);
 const PAGES = JSON.parse(readFileSync(new URL('../src/lib/pageMeta.json', import.meta.url), 'utf8'));
+const FAQ = JSON.parse(readFileSync(new URL('../src/lib/faq.json', import.meta.url), 'utf8'));
 
 const NAV = [
   ['/trajets', 'Voyager'],
@@ -20,6 +21,8 @@ const NAV = [
 ];
 
 const template = readFileSync(new URL('index.html', DIST), 'utf8');
+// Le script part de la page vide produite par `vite build` : il ne se relance pas sur un dist/ déjà traité.
+if (!template.includes('<div id="root"></div>')) throw new Error('dist/index.html a déjà été traité : relancer `vite build` avant prerender');
 
 const esc = (s) =>
   String(s ?? '')
@@ -57,7 +60,7 @@ const list = (items) =>
         .join('')}</ul>`
     : '';
 
-function writePage(path, { title, description, body }) {
+function writePage(path, { title, description, body, jsonLd }) {
   const fullTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · L'Europe en train`;
   const url = SITE + path;
   let html = template.replace(/<title>[^<]*<\/title>/, `<title>${esc(fullTitle)}</title>`);
@@ -67,6 +70,11 @@ function writePage(path, { title, description, body }) {
   html = setTag(html, '<meta property="og:title"', 'content', fullTitle);
   html = setTag(html, '<meta property="og:description"', 'content', description);
   html = html.replace('<div id="root"></div>', `<div id="root">${shell(body)}</div>`);
+  // Données structurées : « < » écrit sous sa forme échappée, pour que le texte ne puisse pas refermer la balise <script>
+  if (jsonLd) {
+    const json = JSON.stringify(jsonLd).replace(/</g, String.fromCharCode(92) + 'u003c');
+    html = html.replace('</head>', `  <script type="application/ld+json">${json}</script>\n  </head>`);
+  }
 
   const dir = new URL(path === '/' ? './' : `.${path}/`, DIST);
   mkdirSync(dir, { recursive: true });
@@ -113,7 +121,17 @@ for (const [path, page] of Object.entries(PAGES)) {
       .map((g) => `<li><a class="font-semibold underline" href="/guides/${esc(g.slug)}">${esc(g.name)}, ${esc(g.country)}</a> — ${esc(g.description)}</li>`)
       .join('')}</ul>`;
   }
-  writePage(path, { title: page.title, description: page.description, body });
+  // Accueil : questions fréquentes (src/lib/faq.json), en texte et en données structurées FAQPage
+  let jsonLd;
+  if (path === '/') {
+    body += h2('Questions fréquentes') + FAQ.map((f) => `<h3 class="font-bold mt-6 mb-2">${esc(f.question)}</h3>${p(f.answer)}`).join('');
+    jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+    };
+  }
+  writePage(path, { title: page.title, description: page.description, body, jsonLd });
   count++;
 }
 
@@ -130,5 +148,11 @@ for (const { slug } of guides) {
     console.warn(`prerender : guide ${slug} ignoré (${err.message})`);
   }
 }
+
+// Sans règle de réécriture dans render.yaml, Render sert l'accueil à la place de la page générée.
+const renderYaml = readFileSync(new URL('../render.yaml', import.meta.url), 'utf8');
+const paths = [...Object.keys(PAGES).filter((path) => path !== '/' && PAGES[path].prerender !== false), ...guides.map((g) => `/guides/${g.slug}`)];
+const missing = paths.filter((path) => !renderYaml.includes(`destination: ${path}/index.html`));
+if (missing.length) console.warn(`prerender : règle de réécriture absente de render.yaml pour ${missing.join(', ')}`);
 
 console.log(`prerender : ${count} pages HTML écrites dans dist/`);
