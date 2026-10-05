@@ -6,6 +6,9 @@ import { dayOffset, formatDate, formatDuration, formatTime } from '../lib/format
 import { JourneySteps } from './JourneySteps';
 import { TrainLogo } from './TrainLogo';
 
+/** Bloc de droite (logos des trains et bouton « Choisir ») : à réactiver avec les prix et la réservation. */
+const SHOW_BOOKING = false;
+
 interface CardTrajetProps {
   journey: Journey;
 }
@@ -110,8 +113,8 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
           <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mt-0.5">Arrivée</div>
         </div>
 
-        {/* Trains & bouton Choisir */}
-        <div className="flex items-center gap-4 w-full lg:w-auto justify-between lg:justify-end pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-100">
+        {/* Trains & bouton Choisir : masqués tant qu'il n'y a ni prix ni lien de réservation */}
+        {SHOW_BOOKING && <div className="flex items-center gap-4 w-full lg:w-auto justify-between lg:justify-end pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-100">
           <div className="bg-slate-50 border border-slate-100 px-3 py-2 rounded-xl flex flex-col gap-1.5">
             {trains.map((t, i) => (
               <div key={i} className="flex items-center gap-2">
@@ -124,7 +127,7 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
           <button className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-xl font-bold text-sm transition-all flex items-center gap-2 shadow-sm cursor-pointer">
             Choisir <span className="material-symbols-outlined text-sm">arrow_forward</span>
           </button>
-        </div>
+        </div>}
       </div>
 
       {/* Déroulé détaillé */}

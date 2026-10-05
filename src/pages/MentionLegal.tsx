@@ -56,7 +56,7 @@ export default function MentionsLegales() {
                 <p><span className="font-bold text-midnight">Nom du site :</span> TrainNomad</p>
                 <p><span className="font-bold text-midnight">URL :</span> trainnomad.eu</p>
                 <p><span className="font-bold text-midnight">Éditeur :</span> {PUBLISHER_NAME}</p>
-                <p><span className="font-bold text-midnight">Statut :</span> Particulier, éditeur non professionnel (site non commercial)</p>
+                <p><span className="font-bold text-midnight">Statut :</span> Particulier, éditeur non professionnel</p>
                 <p><span className="font-bold text-midnight">Contact :</span> <Contact /></p>
                 <p><span className="font-bold text-midnight">Directeur de la publication :</span> {PUBLISHER_NAME}</p>
               </div>
@@ -87,11 +87,11 @@ export default function MentionsLegales() {
                 </div>
                 <h2 className="text-2xl font-extrabold text-midnight">Objet du site</h2>
               </div>
-              <p>TrainNomad est un site d'information gratuit et non commercial d'aide à la planification de voyages en train en Europe. Il propose une recherche d'itinéraires, un outil de consultation des places TGVmax (MAX JEUNE / MAX SENIOR) disponibles, une carte d'exploration des destinations et des guides de villes.</p>
+              <p>TrainNomad est un site d'information gratuit d'aide à la planification de voyages en train en Europe. Il propose une recherche d'itinéraires, un outil de consultation des places TGVmax (MAX JEUNE / MAX SENIOR) disponibles, une carte d'exploration des destinations et des guides de villes.</p>
               <p>Les données couvrent principalement la France, l'Espagne, le Portugal, l'Italie, la Suisse et le Royaume-Uni, ainsi que la Belgique, les Pays-Bas et l'Allemagne via les trains internationaux (Eurostar, European Sleeper).</p>
               <div className="bg-white rounded-2xl p-6 border border-[#4ade80]/30 mt-4">
                 <p className="text-[#1d7a5a] font-bold mb-1">⚠ Important</p>
-                <p className="mb-0">TrainNomad est un site indépendant, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire. Le site ne vend aucun billet et n'effectue aucune réservation. Pour réserver, rendez-vous sur les sites officiels des opérateurs concernés.</p>
+                <p className="mb-0">TrainNomad est un site indépendant, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire. Le site ne vend aucun billet et n'effectue aucune réservation. La réservation se fait auprès de l'opérateur concerné ou d'un distributeur agréé.</p>
               </div>
             </div>
 

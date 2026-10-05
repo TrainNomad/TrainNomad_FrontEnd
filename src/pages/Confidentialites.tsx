@@ -61,7 +61,7 @@ export default function Confidentialite() {
               <div className="text-center p-6">
                 <span className="material-symbols-outlined text-[#4ade80] text-4xl mb-3 block">sell</span>
                 <p className="text-white font-extrabold text-lg mb-1">Aucune revente</p>
-                <p className="text-slate-400 text-sm mb-0">Aucune publicité, aucune donnée vendue</p>
+                <p className="text-slate-400 text-sm mb-0">Aucun traceur publicitaire, aucune donnée vendue</p>
               </div>
             </div>
           </div>
@@ -114,8 +114,8 @@ export default function Confidentialite() {
                 <h2 className="text-2xl font-extrabold text-midnight">Cookies et stockage local</h2>
               </div>
               {ANALYTICS_ENABLED
-                ? <p>TrainNomad ne dépose aucun cookie et n'utilise aucun outil de publicité. La mesure d'audience (Umami) fonctionne sans cookie et sans rien enregistrer sur votre appareil : aucun bandeau de consentement n'est donc affiché.</p>
-                : <p>TrainNomad ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience, de publicité ou de suivi.</p>}
+                ? <p>TrainNomad ne dépose aucun cookie et n'utilise aucun traceur publicitaire. La mesure d'audience (Umami) fonctionne sans cookie et sans rien enregistrer sur votre appareil : aucun bandeau de consentement n'est donc affiché.</p>
+                : <p>TrainNomad ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience ni aucun traceur publicitaire.</p>}
               <p className={ANALYTICS_ENABLED ? undefined : 'mb-0'}>Pour accélérer l'autocomplétion, votre navigateur conserve en stockage local (localStorage, clé <code>stations_cache</code>) une copie de la liste des gares. Ce cache ne contient aucune donnée personnelle, reste sur votre appareil et peut être effacé à tout moment via les réglages de votre navigateur (suppression des données du site).</p>
               {ANALYTICS_ENABLED && (
                 <>

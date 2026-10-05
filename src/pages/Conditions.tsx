@@ -75,7 +75,7 @@ export default function Conditions() {
                 </div>
                 <h2 className="text-2xl font-extrabold text-midnight">Nature du service</h2>
               </div>
-              <p>TrainNomad est un site d'information indépendant, gratuit, non commercial et accessible sans inscription, édité par un particulier. Il propose une recherche d'itinéraires en train en Europe, un outil de consultation des places TGVmax (MAX JEUNE / MAX SENIOR) disponibles, une carte d'exploration des destinations et des guides de villes.</p>
+              <p>TrainNomad est un site d'information indépendant, gratuit et accessible sans inscription, édité par un particulier. Il propose une recherche d'itinéraires en train en Europe, un outil de consultation des places TGVmax (MAX JEUNE / MAX SENIOR) disponibles, une carte d'exploration des destinations et des guides de villes.</p>
               <p>Le service s'appuie sur des données ouvertes, notamment :</p>
               <ul>
                 <li><strong className="text-midnight">SNCF Voyageurs</strong> — horaires et disponibilités TGVmax / MAX (licence ODbL)</li>
@@ -85,7 +85,7 @@ export default function Conditions() {
               <p className="mt-2">La liste complète des sources et de leurs licences figure dans les <Link to="/mentions-legales" className="text-[#1d7a5a] font-semibold underline">mentions légales</Link>.</p>
               <div className="bg-white rounded-2xl p-6 border border-[#4ade80]/30 mt-4">
                 <p className="text-[#1d7a5a] font-bold mb-1">⚠ Pas de réservation</p>
-                <p className="mb-0">TrainNomad ne vend rien et n'effectue aucune réservation. Aucune transaction financière n'est réalisée sur le site. Pour réserver un billet, rendez-vous sur les sites officiels des opérateurs ferroviaires concernés.</p>
+                <p className="mb-0">TrainNomad ne vend aucun billet et n'effectue aucune réservation. Aucune transaction financière n'est réalisée sur le site. La réservation se fait auprès de l'opérateur ferroviaire concerné ou d'un distributeur agréé.</p>
               </div>
             </div>
 
