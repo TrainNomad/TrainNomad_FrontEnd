@@ -19,7 +19,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="relative max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 
           {/* Logo - Redirige vers l'accueil (Route /) */}
           <Link to="/" className="flex items-center gap-3 cursor-pointer">
@@ -33,8 +33,8 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-10">
+          {/* Desktop links : centrés sur l'écran (grand écran), et non dans l'espace laissé par le logo */}
+          <div className="hidden md:flex items-center gap-10 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
