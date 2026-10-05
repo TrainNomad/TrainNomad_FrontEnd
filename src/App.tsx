@@ -21,6 +21,7 @@ const MentionLegal = lazy(() => import('./pages/MentionLegal'));
 const Conditions = lazy(() => import('./pages/Conditions'));
 const Confidentialites = lazy(() => import('./pages/Confidentialites'));
 const AboutPage = lazy(() => import('./pages/about'));
+const CommentCaMarche = lazy(() => import('./pages/CommentCaMarche'));
 const Trajets = lazy(() => import('./pages/trajets'));
 const GuidesPage = lazy(() => import('./pages/Guides'));
 const GuideDetailPage = lazy(() => import('./pages/GuideDetail'));
@@ -75,6 +76,7 @@ export default function App() {
           {/* le titre est posé par la page elle-même, avec le nom de la ville */}
           <Route path="/guides/:slug" element={<GuideDetailPage />} />
           <Route path="/a-propos" element={<Page path="/a-propos"><AboutPage /></Page>} />
+          <Route path="/comment-ca-marche" element={<Page path="/comment-ca-marche"><CommentCaMarche /></Page>} />
           <Route path="/conditions" element={<Page path="/conditions"><Conditions /></Page>} />
           <Route path="/confidentialite" element={<Page path="/confidentialite"><Confidentialites /></Page>} />
           <Route path="/mentions-legales" element={<Page path="/mentions-legales"><MentionLegal /></Page>} />

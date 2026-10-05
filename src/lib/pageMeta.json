@@ -5,7 +5,8 @@
     "heading": "La voie vers l'Europe.",
     "intro": [
       "Itinéraires inspirants, correspondances entre réseaux et places TGVmax disponibles : tout ce qu'il faut pour préférer le rail, sans se compliquer le voyage.",
-      "TrainNomad calcule des trajets en train avec correspondances entre villes et gares d'Europe, affiche sur une carte les destinations accessibles depuis une gare, repère les places MAX JEUNE et MAX SENIOR disponibles et propose des guides de villes."
+      "TrainNomad calcule des trajets en train avec correspondances entre villes et gares d'Europe, affiche sur une carte les destinations accessibles depuis une gare, repère les places MAX JEUNE et MAX SENIOR disponibles et propose des guides de villes.",
+      "Site indépendant, gratuit, sans compte et sans cookie. Les horaires (mis à jour chaque semaine) et les disponibilités TGVmax (mises à jour chaque matin) proviennent de données ouvertes de SNCF Voyageurs et d'opérateurs européens ; les sources et leurs licences sont détaillées dans les mentions légales."
     ]
   },
   "/trajets": {
@@ -14,7 +15,7 @@
     "heading": "Trajets en train en Europe",
     "intro": [
       "Saisissez une ville ou une gare de départ et d'arrivée : TrainNomad calcule les itinéraires en train, avec les correspondances entre opérateurs et entre pays.",
-      "Les horaires proviennent de données ouvertes mises à jour chaque jour. Ils sont indicatifs : seule la réservation auprès de l'opérateur fait foi."
+      "Les horaires proviennent de données ouvertes, réassemblées chaque semaine. Ils sont indicatifs : seule la réservation auprès de l'opérateur fait foi."
     ]
   },
   "/explorer": {
@@ -62,6 +63,18 @@
     "heading": "À propos de TrainNomad",
     "intro": [
       "TrainNomad est un site indépendant, gratuit et sans inscription, créé et développé par Goulven Robin. Né autour de l'abonnement TGVmax, il s'est élargi aux trajets en train à travers l'Europe, avec de véritables correspondances entre compagnies."
+    ]
+  },
+  "/comment-ca-marche": {
+    "title": "Comment ça marche",
+    "description": "D'où viennent les données de TrainNomad, comment les trajets et les places TGVmax sont calculés, et ce que le site ne sait pas faire.",
+    "heading": "Comment ça marche",
+    "intro": [
+      "TrainNomad réutilise les horaires ouverts publiés par les opérateurs ferroviaires : SNCF Voyageurs, Renfe, Ouigo España, CP, Trenitalia, Italo, les données nationales suisses, National Rail, Eurostar et European Sleeper. Ils sont réunis en un seul réseau, réassemblé chaque semaine.",
+      "Les trajets sont calculés avec RAPTOR, un algorithme public conçu pour les transports en commun, jusqu'à six correspondances. Une correspondance demande au moins 10 minutes dans la même gare, 15 dans les grandes gares.",
+      "Les places TGVmax viennent du jeu de données ouvert de SNCF Voyageurs, publié chaque matin. La disponibilité dépend du trajet demandé et non du train : quand un trajet est complet, le site peut proposer deux billets MAX dans le même train, avec un simple changement de siège à un arrêt intermédiaire.",
+      "Chaque trajet affiche une estimation de ses émissions de CO₂e, comparée à la voiture ou, au-delà de 700 km, à l'avion, à partir des facteurs d'émission de l'ADEME (Impact CO2).",
+      "Le site n'affiche ni temps réel, ni prix, et ne vend aucun billet. Une place TGVmax affichée peut avoir été réservée depuis ; les trains OUIGO ne figurent pas dans les données de disponibilité."
     ]
   },
   "/conditions": {

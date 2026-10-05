@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 const NAV_LINKS = [
   { label: 'À propos', href: '/a-propos' },
+  { label: 'Comment ça marche', href: '/comment-ca-marche' },
   { label: 'Voyager', href: '/trajets' },
   { label: 'Explorer', href: '/explorer' },
   { label: 'Guides', href: '/guides' },
@@ -68,7 +69,7 @@ export function Footer() {
         {/* Indépendance et sources (détail dans les mentions légales) */}
         <p className="text-xs text-slate-500 leading-relaxed mb-10 max-w-4xl">
           TrainNomad est un site indépendant, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire : il ne vend
-          aucun billet. Horaires et disponibilités indicatifs, issus de données ouvertes mises à jour chaque jour.
+          aucun billet. Horaires et disponibilités indicatifs, issus de données ouvertes : horaires mis à jour chaque semaine, places TGVmax chaque matin.
           Contient des données SNCF Voyageurs, disponibles sous licence ODbL.{' '}
           <Link to="/mentions-legales" className="underline hover:text-white">Sources et licences</Link>
         </p>

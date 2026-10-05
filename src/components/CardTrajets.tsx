@@ -5,6 +5,7 @@ import { useNetwork } from '../network/NetworkContext';
 import { dayOffset, formatDate, formatDuration, formatTime } from '../lib/format';
 import { JourneySteps } from './JourneySteps';
 import { TrainLogo } from './TrainLogo';
+import { estimateCarbon, formatKg } from '../lib/carbon';
 
 /** Bloc de droite (logos des trains et bouton « Choisir ») : à réactiver avec les prix et la réservation. */
 const SHOW_BOOKING = false;
@@ -26,6 +27,7 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
     .map((l) => ({ name: l.from.name, seat: isSeatChange(l) }));
   const viaLabel = via.map((v) => (v.seat ? `${v.name} (changement de siège)` : v.name)).join(', ');
   const arrivalOffset = dayOffset(journey.departure, journey.arrival);
+  const carbon = estimateCarbon(journey);
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm transition-all w-full max-w-[80rem] mx-auto">
@@ -112,6 +114,24 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
           <div className="text-sm font-semibold text-slate-800">{journey.to.name}</div>
           <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mt-0.5">Arrivée</div>
         </div>
+
+        {/* Empreinte carbone estimée (src/lib/carbon.ts) */}
+        {carbon && (
+          <div
+            className="w-full lg:w-auto lg:min-w-[150px] lg:text-right pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-100"
+            title={
+              carbon.other === 'plane'
+                ? "Estimation à partir des facteurs d'émission de l'ADEME (Impact CO2). Comparaison avec l'avion au-delà de 700 km."
+                : "Estimation à partir des facteurs d'émission de l'ADEME (Impact CO2). Voiture thermique avec une seule personne à bord."
+            }
+          >
+            <div className="text-sm font-bold text-tone-600 flex items-center lg:justify-end gap-1">
+              <span className="material-symbols-outlined text-base">eco</span>
+              {formatKg(carbon.trainKg)} CO₂e
+            </div>
+            <div className="text-xs text-slate-400 mt-0.5">contre {formatKg(carbon.otherKg)} {carbon.other === 'plane' ? 'en avion' : 'en voiture'}</div>
+          </div>
+        )}
 
         {/* Trains & bouton Choisir : masqués tant qu'il n'y a ni prix ni lien de réservation */}
         {SHOW_BOOKING && <div className="flex items-center gap-4 w-full lg:w-auto justify-between lg:justify-end pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-100">

@@ -109,7 +109,7 @@ export default function Conditions() {
                 </div>
                 <h2 className="text-2xl font-extrabold text-midnight">Exactitude des données</h2>
               </div>
-              <p>Les horaires et disponibilités sont indicatifs et mis à jour une fois par jour : seule la réservation auprès de l'opérateur fait foi. Les trains OUIGO ne figurent pas dans les données de disponibilité TGVmax.</p>
+              <p>Les horaires (mis à jour chaque semaine) et les disponibilités TGVmax (mises à jour chaque matin) sont indicatifs : seule la réservation auprès de l'opérateur fait foi. Les trains OUIGO ne figurent pas dans les données de disponibilité TGVmax.</p>
               <p>TrainNomad ne garantit pas :</p>
               <ul>
                 <li>L'exactitude ou l'exhaustivité des disponibilités affichées</li>

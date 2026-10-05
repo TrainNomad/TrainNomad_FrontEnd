@@ -73,6 +73,43 @@ services:
       - type: redirect
         source: /guide/guide.html
         destination: /guide/guide
+      # Pages HTML générées par scripts/prerender.mjs (dist/<page>/index.html). Render ne les sert
+      # d'elles-mêmes qu'avec une barre finale (/tgvmax/) : sans ces règles, /tgvmax recevait la page
+      # d'accueil. À tenir à jour avec src/lib/pageMeta.json.
+      - type: rewrite
+        source: /trajets
+        destination: /trajets/index.html
+      - type: rewrite
+        source: /explorer
+        destination: /explorer/index.html
+      - type: rewrite
+        source: /tgvmax
+        destination: /tgvmax/index.html
+      - type: rewrite
+        source: /tgvmax/explorer
+        destination: /tgvmax/explorer/index.html
+      - type: rewrite
+        source: /guides
+        destination: /guides/index.html
+      - type: rewrite
+        source: /a-propos
+        destination: /a-propos/index.html
+      - type: rewrite
+        source: /comment-ca-marche
+        destination: /comment-ca-marche/index.html
+      - type: rewrite
+        source: /conditions
+        destination: /conditions/index.html
+      - type: rewrite
+        source: /confidentialite
+        destination: /confidentialite/index.html
+      - type: rewrite
+        source: /mentions-legales
+        destination: /mentions-legales/index.html
+      - type: rewrite
+        source: /guides/:slug
+        destination: /guides/:slug/index.html
+      # Tout le reste (résultats de recherche, anciennes adresses, pages inconnues) : l'application
       - type: rewrite
         source: /*
         destination: /index.html

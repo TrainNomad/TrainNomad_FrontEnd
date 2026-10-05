@@ -115,11 +115,12 @@ export default function MentionsLegales() {
                 <li><strong className="text-midnight">Royaume-Uni</strong> — données ouvertes publiées par National Rail Enquiries</li>
                 <li><strong className="text-midnight">Eurostar</strong> — données ouvertes publiées par Eurostar</li>
                 <li><strong className="text-midnight">European Sleeper</strong> — données ouvertes publiées par European Sleeper</li>
+                <li><strong className="text-midnight">ADEME</strong> — facteurs d'émission de CO₂e des modes de transport, <a href="https://impactco2.fr" target="_blank" rel="noopener noreferrer" className={linkClass}>impactco2.fr</a></li>
                 <li><strong className="text-midnight">Wikidata</strong> — <a href="https://www.wikidata.org" target="_blank" rel="noopener noreferrer" className={linkClass}>wikidata.org</a> — licence CC0</li>
                 <li><strong className="text-midnight">Fonds de carte</strong> — © <a href="https://www.maptiler.com/copyright/" target="_blank" rel="noopener noreferrer" className={linkClass}>MapTiler</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className={linkClass}>contributeurs OpenStreetMap</a> (ODbL)</li>
               </ul>
               <p className="mt-4">Contient des données SNCF Voyageurs, disponibles sous licence Open Database License (ODbL).</p>
-              <p className="mb-0">Les horaires et disponibilités sont indicatifs et mis à jour une fois par jour : seule la réservation auprès de l'opérateur fait foi. Les trains OUIGO ne figurent pas dans les données de disponibilité TGVmax.</p>
+              <p className="mb-0">Les horaires (mis à jour chaque semaine) et les disponibilités TGVmax (mises à jour chaque matin) sont indicatifs : seule la réservation auprès de l'opérateur fait foi. Les trains OUIGO ne figurent pas dans les données de disponibilité TGVmax.</p>
             </div>
 
             {/* 5. Propriété intellectuelle */}

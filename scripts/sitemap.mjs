@@ -12,6 +12,7 @@ const PAGES = [
   ['/tgvmax/explorer', '0.8'],
   ['/guides', '0.9'],
   ['/a-propos', '0.5'],
+  ['/comment-ca-marche', '0.5'],
   ['/mentions-legales', '0.3'],
   ['/conditions', '0.3'],
   ['/confidentialite', '0.3'],
