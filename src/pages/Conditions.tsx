@@ -79,8 +79,8 @@ export default function Conditions() {
               <p>Le service s'appuie sur des données ouvertes, notamment :</p>
               <ul>
                 <li><strong className="text-midnight">SNCF Voyageurs</strong> — horaires et disponibilités TGVmax / MAX (licence ODbL)</li>
-                <li><strong className="text-midnight">Autres opérateurs et plateformes de données ouvertes</strong> — Renfe, Ouigo España, Trenitalia, Italo, CP, SNCB, données suisses, National Rail Enquiries, Eurostar, European Sleeper</li>
-                <li><strong className="text-midnight">Référentiels et cartographie</strong> — gares Trainline (ODbL), Wikidata (CC0), fonds de carte © MapTiler © contributeurs OpenStreetMap</li>
+                <li><strong className="text-midnight">Autres opérateurs et plateformes de données ouvertes</strong> — Renfe, Ouigo España, Trenitalia, Italo, CP, SNCB, données suisses, National Rail Enquiries, Eurostar, European Sleeper, FlixTrain</li>
+                <li><strong className="text-midnight">Référentiels et cartographie</strong> — gares OpenStreetMap (ODbL), Wikidata (CC0), fonds de carte © MapTiler © contributeurs OpenStreetMap</li>
               </ul>
               <p className="mt-2">La liste complète des sources et de leurs licences figure dans les <Link to="/mentions-legales" className="text-[#1d7a5a] font-semibold underline">mentions légales</Link>.</p>
               <div className="bg-white rounded-2xl p-6 border border-[#4ade80]/30 mt-4">

@@ -6,9 +6,14 @@ import { dayOffset, formatDate, formatDuration, formatTime } from '../lib/format
 import { JourneySteps } from './JourneySteps';
 import { TrainLogo } from './TrainLogo';
 import { estimateCarbon, formatKg } from '../lib/carbon';
+import { omioLink } from '../lib/omio';
+import { track } from '../lib/analytics';
 
 /** Bloc de droite (logos des trains et bouton « Choisir ») : à réactiver avec les prix et la réservation. */
 const SHOW_BOOKING = false;
+
+/** Bouton « Voir les prix » vers Omio (lien partenaire, src/lib/omio.ts) : désactivé pour le moment. */
+const SHOW_OMIO = false;
 
 interface CardTrajetProps {
   journey: Journey;
@@ -28,6 +33,8 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
   const viaLabel = via.map((v) => (v.seat ? `${v.name} (changement de siège)` : v.name)).join(', ');
   const arrivalOffset = dayOffset(journey.departure, journey.arrival);
   const carbon = estimateCarbon(journey);
+  // Pas de lien pour TGVmax : les places se réservent avec l'abonnement, pas sur Omio
+  const omioUrl = SHOW_OMIO && network.id === 'europe' ? omioLink(journey) : null;
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm transition-all w-full max-w-[80rem] mx-auto">
@@ -130,6 +137,22 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
               {formatKg(carbon.trainKg)} CO₂e
             </div>
             <div className="text-xs text-slate-400 mt-0.5">contre {formatKg(carbon.otherKg)} {carbon.other === 'plane' ? 'en avion' : 'en voiture'}</div>
+          </div>
+        )}
+
+        {/* Prix et réservation : lien partenaire vers la page Omio de la liaison (src/lib/omio.ts) */}
+        {omioUrl && (
+          <div className="w-full lg:w-auto flex flex-col items-stretch lg:items-end gap-1 pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-100">
+            <a
+              href={omioUrl}
+              target="_blank"
+              rel="sponsored noopener"
+              onClick={() => track('clic-omio', { from: journey.from.city, to: journey.to.city })}
+              className="bg-slate-900 hover:bg-slate-800 text-white px-5 py-3 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
+            >
+              Voir les prix <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+            <span className="text-[10px] text-slate-400 text-center lg:text-right">sur Omio · lien partenaire</span>
           </div>
         )}
 

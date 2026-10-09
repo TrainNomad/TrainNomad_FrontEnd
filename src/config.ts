@@ -37,5 +37,13 @@ export const MAPTILER_API_KEY = import.meta.env.VITE_MAPTILER_KEY || '';
 export const UMAMI_WEBSITE_ID = import.meta.env.VITE_UMAMI_WEBSITE_ID || '88798394-67c9-408f-a7fc-f4b33c91ee57';
 export const UMAMI_SCRIPT_URL = import.meta.env.VITE_UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js';
 
+/**
+ * Lien de suivi Omio (affiliation Impact) : la page Omio visée est ajoutée dans le paramètre `u`.
+ * Forme longue du lien court https://omio.sjv.io/NGVBbK (partenaire / annonce / programme).
+ */
+export const OMIO_TRACKING_URL = withoutTrailingSlash(
+  import.meta.env.VITE_OMIO_TRACKING_URL || 'https://omio.sjv.io/c/7915754/409973/7385',
+);
+
 /** Nombre maximal de correspondances affichées sur la carte d'exploration. */
 export const EXPLORER_MAX_TRANSFERS = Number(import.meta.env.VITE_EXPLORER_MAX_TRANSFERS ?? 2);

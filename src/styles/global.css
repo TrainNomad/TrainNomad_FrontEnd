@@ -115,89 +115,40 @@ input[type="date"] {
   border-radius: 16px;
   box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
   z-index: 9999;
-  padding: 10px;
-  max-height: 520px;
+  padding: 6px;
+  max-height: min(520px, 60vh);
+  /* certains formulaires centrent leur texte : la liste reste alignée à gauche */
+  text-align: left;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 .ac-row {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 14px;
+  padding: 8px 10px;
   border-radius: 10px;
   cursor: pointer;
-  transition: all 120ms ease;
+  transition: background-color 120ms ease;
 }
-
 .ac-row:hover,
 .ac-row.ac-active {
+  background-color: var(--brand-soft);
+}
+
+.ac-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #64748b;
   background-color: #f1f5f9;
-}
-
-/* ── Villes ─────────────────────────────────────────────────────────────────── */
-.ac-row.ac-city {
-  margin-top: 8px;
-  padding: 12px 14px;
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-}
-.ac-row.ac-city:first-child {
-  margin-top: 0;
-}
-.ac-row.ac-city:hover,
-.ac-row.ac-city.ac-active {
-  background-color: var(--brand-soft);
-  border-color: var(--brand);
-}
-.ac-row.ac-city .ac-title-main {
-  font-weight: 700;
-  color: #0f172a;
-  font-size: 15px;
-}
-.ac-row.ac-city .ac-icon {
-  color: var(--brand);
-  font-size: 22px;
-  background: linear-gradient(135deg, var(--brand-soft) 0%, var(--brand-soft-2) 100%);
-  padding: 6px;
-  border-radius: 8px;
-}
-.ac-row.ac-city .ac-line-sub {
-  color: var(--brand);
-  font-weight: 500;
-}
-
-/* ── Gares (indentées sous leur ville) ──────────────────────────────────────── */
-.ac-row.ac-station {
-  margin-left: 28px;
-  padding: 8px 12px;
-  padding-left: 16px;
-  border-left: 3px solid var(--brand);
-  border-radius: 0 10px 10px 0;
-  background-color: transparent;
-}
-.ac-row.ac-station:hover,
-.ac-row.ac-station.ac-active {
-  background-color: var(--brand-soft);
-  border-left-color: var(--brand-2);
-}
-.ac-row.ac-station .ac-title-main {
-  font-weight: 500;
-  color: #374151;
-  font-size: 14px;
-}
-.ac-row.ac-station .ac-icon {
-  color: #6b7280;
-  font-size: 18px;
-  background: #f3f4f6;
-  padding: 4px;
-  border-radius: 6px;
-}
-.ac-row.ac-station:hover .ac-icon,
-.ac-row.ac-station.ac-active .ac-icon {
-  color: var(--brand);
-  background: var(--brand-soft);
 }
 
 .ac-details {
@@ -206,48 +157,92 @@ input[type="date"] {
   flex: 1;
   min-width: 0;
 }
-.ac-title-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.ac-title-main {
+  font-size: 15px;
+  font-weight: 500;
+  color: #334155;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ac-match {
+  background: none;
+  color: #0f172a;
+  font-weight: 800;
 }
 .ac-line-sub {
-  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 1px;
+  font-size: 12px;
   color: #64748b;
-  margin-top: 2px;
-}
-.ac-title-main {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1e293b;
 }
 
-/* ── Badges distinctifs ─────────────────────────────────────────────────────── */
-.ac-badge {
-  font-size: 10px;
+/* ── Villes (toutes les gares) ──────────────────────────────────────────────── */
+.ac-row.ac-city .ac-icon {
+  color: var(--brand);
+  background-color: var(--brand-soft-2);
+}
+.ac-row.ac-city .ac-title-main {
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  flex-shrink: 0;
+  color: #0f172a;
 }
-.ac-badge-city {
-  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
-  color: #ffffff;
+/* Filet entre deux groupes (une ville et ses gares) */
+.ac-row.ac-city:not(:first-child),
+.ac-row.ac-child + .ac-row:not(.ac-child) {
+  margin-top: 9px;
 }
-.ac-badge-station {
-  background: #e2e8f0;
-  color: #475569;
+.ac-row.ac-city:not(:first-child)::before,
+.ac-row.ac-child + .ac-row:not(.ac-child)::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  right: 10px;
+  border-top: 1px solid #f1f5f9;
 }
 
-.ac-anywhere {
-  background-color: #fdf2f8;
-  border-radius: 10px;
-  margin-bottom: 6px;
+/* ── Gares d'une ville : en retrait, reliées par un trait vertical ──────────── */
+.ac-row.ac-child {
+  padding: 6px 10px 6px 58px;
+  gap: 8px;
 }
-.ac-anywhere:hover {
+.ac-row.ac-child::before {
+  content: '';
+  position: absolute;
+  left: 27px;
+  top: 0;
+  bottom: 0;
+  border-left: 2px solid #e2e8f0;
+}
+.ac-row.ac-child .ac-icon {
+  width: auto;
+  height: auto;
+  font-size: 18px;
+  color: #94a3b8;
+  background: none;
+}
+.ac-row.ac-child .ac-title-main {
+  font-size: 14px;
+}
+.ac-row.ac-child:hover .ac-icon,
+.ac-row.ac-child.ac-active .ac-icon {
+  color: var(--brand);
+}
+
+/* ── « N'importe où » ───────────────────────────────────────────────────────── */
+.ac-row.ac-anywhere .ac-icon {
+  color: #db2777;
   background-color: #fce7f3;
+}
+.ac-row.ac-anywhere .ac-title-main {
+  font-weight: 700;
+  color: #0f172a;
+}
+.ac-row.ac-anywhere:hover,
+.ac-row.ac-anywhere.ac-active {
+  background-color: #fdf2f8;
 }
 
 /* ── Footer quote ────────────────────────────────────────────────────────────── */

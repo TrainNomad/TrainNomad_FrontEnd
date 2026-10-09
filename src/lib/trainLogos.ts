@@ -4,6 +4,7 @@ const BY_TYPE: Record<string, string> = {
   // --- SNCF (avec préfixe compagnie) ---
   'SNCF TGV INOUI': 'TGV InOui.png',
   'SNCF OUIGO': 'ouigo.png',
+  'SNCF OUIGO Train Classique': 'ouigo-classique.png',
   'SNCF TER': 'TER.png',
   'SNCF Car TER': 'TER.png',
   'SNCF Car': 'TER.png',
@@ -13,6 +14,7 @@ const BY_TYPE: Record<string, string> = {
   'sncf Intercités de nuit': 'intercite de nuit sncf.png',
   'SNCF TGV Lyria': 'lyria.png',
   'SNCF ICE': 'ice.png',
+  'DB SNCF en coopération': 'sncf-db-coop.png', // TGV INOUI / ICE franco-allemands (95xx)
   // Legacy mappings (sans préfixe)
   'TGV INOUI': 'TGV InOui.png',
   OUIGO: 'ouigo.png',
@@ -197,11 +199,25 @@ const BY_OPERATOR: Record<string, string> = {
   SWISS: 'SBB.png', // SBB/CFF/FFS Swiss Railways
   OUIGO_ES: 'ouigo.png',
   SNCB: 'SNCB.png',
+  FLIXTRAIN: 'FlixTrain.png',
 };
+
+// Flux allemand (operator "DB") : type = "<compagnie> <catégorie>" (ex. "DB ICE", "PKP EuroCity",
+// "ÖBB EuroNight") ; le logo dépend de la catégorie.
+const BY_CATEGORY: [RegExp, string][] = [
+  [/ ICE$/, 'ice.png'],
+  [/ EuroCity(-Express)?$/, 'eurocity.png'],
+  [/ (EuroNight|Nightjet)$/, 'nightjet.png'],
+  [/^SBB /, 'sbb.png'],
+];
 
 /** Chemin du logo, ou null si aucun logo n'est disponible (afficher alors le nom du train). */
 export function trainLogo(trainType: string, operator?: string): string | null {
   // Normalisation ou recherche directe (on gère aussi les variations de casse si besoin)
-  const file = BY_TYPE[trainType] ?? BY_TYPE[trainType?.toUpperCase()] ?? (operator ? BY_OPERATOR[operator.toUpperCase()] : undefined);
+  const file =
+    BY_TYPE[trainType] ??
+    BY_TYPE[trainType?.toUpperCase()] ??
+    BY_CATEGORY.find(([re]) => re.test(trainType ?? ''))?.[1] ??
+    (operator ? BY_OPERATOR[operator.toUpperCase()] : undefined);
   return file ? `/assets/compagnies/${encodeURIComponent(file)}` : null;
 }

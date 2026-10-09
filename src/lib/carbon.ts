@@ -30,7 +30,7 @@ const RAIL_DETOUR = 1.1;
 const ROAD_DETOUR = 1.2;
 
 const COACH = /\b(car|bus|autocar)\b/i;
-const HIGH_SPEED = /tgv|ouigo|eurostar|thalys|lyria|\bice\b|\bave\b|avlo|alvia|avant|euromed|freccia|italo|alfa pendular/i;
+const HIGH_SPEED = /tgv|ouigo|eurostar|thalys|lyria|\bice\b|db sncf|railjet|\bave\b|avlo|alvia|avant|euromed|freccia|italo|alfa pendular/i;
 const REGIONAL = /\bter\b|r[eé]gional|proximidad|media distancia|s-bahn|urbano|metropolitano|tram|navette|\bsfm\b/i;
 
 function factorFor(trainType: string): number {

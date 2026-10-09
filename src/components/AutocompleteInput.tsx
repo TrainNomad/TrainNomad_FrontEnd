@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Station } from '../types';
 import { ANYWHERE_ID } from '../types';
 import { useAutocomplete } from '../hooks/useAutocomplete';
+import { CountryFlag } from './CountryFlag';
 
 interface Props {
   id: string;
@@ -44,6 +45,20 @@ export function AutocompleteInput({
   };
 
   const displayValue = touched || ac.query ? ac.query : initialValue;
+
+  // Une gare listée juste sous sa ville est affichée en retrait, rattachée à elle
+  const rows: { station: Station; isChild: boolean }[] = [];
+  let currentCity: Station | null = null;
+  for (const station of ac.suggestions) {
+    if (station.type === 'city') {
+      currentCity = station.id === ANYWHERE_ID ? null : station;
+      rows.push({ station, isChild: false });
+    } else {
+      const isChild = currentCity !== null && station.city === currentCity.name;
+      if (!isChild) currentCity = null;
+      rows.push({ station, isChild });
+    }
+  }
 
   // Entrée : la liste ouverte -> le hook sélectionne la suggestion active ;
   // la liste fermée -> on valide le formulaire parent.
@@ -104,12 +119,14 @@ export function AutocompleteInput({
         )}
 
         {/* Suggestions dropdown */}
-        {ac.isOpen && ac.suggestions.length > 0 && (
-          <div className="suggestions-container">
-            {ac.suggestions.map((station, idx) => (
+        {ac.isOpen && rows.length > 0 && (
+          <div className="suggestions-container" role="listbox">
+            {rows.map(({ station, isChild }, idx) => (
               <SuggestionRow
                 key={`${station.id}-${idx}`}
                 station={station}
+                isChild={isChild}
+                query={ac.query}
                 isActive={idx === ac.activeIndex}
                 onMouseDown={(e) => {
                   e.preventDefault();
@@ -126,43 +143,105 @@ export function AutocompleteInput({
 
 // ─── SuggestionRow ────────────────────────────────────────────────────────────
 
+const regionNames =
+  typeof Intl !== 'undefined' && 'DisplayNames' in Intl ? new Intl.DisplayNames(['fr'], { type: 'region' }) : null;
+
+/** "FR" -> "France" ; renvoie le code tel quel s'il est inconnu. */
+function countryName(code: string): string {
+  if (!code) return '';
+  try {
+    return regionNames?.of(code) ?? code;
+  } catch {
+    return code;
+  }
+}
+
+/** Minuscules sans accents, caractère par caractère (la longueur du texte est conservée). */
+function fold(text: string): string {
+  return Array.from(text, (ch) => ch.normalize('NFD')[0].toLowerCase()).join('');
+}
+
+/** Nom avec la partie saisie mise en évidence (début du nom ou d'un mot). */
+function HighlightedName({ name, query }: { name: string; query: string }) {
+  const q = fold(query.trim());
+  const folded = fold(name);
+  let at = -1;
+  if (q && folded.length === name.length) {
+    for (let i = folded.indexOf(q); i >= 0; i = folded.indexOf(q, i + 1)) {
+      if (i === 0 || !/[a-z0-9]/.test(folded[i - 1])) {
+        at = i;
+        break;
+      }
+    }
+  }
+  if (at < 0) return <>{name}</>;
+  return (
+    <>
+      {name.slice(0, at)}
+      <mark className="ac-match">{name.slice(at, at + q.length)}</mark>
+      {name.slice(at + q.length)}
+    </>
+  );
+}
+
 interface SuggestionRowProps {
   station: Station;
+  /** Gare affichée sous sa ville */
+  isChild: boolean;
+  query: string;
   isActive: boolean;
   onMouseDown: (e: React.MouseEvent) => void;
 }
 
-function SuggestionRow({ station, isActive, onMouseDown }: SuggestionRowProps) {
+function SuggestionRow({ station, isChild, query, isActive, onMouseDown }: SuggestionRowProps) {
   const isAnywhere = station.id === ANYWHERE_ID;
   const isCity = station.type === 'city' && !isAnywhere;
-  const isStation = station.type === 'station';
+  const country = isAnywhere ? '' : countryName(station.country);
 
-  let subtitle = station.country;
-  if (isCity) subtitle = `${station.stations ? `${station.stations} gares` : 'Toutes les gares'} · ${station.country}`;
-  else if (isStation && station.city && station.city !== station.name) subtitle = station.country;
+  let subtitle = '';
+  if (isAnywhere) subtitle = station.country;
+  else if (isCity) subtitle = station.stations ? `Toutes les gares (${station.stations})` : 'Toutes les gares';
+  else if (station.city && station.city !== station.name) subtitle = station.city;
 
   const rowClass = [
     'ac-row',
     isActive ? 'ac-active' : '',
     isAnywhere ? 'ac-anywhere' : '',
     isCity ? 'ac-city' : '',
-    isStation ? 'ac-station' : '',
+    station.type === 'station' ? 'ac-station' : '',
+    isChild ? 'ac-child' : '',
   ]
     .filter(Boolean)
     .join(' ');
 
+  // Navigation au clavier : la ligne active reste visible dans la liste
+  const rowRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (isActive) rowRef.current?.scrollIntoView({ block: 'nearest' });
+  }, [isActive]);
+
   return (
-    <div className={rowClass} onMouseDown={onMouseDown}>
+    <div ref={rowRef} className={rowClass} role="option" aria-selected={isActive} onMouseDown={onMouseDown}>
       <span className="material-symbols-outlined ac-icon">
         {isAnywhere ? 'explore' : isCity ? 'location_city' : 'train'}
       </span>
       <div className="ac-details">
-        <div className="ac-title-row">
-          <span className="ac-title-main">{station.name}</span>
-          {isCity && <span className="ac-badge ac-badge-city">Ville</span>}
-          {isStation && <span className="ac-badge ac-badge-station">Gare</span>}
-        </div>
-        {subtitle && <div className="ac-line-sub">{subtitle}</div>}
+        <span className="ac-title-main">
+          {isAnywhere ? station.name : <HighlightedName name={station.name} query={query} />}
+        </span>
+        {/* Sous une ville, la ville et le pays sont déjà indiqués sur la ligne du dessus */}
+        {!isChild && (subtitle || country) && (
+          <div className="ac-line-sub">
+            {subtitle}
+            {subtitle && country && <span aria-hidden="true">·</span>}
+            {country && (
+              <>
+                <CountryFlag code={station.country} className="h-2.5" />
+                {country}
+              </>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -88,7 +88,7 @@ export default function MentionsLegales() {
                 <h2 className="text-2xl font-extrabold text-midnight">Objet du site</h2>
               </div>
               <p>TrainNomad est un site d'information gratuit d'aide à la planification de voyages en train en Europe. Il propose une recherche d'itinéraires, un outil de consultation des places TGVmax (MAX JEUNE / MAX SENIOR) disponibles, une carte d'exploration des destinations et des guides de villes.</p>
-              <p>Les données couvrent principalement la France, la Belgique, l'Espagne, le Portugal, l'Italie, la Suisse et le Royaume-Uni, ainsi que les Pays-Bas et l'Allemagne via les trains internationaux (Eurostar, European Sleeper, EuroCity, ICE).</p>
+              <p>Les données couvrent principalement la France, la Belgique, l'Espagne, le Portugal, l'Italie, la Suisse et le Royaume-Uni, ainsi que l'Allemagne (trains FlixTrain et trains internationaux) et les Pays-Bas via les trains internationaux (Eurostar, European Sleeper, EuroCity, ICE).</p>
               <div className="bg-white rounded-2xl p-6 border border-[#4ade80]/30 mt-4">
                 <p className="text-[#1d7a5a] font-bold mb-1">⚠ Important</p>
                 <p className="mb-0">TrainNomad est un site indépendant, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire. Le site ne vend aucun billet et n'effectue aucune réservation. La réservation se fait auprès de l'opérateur concerné ou d'un distributeur agréé.</p>
@@ -106,7 +106,6 @@ export default function MentionsLegales() {
               <p>TrainNomad réutilise les données ouvertes suivantes :</p>
               <ul>
                 <li><strong className="text-midnight">SNCF Voyageurs</strong> — horaires (GTFS) et disponibilités TGVmax / MAX (jeu de données « tgvmax »), <a href="https://ressources.data.sncf.com" target="_blank" rel="noopener noreferrer" className={linkClass}>ressources.data.sncf.com</a> — licence Open Database License (ODbL)</li>
-                <li><strong className="text-midnight">Trainline</strong> — référentiel des gares, <a href="https://github.com/trainline-eu/stations" target="_blank" rel="noopener noreferrer" className={linkClass}>github.com/trainline-eu/stations</a> — licence ODbL</li>
                 <li><strong className="text-midnight">Renfe</strong> — données ouvertes publiées par Renfe (horaires), <a href="https://data.renfe.com" target="_blank" rel="noopener noreferrer" className={linkClass}>data.renfe.com</a></li>
                 <li><strong className="text-midnight">Ouigo España</strong> — données ouvertes publiées via le Punto de Acceso Nacional espagnol, <a href="https://nap.transportes.gob.es" target="_blank" rel="noopener noreferrer" className={linkClass}>nap.transportes.gob.es</a></li>
                 <li><strong className="text-midnight">Trenitalia et Italo</strong> — données ouvertes publiées via le Punto di Accesso Nazionale italien</li>
@@ -116,8 +115,11 @@ export default function MentionsLegales() {
                 <li><strong className="text-midnight">Royaume-Uni</strong> — données ouvertes publiées par National Rail Enquiries</li>
                 <li><strong className="text-midnight">Eurostar</strong> — données ouvertes publiées par Eurostar</li>
                 <li><strong className="text-midnight">European Sleeper</strong> — données ouvertes publiées par European Sleeper</li>
+                <li><strong className="text-midnight">FlixTrain</strong> — données ouvertes (GTFS) publiées par Flix, <a href="https://gtfs.gis.flix.tech" target="_blank" rel="noopener noreferrer" className={linkClass}>gtfs.gis.flix.tech</a></li>
+                <li><strong className="text-midnight">OpenStreetMap</strong> — référentiel des gares (noms, positions, codes), consulté notamment via <a href="https://www.openrailwaymap.org" target="_blank" rel="noopener noreferrer" className={linkClass}>OpenRailwayMap</a>, © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className={linkClass}>contributeurs OpenStreetMap</a> — licence ODbL</li>
+                <li><strong className="text-midnight">Network Rail</strong> — référentiel CORPUS des gares britanniques</li>
                 <li><strong className="text-midnight">ADEME</strong> — facteurs d'émission de CO₂e des modes de transport, <a href="https://impactco2.fr" target="_blank" rel="noopener noreferrer" className={linkClass}>impactco2.fr</a></li>
-                <li><strong className="text-midnight">Wikidata</strong> — <a href="https://www.wikidata.org" target="_blank" rel="noopener noreferrer" className={linkClass}>wikidata.org</a> — licence CC0</li>
+                <li><strong className="text-midnight">Wikidata</strong> — villes de rattachement des gares et noms traduits, <a href="https://www.wikidata.org" target="_blank" rel="noopener noreferrer" className={linkClass}>wikidata.org</a> — licence CC0</li>
                 <li><strong className="text-midnight">Fonds de carte</strong> — © <a href="https://www.maptiler.com/copyright/" target="_blank" rel="noopener noreferrer" className={linkClass}>MapTiler</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className={linkClass}>contributeurs OpenStreetMap</a> (ODbL)</li>
               </ul>
               <p className="mt-4">Contient des données SNCF Voyageurs, disponibles sous licence Open Database License (ODbL).</p>
