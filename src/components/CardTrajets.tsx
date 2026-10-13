@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import type { Journey } from '../types/api';
 import { isSeatChange, isTrainLeg } from '../types/api';
 import { useNetwork } from '../network/NetworkContext';
@@ -8,6 +8,15 @@ import { TrainLogo } from './TrainLogo';
 import { estimateCarbon, formatKg } from '../lib/carbon';
 import { omioLink } from '../lib/omio';
 import { track } from '../lib/analytics';
+
+// Carte du trajet : chargée au premier clic (Leaflet et MapTiler restent hors de la page de résultats)
+const JourneyMap = lazy(() => import('./JourneyMap'));
+
+/**
+ * Bouton « Carte » : pour l'instant seulement sur les trajets passant par la Belgique ou la France, seuls pays dont
+ * les tracés sur les voies sont dans public/traces/.
+ */
+const TRACED_COUNTRIES = new Set(['BE', 'CH', 'ES', 'FR', 'GB', 'IT', 'PT']);
 
 /** Bloc de droite (logos des trains et bouton « Choisir ») : à réactiver avec les prix et la réservation. */
 const SHOW_BOOKING = false;
@@ -21,6 +30,7 @@ interface CardTrajetProps {
 
 export default function CardTrajet({ journey }: CardTrajetProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showMap, setShowMap] = useState(false);
   const { network } = useNetwork();
 
   const trains = journey.legs.filter(isTrainLeg);
@@ -33,6 +43,7 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
   const viaLabel = via.map((v) => (v.seat ? `${v.name} (changement de siège)` : v.name)).join(', ');
   const arrivalOffset = dayOffset(journey.departure, journey.arrival);
   const carbon = estimateCarbon(journey);
+  const hasMap = trains.some((t) => t.stops.some((s) => TRACED_COUNTRIES.has(s.country)));
   // Pas de lien pour TGVmax : les places se réservent avec l'abonnement, pas sur Omio
   const omioUrl = SHOW_OMIO && network.id === 'europe' ? omioLink(journey) : null;
 
@@ -40,8 +51,9 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
     <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm transition-all w-full max-w-[80rem] mx-auto">
 
       {/* En-tête de la carte */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
+      {/* Téléphone : les pastilles et les boutons passent sur deux lignes plutôt que de déborder */}
+      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 mb-4">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
           {network.badge && (
             <span className="bg-brand text-white px-2.5 py-1 rounded-full text-[10px] font-extrabold tracking-wider uppercase">
               {network.badge}
@@ -65,15 +77,26 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
           <span className="text-xs font-medium text-slate-400 first-letter:uppercase">{formatDate(journey.departure)}</span>
         </div>
 
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1 cursor-pointer transition-colors"
-        >
-          {isExpanded ? 'Réduire' : 'Détailler'}
-          <span className={`material-symbols-outlined text-sm transition-transform ${isExpanded ? 'rotate-180' : ''}`}>
-            expand_more
-          </span>
-        </button>
+        <div className="flex items-center gap-4 ml-auto">
+          {hasMap && (
+            <button
+              onClick={() => setShowMap(true)}
+              className="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1 py-1.5 cursor-pointer transition-colors"
+            >
+              <span className="material-symbols-outlined text-sm">map</span>
+              Carte
+            </button>
+          )}
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1 py-1.5 cursor-pointer transition-colors"
+          >
+            {isExpanded ? 'Réduire' : 'Détailler'}
+            <span className={`material-symbols-outlined text-sm transition-transform ${isExpanded ? 'rotate-180' : ''}`}>
+              expand_more
+            </span>
+          </button>
+        </div>
       </div>
 
       {/* Corps principal (version réduite) */}
@@ -175,6 +198,12 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
 
       {/* Déroulé détaillé */}
       {isExpanded && <JourneySteps journey={journey} />}
+
+      {showMap && (
+        <Suspense fallback={null}>
+          <JourneyMap journey={journey} onClose={() => setShowMap(false)} />
+        </Suspense>
+      )}
     </div>
   );
 }

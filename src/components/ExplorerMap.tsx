@@ -1,7 +1,7 @@
 import { MapContainer, CircleMarker, Tooltip, useMap } from 'react-leaflet';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { canvas, circleMarker, latLngBounds, layerGroup } from 'leaflet';
-import type { CircleMarker as LeafletCircleMarker, Map as LeafletMap, LatLngTuple } from 'leaflet';
+import type { CircleMarker as LeafletCircleMarker, LayerGroup, Map as LeafletMap, LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MaptilerLayer } from '@maptiler/leaflet-maptilersdk';
 import { config as maptilerConfig } from '@maptiler/sdk';
@@ -12,12 +12,16 @@ import { MapLegend } from './MapLegend';
 import type { DurationFilter } from './MapLegend';
 import { DURATION_COLORS, durationBucket, getDurationColor, formatDuration } from '../types/explorer';
 import type { Destination, OriginCoords } from '../types/explorer';
+import type { Journey } from '../types/api';
+import { drawJourney } from '../lib/journeyLayer';
 import { MAPTILER_API_KEY } from '../config';
 import { useNetwork } from '../network/NetworkContext';
 
 interface Props {
   destinations: Destination[];
   selected: Destination | null;
+  /** Trajet vers la destination choisie : dessiné sur la carte dès qu'il est chargé */
+  journey: Journey | null;
   originCoords: OriginCoords | null;
   originName: string;
   searched: boolean;
@@ -141,6 +145,7 @@ interface InnerProps extends Omit<Props, 'durationFilter'> {
 function MapContent({
   destinations,
   selected,
+  journey,
   originCoords,
   originName,
   onSelect,
@@ -155,11 +160,15 @@ function MapContent({
   const insetsRef = useRef(insets);
   const maxDurationRef = useRef(maxDuration);
   const entriesRef = useRef<MarkerEntry[]>([]);
+  const groupRef = useRef<LayerGroup | null>(null);
+  const hasSelection = !!selected;
+  const hasSelectionRef = useRef(hasSelection);
   useEffect(() => {
     pointsRef.current = points;
     onSelectRef.current = onSelect;
     insetsRef.current = insets;
     maxDurationRef.current = maxDuration;
+    hasSelectionRef.current = hasSelection;
   });
 
   // Expose l'instance Leaflet au composant parent (bouton « Recentrer »)
@@ -215,18 +224,56 @@ function MapContent({
     fitToPoints(map, pointsRef.current, insetsRef.current);
   }, [map, destinations, originCoords]);
 
-  // Recentrage doux sur la destination sélectionnée
+  // Destination choisie : la carte cadre le trajet entier, du départ à l'arrivée
+  const originRef = useRef(originCoords);
+  useEffect(() => {
+    originRef.current = originCoords;
+  });
+  const fitJourney = useCallback(
+    (pts: LatLngTuple[]) => {
+      const size = map.getSize();
+      if (pts.length === 0 || !size.x || !size.y) return;
+      const inset = insetsRef.current;
+      map.flyToBounds(latLngBounds(pts), {
+        ...(inset
+          ? { paddingTopLeft: [32, inset.top + LEGEND_ROW + 24], paddingBottomRight: [32, inset.bottom + 32] }
+          : { padding: [72, 72] }),
+        maxZoom: 10,
+        duration: 0.6,
+      });
+    },
+    [map],
+  );
   useEffect(() => {
     if (!selected || !hasCoords(selected)) return;
-    const zoom = Math.max(map.getZoom(), 8);
-    // Vise le milieu de la zone visible, pas le milieu de la carte (en partie sous la feuille)
-    const shift = insetsRef.current ? (insetsRef.current.bottom - insetsRef.current.top - LEGEND_ROW) / 2 : 0;
-    const center = map.unproject(
-      map.project([selected.place.lat, selected.place.lon], zoom).add([0, shift]),
-      zoom,
-    );
-    map.flyTo(center, zoom, { duration: 0.6 });
-  }, [map, selected]);
+    const origin = originRef.current;
+    const pts: LatLngTuple[] = [[selected.place.lat, selected.place.lon]];
+    if (origin && isCoord(origin.lat) && isCoord(origin.lon)) pts.push([origin.lat, origin.lon]);
+    fitJourney(pts);
+  }, [selected, fitJourney]);
+
+  // Trajet vers la destination choisie, sur les voies quand le tracé existe (src/lib/traces.ts).
+  // Calque à part, transparent aux clics.
+  const journeyRenderer = useMemo(() => {
+    const pane = map.getPane('journey') ?? map.createPane('journey');
+    pane.style.zIndex = '450';
+    pane.style.pointerEvents = 'none';
+    return canvas({ pane: 'journey', padding: 0.5 });
+  }, [map]);
+  useEffect(() => {
+    if (!journey) return;
+    let cancelled = false;
+    const layer = drawJourney(map, journey, { renderer: journeyRenderer, pane: 'journey', stopRadius: 3 });
+    // Un trajet avec détour (correspondance loin de la ligne droite) sort du premier cadrage
+    layer.loaded.then(({ points: path }) => {
+      if (cancelled || path.length === 0) return;
+      if (!path.every((p) => map.getBounds().contains(p))) fitJourney(path);
+    });
+    return () => {
+      cancelled = true;
+      layer.remove();
+    };
+  }, [map, journey, journeyRenderer, fitJourney]);
 
   // Destinations : plusieurs milliers de points, créés directement en Leaflet sur un
   // canvas plutôt qu'en composants React (un CircleMarker + Tooltip chacun était très lent).
@@ -257,7 +304,8 @@ function MapContent({
     }
     applyDurationScale(entries, scaleMax);
     entriesRef.current = entries;
-    group.addTo(map);
+    groupRef.current = group;
+    if (!hasSelectionRef.current) group.addTo(map);
 
     const onZoom = () => {
       const zoom = map.getZoom();
@@ -273,9 +321,19 @@ function MapContent({
     return () => {
       map.off('zoomend', onZoom);
       group.remove();
+      groupRef.current = null;
       entriesRef.current = [];
     };
   }, [map, renderer, destinations]);
+
+  // Destination choisie : les autres points sont masqués, il ne reste que le trajet. Ils reviennent
+  // en fermant le détail.
+  useEffect(() => {
+    const group = groupRef.current;
+    if (!group) return;
+    if (hasSelection) group.remove();
+    else group.addTo(map);
+  }, [map, hasSelection, destinations]);
 
   // Curseur de durée : on met à jour les points existants (plusieurs milliers) sans les recréer
   useEffect(() => {
@@ -334,6 +392,7 @@ function MapContent({
 export function ExplorerMap({
   destinations,
   selected,
+  journey,
   originCoords,
   originName,
   searched,
@@ -367,6 +426,7 @@ export function ExplorerMap({
         <MapContent
           destinations={destinations}
           selected={selected}
+          journey={journey}
           originCoords={originCoords}
           originName={originName}
           searched={searched}

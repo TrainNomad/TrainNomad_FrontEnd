@@ -149,6 +149,32 @@ const BY_TYPE: Record<string, string> = {
   'SNCB ICE': 'ice.png',
   'SNCB Nightjet': 'nightjet.png',
 
+  // --- Pays-Bas (flux "NS" : NS, Arriva, Keolis, Qbuzz et trains des pays voisins) ---
+  'NS Intercity': 'NS.png',
+  'NS Intercity direct': 'NS.png',
+  'NS Sprinter': 'NS.png',
+  'NS Eurocity Direct': 'NS.png',
+  'NS EuroCity': 'eurocity.png',
+  'NS ICE': 'ice.png',
+  'NS Nightjet': 'nightjet.png',
+  'SNCB Stoptrein': 'SNCB.png',
+  'Arriva Stoptrein': 'ns_arriva.png',
+  'Arriva Sneltrein': 'ns_arriva.png',
+  'Arriva Nachttrein': 'ns_arriva.png',
+  'Keolis Sprinter': 'ns_keolis.png',
+  'Keolis Intercity': 'ns_keolis.png',
+  'Qbuzz Stoptrein': 'ns_Qbuzz.png',
+  'DB Stoptrein': 'db',
+  'VIAS Stoptrein': 'ns_vias.png',
+  'Eurobahn Stoptrein': 'ns_eurobahn.png',
+  'Eurobahn Sneltrein': 'ns_eurobahn.png',
+  GoVolta: 'ns_go_volta.png',
+
+  // --- Trenord (Lombardie) : pas encore de logo, le nom du train est affiché ---
+  'Trenord Regionale': '',
+  'Trenord RegioExpress': '',
+  'Trenord Malpensa Express': '',
+
   // --- National Rail (UK Operators by Name) ---
   'Transport for Wales': 'transport_for_wales.png',
   c2c: 'c2c.png',
@@ -200,6 +226,7 @@ const BY_OPERATOR: Record<string, string> = {
   OUIGO_ES: 'ouigo.png',
   SNCB: 'SNCB.png',
   FLIXTRAIN: 'FlixTrain.png',
+  NS: 'NS.png',
 };
 
 // Flux allemand (operator "DB") : type = "<compagnie> <catégorie>" (ex. "DB ICE", "PKP EuroCity",

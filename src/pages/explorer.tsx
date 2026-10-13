@@ -2,7 +2,7 @@ import { useState, useCallback, useDeferredValue, useEffect, useMemo, useRef } f
 import { defaultMaxDuration, maxDurationLimit } from '../types/explorer';
 import type { Destination, OriginCoords } from '../types/explorer';
 import type { DurationFilter } from '../components/MapLegend';
-import type { Place } from '../types/api';
+import type { Journey, Place } from '../types/api';
 import { ExplorerSearch } from '../components/SearchBoxOneStation';
 import type { ExplorerSearchPayload } from '../components/SearchBoxOneStation';
 import { ExplorerMap } from '../components/ExplorerMap';
@@ -12,7 +12,7 @@ import { BottomSheet } from '../components/ui/BottomSheet';
 import type { SheetHeights, SheetSnap } from '../components/ui/BottomSheet';
 import { useNetwork } from '../network/NetworkContext';
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { formatDate } from '../lib/format';
+import { formatDate, formatTime } from '../lib/format';
 import { track } from '../lib/analytics';
 
 // Téléphone : hauteur occupée en haut de la carte par la recherche repliée (marges comprises),
@@ -36,6 +36,8 @@ export default function Explorer() {
   const { api, network } = useNetwork();
   const [destinations, setDestinations] = useState<Destination[]>([]);
   const [selected, setSelected]         = useState<Destination | null>(null);
+  // Trajet détaillé vers la destination choisie (arrêts de chaque train), dessiné sur la carte
+  const [journey, setJourney]           = useState<Journey | null>(null);
   const [loading, setLoading]           = useState(false);
   const [searched, setSearched]         = useState(false);
   const [origin, setOrigin]             = useState<Place | null>(null);
@@ -101,6 +103,34 @@ export default function Explorer() {
     const from = params.get('from');
     if (from) runSearch(from, params.get('date') || '', params.get('time') || undefined);
   }, [runSearch]);
+
+  // Destination choisie : /explorer ne donne que les heures, /search donne les trains et leurs arrêts.
+  // On retient le trajet aux mêmes heures (à défaut le premier proposé).
+  useEffect(() => {
+    setJourney(null);
+    if (!selected || !origin) return;
+    let cancelled = false;
+    api
+      .searchTrips({
+        from: origin.id,
+        to: selected.place.id,
+        date: date || selected.departure.slice(0, 10),
+        time: formatTime(selected.departure),
+        limit: 5,
+        maxTransfers: network.explorerMaxTransfers,
+      })
+      .then(({ journeys }) => {
+        if (cancelled) return;
+        const same = journeys.find((j) => j.departure === selected.departure && j.arrival === selected.arrival);
+        setJourney(same ?? journeys.find((j) => j.arrival === selected.arrival) ?? journeys[0] ?? null);
+      })
+      .catch(() => {
+        // pas de tracé : la carte garde seulement les deux points
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [api, selected, origin, date, network.explorerMaxTransfers]);
 
   // Mémorisé : un nouvel objet à chaque rendu relançait le recadrage de la carte
   // (par exemple à chaque clic sur une destination).
@@ -169,6 +199,7 @@ export default function Explorer() {
           <ExplorerMap
             destinations={destinations}
             selected={selected}
+            journey={journey}
             originCoords={originCoords}
             originName={origin?.name ?? ''}
             searched={searched}
@@ -254,6 +285,7 @@ export default function Explorer() {
           <ExplorerMap
             destinations={destinations}
             selected={selected}
+            journey={journey}
             originCoords={originCoords}
             originName={origin?.name ?? ''}
             searched={searched}

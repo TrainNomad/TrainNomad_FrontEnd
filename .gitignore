@@ -26,3 +26,6 @@ yarn-error.log*
 
 # TypeScript
 tsconfig.tsbuildinfo
+
+# Tracés des trains sur les voies : téléchargés au build (scripts/fetch-traces.mjs)
+public/traces/
