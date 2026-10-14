@@ -123,6 +123,12 @@ services:
         source: /guides/barcelone
         destination: /guides/barcelone/index.html
       - type: rewrite
+        source: /guides/madrid
+        destination: /guides/madrid/index.html
+      - type: rewrite
+        source: /guides/seville
+        destination: /guides/seville/index.html
+      - type: rewrite
         source: /guides/angers
         destination: /guides/angers/index.html
       - type: rewrite
@@ -149,6 +155,9 @@ services:
       - type: rewrite
         source: /guides/lisbonne
         destination: /guides/lisbonne/index.html
+      - type: rewrite
+        source: /guides/porto
+        destination: /guides/porto/index.html
       - type: rewrite
         source: /guides/edinburgh
         destination: /guides/edinburgh/index.html
