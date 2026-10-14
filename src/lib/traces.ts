@@ -46,7 +46,7 @@ function loadStation(id: string): Promise<StationTraces> {
   return pending;
 }
 
-function decodePolyline(encoded: string): LatLng[] {
+export function decodePolyline(encoded: string): LatLng[] {
   const points: LatLng[] = [];
   let i = 0;
   let lat = 0;

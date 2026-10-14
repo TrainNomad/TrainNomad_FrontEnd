@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import type { Journey } from '../types/api';
 import { isSeatChange, isTrainLeg } from '../types/api';
 import { useNetwork } from '../network/NetworkContext';
@@ -13,10 +13,26 @@ import { track } from '../lib/analytics';
 const JourneyMap = lazy(() => import('./JourneyMap'));
 
 /**
- * Bouton « Carte » : pour l'instant seulement sur les trajets passant par la Belgique ou la France, seuls pays dont
- * les tracés sur les voies sont dans public/traces/.
+ * Bouton « Carte » : seulement sur les trajets passant par un de ces pays, seuls pays dont les tracés sur les voies
+ * sont dans public/traces/.
  */
-const TRACED_COUNTRIES = new Set(['BE', 'CH', 'ES', 'FR', 'GB', 'IT', 'PT']);
+const TRACED_COUNTRIES = new Set(['BE', 'CH', 'ES', 'FR', 'GB', 'IT', 'NL', 'PT']);
+
+/**
+ * Bulle « Voir le trajet sur la carte » : au-dessus du bouton « Carte » du premier trajet qui en a un (dessous, elle
+ * cachait l'heure d'arrivée), jusqu'à ce que le visiteur la ferme ou ouvre une carte (retenu dans le navigateur,
+ * clé astuce_carte).
+ */
+const HINT_KEY = 'astuce_carte';
+let hintShown = false; // une seule bulle par page de résultats
+
+function hintSeen(): boolean {
+  try {
+    return localStorage.getItem(HINT_KEY) === '1';
+  } catch {
+    return true; // stockage indisponible : pas de bulle qui reviendrait à chaque page
+  }
+}
 
 /** Bloc de droite (logos des trains et bouton « Choisir ») : à réactiver avec les prix et la réservation. */
 const SHOW_BOOKING = false;
@@ -46,6 +62,24 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
   const hasMap = trains.some((t) => t.stops.some((s) => TRACED_COUNTRIES.has(s.country)));
   // Pas de lien pour TGVmax : les places se réservent avec l'abonnement, pas sur Omio
   const omioUrl = SHOW_OMIO && network.id === 'europe' ? omioLink(journey) : null;
+
+  const [showHint, setShowHint] = useState(false);
+  useEffect(() => {
+    if (!hasMap || hintShown || hintSeen()) return;
+    hintShown = true;
+    setShowHint(true);
+    return () => {
+      hintShown = false;
+    };
+  }, [hasMap]);
+  const closeHint = () => {
+    setShowHint(false);
+    try {
+      localStorage.setItem(HINT_KEY, '1');
+    } catch {
+      // stockage indisponible : la bulle reviendra à la prochaine recherche
+    }
+  };
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm transition-all w-full max-w-[80rem] mx-auto">
@@ -79,13 +113,36 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
 
         <div className="flex items-center gap-4 ml-auto">
           {hasMap && (
-            <button
-              onClick={() => setShowMap(true)}
-              className="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1 py-1.5 cursor-pointer transition-colors"
-            >
-              <span className="material-symbols-outlined text-sm">map</span>
-              Carte
-            </button>
+            <div className="relative">
+              <button
+                onClick={() => {
+                  closeHint();
+                  setShowMap(true);
+                }}
+                className="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1 py-1.5 cursor-pointer transition-colors"
+              >
+                <span className="material-symbols-outlined text-sm">map</span>
+                Carte
+              </button>
+              {showHint && (
+                <div
+                  role="status"
+                  className="absolute right-0 bottom-full mb-2 z-20 w-56 bg-slate-900 text-white rounded-xl shadow-lg pl-3 pr-1.5 py-2 flex items-start gap-1.5"
+                >
+                  <span className="absolute -bottom-1 right-5 w-2.5 h-2.5 bg-slate-900 rotate-45"></span>
+                  <span className="text-xs leading-snug">
+                    <strong className="font-bold">Nouveau :</strong> voyez le parcours du train sur la carte.
+                  </span>
+                  <button
+                    onClick={closeHint}
+                    aria-label="Fermer"
+                    className="shrink-0 w-6 h-6 flex items-center justify-center rounded-full text-slate-300 hover:text-white hover:bg-white/10 cursor-pointer transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-sm">close</span>
+                  </button>
+                </div>
+              )}
+            </div>
           )}
           <button
             onClick={() => setIsExpanded(!isExpanded)}

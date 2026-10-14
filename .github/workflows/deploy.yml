@@ -1,0 +1,53 @@
+name: Déployer le site (Render)
+
+# Reconstruit le site statique sur Render à la demande : Actions > « Déployer le site (Render) » > Run workflow.
+# Le build reprend la dernière version de la branche main et télécharge les derniers tracés
+# (Release traces-latest de TrainNomad_GTFS, scripts/fetch-traces.mjs).
+#
+# Site réel (trainnomad.eu) : autoDeploy est à false dans render.yaml, ce bouton remplace le
+# « Manual Deploy » du tableau de bord. À lancer après validation sur le site de test.
+#
+# Secrets du dépôt (Settings > Secrets and variables > Actions), à copier depuis
+# Render > service > Settings > Deploy Hook :
+#   RENDER_TEST_DEPLOY_HOOK   site de test
+#   RENDER_PROD_DEPLOY_HOOK   site réel (trainnomad-frontend)
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: "Site à reconstruire"
+        type: choice
+        options:
+          - test
+          - production
+        default: test
+
+permissions: {}
+
+concurrency:
+  group: deploy-${{ inputs.site }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Demander à Render de reconstruire le site (${{ inputs.site }})
+        env:
+          HOOK: ${{ inputs.site == 'production' && secrets.RENDER_PROD_DEPLOY_HOOK || secrets.RENDER_TEST_DEPLOY_HOOK }}
+          SECRET: ${{ inputs.site == 'production' && 'RENDER_PROD_DEPLOY_HOOK' || 'RENDER_TEST_DEPLOY_HOOK' }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::error::Secret $SECRET absent (Render > service > Settings > Deploy Hook)"
+            exit 1
+          fi
+          # Render répond {"deploy":{"id":"dep-…"}} : le suivi du build se fait dans le tableau de bord
+          RESP=$(curl -fsS --retry 3 --retry-delay 10 --max-time 60 -X POST "$HOOK")
+          echo "Render : $RESP"
+          {
+            echo "### Déploiement demandé : site ${{ inputs.site }}"
+            echo ""
+            echo "Branche main, commit \`${GITHUB_SHA::7}\`. Réponse de Render : \`$RESP\`"
+            echo ""
+            echo "Suivi du build : tableau de bord Render > service > Events."
+          } >> "$GITHUB_STEP_SUMMARY"

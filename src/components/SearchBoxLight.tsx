@@ -21,6 +21,15 @@ interface Props {
   }) => void;
 }
 
+/**
+ * Ville ou gare reçue dans l'URL (explorateur, page précédente) : tenue pour choisie, pour relancer la recherche
+ * sur son identifiant et non sur son nom. Une saisie dans le champ l'efface, comme une suggestion choisie.
+ */
+function urlPlace(id: string | null, name: string): Station | null {
+  if (!id || !/^(city|station):/.test(id)) return null;
+  return { type: id.startsWith('city:') ? 'city' : 'station', id, name, country: '', lat: 0, lon: 0 };
+}
+
 export default function SearchBox({ onSearch }: Props) {
   const { network } = useNetwork();
   const [departDate, setDepartDate] = useState<CalendarDate>(getToday(getLocalTimeZone()));
@@ -57,9 +66,11 @@ export default function SearchBox({ onSearch }: Props) {
 
     if (departureName) {
       setFromQuery(departureName);
+      setSelectedFrom(urlPlace(params.get('departure') || params.get('from'), departureName));
     }
     if (arrivalName) {
       setToQuery(arrivalName);
+      setSelectedTo(urlPlace(params.get('arrival') || params.get('to'), arrivalName));
     }
     if (dateParam) {
       try {
@@ -123,8 +134,8 @@ export default function SearchBox({ onSearch }: Props) {
       <div className="w-full max-w-7xl mx-auto px-6 py-2">
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-1 flex flex-wrap lg:flex-nowrap items-center gap-1">
 
-          {/* Départ */}
-          <div className="flex-1 min-w-[180px] px-2 py-1">
+          {/* Départ (en mobile, les deux champs l'un sous l'autre et le bouton d'inversion à droite, entre eux) */}
+          <div className="flex-[1_1_100%] sm:flex-1 min-w-[180px] px-2 py-1">
             <AutocompleteInput
               key={`from-${mountKey.current}-${swapKey}`}
               id="input-from"
@@ -137,10 +148,14 @@ export default function SearchBox({ onSearch }: Props) {
             />
           </div>
 
-          <SwapButton onClick={handleSwap} disabled={!canSwap} />
+          <SwapButton
+            onClick={handleSwap}
+            disabled={!canSwap}
+            className="relative z-10 ml-auto mr-5 -my-4 rotate-90 sm:m-0 sm:rotate-0"
+          />
 
           {/* Arrivée */}
-          <div className="flex-1 min-w-[180px] px-2 py-1">
+          <div className="flex-[1_1_100%] sm:flex-1 min-w-[180px] px-2 py-1">
             <AutocompleteInput
               key={`to-${mountKey.current}-${swapKey}`}
               id="input-to"

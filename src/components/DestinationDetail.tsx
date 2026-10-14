@@ -8,6 +8,8 @@ import {
 import type { Destination } from '../types/explorer';
 import type { Place } from '../types/api';
 import { useNetwork } from '../network/NetworkContext';
+import { CityExtras } from './CityExtras';
+import { placeCity } from '../lib/cityGuides';
 
 interface Props {
   dest: Destination;
@@ -32,7 +34,9 @@ export function DestinationDetail({ dest, origin, date, scaleMax, onClose }: Pro
 
   const timetableParams = new URLSearchParams({
     departure: origin?.id ?? originName,
+    departure_name: originName,
     arrival: dest.place.id,
+    arrival_name: dest.place.name,
     date: date || dest.departure.slice(0, 10),
     departure_time: formatTime(dest.departure),
   });
@@ -147,6 +151,9 @@ export function DestinationDetail({ dest, origin, date, scaleMax, onClose }: Pro
         >
           Voir les horaires →
         </a>
+
+        {/* Guide de la ville et blocs personnalisés (src/lib/cityBlocks.ts) */}
+        <CityExtras city={placeCity(dest.place)} />
       </div>
     </div>
   );

@@ -170,10 +170,10 @@ const BY_TYPE: Record<string, string> = {
   'Eurobahn Sneltrein': 'ns_eurobahn.png',
   GoVolta: 'ns_go_volta.png',
 
-  // --- Trenord (Lombardie) : pas encore de logo, le nom du train est affiché ---
-  'Trenord Regionale': '',
-  'Trenord RegioExpress': '',
-  'Trenord Malpensa Express': '',
+  // --- Trenord (Lombardie) ---
+  'Trenord Regionale': 'trenord.png',
+  'Trenord RegioExpress': 'trenord.png',
+  'Trenord Malpensa Express': 'trenord.png',
 
   // --- National Rail (UK Operators by Name) ---
   'Transport for Wales': 'transport_for_wales.png',

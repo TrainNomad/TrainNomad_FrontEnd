@@ -1,14 +1,14 @@
 {
   "cities": {
     "paris": { "lat": 48.8566, "lng": 2.3522, "label": "Paris" },
-    "rennes": { "lat": 48.1173, "lng": -1.6778, "label": "Rennes" },
+    "rennes": { "lat": 48.1173, "lng": -1.6778 },
     "bordeaux": { "lat": 44.8378, "lng": -0.5792, "label": "Bordeaux" },
-    "lyon": { "lat": 45.764, "lng": 4.8357, "label": "Lyon" },
+    "lyon": { "lat": 45.764, "lng": 4.8357 },
     "london": { "lat": 51.5074, "lng": -0.1278, "label": "Londres" },
     "milan": { "lat": 45.4642, "lng": 9.19, "label": "Milan" },
     "madrid": { "lat": 40.4168, "lng": -3.7038, "label": "Madrid" },
     "porto": { "lat": 41.1579, "lng": -8.6291, "label": "Porto" },
-    "barcelone": { "lat": 41.3879, "lng": 2.1699, "label": "Barcelone" },
+    "barcelone": { "lat": 41.3879, "lng": 2.1699, "label": "Barcelone", "labelSide": "bottom" },
     "seville": { "lat": 37.3891, "lng": -5.9845, "label": "Séville" },
     "amsterdam": { "lat": 52.3676, "lng": 4.9041, "label": "Amsterdam" },
     "berlin": { "lat": 52.52, "lng": 13.405, "label": "Berlin" },
@@ -16,7 +16,13 @@
     "prague": { "lat": 50.0755, "lng": 14.4378, "label": "Prague" },
     "edinbourg": { "lat": 55.9533, "lng": -3.1883, "label": "Édimbourg" },
     "rome": { "lat": 41.9029, "lng": 12.4964, "label": "Rome" },
-    "palerme": { "lat": 38.1939, "lng": 13.3612, "label": "Palerme" }
+    "palerme": { "lat": 38.1939, "lng": 13.3612, "label": "Palerme" },
+    "naples": { "lat": 40.8518, "lng": 14.2681 },
+    "venise": { "lat": 45.4408, "lng": 12.3155 },
+    "lisbonne": { "lat": 38.7223, "lng": -9.1393 },
+    "zurich": { "lat": 47.3769, "lng": 8.5417 },
+    "malaga": { "lat": 36.7213, "lng": -4.4214 },
+    "marseille": { "lat": 43.2965, "lng": 5.3698 }
   },
   "routes": [
     ["paris", "london"],
@@ -34,6 +40,12 @@
     ["bruxelles", "prague"],
     ["edinbourg", "london"],
     ["rome", "palerme"],
-    ["rome", "milan"]
+    ["rome", "milan"],
+    ["rome", "naples"],
+    ["milan", "venise"],
+    ["porto", "lisbonne"],
+    ["paris", "zurich"],
+    ["madrid", "malaga"],
+    ["marseille", "lyon"]
   ]
 }

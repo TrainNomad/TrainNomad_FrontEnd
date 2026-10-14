@@ -1,0 +1,100 @@
+name: Déploiement programmé (Render)
+
+# Reconstruit le site sur Render à une date fixée à l'avance, sans intervention.
+#
+# Programmer une mise en ligne : Settings > Secrets and variables > Actions > onglet Variables :
+#   RENDER_DEPLOY_AT     date et heure de Paris, format « AAAA-MM-JJ HH:MM » (ex. 2026-10-20 08:00)
+#   RENDER_DEPLOY_SITE   facultatif : production (par défaut) ou test
+# Annuler : supprimer ou vider RENDER_DEPLOY_AT. Sans cette variable, le job est sauté (aucune
+# minute Actions consommée).
+#
+# Le workflow tourne toutes les 15 minutes ; GitHub retarde souvent les tâches planifiées de
+# 5 à 20 minutes, le déploiement part donc au premier passage après l'heure prévue. Un seul
+# déploiement par date (repère gardé dans le cache Actions). Passé 24 h de retard, on ne déploie
+# plus : penser à vider la variable après la mise en ligne.
+#
+# Le build reprend la dernière version de main au moment du déploiement : pousser les
+# modifications sur main avant la date. Secrets : les mêmes que deploy.yml
+# (RENDER_PROD_DEPLOY_HOOK, RENDER_TEST_DEPLOY_HOOK).
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  # Vérification à la main (même logique : ne déploie que si l'heure prévue est passée)
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: deploy-scheduled
+
+jobs:
+  deploy:
+    if: vars.RENDER_DEPLOY_AT != ''
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_AT: ${{ vars.RENDER_DEPLOY_AT }}
+      SITE: ${{ vars.RENDER_DEPLOY_SITE || 'production' }}
+    steps:
+      - name: Heure prévue atteinte ?
+        id: when
+        run: |
+          if [ "$SITE" != "production" ] && [ "$SITE" != "test" ]; then
+            echo "::error::RENDER_DEPLOY_SITE doit valoir production ou test (reçu : $SITE)"
+            exit 1
+          fi
+          if ! AT=$(TZ=Europe/Paris date -d "$DEPLOY_AT" +%s 2>/dev/null); then
+            echo "::error::RENDER_DEPLOY_AT illisible : « $DEPLOY_AT » (attendu AAAA-MM-JJ HH:MM)"
+            exit 1
+          fi
+          NOW=$(date +%s)
+          LABEL=$(TZ=Europe/Paris date -d "@$AT" '+%d/%m/%Y %H:%M')
+          echo "at=$AT" >> "$GITHUB_OUTPUT"
+          echo "label=$LABEL" >> "$GITHUB_OUTPUT"
+          if [ "$NOW" -lt "$AT" ]; then
+            echo "Déploiement $SITE prévu le $LABEL (heure de Paris), pas encore."
+            echo "due=false" >> "$GITHUB_OUTPUT"
+          elif [ $((NOW - AT)) -gt 86400 ]; then
+            echo "::warning::Date du $LABEL dépassée de plus de 24 h : rien n'est fait. Vider RENDER_DEPLOY_AT."
+            echo "due=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "due=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Déjà déployé pour cette date ?
+        id: done
+        if: steps.when.outputs.due == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: .deploy-done
+          key: deploy-done-${{ env.SITE }}-${{ steps.when.outputs.at }}
+          lookup-only: true
+
+      - name: Demander à Render de reconstruire le site (${{ env.SITE }})
+        if: steps.when.outputs.due == 'true' && steps.done.outputs.cache-hit != 'true'
+        env:
+          HOOK: ${{ (vars.RENDER_DEPLOY_SITE || 'production') == 'production' && secrets.RENDER_PROD_DEPLOY_HOOK || secrets.RENDER_TEST_DEPLOY_HOOK }}
+          LABEL: ${{ steps.when.outputs.label }}
+        run: |
+          SECRET=$([ "$SITE" = production ] && echo RENDER_PROD_DEPLOY_HOOK || echo RENDER_TEST_DEPLOY_HOOK)
+          if [ -z "$HOOK" ]; then
+            echo "::error::Secret $SECRET absent (Render > service > Settings > Deploy Hook)"
+            exit 1
+          fi
+          RESP=$(curl -fsS --retry 3 --retry-delay 10 --max-time 60 -X POST "$HOOK")
+          echo "Render : $RESP"
+          echo "$RESP" > .deploy-done
+          {
+            echo "### Déploiement programmé : site $SITE"
+            echo ""
+            echo "Prévu le $LABEL (heure de Paris). Branche main, commit \`${GITHUB_SHA::7}\`. Réponse de Render : \`$RESP\`"
+            echo ""
+            echo "Suivi du build : tableau de bord Render > service > Events. Penser à vider RENDER_DEPLOY_AT."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Noter le déploiement (évite de le relancer au passage suivant)
+        if: steps.when.outputs.due == 'true' && steps.done.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .deploy-done
+          key: deploy-done-${{ env.SITE }}-${{ steps.when.outputs.at }}

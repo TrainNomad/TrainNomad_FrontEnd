@@ -7,6 +7,8 @@ import { useNetwork } from '../network/NetworkContext';
 import { track } from '../lib/analytics';
 import type { Journey, SearchResponse } from '../types/api';
 import { WakeUpNotice } from '../components/WakeUpNotice';
+import { CityExtras } from '../components/CityExtras';
+import { placeCity } from '../lib/cityGuides';
 
 interface Query {
   origin: string;
@@ -310,6 +312,9 @@ export default function Trajets() {
                       </button>
                     )}
                   </div>
+
+                  {/* Guide de la ville d'arrivée et blocs personnalisés (src/lib/cityBlocks.ts) */}
+                  {meta && <CityExtras city={placeCity(meta.to)} />}
                 </>
               ) : (
                 <div className="bg-white rounded-2xl border border-amber-100 p-12 text-center">

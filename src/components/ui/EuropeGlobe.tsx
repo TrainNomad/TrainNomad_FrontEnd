@@ -7,10 +7,13 @@ interface City {
   lat: number;
   lng: number;
   label?: string;
+  /** Côté du point où poser l'étiquette en priorité (au-dessus par défaut) */
+  labelSide?: string;
 }
 
 interface GlobeProps {
-  dots?: Array<{ start: City; end: City }>;
+  /** path : parcours réel sur les voies, en [lat, lng] du départ à l'arrivée ; sans lui, une courbe relie les deux villes */
+  dots?: Array<{ start: City; end: City; path?: Array<[number, number]> }>;
   lineColor?: string;
   /** Rayon du globe par rapport au cadre : plus grand = plus zoomé, horizon moins visible */
   zoom?: number;
@@ -27,6 +30,7 @@ const DEG = Math.PI / 180;
 const MAX_DRAG = 14; // degrés de rotation autorisés au doigt, de part et d'autre
 // Positions possibles d'une étiquette autour de son point : [x, y] avec -1, 0 ou 1
 const LABEL_SIDES = [[0, -1], [0, 1], [1, 0], [-1, 0]];
+const LABEL_SIDE_NAMES = ["top", "bottom", "right", "left"];
 const LABEL_GAP = 9;
 const EDGE_FADE =
   "linear-gradient(to bottom, black 93%, transparent), linear-gradient(to right, transparent, black 5%, black 95%, transparent)";
@@ -101,7 +105,25 @@ export function EuropeGlobe({
       city.links++;
       return city.index;
     };
-    const routes = dots.map((d) => [indexOf(d.start), indexOf(d.end)] as const);
+    const routes = dots.map((d) => {
+      const route = { from: indexOf(d.start), to: indexOf(d.end), geo: null as Float64Array | null, cum: null as Float64Array | null };
+      if (d.path && d.path.length > 1) {
+        // Points du parcours en triplets [sin(lat), cos(lat), lng], et part du chemin faite à chaque point
+        const geo = new Float64Array(d.path.length * 3);
+        const cum = new Float64Array(d.path.length);
+        d.path.forEach(([lat, lng], k) => {
+          geo.set([Math.sin(lat * DEG), Math.cos(lat * DEG), lng * DEG], k * 3);
+          if (k) {
+            const [pLat, pLng] = d.path![k - 1];
+            cum[k] = cum[k - 1] + Math.hypot(lat - pLat, (lng - pLng) * Math.cos(lat * DEG));
+          }
+        });
+        const total = cum[cum.length - 1] || 1;
+        route.geo = geo;
+        route.cum = cum.map((c) => c / total);
+      }
+      return route;
+    });
     const cities = Array.from(byKey.values());
     const mid = (v: number[]) => (v.length ? (Math.min(...v) + Math.max(...v)) / 2 : 0);
     const center = {
@@ -120,6 +142,7 @@ export function EuropeGlobe({
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const cityGeo = cities.map((c) => [Math.sin(c.lat * DEG), Math.cos(c.lat * DEG), c.lng * DEG]);
     const screen = cities.map(() => ({ x: 0, y: 0 }));
+    const point = { x: 0, y: 0 }; // point de parcours en cours de projection
     const labelSide = cities.map(() => -1); // index dans LABEL_SIDES, -1 = étiquette masquée
     // Le regard est centré plus au sud que le réseau : l'Europe remonte vers l'horizon
     const lat0 = (center.lat - tilt) * DEG;
@@ -180,8 +203,11 @@ export function EuropeGlobe({
         const p = points[city.index];
         const w = el.offsetWidth;
         const h = el.offsetHeight;
-        // Essaie au-dessus, puis en dessous, à droite et à gauche du point
-        const side = LABEL_SIDES.findIndex(([ax, ay]) => {
+        // Essaie le côté demandé pour la ville, puis au-dessus, en dessous, à droite et à gauche du point
+        const wanted = LABEL_SIDE_NAMES.indexOf(city.labelSide ?? "");
+        const tries = wanted < 0 ? LABEL_SIDES.map((_, k) => k) : [wanted, ...LABEL_SIDES.map((_, k) => k).filter((k) => k !== wanted)];
+        const side = tries.find((k) => {
+          const [ax, ay] = LABEL_SIDES[k];
           const x = p.x + ax * LABEL_GAP + ((ax - 1) / 2) * w;
           const y = p.y + ay * LABEL_GAP + ((ay - 1) / 2) * h;
           const box = [x - 1, y - 1, x + w + 1, y + h + 1];
@@ -190,8 +216,8 @@ export function EuropeGlobe({
           if (free) placed.push(box);
           return free;
         });
-        labelSide[city.index] = side;
-        el.style.opacity = side < 0 ? "0" : "1";
+        labelSide[city.index] = side ?? -1;
+        el.style.opacity = side === undefined ? "0" : "1";
       }
     };
 
@@ -251,14 +277,36 @@ export function EuropeGlobe({
       ctx.lineCap = "round";
       ctx.shadowColor = lineColor;
       ctx.shadowBlur = 5;
-      routes.forEach(([from, to], i) => {
+      routes.forEach(({ from, to, geo, cum }, i) => {
         const progress = Math.max(0, Math.min(1, (elapsed - i * LINE_STAGGER) / LINE_DURATION));
         if (!progress) return;
+        if (geo && cum) {
+          // Parcours réel sur les voies, tracé jusqu'à la part du chemin atteinte
+          ctx.beginPath();
+          let px = 0;
+          let py = 0;
+          for (let k = 0; k < cum.length; k++) {
+            project(geo[k * 3], geo[k * 3 + 1], geo[k * 3 + 2], lng0, point);
+            if (k === 0) {
+              ctx.moveTo(point.x, point.y);
+            } else if (cum[k] <= progress) {
+              ctx.lineTo(point.x, point.y);
+            } else {
+              const f = (progress - cum[k - 1]) / (cum[k] - cum[k - 1]);
+              ctx.lineTo(px + (point.x - px) * f, py + (point.y - py) * f);
+              break;
+            }
+            px = point.x;
+            py = point.y;
+          }
+          ctx.stroke();
+          return;
+        }
         const a = screen[from];
         const b = screen[to];
         const dx = b.x - a.x;
         const dy = b.y - a.y;
-        // Courbe bombée vers le haut de l'écran
+        // Pas de parcours connu : courbe bombée vers le haut de l'écran
         const up = dx > 0 ? 1 : -1;
         const qx = (a.x + b.x) / 2 + dy * 0.18 * up;
         const qy = (a.y + b.y) / 2 - dx * 0.18 * up;
