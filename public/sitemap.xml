@@ -14,6 +14,8 @@
   <url><loc>https://trainnomad.eu/guides/berlin</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/guides/bruxelles</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/guides/barcelone</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/madrid</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/seville</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/guides/angers</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/guides/lyon</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/guides/marseille</loc><priority>0.7</priority></url>
@@ -23,6 +25,7 @@
   <url><loc>https://trainnomad.eu/guides/rome</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/guides/amsterdam</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/guides/lisbonne</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/guides/porto</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/guides/edinburgh</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/guides/prague</loc><priority>0.7</priority></url>
 </urlset>
