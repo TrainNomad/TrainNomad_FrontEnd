@@ -338,5 +338,23 @@ input[type="date"] {
   box-shadow: 0 0 0 3px rgba(var(--brand-rgb) / 0.4);
 }
 
+/* Bandeau des compagnies de l'accueil (OperatorsStrip) : la liste, écrite deux fois, glisse de la largeur
+   d'une copie puis recommence, sans à-coup. Durée réglée dans le composant selon le nombre de logos. */
+@keyframes defilement {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.defilement {
+  animation: defilement 45s linear infinite;
+}
+.group:hover .defilement {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .defilement {
+    animation: none;
+  }
+}
+
 /* Utilitaires en dernier : ils l'emportent sur les styles ci-dessus (comme avec l'ancien Tailwind CDN). */
 @tailwind utilities;

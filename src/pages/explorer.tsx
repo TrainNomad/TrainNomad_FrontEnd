@@ -97,7 +97,7 @@ export default function Explorer() {
     [runSearch],
   );
 
-  // Arrivée depuis la page d'accueil : /explorer?from=city:TL4916&date=2026-09-17
+  // Arrivée depuis la page d'accueil : /explorer?from=city:Q90&date=2026-09-17
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const from = params.get('from');

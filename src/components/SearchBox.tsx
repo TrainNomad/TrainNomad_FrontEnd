@@ -99,13 +99,16 @@ export default function SearchBox() {
             <span className="material-symbols-outlined text-xl">
               <i className="fa-solid fa-route" />
             </span>
-            Trajets Europe
+            {/* Libellés courts sur mobile : ils tiennent sur une ligne */}
+            <span className="sm:hidden">Trajets</span>
+            <span className="hidden sm:inline">Trajets Europe</span>
           </button>
           <button onClick={() => setActiveTab('carte')} className={tabClass('carte')}>
             <span className="material-symbols-outlined text-xl">
               <i className="fa-regular fa-map" />
             </span>
-            Explorer la carte
+            <span className="sm:hidden">Carte</span>
+            <span className="hidden sm:inline">Explorer la carte</span>
           </button>
         </div>
 

@@ -7,7 +7,7 @@ export type PlaceType = 'city' | 'station';
 /** Ville (toutes ses gares) ou gare, renvoyée par /stations et utilisée en origine / destination. */
 export interface Place {
   type: PlaceType;
-  /** "city:TL4916" ou "station:8727100" : à renvoyer tel quel à /search et /explorer */
+  /** "city:Q90" ou "station:8727100" : à renvoyer tel quel à /search et /explorer */
   id: string;
   name: string;
   /** Ville de rattachement (gares uniquement) */
@@ -122,6 +122,8 @@ export interface FeaturedResponse {
   built_at: string;
   count: number;
   journeys: Journey[];
+  /** Nombre de trains avec au moins une place MAX, pour chacun des prochains jours */
+  days?: { date: string; trains: number }[];
 }
 
 export interface ApiErrorBody {

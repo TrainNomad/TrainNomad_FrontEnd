@@ -1,8 +1,10 @@
-import SearchBox from './SearchBox'; 
+import SearchBox from './SearchBox';
+import { OperatorsStrip } from './OperatorsStrip';
 
 export function HeroSection() {
   return (
-    <section className="relative z-20 pt-24 hero-gradient">
+    // Marges réduites sur mobile : le bouton « Rechercher » doit apparaître dès le premier écran
+    <section className="relative z-20 pt-10 md:pt-24 hero-gradient">
       <div className="max-w-7xl mx-auto px-6 text-center">
 
         {/* Badge */}
@@ -11,16 +13,19 @@ export function HeroSection() {
           Le voyage responsable, simplifié
         </div> */}
 
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1] max-w-4xl mx-auto">
-          La voie vers l'{' '}
-          <span className="text-[#1d7a5a]">Europe.</span>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 md:mb-8 leading-[1.1] max-w-5xl mx-auto">
+          L'Europe en train,{' '}
+          <span className="text-[#1d7a5a]">correspondances comprises.</span>
         </h1>
 
-        <p className="text-slate-500 text-lg md:text-xl max-w-3xl mx-auto mb-16 leading-relaxed">
-          Itinéraires inspirants, correspondances entre réseaux et places TGVmax disponibles : tout ce qu'il faut pour préférer le rail, sans se compliquer le voyage.
+        <p className="text-slate-500 text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 md:mb-16 leading-relaxed">
+          TrainNomad assemble les horaires des opérateurs ferroviaires européens pour trouver votre trajet, même quand il
+          faut changer de train à la frontière.
         </p>
 
         <SearchBox />
+
+        <OperatorsStrip />
       </div>
     </section>
   );

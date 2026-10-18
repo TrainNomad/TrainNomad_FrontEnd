@@ -3,9 +3,10 @@ import type { Destination } from '../types';
 
 const DESTINATIONS_PATH = '/assets/Destinations';
 
-/** Recherche Paris → destination sur la page Trajets (identifiants renvoyés par /stations de l'API Europe). */
+/** Recherche Paris → destination sur la page Trajets (identifiants renvoyés par /stations de l'API Europe :
+ * city:Q… pour une ville, station:… pour une gare). Amsterdam n'a pas d'entrée ville, d'où sa gare. */
 const trajetsHref = (arrival: string, arrivalName: string) =>
-  `/trajets?${new URLSearchParams({ departure: 'city:TL4916', departure_name: 'Paris', arrival, arrival_name: arrivalName })}`;
+  `/trajets?${new URLSearchParams({ departure: 'city:Q90', departure_name: 'Paris', arrival, arrival_name: arrivalName })}`;
 
 const DESTINATIONS: Destination[] = [
   {
@@ -15,34 +16,34 @@ const DESTINATIONS: Destination[] = [
     description: 'La Bretagne à portée de main pour un week-end',
     duration: '1h25',
     image: `${DESTINATIONS_PATH}/rennes.webp`,
-    href: trajetsHref('city:TL10736', 'Rennes'),
+    href: trajetsHref('city:Q647', 'Rennes'),
   },
   {
     id: 'milan',
-    name: 'Milano Centrale, Italie',
+    name: 'Milan, Italie',
     country: 'Italie',
     description: 'La Dolce Vita italienne en direct',
-    duration: '7h00',
+    duration: '7h05',
     image: `${DESTINATIONS_PATH}/milan.webp`,
-    href: trajetsHref('station:8301700', 'Milano Centrale'),
+    href: trajetsHref('city:Q490', 'Milan'),
   },
   {
     id: 'geneve',
     name: 'Genève, Suisse',
     country: 'Suisse',
     description: 'Évasion immédiate entre lac et montagnes',
-    duration: '3h10',
+    duration: '3h20',
     image: `${DESTINATIONS_PATH}/geneve.webp`,
-    href: trajetsHref('station:8501008', 'Genève'),
+    href: trajetsHref('city:Q71', 'Genève'),
   },
   {
     id: 'amsterdam',
-    name: 'Amsterdam-Centraal, NL',
+    name: 'Amsterdam Centraal, Pays-Bas',
     country: 'Pays-Bas',
     description: 'Les canaux et l\'ambiance unique du Nord',
-    duration: '3h20',
+    duration: '3h25',
     image: `${DESTINATIONS_PATH}/amsterdam.webp`,
-    href: trajetsHref('station:8400058', 'Amsterdam-Centraal'),
+    href: trajetsHref('station:8400058', 'Amsterdam Centraal'),
   },
 ];
 

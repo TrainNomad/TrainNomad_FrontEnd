@@ -130,14 +130,7 @@ function GuideCard({ guide }: GuideCardProps) {
           {guide.duration}{' '}
           <span className="text-slate-400 font-normal">de Paris</span>
         </div>
-
-        {/* Price */}
-        <div
-          className="absolute bottom-4 left-4 px-3 py-1.5 rounded-2xl text-[11px] font-bold text-white flex items-center gap-1"
-          style={{ background: 'rgba(26,43,60,0.85)' }}
-        >
-          dès <span style={{ color: '#1d7a5a' }} className="ml-1">{guide.price}</span>
-        </div>
+        {/* Pas de prix « dès … » : sans source ni date, il contredirait « aucun prix affiché » */}
       </div>
 
       <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1">

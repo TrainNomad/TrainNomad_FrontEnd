@@ -9,6 +9,7 @@ import type { Journey, SearchResponse } from '../types/api';
 import { WakeUpNotice } from '../components/WakeUpNotice';
 import { CityExtras } from '../components/CityExtras';
 import { placeCity } from '../lib/cityGuides';
+import { NoTripSuggestions } from '../components/NoTripSuggestions';
 
 interface Query {
   origin: string;
@@ -229,6 +230,18 @@ export default function Trajets() {
     setAllTrips([]);
   };
 
+  // Recherche sans résultat : relance le même trajet à un jour voisin proposé par NoTripSuggestions
+  const searchOtherDate = (date: string) => {
+    if (!lastQuery) return;
+    const params = new URLSearchParams(window.location.search);
+    params.set('date', date);
+    params.set('departure_time', '02:00');
+    window.history.pushState({}, '', `${network.paths.trajets}?${params.toString()}`);
+    setFilters({ directOnly: false, trainTypes: [], maxTransfers: null });
+    fetchTrips({ ...lastQuery, date, time: '02:00' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // Gestionnaire de changement de filtres
   const handleFilterChange = (newFilters: {
     directOnly: boolean;
@@ -324,6 +337,15 @@ export default function Trajets() {
                 </div>
               )}
             </div>
+          ) : hasSearched && lastQuery && meta ? (
+            <NoTripSuggestions
+              origin={lastQuery.origin}
+              destination={lastQuery.destination}
+              originName={meta.from.name}
+              destinationName={meta.to.name}
+              date={currentDate}
+              onPickDate={searchOtherDate}
+            />
           ) : hasSearched ? (
             <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
               <span className="material-symbols-outlined text-5xl text-slate-300 block mb-4">train</span>

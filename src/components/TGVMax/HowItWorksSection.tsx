@@ -29,9 +29,9 @@ export function HowItWorksSection() {
         {/* Section header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Votre abonnement.
+            Complet en direct&nbsp;?
             <br />
-            <span className="text-[#F97316]">Votre liberté.</span>
+            <span className="text-[#F97316]">On trouve la place en deux billets.</span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Un outil pensé pour les abonnés MAX : trouver une place, même quand le trajet direct affiche complet.

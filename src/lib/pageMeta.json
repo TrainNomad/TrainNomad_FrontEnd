@@ -2,9 +2,9 @@
   "/": {
     "title": "",
     "description": "Trouvez vos trajets en train en Europe, explorez les destinations sur une carte et repérez les places TGVmax disponibles. Site indépendant, aucun billet vendu.",
-    "heading": "La voie vers l'Europe.",
+    "heading": "L'Europe en train, correspondances comprises.",
     "intro": [
-      "Itinéraires inspirants, correspondances entre réseaux et places TGVmax disponibles : tout ce qu'il faut pour préférer le rail, sans se compliquer le voyage.",
+      "TrainNomad assemble les horaires des opérateurs ferroviaires européens pour trouver votre trajet, même quand il faut changer de train à la frontière.",
       "TrainNomad calcule des trajets en train avec correspondances entre villes et gares d'Europe, affiche sur une carte les destinations accessibles depuis une gare, repère les places MAX JEUNE et MAX SENIOR disponibles et propose des guides de villes.",
       "Site indépendant, gratuit, sans compte et sans cookie. Les horaires (mis à jour chaque semaine) et les disponibilités TGVmax (mises à jour chaque matin) proviennent de données ouvertes de SNCF Voyageurs et d'opérateurs européens ; les sources et leurs licences sont détaillées dans les mentions légales."
     ]
