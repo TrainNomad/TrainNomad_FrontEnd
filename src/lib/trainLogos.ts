@@ -164,7 +164,7 @@ const BY_TYPE: Record<string, string> = {
   'Keolis Sprinter': 'ns_keolis.png',
   'Keolis Intercity': 'ns_keolis.png',
   'Qbuzz Stoptrein': 'ns_Qbuzz.png',
-  'DB Stoptrein': 'db',
+  'DB Stoptrein': 'db.png',
   'VIAS Stoptrein': 'ns_vias.png',
   'Eurobahn Stoptrein': 'ns_eurobahn.png',
   'Eurobahn Sneltrein': 'ns_eurobahn.png',
@@ -227,24 +227,94 @@ const BY_OPERATOR: Record<string, string> = {
   SNCB: 'SNCB.png',
   FLIXTRAIN: 'FlixTrain.png',
   NS: 'NS.png',
+  DB: 'db.png',
+  // compagnies étrangères des flux allemands (opérateurs créés par build_network.py)
+  OBB: 'obb.png',
+  PKP: 'pkp.png',
+  CD: 'cd.png',
+  MAV: 'mav.png',
+  DSB: 'dsb.png',
+  CFL: 'cfl.png',
+  ZSSK: 'zssk.png',
+  HZPP: 'hzpp.png',
 };
 
-// Flux allemand (operator "DB") : type = "<compagnie> <catégorie>" (ex. "DB ICE", "PKP EuroCity",
-// "ÖBB EuroNight") ; le logo dépend de la catégorie.
+// Flux allemands et types "<compagnie> <produit>" (ex. "DB ICE", "ÖBB Railjet Xpress", "HLB Regionalbahn").
+// Le produit d'abord : un ICE garde le logo ICE quelle que soit la compagnie, comme un TGV INOUI celui d'INOUI.
+// Puis la compagnie. Un fichier absent de public/assets/compagnies/ n'est pas une erreur : TrainLogo affiche
+// alors le nom du train, et le logo apparaît dès que le fichier est ajouté.
 const BY_CATEGORY: [RegExp, string][] = [
+  // produits
   [/ ICE$/, 'ice.png'],
+  [/ TGV INOUI$/, 'TGV InOui.png'],
   [/ EuroCity(-Express)?$/, 'eurocity.png'],
   [/ (EuroNight|Nightjet)$/, 'nightjet.png'],
+  [/ Railjet( Xpress)?$/, 'railjet.png'],
+  // grandes compagnies
+  [/^DB /, 'db.png'],
+  [/^ÖBB /, 'obb.png'],
   [/^SBB /, 'sbb.png'],
+  [/^THURBO /, 'thurbo.png'],
+  [/^SNCB /, 'SNCB.png'],
+  [/^PKP /, 'pkp.png'],
+  [/^ČD /, 'cd.png'],
+  [/^MÁV /, 'mav.png'],
+  [/^DSB /, 'dsb.png'],
+  [/^CFL /, 'cfl.png'],
+  [/^ZSSK /, 'zssk.png'],
+  [/^HŽPP /, 'hzpp.png'],
+  [/^WESTbahn/, 'westbahn.png'],
+  [/^LEO Express/, 'leo_express.png'],
+  // compagnies régionales allemandes (marque donnée par build_network.py, DE_REGIO_BRANDS)
+  [/^HLB /, 'hlb.png'],
+  [/^(alex|trilex|trilex-express|vogtlandbahn|oberpfalzbahn|waldbahn) /, 'laenderbahn.png'],
+  [/^VIAS /, 'ns_vias.png'],
+  [/^agilis /, 'agilis.png'],
+  [/^ODEG /, 'odeg.png'],
+  [/^BRB /, 'brb.png'],
+  [/^National Express /, 'national_express.png'],
+  [/^nordbahn /, 'nordbahn.png'],
+  [/^Arverio /, 'arverio.png'],
+  [/^eurobahn /, 'ns_eurobahn.png'],
+  [/^Erfurter Bahn /, 'erfurter_bahn.png'],
+  [/^RegioTram Kassel /, 'regiotram_kassel.png'],
+  [/^vlexx /, 'vlexx.png'],
+  [/^AKN /, 'akn.png'],
+  [/^NordWestBahn /, 'nordwestbahn.png'],
+  [/^NEB /, 'neb.png'],
+  [/^SWEG /, 'sweg.png'],
+  [/^erixx /, 'erixx.png'],
+  [/^Abellio /, 'abellio.png'],
+  [/^cantus /, 'cantus.png'],
+  [/^SÜWEX /, 'suewex.png'],
+  [/^Süd-Thüringen-Bahn /, 'sued_thueringen_bahn.png'],
+  [/^WestfalenBahn /, 'westfalenbahn.png'],
+  [/^metronom /, 'metronom.png'],
+  [/^Go-Ahead /, 'go_ahead.png'],
+  [/^enno /, 'enno.png'],
+  [/^HSB /, 'hsb.png'],
 ];
 
 /** Chemin du logo, ou null si aucun logo n'est disponible (afficher alors le nom du train). */
 export function trainLogo(trainType: string, operator?: string): string | null {
-  // Normalisation ou recherche directe (on gère aussi les variations de casse si besoin)
+  const tt = trainType ?? '';
+  const op = operator?.toUpperCase();
+
+  // Produits propriétaires : afficher le logo seulement si exploité par une compagnie autorisée
+  if (tt.includes('ICE') && op && !['DB', 'SNCB', 'NS'].includes(op)) return null;
+  if (tt.includes('Railjet') && op && !['OBB', 'CD', 'MAV', 'ZSSK', 'DSB'].includes(op)) return null;
+  if ((tt.includes('Nightjet') || tt.includes('EuroNight')) && op && !['OBB', 'SWISS', 'NS', 'SNCB'].includes(op)) return null;
+  if (tt.includes('Trenitalia') && op !== 'TRENITALIA') return null;
+  if (tt.includes('Renfe') && op !== 'RENFE') return null;
+  // SNCF : seulement pour ses propres produits (TGV INOUI, TER, OUIGO, TGV Lyria, trains de nuit SNCF)
+  if ((tt.startsWith('SNCF ') || tt.startsWith('sncf ')) && op !== 'SNCF') return null;
+  // Trenitalia EuroNight : aussi exploité par ÖBB (NS Nightjet), mais le logo reste Trenitalia seulement si op=Trenitalia
+
+  // Normalisation ou recherche directe
   const file =
-    BY_TYPE[trainType] ??
-    BY_TYPE[trainType?.toUpperCase()] ??
-    BY_CATEGORY.find(([re]) => re.test(trainType ?? ''))?.[1] ??
-    (operator ? BY_OPERATOR[operator.toUpperCase()] : undefined);
+    BY_TYPE[tt] ??
+    BY_TYPE[tt.toUpperCase()] ??
+    BY_CATEGORY.find(([re]) => re.test(tt))?.[1] ??
+    (op ? BY_OPERATOR[op] : undefined);
   return file ? `/assets/compagnies/${encodeURIComponent(file)}` : null;
 }
