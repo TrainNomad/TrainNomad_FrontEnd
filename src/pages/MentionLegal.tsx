@@ -1,6 +1,7 @@
 // src/pages/MentionsLegales.tsx
 import { useEffect } from 'react';
 import { CONTACT_EMAIL, PUBLISHER_NAME } from '../lib/siteInfo';
+import { DataSourcesLinks } from '../components/DataSourcesLinks';
 
 function Contact() {
   return CONTACT_EMAIL
@@ -103,19 +104,10 @@ export default function MentionsLegales() {
                 </div>
                 <h2 className="text-2xl font-extrabold text-midnight">Sources des données et licences</h2>
               </div>
-              <p>TrainNomad réutilise les données ouvertes suivantes :</p>
-              <ul>
-                <li><strong className="text-midnight">SNCF Voyageurs</strong> — horaires (GTFS) et disponibilités TGVmax / MAX (jeu de données « tgvmax »), <a href="https://ressources.data.sncf.com" target="_blank" rel="noopener noreferrer" className={linkClass}>ressources.data.sncf.com</a> — licence Open Database License (ODbL)</li>
-                <li><strong className="text-midnight">Renfe</strong> — données ouvertes publiées par Renfe (horaires), <a href="https://data.renfe.com" target="_blank" rel="noopener noreferrer" className={linkClass}>data.renfe.com</a></li>
-                <li><strong className="text-midnight">Ouigo España</strong> — données ouvertes publiées via le Punto de Acceso Nacional espagnol, <a href="https://nap.transportes.gob.es" target="_blank" rel="noopener noreferrer" className={linkClass}>nap.transportes.gob.es</a></li>
-                <li><strong className="text-midnight">Trenitalia et Italo</strong> — données ouvertes publiées via le Punto di Accesso Nazionale italien</li>
-                <li><strong className="text-midnight">CP – Comboios de Portugal</strong> — données ouvertes publiées par CP</li>
-                <li><strong className="text-midnight">SNCB / NMBS</strong> — données ouvertes (GTFS) publiées par la SNCB, <a href="https://www.belgiantrain.be" target="_blank" rel="noopener noreferrer" className={linkClass}>belgiantrain.be</a></li>
-                <li><strong className="text-midnight">Suisse</strong> — données ouvertes publiées sur <a href="https://opentransportdata.swiss" target="_blank" rel="noopener noreferrer" className={linkClass}>opentransportdata.swiss</a></li>
-                <li><strong className="text-midnight">Royaume-Uni</strong> — données ouvertes publiées par National Rail Enquiries</li>
-                <li><strong className="text-midnight">Eurostar</strong> — données ouvertes publiées par Eurostar</li>
-                <li><strong className="text-midnight">European Sleeper</strong> — données ouvertes publiées par European Sleeper</li>
-                <li><strong className="text-midnight">FlixTrain</strong> — données ouvertes (GTFS) publiées par Flix, <a href="https://gtfs.gis.flix.tech" target="_blank" rel="noopener noreferrer" className={linkClass}>gtfs.gis.flix.tech</a></li>
+              <p>TrainNomad réutilise les données ouvertes suivantes publiées par les opérateurs ferroviaires :</p>
+              <DataSourcesLinks />
+              <p className="mt-6 font-bold text-midnight">Sources supplémentaires :</p>
+              <ul className="mt-2">
                 <li><strong className="text-midnight">OpenStreetMap</strong> — référentiel des gares (noms, positions, codes), consulté notamment via <a href="https://www.openrailwaymap.org" target="_blank" rel="noopener noreferrer" className={linkClass}>OpenRailwayMap</a>, © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className={linkClass}>contributeurs OpenStreetMap</a> — licence ODbL</li>
                 <li><strong className="text-midnight">Network Rail</strong> — référentiel CORPUS des gares britanniques</li>
                 <li><strong className="text-midnight">ADEME</strong> — facteurs d'émission de CO₂e des modes de transport, <a href="https://impactco2.fr" target="_blank" rel="noopener noreferrer" className={linkClass}>impactco2.fr</a></li>
