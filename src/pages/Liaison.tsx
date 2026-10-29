@@ -45,8 +45,9 @@ function DepartureRow({ journey }: { journey: LiaisonJourney }) {
       </div>
       {first && (
         <div className="flex items-center gap-2">
-          {[...new Set(journey.trains.map((t) => t.type))].map((type) => (
-            <TrainLogo key={type} trainType={type} className="h-4" />
+          {/* La compagnie avec le type : les logos SNCF, Trenitalia et Renfe ne s'affichent que pour leurs trains */}
+          {[...new Map(journey.trains.map((t) => [t.type, t.operator])).entries()].map(([type, operator]) => (
+            <TrainLogo key={type} trainType={type} operator={operator} className="h-4" />
           ))}
         </div>
       )}
@@ -147,6 +148,8 @@ export default function LiaisonPage() {
   const shownDate = day?.date ?? page.date;
   const searchDate = shownDate >= new Date().toISOString().slice(0, 10) ? shownDate : typicalDay(new Date());
   const reverse = SEO_PAGES.liaisons.find((l) => l.from.id === page.to.id && l.to.id === page.from.id);
+  // Compagnie de chaque type de train de la journée (logos de la liste des types)
+  const operatorOf = new Map(day?.journeys.flatMap((j) => j.trains.map((t) => [t.type, t.operator] as const)) ?? []);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -221,7 +224,7 @@ export default function LiaisonPage() {
           <div className="mt-4 flex flex-wrap gap-2">
             {summary.train_types.map((type) => (
               <span key={type} className="inline-flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-full px-3 py-1">
-                <TrainLogo trainType={type} className="h-4" textFallback={false} />
+                <TrainLogo trainType={type} operator={operatorOf.get(type)} className="h-4" textFallback={false} />
                 <span className="text-xs font-semibold text-slate-600">{type}</span>
               </span>
             ))}
