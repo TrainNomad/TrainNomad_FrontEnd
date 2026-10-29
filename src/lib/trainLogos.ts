@@ -293,6 +293,7 @@ const BY_CATEGORY: [RegExp, string][] = [
   [/^Go-Ahead /, 'go_ahead.png'],
   [/^enno /, 'enno.png'],
   [/^HSB /, 'hsb.png'],
+  [/^ZVON /, 'zvon.png'],
 ];
 
 /** Chemin du logo, ou null si aucun logo n'est disponible (afficher alors le nom du train). */
