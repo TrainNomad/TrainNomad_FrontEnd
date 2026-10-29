@@ -3,8 +3,9 @@ import { decodePolyline } from "../lib/traces";
 import NETWORK from "../lib/globeNetwork.json";
 import TRACES from "../lib/globeTraces.json";
 
-// Villes et liaisons du globe : src/lib/globeNetwork.json (une ville sans « label » garde son point, sans nom affiché ;
-// « labelSide » place le nom en dessous, à droite ou à gauche du point plutôt qu'au-dessus).
+// Villes et liaisons du globe : src/lib/globeNetwork.json (« label » : nom affiché en permanence ; une ville sans
+// « label » garde son point, et son « name » apparaît au survol ou au toucher ; « labelSide » place le nom en dessous,
+// à droite ou à gauche du point plutôt qu'au-dessus).
 // Le parcours de chaque liaison sur les vraies voies
 // (src/lib/globeTraces.json) est calculé par traces/globe.py dans le dépôt TrainNomad_GTFS, à relancer après
 // avoir ajouté une ville, une liaison ou les tracés d'un pays. Une liaison sans parcours garde une courbe.

@@ -89,15 +89,16 @@ export default function Conditions() {
               </div>
             </div>
 
-            {/* 2. Non-affiliation */}
+            {/* 2. Indépendance, liens partenaires et marques */}
             <div className="bg-[#f8f7f5] rounded-[2rem] p-10 fade-up prose-section">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
                   <span className="material-symbols-outlined text-[#1d7a5a] text-2xl">domain_disabled</span>
                 </div>
-                <h2 className="text-2xl font-extrabold text-midnight">Non-affiliation et marques</h2>
+                <h2 className="text-2xl font-extrabold text-midnight">Indépendance, liens partenaires et marques</h2>
               </div>
               <p>TrainNomad est un site indépendant, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire.</p>
+              <p>Certains liens vers des sites de réservation, comme Omio, sont des liens partenaires (affiliation), signalés par la mention « lien partenaire » : si vous réservez après avoir suivi l'un de ces liens, TrainNomad peut toucher une commission, sans surcoût pour vous. Ces partenariats n'ont aucun effet sur les trajets affichés ni sur leur ordre ; la réservation et ses conditions relèvent du site partenaire.</p>
               <p className="mb-0">TGV INOUI, OUIGO, Intercités, TER, MAX JEUNE, MAX SENIOR et TGVmax sont des marques de SNCF Voyageurs ; les noms et logos des opérateurs ferroviaires appartiennent à leurs titulaires respectifs et sont reproduits à seule fin d'identification des trains.</p>
             </div>
 

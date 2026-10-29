@@ -73,6 +73,9 @@ export default function Explorer() {
       // L'API renvoie la gare / ville d'origine résolue, avec ses coordonnées
       setOrigin(data.from);
       setDate(data.date);
+      // adresse de la recherche (lue au chargement de la page) : un lien copié ou partagé la rouvre
+      const params = new URLSearchParams({ from: data.from.id, date: data.date });
+      window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
       setDestinations(data.destinations);
       setMaxDuration(defaultMaxDuration(data.destinations));
       track('recherche-explorer', {

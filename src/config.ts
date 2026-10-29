@@ -45,5 +45,13 @@ export const OMIO_TRACKING_URL = withoutTrailingSlash(
   import.meta.env.VITE_OMIO_TRACKING_URL || 'https://omio.sjv.io/c/7915754/409973/7385',
 );
 
+/**
+ * Lien de suivi SNCF Connect (affiliation Effiliation) : la page SNCF Connect visée est ajoutée dans le paramètre
+ * `url`. effi.redir, et non effi.click : effi.click renvoie toujours vers l'accueil de SNCF Connect.
+ */
+export const SNCF_CONNECT_TRACKING_URL =
+  import.meta.env.VITE_SNCF_CONNECT_TRACKING_URL ||
+  'https://track.effiliation.com/servlet/effi.redir?id_compteur=23327129';
+
 /** Nombre maximal de correspondances affichées sur la carte d'exploration. */
 export const EXPLORER_MAX_TRANSFERS = Number(import.meta.env.VITE_EXPLORER_MAX_TRANSFERS ?? 2);

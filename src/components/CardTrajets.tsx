@@ -4,19 +4,13 @@ import { isSeatChange, isTrainLeg } from '../types/api';
 import { useNetwork } from '../network/NetworkContext';
 import { dayOffset, formatDate, formatDuration, formatTime } from '../lib/format';
 import { JourneySteps } from './JourneySteps';
-import { TrainLogo } from './TrainLogo';
-import { estimateCarbon, formatKg } from '../lib/carbon';
+import { estimateCarbon, estimateCarbonOnTracks, formatKg } from '../lib/carbon';
+import { TRACED_COUNTRIES } from '../lib/traces';
 import { omioLink } from '../lib/omio';
 import { track } from '../lib/analytics';
 
 // Carte du trajet : chargée au premier clic (Leaflet et MapTiler restent hors de la page de résultats)
 const JourneyMap = lazy(() => import('./JourneyMap'));
-
-/**
- * Bouton « Carte » : seulement sur les trajets passant par un de ces pays, seuls pays dont les tracés sur les voies
- * sont dans public/traces/.
- */
-const TRACED_COUNTRIES = new Set(['BE', 'CH', 'ES', 'FR', 'GB', 'IT', 'NL', 'PT']);
 
 /**
  * Bulle « Voir le trajet sur la carte » : au-dessus du bouton « Carte » du premier trajet qui en a un (dessous, elle
@@ -34,17 +28,18 @@ function hintSeen(): boolean {
   }
 }
 
-/** Bloc de droite (logos des trains et bouton « Choisir ») : à réactiver avec les prix et la réservation. */
-const SHOW_BOOKING = false;
-
 /** Bouton « Voir les prix » vers Omio (lien partenaire, src/lib/omio.ts) : désactivé pour le moment. */
 const SHOW_OMIO = false;
 
 interface CardTrajetProps {
   journey: Journey;
+  /** Choix de ce trajet (aller, retour…) : affiche les trains et le bouton « Choisir » */
+  onChoose?: () => void;
+  /** Texte du bouton, « Choisir » par défaut */
+  chooseLabel?: string;
 }
 
-export default function CardTrajet({ journey }: CardTrajetProps) {
+export default function CardTrajet({ journey, onChoose, chooseLabel = 'Choisir' }: CardTrajetProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const { network } = useNetwork();
@@ -58,7 +53,16 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
     .map((l) => ({ name: l.from.name, seat: isSeatChange(l) }));
   const viaLabel = via.map((v) => (v.seat ? `${v.name} (changement de siège)` : v.name)).join(', ');
   const arrivalOffset = dayOffset(journey.departure, journey.arrival);
-  const carbon = estimateCarbon(journey);
+  // Empreinte carbone : estimation immédiate, puis recalculée avec la longueur sur les voies une fois les tracés chargés
+  const [carbon, setCarbon] = useState(() => estimateCarbon(journey));
+  useEffect(() => {
+    let current = true;
+    estimateCarbonOnTracks(journey).then((onTracks) => current && onTracks && setCarbon(onTracks));
+    return () => {
+      current = false;
+    };
+  }, [journey]);
+  // Bouton « Carte » : seulement sur les trajets passant par un pays dont les tracés sur les voies existent
   const hasMap = trains.some((t) => t.stops.some((s) => TRACED_COUNTRIES.has(s.country)));
   // Pas de lien pour TGVmax : les places se réservent avec l'abonnement, pas sur Omio
   const omioUrl = SHOW_OMIO && network.id === 'europe' ? omioLink(journey) : null;
@@ -206,17 +210,22 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
         {carbon && (
           <div
             className="w-full lg:w-auto lg:min-w-[150px] lg:text-right pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-100"
-            title={
+            title={[
+              `Estimation par voyageur, selon la compagnie et le pays de chaque train, ${
+                carbon.onTracks >= 0.99 ? 'distance mesurée sur les voies' : carbon.onTracks > 0 ? 'distance en partie mesurée sur les voies' : 'distance estimée'
+              }.`,
+              // une ligne par train : chaque compagnie avec ses émissions et la source de son facteur
+              ...carbon.trains.map((t) => `• ${t.name} : ${formatKg(t.kg)} (${t.sources.join(', ')})`),
               carbon.other === 'plane'
-                ? "Estimation à partir des facteurs d'émission de l'ADEME (Impact CO2). Comparaison avec l'avion au-delà de 700 km."
-                : "Estimation à partir des facteurs d'émission de l'ADEME (Impact CO2). Voiture thermique avec une seule personne à bord."
-            }
+                ? `Comparaison avec l'avion au-delà de 700 km (${carbon.comparisonSource}).`
+                : `Voiture thermique avec une seule personne à bord (${carbon.comparisonSource}).`,
+            ].join('\n')}
           >
-            <div className="text-sm font-bold text-tone-600 flex items-center lg:justify-end gap-1">
-              <span className="material-symbols-outlined text-base">eco</span>
+            <div className="text-xs font-semibold text-tone-600 flex items-center lg:justify-end gap-1">
+              <span className="material-symbols-outlined text-sm">eco</span>
               {formatKg(carbon.trainKg)} CO₂e
             </div>
-            <div className="text-xs text-slate-400 mt-0.5">contre {formatKg(carbon.otherKg)} {carbon.other === 'plane' ? 'en avion' : 'en voiture'}</div>
+            <div className="text-[11px] text-slate-400">contre {formatKg(carbon.otherKg)} {carbon.other === 'plane' ? 'en avion' : 'en voiture'}</div>
           </div>
         )}
 
@@ -236,19 +245,13 @@ export default function CardTrajet({ journey }: CardTrajetProps) {
           </div>
         )}
 
-        {/* Trains & bouton Choisir : masqués tant qu'il n'y a ni prix ni lien de réservation */}
-        {SHOW_BOOKING && <div className="flex items-center gap-4 w-full lg:w-auto justify-between lg:justify-end pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-100">
-          <div className="bg-slate-50 border border-slate-100 px-3 py-2 rounded-xl flex flex-col gap-1.5">
-            {trains.map((t, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <TrainLogo trainType={t.train_type} operator={t.operator} />
-                <span className="text-xs font-bold text-slate-700">N° {t.train_number}</span>
-              </div>
-            ))}
-          </div>
-
-          <button className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-xl font-bold text-sm transition-all flex items-center gap-2 shadow-sm cursor-pointer">
-            Choisir <span className="material-symbols-outlined text-sm">arrow_forward</span>
+        {/* Bouton Choisir : seulement quand la page propose de choisir ce trajet */}
+        {onChoose && <div className="flex w-full lg:w-auto justify-end pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-100">
+          <button
+            onClick={onChoose}
+            className="bg-brand hover:bg-brand-dark text-white px-6 py-3 rounded-xl font-bold text-sm transition-all flex items-center gap-2 shadow-sm cursor-pointer whitespace-nowrap"
+          >
+            {chooseLabel} <span className="material-symbols-outlined text-sm">arrow_forward</span>
           </button>
         </div>}
       </div>

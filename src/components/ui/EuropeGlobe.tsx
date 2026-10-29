@@ -6,7 +6,10 @@ import landUrl from "world-atlas/land-50m.json?url";
 interface City {
   lat: number;
   lng: number;
+  /** Nom affiché en permanence (si la place le permet) */
   label?: string;
+  /** Nom montré seulement au survol (ou au toucher) du point, pour une ville sans étiquette */
+  name?: string;
   /** Côté du point où poser l'étiquette en priorité (au-dessus par défaut) */
   labelSide?: string;
 }
@@ -23,8 +26,16 @@ interface GlobeProps {
   sway?: number;
   /** Rejoue le tracé des lignes en boucle (sinon une seule fois) */
   loop?: boolean;
+  /** Le globe tourne au doigt ou à la souris (sinon il reste immobile) */
+  draggable?: boolean;
+  /** Zoom calculé pour que les lignes remplissent le cadre (`zoom` est alors ignoré) */
+  fitRoutes?: boolean;
+  /** Couleurs du globe (dégradé du centre au bord), de son halo et des terres, pour un autre fond que l'accueil */
+  palette?: { body: [string, string]; glow: string; land: string };
   className?: string;
 }
+
+const DEFAULT_PALETTE = { body: ["#0b1324", "#13233b"] as [string, string], glow: "16,185,129", land: "rgba(255,255,255,0.4)" };
 
 const DEG = Math.PI / 180;
 const MAX_DRAG = 14; // degrés de rotation autorisés au doigt, de part et d'autre
@@ -32,6 +43,8 @@ const MAX_DRAG = 14; // degrés de rotation autorisés au doigt, de part et d'au
 const LABEL_SIDES = [[0, -1], [0, 1], [1, 0], [-1, 0]];
 const LABEL_SIDE_NAMES = ["top", "bottom", "right", "left"];
 const LABEL_GAP = 9;
+const HOVER_PX = 12; // distance au point en dessous de laquelle le pointeur « survole » une ville
+const TAP_PX = 6; // au doigt, déplacement maximal pour un toucher (au-delà, le globe tourne)
 const EDGE_FADE =
   "linear-gradient(to bottom, black 93%, transparent), linear-gradient(to right, transparent, black 5%, black 95%, transparent)";
 // Animation des lignes, en secondes : décalage entre deux lignes, durée d'un tracé,
@@ -43,44 +56,56 @@ const LINE_FADE = 0.8;
 
 // Zone du monde couverte par les points de terre : tout l'hémisphère nord, visible près de l'horizon
 const WEST = -180, EAST = 180, SOUTH = 15, NORTH = 88;
-const MASK_PX = 6; // pixels par degré du masque terre/mer
+const MASK_PX = 6; // pixels par degré du masque terre/mer (au moins : plus fin quand les points se resserrent)
+// Espacement visé entre deux points de terre à l'écran, en pixels (celui du globe de l'accueil) : plus le globe
+// est zoomé, plus les points se resserrent sur la carte
+const DOT_SPACING_PX = 9;
 
-let landDotsPromise: Promise<Float32Array> | null = null;
+/** Cadre [sud, ouest, nord, est] en degrés où poser les points de terre */
+type LandWindow = [number, number, number, number];
+const WHOLE_HEMISPHERE: LandWindow = [SOUTH, WEST, NORTH, EAST];
 
-/** Points posés sur les terres, en triplets [sin(lat), cos(lat), lng en radians]. */
-function loadLandDots(step = 0.5): Promise<Float32Array> {
-  landDotsPromise ??= fetch(landUrl)
-    .then((res) => res.json())
-    .then((data) => {
-      // On dessine les terres une fois sur un canvas caché, puis on lit ses pixels
-      const mask = document.createElement("canvas");
-      mask.width = (EAST - WEST) * MASK_PX;
-      mask.height = (NORTH - SOUTH) * MASK_PX;
-      const ctx = mask.getContext("2d", { willReadFrequently: true })!;
-      const projection = geoEquirectangular()
-        .scale((MASK_PX * 180) / Math.PI)
-        .translate([-WEST * MASK_PX, NORTH * MASK_PX]);
-      ctx.beginPath();
-      geoPath(projection, ctx)(feature(data, data.objects.land) as any);
-      ctx.fill();
-      const pixels = ctx.getImageData(0, 0, mask.width, mask.height).data;
+const landDotsCache = new Map<string, Promise<Float32Array>>();
+let landData: Promise<any> | null = null;
 
-      const out: number[] = [];
-      let row = 0;
-      for (let lat = SOUTH + step / 2; lat < NORTH; lat += step, row++) {
-        const cos = Math.cos(lat * DEG);
-        const lngStep = step / cos; // espacement constant à l'écran malgré la latitude
-        const y = Math.floor((NORTH - lat) * MASK_PX);
-        for (let lng = WEST + (row % 2 ? lngStep / 2 : 0); lng < EAST; lng += lngStep) {
-          const x = Math.floor((lng - WEST) * MASK_PX);
-          if (pixels[(y * mask.width + x) * 4 + 3] > 128) {
-            out.push(Math.sin(lat * DEG), cos, lng * DEG);
-          }
+/** Points posés sur les terres, en triplets [sin(lat), cos(lat), lng en radians], espacés de `step` degrés. */
+function loadLandDots(step = 0.5, [south, west, north, east]: LandWindow = WHOLE_HEMISPHERE): Promise<Float32Array> {
+  const key = `${step}|${south}|${west}|${north}|${east}`;
+  const cached = landDotsCache.get(key);
+  if (cached) return cached;
+  landData ??= fetch(landUrl).then((res) => res.json());
+  const promise = landData.then((data) => {
+    // On dessine les terres une fois sur un canvas caché, puis on lit ses pixels
+    const px = Math.max(MASK_PX, 3 / step);
+    const mask = document.createElement("canvas");
+    mask.width = Math.ceil((east - west) * px);
+    mask.height = Math.ceil((north - south) * px);
+    const ctx = mask.getContext("2d", { willReadFrequently: true })!;
+    const projection = geoEquirectangular()
+      .scale((px * 180) / Math.PI)
+      .translate([-west * px, north * px]);
+    ctx.beginPath();
+    geoPath(projection, ctx)(feature(data, data.objects.land) as any);
+    ctx.fill();
+    const pixels = ctx.getImageData(0, 0, mask.width, mask.height).data;
+
+    const out: number[] = [];
+    let row = 0;
+    for (let lat = south + step / 2; lat < north; lat += step, row++) {
+      const cos = Math.cos(lat * DEG);
+      const lngStep = step / cos; // espacement constant à l'écran malgré la latitude
+      const y = Math.floor((north - lat) * px);
+      for (let lng = west + (row % 2 ? lngStep / 2 : 0); lng < east; lng += lngStep) {
+        const x = Math.floor((lng - west) * px);
+        if (pixels[(y * mask.width + x) * 4 + 3] > 128) {
+          out.push(Math.sin(lat * DEG), cos, lng * DEG);
         }
       }
-      return new Float32Array(out);
-    });
-  return landDotsPromise;
+    }
+    return new Float32Array(out);
+  });
+  landDotsCache.set(key, promise);
+  return promise;
 }
 
 export function EuropeGlobe({
@@ -90,13 +115,17 @@ export function EuropeGlobe({
   tilt = 38,
   sway = 5,
   loop = true,
+  draggable = true,
+  fitRoutes = false,
+  palette = DEFAULT_PALETTE,
   className = "",
 }: GlobeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const labelRefs = useRef<Array<HTMLSpanElement | null>>([]);
+  const hoverRef = useRef<HTMLSpanElement>(null);
 
-  const { cities, routes, center } = useMemo(() => {
+  const { cities, routes, center, extent } = useMemo(() => {
     const byKey = new Map<string, City & { index: number; links: number }>();
     const indexOf = (c: City) => {
       const key = `${c.lat}-${c.lng}`;
@@ -126,12 +155,16 @@ export function EuropeGlobe({
     });
     const cities = Array.from(byKey.values());
     const mid = (v: number[]) => (v.length ? (Math.min(...v) + Math.max(...v)) / 2 : 0);
-    const center = {
-      lat: cities.length ? mid(cities.map((c) => c.lat)) : 47,
-      lng: cities.length ? mid(cities.map((c) => c.lng)) : 3,
-    };
-    return { cities, routes, center };
-  }, [dots]);
+    // Avec le zoom ajusté, les parcours comptent aussi (une ligne peut s'écarter du segment entre ses villes)
+    const points = [...cities.map((c) => [c.lat, c.lng]), ...(fitRoutes ? dots.flatMap((d) => d.path ?? []) : [])];
+    const lats = points.map((p) => p[0]);
+    const lngs = points.map((p) => p[1]);
+    const center = { lat: points.length ? mid(lats) : 47, lng: points.length ? mid(lngs) : 3 };
+    const extent = points.length
+      ? { lat: Math.max(...lats) - Math.min(...lats), lng: Math.max(...lngs) - Math.min(...lngs) }
+      : { lat: 0, lng: 0 };
+    return { cities, routes, center, extent };
+  }, [dots, fitRoutes]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -163,6 +196,7 @@ export function EuropeGlobe({
     let dragDeg = 0;
     let dragging: { x: number; from: number } | null = null;
     let revealStart = 0;
+    let hovered = -1; // ville survolée (ou touchée), -1 = aucune
 
     const layout = () => {
       width = container.offsetWidth;
@@ -172,11 +206,34 @@ export function EuropeGlobe({
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      // Sur un cadre large (ordinateur), c'est la hauteur qui limite la taille du globe
-      radius = zoom * Math.min(width, height * 0.75);
       cx = width / 2;
-      // Le centre du réseau tombe un peu sous le milieu du cadre, l'horizon reste visible en haut
-      cy = height * 0.66 + radius * Math.sin(tilt * DEG);
+      if (fitRoutes) {
+        // Les lignes occupent environ 60 % de la largeur ou la moitié de la hauteur, centrées dans le cadre
+        const spanLat = Math.max(extent.lat, 1) * DEG;
+        const spanLng = Math.max(extent.lng, 1) * Math.cos(center.lat * DEG) * DEG;
+        radius = Math.min((width * 0.6) / spanLng, (height * 0.5) / spanLat);
+        cy = height * 0.5 + radius * Math.sin(tilt * DEG);
+      } else {
+        // Sur un cadre large (ordinateur), c'est la hauteur qui limite la taille du globe
+        radius = zoom * Math.min(width, height * 0.75);
+        // Le centre du réseau tombe un peu sous le milieu du cadre, l'horizon reste visible en haut
+        cy = height * 0.66 + radius * Math.sin(tilt * DEG);
+      }
+      // Densité des points selon le zoom : environ DOT_SPACING_PX entre deux points à l'écran. Pas arrondi
+      // (0,5 ; 0,35 ; 0,25 ; 0,18…) pour ne pas recalculer à chaque redimensionnement ; à 0,5° et plus,
+      // tout l'hémisphère (globe de l'accueil), en dessous seulement la zone visible autour du réseau
+      // (globe de l'accueil, zoom fixe : grille de 0,5° sur tout l'hémisphère, l'horizon reste couvert)
+      const wanted = fitRoutes ? DOT_SPACING_PX / (radius * DEG) : 0.5;
+      const step = wanted >= 0.5 ? 0.5 : Math.max(0.02, 0.5 * Math.SQRT1_2 ** Math.ceil(Math.log(0.5 / wanted) / Math.log(Math.SQRT2)));
+      if (step >= 0.5) {
+        loadLand(0.5, WHOLE_HEMISPHERE);
+      } else {
+        const halfLat = Math.ceil(height / (radius * DEG));
+        const halfLng = Math.ceil(width / (radius * DEG * Math.cos(center.lat * DEG)));
+        const lat = Math.round(center.lat);
+        const lng = Math.round(center.lng);
+        loadLand(step, [Math.max(-89, lat - halfLat), lng - halfLng, Math.min(89, lat + halfLat), lng + halfLng]);
+      }
       pickLabels();
       if (!frame) draw();
     };
@@ -231,15 +288,15 @@ export function EuropeGlobe({
 
       // Le globe et son halo
       const glow = ctx.createRadialGradient(cx, cy, radius * 0.985, cx, cy, radius * 1.05);
-      glow.addColorStop(0, "rgba(16,185,129,0.35)");
-      glow.addColorStop(1, "rgba(16,185,129,0)");
+      glow.addColorStop(0, `rgba(${palette.glow},0.35)`);
+      glow.addColorStop(1, `rgba(${palette.glow},0)`);
       ctx.fillStyle = glow;
       ctx.beginPath();
       ctx.arc(cx, cy, radius * 1.05, 0, Math.PI * 2);
       ctx.fill();
       const body = ctx.createRadialGradient(cx, cy, radius * 0.8, cx, cy, radius);
-      body.addColorStop(0, "#0b1324");
-      body.addColorStop(1, "#13233b");
+      body.addColorStop(0, palette.body[0]);
+      body.addColorStop(1, palette.body[1]);
       ctx.fillStyle = body;
       ctx.beginPath();
       ctx.arc(cx, cy, radius, 0, Math.PI * 2);
@@ -247,7 +304,7 @@ export function EuropeGlobe({
 
       // Les terres en pointillés
       if (land) {
-        ctx.fillStyle = "rgba(255,255,255,0.4)";
+        ctx.fillStyle = palette.land;
         ctx.beginPath();
         for (let i = 0; i < land.length; i += 3) {
           const d = land[i + 2] - lng0;
@@ -271,7 +328,8 @@ export function EuropeGlobe({
       const cycle = drawTime + LINE_HOLD + LINE_FADE;
       let elapsed = reducedMotion ? drawTime : revealStart ? (now - revealStart) / 1000 : 0;
       if (loop && !reducedMotion) elapsed %= cycle;
-      ctx.globalAlpha = Math.max(0, Math.min(1, (cycle - elapsed) / LINE_FADE));
+      // Fondu de fin de cycle seulement en boucle : tracées une fois, les lignes restent affichées
+      ctx.globalAlpha = loop ? Math.max(0, Math.min(1, (cycle - elapsed) / LINE_FADE)) : 1;
       ctx.strokeStyle = lineColor;
       ctx.lineWidth = 1.6;
       ctx.lineCap = "round";
@@ -331,6 +389,17 @@ export function EuropeGlobe({
       });
       ctx.fill();
       ctx.shadowBlur = 0;
+      const hover = hoverRef.current;
+      if (hovered >= 0) {
+        // Anneau autour du point survolé, et son nom au-dessus quand il n'a pas déjà son étiquette
+        const p = screen[hovered];
+        ctx.strokeStyle = lineColor;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 7, 0, Math.PI * 2);
+        ctx.stroke();
+        if (hover) hover.style.transform = `translate(${p.x}px, ${p.y - LABEL_GAP}px) translate(-50%, -100%)`;
+      }
       screen.forEach((p, i) => {
         const el = labelRefs.current[i];
         const side = LABEL_SIDES[labelSide[i]];
@@ -339,16 +408,24 @@ export function EuropeGlobe({
         el.style.transform = `translate(${p.x + ax * LABEL_GAP}px, ${p.y + ay * LABEL_GAP}px) translate(${(ax - 1) * 50}%, ${(ay - 1) * 50}%)`;
       });
 
-      frame = visible && (!reducedMotion || dragging) ? requestAnimationFrame(draw) : 0;
+      // Globe immobile dont les lignes sont tracées : plus rien ne change, l'animation s'arrête
+      const settled = !loop && !sway && !dragging && elapsed >= drawTime;
+      frame = visible && !settled && (!reducedMotion || dragging) ? requestAnimationFrame(draw) : 0;
     };
 
-    loadLandDots()
-      .then((points) => {
-        if (cancelled) return;
-        land = points;
-        if (!frame) draw();
-      })
-      .catch((err) => console.error("Erreur de chargement de la carte :", err));
+    let landKey = "";
+    function loadLand(step: number, area: LandWindow) {
+      const key = `${step}|${area.join()}`;
+      if (key === landKey) return;
+      landKey = key;
+      loadLandDots(step, area)
+        .then((points) => {
+          if (cancelled || key !== landKey) return;
+          land = points;
+          if (!frame) draw();
+        })
+        .catch((err) => console.error("Erreur de chargement de la carte :", err));
+    }
 
     const resizeObserver = new ResizeObserver(layout);
     resizeObserver.observe(container);
@@ -362,19 +439,63 @@ export function EuropeGlobe({
     }, { threshold: [0, 0.5] });
     intersectionObserver.observe(container);
 
+    // Ville la plus proche du pointeur, à moins de HOVER_PX ; son nom s'affiche au-dessus du point
+    const setHovered = (index: number) => {
+      if (index === hovered) return;
+      hovered = index;
+      const city = cities[index];
+      const hover = hoverRef.current;
+      // Une ville dont l'étiquette est déjà affichée garde la sienne : seul l'anneau apparaît
+      const name = city && labelSide[index] < 0 ? city.label ?? city.name : undefined;
+      if (hover) {
+        hover.textContent = name ?? "";
+        hover.style.opacity = name ? "1" : "0";
+      }
+      container.style.cursor = city ? "pointer" : "";
+      if (!frame) draw();
+    };
+    const cityAt = (clientX: number, clientY: number) => {
+      const rect = container.getBoundingClientRect();
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+      let best = -1;
+      let bestD = HOVER_PX;
+      screen.forEach((p, i) => {
+        const d = Math.hypot(p.x - x, p.y - y);
+        if (d < bestD) {
+          bestD = d;
+          best = i;
+        }
+      });
+      return best;
+    };
+
+    let downAt: { x: number; y: number } | null = null;
     const onDown = (e: PointerEvent) => {
-      dragging = { x: e.clientX, from: dragDeg };
+      if (draggable) dragging = { x: e.clientX, from: dragDeg };
+      downAt = { x: e.clientX, y: e.clientY };
       if (!frame) draw();
     };
     const onMove = (e: PointerEvent) => {
-      if (!dragging) return;
+      if (!dragging) {
+        // Survol à la souris (au doigt, pointermove n'arrive que pendant un glissé)
+        if (e.pointerType === "mouse" && container.contains(e.target as Node)) setHovered(cityAt(e.clientX, e.clientY));
+        return;
+      }
       const next = dragging.from + (e.clientX - dragging.x) / (radius * DEG * 0.7);
       dragDeg = Math.max(-MAX_DRAG, Math.min(MAX_DRAG, next));
     };
-    const onUp = () => {
+    const onUp = (e: PointerEvent) => {
       dragging = null;
+      // Un toucher sans glisser montre la ville touchée (ou masque le nom affiché)
+      if (downAt && e.pointerType !== "mouse" && Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) < TAP_PX) {
+        setHovered(cityAt(e.clientX, e.clientY));
+      }
+      downAt = null;
     };
+    const onLeave = () => setHovered(-1);
     container.addEventListener("pointerdown", onDown);
+    container.addEventListener("pointerleave", onLeave);
     window.addEventListener("pointermove", onMove, { passive: true });
     window.addEventListener("pointerup", onUp);
     window.addEventListener("pointercancel", onUp);
@@ -385,16 +506,17 @@ export function EuropeGlobe({
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
       container.removeEventListener("pointerdown", onDown);
+      container.removeEventListener("pointerleave", onLeave);
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerup", onUp);
       window.removeEventListener("pointercancel", onUp);
     };
-  }, [cities, routes, center, lineColor, zoom, tilt, sway, loop]);
+  }, [cities, routes, center, extent, lineColor, zoom, tilt, sway, loop, draggable, fitRoutes, palette]);
 
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden select-none cursor-grab active:cursor-grabbing ${className}`}
+      className={`relative overflow-hidden select-none ${draggable ? "cursor-grab active:cursor-grabbing" : ""} ${className}`}
       style={{
         // pan-y : le doigt fait tourner le globe à l'horizontale sans bloquer le défilement de la page
         touchAction: "pan-y",
@@ -417,6 +539,11 @@ export function EuropeGlobe({
           </span>
         ) : null
       )}
+      {/* Nom de la ville survolée ou touchée */}
+      <span
+        ref={hoverRef}
+        className="absolute top-0 left-0 opacity-0 transition-opacity duration-200 pointer-events-none whitespace-nowrap text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-900/95 text-white border border-emerald-400/70 shadow-sm"
+      />
     </div>
   );
 }

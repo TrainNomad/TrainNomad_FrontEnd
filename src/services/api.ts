@@ -24,6 +24,10 @@ export interface SearchTripsParams {
   time?: string;
   limit?: number;
   maxTransfers?: number;
+  /** Ne garder que les trajets empruntant au moins un de ces types de train */
+  trainTypes?: string[];
+  /** Écarter les trajets avec une nuit en gare */
+  noLongWait?: boolean;
 }
 
 export interface ExploreParams {
@@ -89,6 +93,8 @@ export function createApiClient(baseUrl: string): ApiClient {
         time: params.time?.slice(0, 5),
         limit: params.limit ?? 10,
         max_transfers: params.maxTransfers,
+        train_types: params.trainTypes?.join(','),
+        long_wait: params.noLongWait ? 0 : undefined,
       });
     },
     exploreDestinations(params) {

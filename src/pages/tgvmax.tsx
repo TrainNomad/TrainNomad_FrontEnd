@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ShareButton } from '../components/ShareButton';
 import { TGVMaxSearchForm } from '../components/TGVMax/TGVMaxSearchForm';
 import { FeaturedTrips } from '../components/TGVMax/FeaturedTrips';
 import { HowItWorksSection } from '../components/TGVMax/HowItWorksSection';
@@ -35,6 +36,7 @@ export default function TGVMaxPage() {
                 Toutes les places MAX JEUNE et MAX SENIOR des 30 prochains jours, même quand le trajet direct affiche
                 complet.
               </p>
+              <ShareButton title="Places TGVmax disponibles" source="tgvmax" className="mt-6" />
             </div>
 
             {/* Colonne droite - SearchBox */}

@@ -3,7 +3,7 @@
 // pas JavaScript. Le navigateur charge ensuite l'application, qui remplace ce contenu.
 // Render sert ces fichiers avant d'appliquer la réécriture /* -> /index.html (render.yaml).
 // API des guides injoignable : seules les pages fixes sont générées.
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 
 const SITE = 'https://trainnomad.eu';
 const SITE_NAME = 'TrainNomad.eu';
@@ -60,7 +60,11 @@ const list = (items) =>
         .join('')}</ul>`
     : '';
 
-function writePage(path, { title, description, body, jsonLd }) {
+/**
+ * Image d'aperçu des liens partagés : celle de la page (public/og/, scripts/og-images.py), sinon l'image du
+ * site déjà présente dans index.html. Toutes font 1200 x 630, comme le déclarent og:image:width / height.
+ */
+function writePage(path, { title, description, body, jsonLd, image }) {
   const fullTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · L'Europe en train`;
   const url = SITE + path;
   let html = template.replace(/<title>[^<]*<\/title>/, `<title>${esc(fullTitle)}</title>`);
@@ -69,6 +73,7 @@ function writePage(path, { title, description, body, jsonLd }) {
   html = setTag(html, '<meta property="og:url"', 'content', url);
   html = setTag(html, '<meta property="og:title"', 'content', fullTitle);
   html = setTag(html, '<meta property="og:description"', 'content', description);
+  if (image) html = setTag(html, '<meta property="og:image"', 'content', SITE + image);
   html = html.replace('<div id="root"></div>', `<div id="root">${shell(body)}</div>`);
   // Données structurées : « < » écrit sous sa forme échappée, pour que le texte ne puisse pas refermer la balise <script>
   if (jsonLd) {
@@ -131,7 +136,7 @@ for (const [path, page] of Object.entries(PAGES)) {
       mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
     };
   }
-  writePage(path, { title: page.title, description: page.description, body, jsonLd });
+  writePage(path, { title: page.title, description: page.description, body, jsonLd, image: page.image });
   count++;
 }
 
@@ -142,7 +147,10 @@ for (const { slug } of guides) {
     const res = await fetch(`${GUIDES_API}/guides/${slug}`, { signal: AbortSignal.timeout(30_000) });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const g = await res.json();
-    writePage(`/guides/${slug}`, { title: `Guide ${g.name}`, description: g.description, body: guideBody(g) });
+    // image produite par scripts/og-images.py ; guide ajouté depuis : aperçu général du site
+    const image = existsSync(new URL(`og/guides/${slug}.jpg`, DIST)) ? `/og/guides/${slug}.jpg` : undefined;
+    if (!image) console.warn(`prerender : pas d'image d'aperçu pour le guide ${slug} (python scripts/og-images.py)`);
+    writePage(`/guides/${slug}`, { title: `Guide ${g.name}`, description: g.description, body: guideBody(g), image });
     count++;
   } catch (err) {
     console.warn(`prerender : guide ${slug} ignoré (${err.message})`);

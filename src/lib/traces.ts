@@ -6,6 +6,9 @@ import type { StopTime, TrainLeg } from '../types/api';
 
 export type LatLng = [number, number];
 
+/** Pays dont les tracés sont dans public/traces/ (ailleurs, aucun fichier à demander). */
+export const TRACED_COUNTRIES = new Set(['AT', 'BE', 'CH', 'CZ', 'DE', 'DK', 'ES', 'FR', 'GB', 'IT', 'LU', 'NL', 'PL', 'PT']);
+
 interface Variant {
   km: number;
   km_lgv: number;
@@ -82,17 +85,29 @@ function pickVariant(variants: Record<string, Variant>, durationMin: number): Va
 const minutesBetween = (from?: string, to?: string) =>
   from && to ? (new Date(to).getTime() - new Date(from).getTime()) / 60000 : Infinity;
 
-/** Tracé entre deux arrêts consécutifs d'un train, ou null (trait droit). */
-async function segment(a: StopTime, b: StopTime): Promise<LatLng[] | null> {
+/** Variante retenue entre deux arrêts consécutifs d'un train, et sens de parcours du tracé ; null sans tracé. */
+async function variantBetween(a: StopTime, b: StopTime): Promise<{ variant: Variant; forward: boolean } | null> {
+  if (!TRACED_COUNTRIES.has(a.country) || !TRACED_COUNTRIES.has(b.country)) return null;
   const ida = gareId(a.id);
   const idb = gareId(b.id);
   const [first, second] = ida < idb ? [ida, idb] : [idb, ida];
   const variants = (await loadStation(first))[second];
   if (!variants) return null;
   const variant = pickVariant(variants, minutesBetween(a.departure ?? a.arrival, b.arrival ?? b.departure));
-  if (!variant) return null;
-  const points = decodePolyline(variant.pts);
-  return ida < idb ? points : points.reverse();
+  return variant && { variant, forward: ida < idb };
+}
+
+/** Tracé entre deux arrêts consécutifs d'un train, ou null (trait droit). */
+async function segment(a: StopTime, b: StopTime): Promise<LatLng[] | null> {
+  const found = await variantBetween(a, b);
+  if (!found) return null;
+  const points = decodePolyline(found.variant.pts);
+  return found.forward ? points : points.reverse();
+}
+
+/** Longueur sur les voies (km) entre deux arrêts consécutifs d'un train, ou null sans tracé. */
+export async function segmentKm(a: StopTime, b: StopTime): Promise<number | null> {
+  return (await variantBetween(a, b))?.variant.km ?? null;
 }
 
 export interface LegPath {

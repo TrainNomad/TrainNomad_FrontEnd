@@ -13,7 +13,7 @@
   },
   {
     "question": "Quels pays et quels trains sont couverts ?",
-    "answer": "Les trains de SNCF Voyageurs (TGV INOUI, OUIGO, Intercités, TER), de Renfe, Ouigo España et CP, de Trenitalia et Italo, de la SNCB (Belgique), les réseaux suisse et britannique, ainsi qu'Eurostar, European Sleeper et FlixTrain. Les réseaux intérieurs d'autres pays, comme l'Allemagne, les Pays-Bas ou l'Autriche, ne sont pas intégrés : ces pays ne sont desservis que par les trains des opérateurs cités."
+    "answer": "Les trains des opérateurs européens qui publient leurs horaires en données ouvertes : grandes lignes, trains de nuit et trains régionaux. De nouveaux opérateurs sont ajoutés au fil du temps ; un pays dont le réseau n'est pas encore intégré reste desservi par les trains internationaux. La liste à jour figure sur la page « Comment ça marche »."
   },
   {
     "question": "Les horaires sont-ils fiables et à jour ?",
@@ -35,7 +35,7 @@
   },
   {
     "question": "Comment est calculée l'empreinte carbone d'un trajet ?",
-    "answer": "C'est une estimation par voyageur, établie à partir des facteurs d'émission de l'ADEME et de la distance parcourue d'arrêt en arrêt. Elle est comparée au même déplacement en voiture thermique avec une personne à bord ou, au-delà de 700 km, en avion. C'est un ordre de grandeur, pas une mesure.",
+    "answer": "C'est une estimation par voyageur, selon la compagnie et le pays de chaque train : les chiffres publiés par SNCF Voyageurs, par le régulateur britannique (ORR) et par l'Umweltbundesamt allemand, et ailleurs l'énergie consommée par le train multipliée par l'intensité carbone de l'électricité du pays. La distance est mesurée sur les voies, d'arrêt en arrêt. Elle est comparée au même déplacement en voiture thermique avec une personne à bord ou, au-delà de 700 km, en avion. Les chiffres sont mis à jour chaque année ; c'est un ordre de grandeur, pas une mesure.",
     "link": { "to": "/comment-ca-marche", "label": "Voir la méthode" }
   },
   {
@@ -45,7 +45,7 @@
   },
   {
     "question": "TrainNomad est-il lié à la SNCF ?",
-    "answer": "Non. TrainNomad est un site indépendant, créé et développé par une seule personne, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire. Il réutilise leurs données ouvertes, dans le respect de leurs licences."
+    "answer": "Non. TrainNomad est un site indépendant, créé et développé par une seule personne, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire. Il réutilise leurs données ouvertes, dans le respect de leurs licences. Certains liens vers des sites de réservation sont des liens partenaires, signalés comme tels."
   },
   {
     "question": "J'ai repéré une erreur, comment la signaler ?",

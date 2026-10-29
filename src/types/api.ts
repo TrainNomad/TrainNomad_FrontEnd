@@ -82,7 +82,16 @@ export interface Journey {
   to: StopRef;
   operators: string[];
   train_types: string[];
+  /** Au moins un train à grande vitesse (API Europe) */
+  high_speed?: boolean;
+  /** Plus de 5 h d'attente en correspondance : nuit en gare */
+  long_wait?: boolean;
   legs: Leg[];
+}
+
+export interface TrainTypeInfo {
+  name: string;
+  high_speed: boolean;
 }
 
 export interface SearchResponse {
@@ -95,6 +104,8 @@ export interface SearchResponse {
   next: { date: string; time: string } | null;
   compute_ms: number;
   journeys: Journey[];
+  /** Types de train desservant le départ et l'arrivée : choix possibles pour le filtre train_types */
+  available_train_types?: TrainTypeInfo[];
 }
 
 export interface ExplorerDestination {

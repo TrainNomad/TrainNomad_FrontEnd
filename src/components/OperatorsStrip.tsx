@@ -31,13 +31,13 @@ const OPERATORS: Record<string, { label: string; logo?: string; size?: string }>
   DB: { label: 'Deutsche Bahn', logo: 'db.png' },
   // Compagnies étrangères des flux allemands (build_network.py) : leur nom tant que le logo n'est pas ajouté
   OBB: { label: 'ÖBB', logo: 'obb.png' },
-  PKP: { label: 'PKP Intercity', logo: 'pkp.png' },
+  PKP: { label: 'PKP Intercity', logo: 'pkp.svg' },
   CD: { label: 'České dráhy', logo: 'cd.png' },
   MAV: { label: 'MÁV', logo: 'mav.png' },
   DSB: { label: 'DSB', logo: 'dsb.png' },
   CFL: { label: 'CFL', logo: 'cfl.png' },
   ZSSK: { label: 'ZSSK', logo: 'zssk.png' },
-  HZPP: { label: 'HŽPP', logo: 'hzpp.png' },
+  HZPP: { label: 'HŽPP', logo: 'hzpp.svg' },
 };
 
 /** Flux distincts dans l'API, une seule compagnie pour le visiteur : grandes lignes et régional de la DB. */

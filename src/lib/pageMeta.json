@@ -11,6 +11,7 @@
   },
   "/trajets": {
     "title": "Trajets en train",
+    "image": "/og/trajets.jpg",
     "description": "Recherchez un trajet en train en Europe : horaires, durées et correspondances entre les réseaux de plusieurs pays, sans inscription.",
     "heading": "Trajets en train en Europe",
     "intro": [
@@ -20,6 +21,7 @@
   },
   "/explorer": {
     "title": "Explorer l'Europe en train",
+    "image": "/og/explorer.jpg",
     "description": "Choisissez une gare de départ et découvrez sur une carte toutes les destinations accessibles en train, classées par durée de trajet.",
     "heading": "Explorer l'Europe en train",
     "intro": [
@@ -28,6 +30,7 @@
   },
   "/tgvmax": {
     "title": "Places TGVmax disponibles",
+    "image": "/og/tgvmax.jpg",
     "description": "Repérez les trains TGV INOUI et Intercités avec des places MAX JEUNE / MAX SENIOR disponibles. Site indépendant, données SNCF Voyageurs.",
     "heading": "Les places TGVmax disponibles",
     "intro": [
@@ -36,13 +39,20 @@
       "Site indépendant, sans lien avec SNCF Voyageurs. TGVmax, MAX JEUNE et MAX SENIOR sont des marques de SNCF Voyageurs."
     ]
   },
+  "/voyage": {
+    "title": "Mon voyage",
+    "description": "Votre voyage en train choisi sur TrainNomad : trajets aller et retour, gardés dans votre navigateur.",
+    "prerender": false
+  },
   "/tgvmax/trajets": {
     "title": "Trajets TGVmax",
+    "image": "/og/tgvmax.jpg",
     "description": "Repérez les trains TGV INOUI et Intercités avec des places MAX JEUNE / MAX SENIOR disponibles. Site indépendant, données SNCF Voyageurs.",
     "prerender": false
   },
   "/tgvmax/explorer": {
     "title": "Où partir avec TGVmax ?",
+    "image": "/og/tgvmax.jpg",
     "description": "Choisissez une gare de départ et découvrez sur une carte les destinations où il reste des places MAX JEUNE / MAX SENIOR.",
     "heading": "Où partir avec TGVmax ?",
     "intro": [
@@ -51,6 +61,7 @@
   },
   "/guides": {
     "title": "Guides de voyage en train",
+    "image": "/og/guides.jpg",
     "description": "Guides de villes à rejoindre en train : quoi voir, itinéraires jour par jour et conseils pratiques pour un week-end en Europe.",
     "heading": "Guides de voyage en train",
     "intro": [
@@ -73,7 +84,7 @@
       "TrainNomad réutilise les horaires ouverts publiés par les opérateurs ferroviaires : SNCF Voyageurs, Renfe, Ouigo España, CP, Trenitalia, Italo, SNCB, les données nationales suisses, National Rail, Eurostar, European Sleeper et FlixTrain. Ils sont réunis en un seul réseau, réassemblé chaque semaine.",
       "Les trajets sont calculés avec RAPTOR, un algorithme public conçu pour les transports en commun, jusqu'à six correspondances. Une correspondance demande au moins 10 minutes dans la même gare, 15 dans les grandes gares.",
       "Les places TGVmax viennent du jeu de données ouvert de SNCF Voyageurs, publié chaque matin. La disponibilité dépend du trajet demandé et non du train : quand un trajet est complet, le site peut proposer deux billets MAX dans le même train, avec un simple changement de siège à un arrêt intermédiaire.",
-      "Chaque trajet affiche une estimation de ses émissions de CO₂e, comparée à la voiture ou, au-delà de 700 km, à l'avion, à partir des facteurs d'émission de l'ADEME (Impact CO2).",
+      "Chaque trajet affiche une estimation de ses émissions de CO₂e, selon la compagnie et le pays de chaque train et la distance parcourue sur les voies, comparée à la voiture ou, au-delà de 700 km, à l'avion.",
       "Le site n'affiche ni temps réel, ni prix, et ne vend aucun billet. Une place TGVmax affichée peut avoir été réservée depuis ; les trains OUIGO ne figurent pas dans les données de disponibilité."
     ]
   },

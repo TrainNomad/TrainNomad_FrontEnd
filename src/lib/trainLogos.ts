@@ -222,7 +222,7 @@ const BY_OPERATOR: Record<string, string> = {
   TRENITALIA: 'trenitalia.png',
   ITALO: 'italo.png',
   CP: 'Comboios-de-Portugal.png',
-  SWISS: 'SBB.png', // SBB/CFF/FFS Swiss Railways
+  SWISS: 'sbb.png', // SBB/CFF/FFS Swiss Railways
   OUIGO_ES: 'ouigo.png',
   SNCB: 'SNCB.png',
   FLIXTRAIN: 'FlixTrain.png',
@@ -230,13 +230,13 @@ const BY_OPERATOR: Record<string, string> = {
   DB: 'db.png',
   // compagnies étrangères des flux allemands (opérateurs créés par build_network.py)
   OBB: 'obb.png',
-  PKP: 'pkp.png',
+  PKP: 'pkp.svg',
   CD: 'cd.png',
   MAV: 'mav.png',
   DSB: 'dsb.png',
   CFL: 'cfl.png',
   ZSSK: 'zssk.png',
-  HZPP: 'hzpp.png',
+  HZPP: 'hzpp.svg',
 };
 
 // Flux allemands et types "<compagnie> <produit>" (ex. "DB ICE", "ÖBB Railjet Xpress", "HLB Regionalbahn").
@@ -249,25 +249,25 @@ const BY_CATEGORY: [RegExp, string][] = [
   [/ TGV INOUI$/, 'TGV InOui.png'],
   [/ EuroCity(-Express)?$/, 'eurocity.png'],
   [/ (EuroNight|Nightjet)$/, 'nightjet.png'],
-  [/ Railjet( Xpress)?$/, 'railjet.png'],
+  [/ Railjet( Xpress)?$/, 'railjet.svg'],
   // grandes compagnies
   [/^DB /, 'db.png'],
   [/^ÖBB /, 'obb.png'],
   [/^SBB /, 'sbb.png'],
   [/^THURBO /, 'thurbo.png'],
   [/^SNCB /, 'SNCB.png'],
-  [/^PKP /, 'pkp.png'],
+  [/^PKP /, 'pkp.svg'],
   [/^ČD /, 'cd.png'],
   [/^MÁV /, 'mav.png'],
   [/^DSB /, 'dsb.png'],
   [/^CFL /, 'cfl.png'],
   [/^ZSSK /, 'zssk.png'],
-  [/^HŽPP /, 'hzpp.png'],
+  [/^HŽPP /, 'hzpp.svg'],
   [/^WESTbahn/, 'westbahn.png'],
   [/^LEO Express/, 'leo_express.png'],
   // compagnies régionales allemandes (marque donnée par build_network.py, DE_REGIO_BRANDS)
-  [/^HLB /, 'hlb.png'],
-  [/^(alex|trilex|trilex-express|vogtlandbahn|oberpfalzbahn|waldbahn) /, 'laenderbahn.png'],
+  [/^HLB /, 'hlb.svg'],
+  [/^(alex|trilex|trilex-express|vogtlandbahn|oberpfalzbahn|waldbahn) /, 'laenderbahn.svg'],
   [/^VIAS /, 'ns_vias.png'],
   [/^agilis /, 'agilis.png'],
   [/^ODEG /, 'odeg.png'],
@@ -301,7 +301,7 @@ export function trainLogo(trainType: string, operator?: string): string | null {
   const op = operator?.toUpperCase();
 
   // Produits propriétaires : afficher le logo seulement si exploité par une compagnie autorisée
-  if (tt.includes('ICE') && op && !['DB', 'SNCB', 'NS'].includes(op)) return null;
+  if (tt.includes('ICE') && op && !['DB', 'SNCB', 'NS', 'OBB'].includes(op)) return null;
   if (tt.includes('Railjet') && op && !['OBB', 'CD', 'MAV', 'ZSSK', 'DSB'].includes(op)) return null;
   if ((tt.includes('Nightjet') || tt.includes('EuroNight')) && op && !['OBB', 'SWISS', 'NS', 'SNCB'].includes(op)) return null;
   if (tt.includes('Trenitalia') && op !== 'TRENITALIA') return null;

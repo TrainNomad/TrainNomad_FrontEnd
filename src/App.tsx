@@ -29,6 +29,7 @@ const GuidesPage = lazy(() => import('./pages/Guides'));
 const GuideDetailPage = lazy(() => import('./pages/GuideDetail'));
 const TGVMaxPage = lazy(() => import('./pages/tgvmax'));
 const Explorer = lazy(() => import('./pages/explorer'));
+const Voyage = lazy(() => import('./pages/Voyage'));
 
 function HomePage() {
   usePageMeta(undefined, PAGE_META['/'].description);
@@ -76,6 +77,7 @@ export default function App() {
           <Route path="/tgvmax" element={<Page path="/tgvmax"><NetworkScope network="tgvmax"><TGVMaxPage /></NetworkScope></Page>} />
           <Route path="/tgvmax/trajets" element={<Page path="/tgvmax/trajets"><NetworkScope network="tgvmax"><Trajets /></NetworkScope></Page>} />
           <Route path="/tgvmax/explorer" element={<Page path="/tgvmax/explorer"><NetworkScope network="tgvmax"><Explorer /></NetworkScope></Page>} />
+          <Route path="/voyage/:id" element={<Page path="/voyage"><Voyage /></Page>} />
           <Route path="/guides" element={<Page path="/guides"><GuidesPage /></Page>} />
           {/* le titre est posé par la page elle-même, avec le nom de la ville */}
           <Route path="/guides/:slug" element={<GuideDetailPage />} />

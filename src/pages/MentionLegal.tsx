@@ -93,6 +93,7 @@ export default function MentionsLegales() {
               <div className="bg-white rounded-2xl p-6 border border-[#4ade80]/30 mt-4">
                 <p className="text-[#1d7a5a] font-bold mb-1">⚠ Important</p>
                 <p className="mb-0">TrainNomad est un site indépendant, sans lien avec SNCF Voyageurs ni avec aucun opérateur ferroviaire. Le site ne vend aucun billet et n'effectue aucune réservation. La réservation se fait auprès de l'opérateur concerné ou d'un distributeur agréé.</p>
+                <p className="mt-2 mb-0">Certains liens vers des sites de réservation, comme Omio, sont des liens partenaires, signalés comme tels : TrainNomad peut toucher une commission sur une réservation faite après un clic, sans surcoût pour vous. Ces partenariats n'ont aucun effet sur les trajets affichés ni sur leur ordre.</p>
               </div>
             </div>
 
@@ -110,7 +111,7 @@ export default function MentionsLegales() {
               <ul className="mt-2">
                 <li><strong className="text-midnight">OpenStreetMap</strong> — référentiel des gares (noms, positions, codes), consulté notamment via <a href="https://www.openrailwaymap.org" target="_blank" rel="noopener noreferrer" className={linkClass}>OpenRailwayMap</a>, © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className={linkClass}>contributeurs OpenStreetMap</a> — licence ODbL</li>
                 <li><strong className="text-midnight">Network Rail</strong> — référentiel CORPUS des gares britanniques</li>
-                <li><strong className="text-midnight">ADEME</strong> — facteurs d'émission de CO₂e des modes de transport, <a href="https://impactco2.fr" target="_blank" rel="noopener noreferrer" className={linkClass}>impactco2.fr</a></li>
+                <li><strong className="text-midnight">Facteurs d'émission de CO₂e</strong> — <a href="https://ressources.data.sncf.com/explore/dataset/emission-co2-perimetre-usage/" target="_blank" rel="noopener noreferrer" className={linkClass}>SNCF Voyageurs</a>, <a href="https://dataportal.orr.gov.uk/statistics/infrastructure-and-environment/rail-environment/" target="_blank" rel="noopener noreferrer" className={linkClass}>Office of Rail and Road</a> (Open Government Licence), <a href="https://www.umweltbundesamt.de/themen/verkehr/emissionsdaten" target="_blank" rel="noopener noreferrer" className={linkClass}>Umweltbundesamt</a>, <a href="https://ourworldindata.org/grapher/carbon-intensity-electricity" target="_blank" rel="noopener noreferrer" className={linkClass}>Ember via Our World in Data</a> (CC BY 4.0), SBB</li>
                 <li><strong className="text-midnight">Wikidata</strong> — villes de rattachement des gares et noms traduits, <a href="https://www.wikidata.org" target="_blank" rel="noopener noreferrer" className={linkClass}>wikidata.org</a> — licence CC0</li>
                 <li><strong className="text-midnight">Fonds de carte</strong> — © <a href="https://www.maptiler.com/copyright/" target="_blank" rel="noopener noreferrer" className={linkClass}>MapTiler</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className={linkClass}>contributeurs OpenStreetMap</a> (ODbL)</li>
               </ul>

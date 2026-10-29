@@ -11,6 +11,9 @@ export default defineConfig({
   },
   server: {
     port: 5174,
+    // ~14 000 tracés dans public/traces et autant dans dist : les surveiller sature le serveur de dev sous Windows
+    // (les pages chargées à la demande, comme /voyage, n'arrivent plus et le clic semble ne rien faire)
+    watch: { ignored: ['**/public/traces/**', '**/dist/**'] },
   },
   build: {
     // Fichiers générés (noms avec empreinte) dans /build, à part des images de public/assets :

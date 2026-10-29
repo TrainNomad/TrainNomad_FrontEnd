@@ -1,6 +1,7 @@
 import { getDurationColor, formatDuration, formatHours, formatTime } from '../types/explorer';
 import type { Destination } from '../types/explorer';
 import { WakeUpNotice } from './WakeUpNotice';
+import { ShareButton } from './ShareButton';
 
 interface Props {
   /** Destinations dans la durée maximale choisie */
@@ -11,6 +12,8 @@ interface Props {
   scaleMax: number;
   loading: boolean;
   searched: boolean;
+  /** Gare de départ, pour le titre du lien partagé */
+  originName: string;
   onSelect: (dest: Destination) => void;
 }
 
@@ -18,7 +21,7 @@ interface Props {
  * Scrollable list panel showing all destinations sorted by duration.
  * Handles three states: loading skeleton, empty (no results), and the list itself.
  */
-export function DestinationList({ destinations, total, scaleMax, loading, searched, onSelect }: Props) {
+export function DestinationList({ destinations, total, scaleMax, loading, searched, originName, onSelect }: Props) {
 
   if (loading) {
     return (
@@ -76,13 +79,20 @@ export function DestinationList({ destinations, total, scaleMax, loading, search
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      <div className="p-4 border-b border-slate-50 flex-shrink-0">
-        <h2 className="font-bold text-[#1A2B3C] text-base">{sorted.length} destinations</h2>
-        <p className="text-xs text-slate-400 mt-0.5">
-          {sorted.length < total
-            ? `À moins de ${formatHours(scaleMax)} · ${total} au total`
-            : 'Cliquez sur une destination pour les détails'}
-        </p>
+      <div className="p-4 border-b border-slate-50 flex-shrink-0 flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <h2 className="font-bold text-[#1A2B3C] text-base">{sorted.length} destinations</h2>
+          <p className="text-xs text-slate-400 mt-0.5">
+            {sorted.length < total
+              ? `À moins de ${formatHours(scaleMax)} · ${total} au total`
+              : 'Cliquez sur une destination pour les détails'}
+          </p>
+        </div>
+        {/* l'adresse de la page contient la gare et la date (mise à jour à chaque recherche) */}
+        <ShareButton
+          title={originName ? `Où aller en train depuis ${originName} ?` : 'Explorer en train'}
+          source="explorer"
+        />
       </div>
 
       <div className="overflow-y-auto flex-1 p-3 flex flex-col gap-1.5">

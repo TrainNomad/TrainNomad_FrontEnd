@@ -109,7 +109,7 @@ export default function CommentCaMarche() {
               <div className="text-center p-6">
                 <span className="material-symbols-outlined text-[#4ade80] text-4xl mb-3 block">route</span>
                 <p className="text-white font-extrabold text-lg mb-1">Un seul réseau</p>
-                <p className="text-slate-400 text-sm mb-0">Dix opérateurs réunis, jusqu'à 6 correspondances</p>
+                <p className="text-slate-400 text-sm mb-0">Les opérateurs européens réunis, jusqu'à 6 correspondances</p>
               </div>
               <div className="text-center p-6">
                 <span className="material-symbols-outlined text-[#4ade80] text-4xl mb-3 block">schedule</span>
@@ -128,7 +128,7 @@ export default function CommentCaMarche() {
             <Section icon="database" title="D'où viennent les données">
               <p>TrainNomad ne produit aucun horaire : le site réutilise les données ouvertes que les opérateurs ferroviaires et les autorités de transport publient eux-mêmes.</p>
               <DataSourcesSummary />
-              <p className="mt-4">Les réseaux intérieurs d'autres pays (Allemagne, Pays-Bas, Autriche…) ne sont pas intégrés : ces pays ne sont desservis sur le site que par les trains des opérateurs ci-dessus. La liste complète des sources et de leurs licences figure dans les <Link to="/mentions-legales" className={linkClass}>mentions légales</Link>.</p>
+              <p className="mt-4">De nouveaux opérateurs sont ajoutés au fil du temps ; un pays dont le réseau n'est pas encore intégré reste desservi par les trains internationaux des opérateurs ci-dessus. La liste complète des sources et de leurs licences figure dans les <Link to="/mentions-legales" className={linkClass}>mentions légales</Link>.</p>
             </Section>
 
             {/* 2. Assemblage */}
@@ -180,13 +180,15 @@ export default function CommentCaMarche() {
 
             {/* 5. Empreinte carbone */}
             <Section icon="eco" title="L'empreinte carbone affichée">
-              <p>Chaque trajet affiche une estimation de ses émissions de CO₂e par voyageur, comparée au même déplacement en voiture ou, au-delà de 700 km, en avion. Les facteurs d'émission sont ceux de l'ADEME, publiés sur <a href="https://impactco2.fr" target="_blank" rel="noopener noreferrer" className={linkClass}>Impact CO2</a>, construction des véhicules et des infrastructures comprise.</p>
+              <p>Chaque trajet affiche une estimation de ses émissions de CO₂e par voyageur, comparée au même déplacement en voiture ou, au-delà de 700 km, en avion. Elle tient compte de la compagnie et du pays de chaque train : un TGV qui roule à l'électricité française, très peu carbonée, n'émet pas autant qu'un train diesel en Écosse.</p>
               <ul>
-                <li><strong className="text-midnight">En train</strong> — la distance est additionnée d'arrêt en arrêt sur chaque train emprunté, majorée de 10 % pour le tracé de la voie, puis multipliée par le facteur de sa catégorie : grande vitesse, grandes lignes ou régional</li>
-                <li><strong className="text-midnight">En voiture</strong> — la distance directe entre le départ et l'arrivée, majorée de 20 % pour tenir compte de la route, avec une voiture thermique et une seule personne à bord</li>
-                <li><strong className="text-midnight">En avion</strong> — pour les trajets de plus de 700 km à vol d'oiseau, la distance directe, avec l'effet des traînées de condensation</li>
+                <li><strong className="text-midnight">Les chiffres publiés</strong> — quand ils existent : ceux du régulateur britannique (<a href="https://dataportal.orr.gov.uk/statistics/infrastructure-and-environment/rail-environment/" target="_blank" rel="noopener noreferrer" className={linkClass}>ORR</a>) pour chaque compagnie, comme LNER, Avanti West Coast ou Lumo, ceux de <a href="https://ressources.data.sncf.com/explore/dataset/emission-co2-perimetre-usage/" target="_blank" rel="noopener noreferrer" className={linkClass}>SNCF Voyageurs</a> pour le TGV, les Intercités, les TER et ses lignes internationales, et ceux de l'<a href="https://www.umweltbundesamt.de/themen/verkehr/emissionsdaten" target="_blank" rel="noopener noreferrer" className={linkClass}>Umweltbundesamt</a> pour l'Allemagne</li>
+                <li><strong className="text-midnight">Ailleurs, un calcul</strong> — l'énergie consommée par un train pour transporter un voyageur sur un kilomètre, multipliée par l'intensité carbone de l'électricité du pays (<a href="https://ourworldindata.org/grapher/carbon-intensity-electricity" target="_blank" rel="noopener noreferrer" className={linkClass}>Ember</a>). Là où l'on peut le vérifier, en Allemagne et en Suisse, ce calcul retrouve les chiffres publiés</li>
+                <li><strong className="text-midnight">La distance</strong> — mesurée sur les voies ferrées, d'arrêt en arrêt, grâce aux tracés OpenStreetMap ; sans tracé, la distance à vol d'oiseau est majorée de 15 %, l'écart moyen observé entre les deux</li>
+                <li><strong className="text-midnight">En voiture et en avion</strong> — une voiture thermique avec une seule personne à bord, sur la distance directe majorée de 20 % pour la route ; l'avion sur la distance directe, pour les trajets de plus de 700 km</li>
               </ul>
-              <p className="mt-2 mb-0">C'est un ordre de grandeur, pas une mesure : les facteurs de l'ADEME décrivent les trains français et sont appliqués tels quels aux trains des autres pays, dont l'électricité ou la motorisation peuvent différer. À plusieurs dans la voiture, ses émissions par personne se divisent d'autant.</p>
+              <p className="mt-2">Le calcul retient toujours l'électricité moyenne du pays : certaines compagnies annoncent des émissions presque nulles grâce à des contrats d'électricité renouvelable, ce qui empêcherait de les comparer entre elles. Seule l'énergie consommée par les trains est comptée, pas leur construction ni celle des voies. Les chiffres sont mis à jour une fois par an.</p>
+              <p className="mb-0">C'est un ordre de grandeur, pas une mesure : le remplissage réel de chaque train n'est pas connu. À plusieurs dans la voiture, ses émissions par personne se divisent d'autant.</p>
             </Section>
 
             {/* 6. Limites */}

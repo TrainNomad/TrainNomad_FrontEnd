@@ -3,6 +3,7 @@ import { useGuideDetail } from '../hooks/useGuides';
 import { usePageMeta } from '../hooks/usePageMeta';
 import PhotoSpots from '../components/PhotoSpots';
 import { CountryFlag } from '../components/CountryFlag';
+import { ShareButton } from '../components/ShareButton';
 
 const STEP_ICONS: Record<string, string> = {
   transport: 'fa-train', visit: 'fa-landmark', food: 'fa-utensils', leisure: 'fa-mug-hot',
@@ -63,6 +64,7 @@ export default function GuideDetailPage() {
               {guide.tags?.filter(tag => tag !== 'Gastronomie').map(tag => (
                 <span key={tag} className="px-3 py-1.5 bg-white/20 backdrop-blur-sm text-white text-sm font-semibold rounded-full">{tag}</span>
               ))}
+              <ShareButton title={`Guide ${guide.name} en train`} source="guide" variant="glass" className="ml-auto" />
             </div>
             <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">
               {guide.featuredTitle || guide.name}

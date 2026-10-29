@@ -47,6 +47,7 @@ export function DestinationPanel({
           scaleMax={scaleMax}
           loading={loading}
           searched={searched}
+          originName={origin?.name ?? ''}
           onSelect={onSelect}
         />
       )}
