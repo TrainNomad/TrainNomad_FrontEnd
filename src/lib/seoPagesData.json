@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-29T20:30:23.471Z",
+ "built_at": "2026-10-29T20:54:47.651Z",
  "date": "2026-11-10",
  "liaisons": [
   {
@@ -3434,6 +3434,632 @@
      "SNCF Car",
      "SNCF OUIGO Train Classique",
      "SNCF Car TER"
+    ]
+   }
+  },
+  {
+   "slug": "edimbourg-glasgow",
+   "from": {
+    "name": "Édimbourg",
+    "id": "city:Q23436",
+    "country": "GB",
+    "lat": 55.953335,
+    "lon": -3.1891668
+   },
+   "to": {
+    "name": "Glasgow",
+    "id": "city:Q4093",
+    "country": "GB",
+    "lat": 55.86111,
+    "lon": -4.25
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 40,
+    "min_transfers": 0,
+    "direct": 71,
+    "count": 72,
+    "first": "00:05",
+    "last": "23:50",
+    "train_types": [
+     "ScotRail",
+     "CrossCountry",
+     "Lumo"
+    ]
+   }
+  },
+  {
+   "slug": "edimbourg-inverness",
+   "from": {
+    "name": "Édimbourg",
+    "id": "city:Q23436",
+    "country": "GB",
+    "lat": 55.953335,
+    "lon": -3.1891668
+   },
+   "to": {
+    "name": "Inverness",
+    "id": "city:Q160493",
+    "country": "GB",
+    "lat": 57.48389,
+    "lon": -4.2258334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 204,
+    "min_transfers": 0,
+    "direct": 6,
+    "count": 14,
+    "first": "06:13",
+    "last": "23:10",
+    "train_types": [
+     "ScotRail",
+     "LNER"
+    ]
+   }
+  },
+  {
+   "slug": "londres-birmingham",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Birmingham",
+    "id": "city:Q20986424",
+    "country": "GB",
+    "lat": 52.48048,
+    "lon": -1.89823
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 76,
+    "min_transfers": 0,
+    "direct": 47,
+    "count": 55,
+    "first": "00:51",
+    "last": "23:30",
+    "train_types": [
+     "Avanti West Coast",
+     "West Midlands Trains",
+     "Chiltern Railways",
+     "CrossCountry",
+     "Bus"
+    ]
+   }
+  },
+  {
+   "slug": "londres-liverpool",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Liverpool",
+    "id": "city:Q21665571",
+    "country": "GB",
+    "lat": 53.41667,
+    "lon": -2.91667
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 129,
+    "min_transfers": 0,
+    "direct": 26,
+    "count": 43,
+    "first": "00:51",
+    "last": "23:45",
+    "train_types": [
+     "Avanti West Coast",
+     "West Midlands Trains",
+     "TransPennine Express",
+     "Northern",
+     "East Midlands Railway",
+     "Bus",
+     "LNER",
+     "Caledonian Sleeper"
+    ]
+   }
+  },
+  {
+   "slug": "londres-leeds",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Leeds",
+    "id": "city:Q39121",
+    "country": "GB",
+    "lat": 53.7975,
+    "lon": -1.5436112
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 129,
+    "min_transfers": 0,
+    "direct": 33,
+    "count": 38,
+    "first": "05:40",
+    "last": "23:35",
+    "train_types": [
+     "LNER",
+     "Northern",
+     "East Midlands Railway",
+     "TransPennine Express"
+    ]
+   }
+  },
+  {
+   "slug": "londres-york",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "York",
+    "id": "station:7082630",
+    "country": "GB",
+    "lat": 53.957703,
+    "lon": -1.09373
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 106,
+    "min_transfers": 0,
+    "direct": 58,
+    "count": 59,
+    "first": "05:48",
+    "last": "22:32",
+    "train_types": [
+     "LNER",
+     "Grand Central",
+     "East Midlands Railway",
+     "Northern"
+    ]
+   }
+  },
+  {
+   "slug": "londres-newcastle",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Newcastle",
+    "id": "station:7077280",
+    "country": "GB",
+    "lat": 54.968334,
+    "lon": -1.616046
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 158,
+    "min_transfers": 0,
+    "direct": 51,
+    "count": 53,
+    "first": "05:45",
+    "last": "23:45",
+    "train_types": [
+     "LNER",
+     "Lumo",
+     "Caledonian Sleeper",
+     "Northern"
+    ]
+   }
+  },
+  {
+   "slug": "londres-oxford",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Oxford",
+    "id": "station:7031150",
+    "country": "GB",
+    "lat": 51.753452,
+    "lon": -1.269954
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 69,
+    "min_transfers": 0,
+    "direct": 8,
+    "count": 68,
+    "first": "04:39",
+    "last": "23:47",
+    "train_types": [
+     "Bus",
+     "Great Western Railway",
+     "Chiltern Railways",
+     "CrossCountry",
+     "Heathrow Express"
+    ]
+   }
+  },
+  {
+   "slug": "londres-cambridge",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Cambridge",
+    "id": "city:Q21713103",
+    "country": "GB",
+    "lat": 52.19714,
+    "lon": 0.12823
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 45,
+    "min_transfers": 0,
+    "direct": 91,
+    "count": 93,
+    "first": "00:26",
+    "last": "23:35",
+    "train_types": [
+     "Great Northern",
+     "Thameslink",
+     "Greater Anglia",
+     "Bus"
+    ]
+   }
+  },
+  {
+   "slug": "londres-bath",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Bath",
+    "id": "city:Q22889",
+    "country": "GB",
+    "lat": 51.38139,
+    "lon": -2.3597221
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 102,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 36,
+    "first": "05:00",
+    "last": "23:02",
+    "train_types": [
+     "Great Western Railway",
+     "Bus",
+     "Heathrow Express"
+    ]
+   }
+  },
+  {
+   "slug": "londres-brighton",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Brighton",
+    "id": "city:Q131491",
+    "country": "GB",
+    "lat": 50.820835,
+    "lon": -0.1375
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 49,
+    "min_transfers": 0,
+    "direct": 78,
+    "count": 83,
+    "first": "00:10",
+    "last": "23:53",
+    "train_types": [
+     "Thameslink",
+     "Southern",
+     "Gatwick Express"
+    ]
+   }
+  },
+  {
+   "slug": "londres-sheffield",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Sheffield",
+    "id": "city:Q42448",
+    "country": "GB",
+    "lat": 53.380833,
+    "lon": -1.4702778
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 118,
+    "min_transfers": 0,
+    "direct": 32,
+    "count": 73,
+    "first": "05:27",
+    "last": "23:35",
+    "train_types": [
+     "East Midlands Railway",
+     "LNER",
+     "Northern",
+     "TransPennine Express",
+     "CrossCountry",
+     "Hull Trains",
+     "Avanti West Coast",
+     "Grand Central"
+    ]
+   }
+  },
+  {
+   "slug": "londres-nottingham",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Nottingham",
+    "id": "city:Q21885994",
+    "country": "GB",
+    "lat": 52.955,
+    "lon": -1.1491667
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 81,
+    "min_transfers": 0,
+    "direct": 51,
+    "count": 54,
+    "first": "05:27",
+    "last": "23:35",
+    "train_types": [
+     "East Midlands Railway",
+     "LNER"
+    ]
+   }
+  },
+  {
+   "slug": "manchester-liverpool",
+   "from": {
+    "name": "Manchester",
+    "id": "city:Q21525592",
+    "country": "GB",
+    "lat": 53.41667,
+    "lon": -2.25
+   },
+   "to": {
+    "name": "Liverpool",
+    "id": "city:Q21665571",
+    "country": "GB",
+    "lat": 53.41667,
+    "lon": -2.91667
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 31,
+    "min_transfers": 0,
+    "direct": 88,
+    "count": 88,
+    "first": "05:30",
+    "last": "23:49",
+    "train_types": [
+     "TransPennine Express",
+     "Northern",
+     "East Midlands Railway"
+    ]
+   }
+  },
+  {
+   "slug": "manchester-leeds",
+   "from": {
+    "name": "Manchester",
+    "id": "city:Q21525592",
+    "country": "GB",
+    "lat": 53.41667,
+    "lon": -2.25
+   },
+   "to": {
+    "name": "Leeds",
+    "id": "city:Q39121",
+    "country": "GB",
+    "lat": 53.7975,
+    "lon": -1.5436112
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 47,
+    "min_transfers": 0,
+    "direct": 75,
+    "count": 75,
+    "first": "00:15",
+    "last": "23:21",
+    "train_types": [
+     "TransPennine Express",
+     "Northern"
+    ]
+   }
+  },
+  {
+   "slug": "manchester-birmingham",
+   "from": {
+    "name": "Manchester",
+    "id": "city:Q21525592",
+    "country": "GB",
+    "lat": 53.41667,
+    "lon": -2.25
+   },
+   "to": {
+    "name": "Birmingham",
+    "id": "city:Q20986424",
+    "country": "GB",
+    "lat": 52.48048,
+    "lon": -1.89823
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 88,
+    "min_transfers": 0,
+    "direct": 33,
+    "count": 36,
+    "first": "05:11",
+    "last": "22:14",
+    "train_types": [
+     "CrossCountry",
+     "Avanti West Coast",
+     "West Midlands Trains",
+     "Transport for Wales",
+     "Bus"
+    ]
+   }
+  },
+  {
+   "slug": "leeds-york",
+   "from": {
+    "name": "Leeds",
+    "id": "city:Q39121",
+    "country": "GB",
+    "lat": 53.7975,
+    "lon": -1.5436112
+   },
+   "to": {
+    "name": "York",
+    "id": "station:7082630",
+    "country": "GB",
+    "lat": 53.957703,
+    "lon": -1.09373
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 14,
+    "min_transfers": 0,
+    "direct": 91,
+    "count": 91,
+    "first": "00:35",
+    "last": "23:56",
+    "train_types": [
+     "TransPennine Express",
+     "Northern",
+     "CrossCountry",
+     "Bus"
+    ]
+   }
+  },
+  {
+   "slug": "york-newcastle",
+   "from": {
+    "name": "York",
+    "id": "station:7082630",
+    "country": "GB",
+    "lat": 53.957703,
+    "lon": -1.09373
+   },
+   "to": {
+    "name": "Newcastle",
+    "id": "station:7077280",
+    "country": "GB",
+    "lat": 54.968334,
+    "lon": -1.616046
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 49,
+    "min_transfers": 0,
+    "direct": 86,
+    "count": 86,
+    "first": "05:45",
+    "last": "23:23",
+    "train_types": [
+     "LNER",
+     "CrossCountry",
+     "TransPennine Express"
+    ]
+   }
+  },
+  {
+   "slug": "birmingham-bristol",
+   "from": {
+    "name": "Birmingham",
+    "id": "city:Q20986424",
+    "country": "GB",
+    "lat": 52.48048,
+    "lon": -1.89823
+   },
+   "to": {
+    "name": "Bristol",
+    "id": "city:Q23154",
+    "country": "GB",
+    "lat": 51.45361,
+    "lon": -2.5975
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 68,
+    "min_transfers": 0,
+    "direct": 28,
+    "count": 32,
+    "first": "05:00",
+    "last": "22:20",
+    "train_types": [
+     "CrossCountry",
+     "Great Western Railway",
+     "Chiltern Railways"
     ]
    }
   }

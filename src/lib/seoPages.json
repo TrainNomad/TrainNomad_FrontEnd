@@ -1,7 +1,30 @@
 {
-  "_lisez-moi": "Réglages des pages générées par scripts/seo-pages.mjs à chaque build. Les liaisons du globe (globeNetwork.json) ont toutes leur page ; « liaisonsDepuis » ajoute une page de chaque ville listée vers chaque ville qui a un guide ; « liaisonsEntre », une page pour chaque paire de villes de la liste, dans l'ordre de la liste (Lyon → Bordeaux). « guideDepuis » : villes de départ de l'encart « Venir en train » des guides. « tgvmaxDepuis » : une page TGVmax par ville. Noms en français, tels que la recherche du site les trouve.",
+  "_lisez-moi": "Réglages des pages générées par scripts/seo-pages.mjs à chaque build. Les liaisons du globe (globeNetwork.json) ont toutes leur page. « liaisonsDepuis » : une page de chaque ville listée vers chaque ville qui a un guide. « liaisonsEntre » : pour chaque groupe, une page par paire de villes, dans l'ordre de la liste (Lyon → Bordeaux). « liaisons » : des pages une à une, [départ, arrivée]. « guideDepuis » : villes de départ de l'encart « Venir en train » des guides. « tgvmaxDepuis » : une page TGVmax par ville. Noms en français, tels que la recherche du site les trouve.",
   "liaisonsDepuis": ["Paris"],
-  "liaisonsEntre": ["Paris", "Lyon", "Marseille", "Lille", "Bordeaux", "Toulouse", "Nantes", "Strasbourg", "Montpellier", "Nice", "Rennes"],
+  "liaisonsEntre": {
+    "France": ["Paris", "Lyon", "Marseille", "Lille", "Bordeaux", "Toulouse", "Nantes", "Strasbourg", "Montpellier", "Nice", "Rennes"]
+  },
+  "liaisons": [
+    ["Édimbourg", "Glasgow"],
+    ["Édimbourg", "Inverness"],
+    ["Londres", "Birmingham"],
+    ["Londres", "Liverpool"],
+    ["Londres", "Leeds"],
+    ["Londres", "York"],
+    ["Londres", "Newcastle"],
+    ["Londres", "Oxford"],
+    ["Londres", "Cambridge"],
+    ["Londres", "Bath"],
+    ["Londres", "Brighton"],
+    ["Londres", "Sheffield"],
+    ["Londres", "Nottingham"],
+    ["Manchester", "Liverpool"],
+    ["Manchester", "Leeds"],
+    ["Manchester", "Birmingham"],
+    ["Leeds", "York"],
+    ["York", "Newcastle"],
+    ["Birmingham", "Bristol"]
+  ],
   "guideDepuis": ["Paris", "Lyon", "Marseille"],
   "tgvmaxDepuis": ["Paris", "Lyon", "Marseille", "Lille", "Bordeaux", "Nantes", "Rennes", "Toulouse", "Strasbourg", "Montpellier", "Nice"]
 }
