@@ -1,6 +1,7 @@
 {
-  "_lisez-moi": "Réglages des pages générées par scripts/seo-pages.mjs à chaque build. Les liaisons du globe (globeNetwork.json) ont toutes leur page ; « liaisonsDepuis » ajoute une page de chaque ville listée vers chaque ville qui a un guide. « guideDepuis » : villes de départ de l'encart « Venir en train » des guides. « tgvmaxDepuis » : une page TGVmax par ville. Noms en français, tels que la recherche du site les trouve.",
+  "_lisez-moi": "Réglages des pages générées par scripts/seo-pages.mjs à chaque build. Les liaisons du globe (globeNetwork.json) ont toutes leur page ; « liaisonsDepuis » ajoute une page de chaque ville listée vers chaque ville qui a un guide ; « liaisonsEntre », une page pour chaque paire de villes de la liste, dans l'ordre de la liste (Lyon → Bordeaux). « guideDepuis » : villes de départ de l'encart « Venir en train » des guides. « tgvmaxDepuis » : une page TGVmax par ville. Noms en français, tels que la recherche du site les trouve.",
   "liaisonsDepuis": ["Paris"],
+  "liaisonsEntre": ["Paris", "Lyon", "Marseille", "Lille", "Bordeaux", "Toulouse", "Nantes", "Strasbourg", "Montpellier", "Nice", "Rennes"],
   "guideDepuis": ["Paris", "Lyon", "Marseille"],
   "tgvmaxDepuis": ["Paris", "Lyon", "Marseille", "Lille", "Bordeaux", "Nantes", "Rennes", "Toulouse", "Strasbourg", "Montpellier", "Nice"]
 }

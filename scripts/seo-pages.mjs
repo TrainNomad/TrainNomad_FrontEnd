@@ -1,6 +1,7 @@
 // Avant chaque build : relève les données des pages générées automatiquement, d'après les API en ligne.
-//   - une page par liaison (/train/paris-londres/) : chaque liaison du globe (src/lib/globeNetwork.json), plus
-//     les villes de « liaisonsDepuis » vers chaque ville qui a un guide ; journée type dans public/liaisons/ ;
+//   - une page par liaison (/train/paris-londres/) : chaque liaison du globe (src/lib/globeNetwork.json), les villes
+//     de « liaisonsDepuis » vers chaque ville qui a un guide, et chaque paire de « liaisonsEntre » ; journée type
+//     dans public/liaisons/ ;
 //   - l'encart « Venir en train » des guides (villes de « guideDepuis ») ;
 //   - une page TGVmax par ville de « tgvmaxDepuis » (/tgvmax/depuis/lyon/) : places des 30 prochains jours
 //     dans public/tgvmax-depuis/ (relevé pour les moteurs de recherche, la page recalcule en direct).
@@ -103,6 +104,9 @@ for (const [a, b] of NETWORK.routes) wanted.push({ from: globeCity(a), to: globe
 for (const origin of CONFIG.liaisonsDepuis ?? []) {
   for (const g of guides) wanted.push({ from: { name: origin }, to: { name: g.name } });
 }
+// Chaque paire de « liaisonsEntre » (réseau national) : une page, dans le sens de la liste
+const between = CONFIG.liaisonsEntre ?? [];
+between.forEach((a, i) => between.slice(i + 1).forEach((b) => wanted.push({ from: { name: a }, to: { name: b } })));
 
 // Résolution des villes, puis une page par couple (sans doublon, ni aller-retour en double)
 const guideByPlace = new Map();

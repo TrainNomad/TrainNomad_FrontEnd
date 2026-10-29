@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-29T19:24:44.969Z",
+ "built_at": "2026-10-29T20:30:23.471Z",
  "date": "2026-11-10",
  "liaisons": [
   {
@@ -1657,6 +1657,1783 @@
      "DB Intercity",
      "waldbahn Regionalbahn",
      "ČD Rychlík"
+    ]
+   }
+  },
+  {
+   "slug": "paris-lille",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Lille",
+    "id": "city:Q648",
+    "country": "FR",
+    "lat": 50.631943,
+    "lon": 3.0575
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 64,
+    "min_transfers": 0,
+    "direct": 21,
+    "count": 37,
+    "first": "06:03",
+    "last": "22:28",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF Train"
+    ]
+   }
+  },
+  {
+   "slug": "paris-toulouse",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Toulouse",
+    "id": "city:Q7880",
+    "country": "FR",
+    "lat": 43.604443,
+    "lon": 1.4433334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 269,
+    "min_transfers": 0,
+    "direct": 11,
+    "count": 15,
+    "first": "06:11",
+    "last": "22:13",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "Trenitalia Frecciarossa",
+     "SNCF TER",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "paris-nantes",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Nantes",
+    "id": "city:Q12191",
+    "country": "FR",
+    "lat": 47.217224,
+    "lon": -1.5538889
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 117,
+    "min_transfers": 0,
+    "direct": 19,
+    "count": 35,
+    "first": "06:32",
+    "last": "22:52",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF OUIGO Train Classique",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "SNCF Car TER"
+    ]
+   }
+  },
+  {
+   "slug": "paris-strasbourg",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Strasbourg",
+    "id": "city:Q6602",
+    "country": "FR",
+    "lat": 48.573334,
+    "lon": 7.752222
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 105,
+    "min_transfers": 0,
+    "direct": 19,
+    "count": 29,
+    "first": "06:41",
+    "last": "20:25",
+    "train_types": [
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "DB SNCF en coopération",
+     "SNCF OUIGO",
+     "SNCF Car TER",
+     "KVV Train régional",
+     "DB Regionalbahn",
+     "DB Regional-Express",
+     "SNCF Train",
+     "SNCB InterCity"
+    ]
+   }
+  },
+  {
+   "slug": "paris-montpellier",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Montpellier",
+    "id": "city:Q6441",
+    "country": "FR",
+    "lat": 43.61092,
+    "lon": 3.8772306
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 192,
+    "min_transfers": 0,
+    "direct": 10,
+    "count": 25,
+    "first": "06:28",
+    "last": "22:13",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "Trenitalia Frecciarossa",
+     "SNCF Car TER",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "paris-nice",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Nice",
+    "id": "city:Q33959",
+    "country": "FR",
+    "lat": 43.701946,
+    "lon": 7.2683334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 492,
+    "min_transfers": 3,
+    "direct": 0,
+    "count": 16,
+    "first": "06:38",
+    "last": "22:13",
+    "train_types": [
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "SNCF Car",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "lyon-lille",
+   "from": {
+    "name": "Lyon",
+    "id": "city:Q456",
+    "country": "FR",
+    "lat": 45.7675,
+    "lon": 4.835
+   },
+   "to": {
+    "name": "Lille",
+    "id": "city:Q648",
+    "country": "FR",
+    "lat": 50.631943,
+    "lon": 3.0575
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 178,
+    "min_transfers": 0,
+    "direct": 8,
+    "count": 31,
+    "first": "05:50",
+    "last": "20:38",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF Intercités",
+     "Trenitalia Frecciarossa",
+     "SNCF OUIGO",
+     "SNCF Car TER",
+     "SNCB InterCity",
+     "SNCF Car",
+     "SNCF Train",
+     "Eurostar"
+    ]
+   }
+  },
+  {
+   "slug": "lyon-bordeaux",
+   "from": {
+    "name": "Lyon",
+    "id": "city:Q456",
+    "country": "FR",
+    "lat": 45.7675,
+    "lon": 4.835
+   },
+   "to": {
+    "name": "Bordeaux",
+    "id": "city:Q1479",
+    "country": "FR",
+    "lat": 44.837776,
+    "lon": -0.57944447
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 263,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 32,
+    "first": "06:20",
+    "last": "21:20",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "Trenitalia Frecciarossa",
+     "SNCF Intercités de nuit",
+     "SNCF Car TER"
+    ]
+   }
+  },
+  {
+   "slug": "lyon-toulouse",
+   "from": {
+    "name": "Lyon",
+    "id": "city:Q456",
+    "country": "FR",
+    "lat": 45.7675,
+    "lon": 4.835
+   },
+   "to": {
+    "name": "Toulouse",
+    "id": "city:Q7880",
+    "country": "FR",
+    "lat": 43.604443,
+    "lon": 1.4433334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 249,
+    "min_transfers": 0,
+    "direct": 3,
+    "count": 25,
+    "first": "06:20",
+    "last": "21:20",
+    "train_types": [
+     "SNCF Intercités",
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "SNCF OUIGO",
+     "Trenitalia Frecciarossa",
+     "Renfe AVE International",
+     "SNCF Intercités de nuit",
+     "SNCF Car TER"
+    ]
+   }
+  },
+  {
+   "slug": "lyon-nantes",
+   "from": {
+    "name": "Lyon",
+    "id": "city:Q456",
+    "country": "FR",
+    "lat": 45.7675,
+    "lon": 4.835
+   },
+   "to": {
+    "name": "Nantes",
+    "id": "city:Q12191",
+    "country": "FR",
+    "lat": 47.217224,
+    "lon": -1.5538889
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 260,
+    "min_transfers": 0,
+    "direct": 6,
+    "count": 28,
+    "first": "06:30",
+    "last": "20:38",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "Trenitalia Frecciarossa",
+     "SNCF Intercités",
+     "SNCF OUIGO Train Classique",
+     "SNCF Car"
+    ]
+   }
+  },
+  {
+   "slug": "lyon-strasbourg",
+   "from": {
+    "name": "Lyon",
+    "id": "city:Q456",
+    "country": "FR",
+    "lat": 45.7675,
+    "lon": 4.835
+   },
+   "to": {
+    "name": "Strasbourg",
+    "id": "city:Q6602",
+    "country": "FR",
+    "lat": 48.573334,
+    "lon": 7.752222
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 222,
+    "min_transfers": 0,
+    "direct": 5,
+    "count": 31,
+    "first": "05:50",
+    "last": "20:38",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "DB SNCF en coopération",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "Trenitalia Frecciarossa",
+     "SBB",
+     "DB Regionalbahn",
+     "Trenitalia Eurocity"
+    ]
+   }
+  },
+  {
+   "slug": "lyon-montpellier",
+   "from": {
+    "name": "Lyon",
+    "id": "city:Q456",
+    "country": "FR",
+    "lat": 45.7675,
+    "lon": 4.835
+   },
+   "to": {
+    "name": "Montpellier",
+    "id": "city:Q6441",
+    "country": "FR",
+    "lat": 43.61092,
+    "lon": 3.8772306
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 100,
+    "min_transfers": 0,
+    "direct": 11,
+    "count": 26,
+    "first": "06:20",
+    "last": "21:20",
+    "train_types": [
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "SNCF OUIGO",
+     "Renfe AVE International",
+     "SNCF Car TER",
+     "SNCF Intercités"
+    ]
+   }
+  },
+  {
+   "slug": "lyon-nice",
+   "from": {
+    "name": "Lyon",
+    "id": "city:Q456",
+    "country": "FR",
+    "lat": 45.7675,
+    "lon": 4.835
+   },
+   "to": {
+    "name": "Nice",
+    "id": "city:Q33959",
+    "country": "FR",
+    "lat": 43.701946,
+    "lon": 7.2683334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 402,
+    "min_transfers": 3,
+    "direct": 0,
+    "count": 21,
+    "first": "07:20",
+    "last": "22:06",
+    "train_types": [
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "Renfe AVE International",
+     "SNCF OUIGO",
+     "SNCF Car TER"
+    ]
+   }
+  },
+  {
+   "slug": "lyon-rennes",
+   "from": {
+    "name": "Lyon",
+    "id": "city:Q456",
+    "country": "FR",
+    "lat": 45.7675,
+    "lon": 4.835
+   },
+   "to": {
+    "name": "Rennes",
+    "id": "city:Q647",
+    "country": "FR",
+    "lat": 48.114166,
+    "lon": -1.6808333
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 229,
+    "min_transfers": 0,
+    "direct": 3,
+    "count": 23,
+    "first": "06:30",
+    "last": "20:38",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF Intercités",
+     "SNCF OUIGO Train Classique",
+     "SNCF OUIGO",
+     "Trenitalia Frecciarossa",
+     "SNCF Car"
+    ]
+   }
+  },
+  {
+   "slug": "marseille-lille",
+   "from": {
+    "name": "Marseille",
+    "id": "city:Q23482",
+    "country": "FR",
+    "lat": 43.296665,
+    "lon": 5.376389
+   },
+   "to": {
+    "name": "Lille",
+    "id": "city:Q648",
+    "country": "FR",
+    "lat": 50.631943,
+    "lon": 3.0575
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 273,
+    "min_transfers": 0,
+    "direct": 6,
+    "count": 30,
+    "first": "06:11",
+    "last": "20:14",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "SNCF Intercités",
+     "Trenitalia Frecciarossa",
+     "SNCF Car",
+     "SNCF Car TER",
+     "SNCB InterCity",
+     "SNCF Intercités de nuit",
+     "SNCF Train",
+     "Eurostar"
+    ]
+   }
+  },
+  {
+   "slug": "marseille-bordeaux",
+   "from": {
+    "name": "Marseille",
+    "id": "city:Q23482",
+    "country": "FR",
+    "lat": 43.296665,
+    "lon": 5.376389
+   },
+   "to": {
+    "name": "Bordeaux",
+    "id": "city:Q1479",
+    "country": "FR",
+    "lat": 44.837776,
+    "lon": -0.57944447
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 360,
+    "min_transfers": 0,
+    "direct": 5,
+    "count": 22,
+    "first": "06:03",
+    "last": "20:14",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "SNCF TER",
+     "Trenitalia Frecciarossa",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "marseille-toulouse",
+   "from": {
+    "name": "Marseille",
+    "id": "city:Q23482",
+    "country": "FR",
+    "lat": 43.296665,
+    "lon": 5.376389
+   },
+   "to": {
+    "name": "Toulouse",
+    "id": "city:Q7880",
+    "country": "FR",
+    "lat": 43.604443,
+    "lon": 1.4433334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 228,
+    "min_transfers": 0,
+    "direct": 7,
+    "count": 14,
+    "first": "05:13",
+    "last": "20:14",
+    "train_types": [
+     "SNCF Intercités",
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "Renfe AVE International"
+    ]
+   }
+  },
+  {
+   "slug": "marseille-nantes",
+   "from": {
+    "name": "Marseille",
+    "id": "city:Q23482",
+    "country": "FR",
+    "lat": 43.296665,
+    "lon": 5.376389
+   },
+   "to": {
+    "name": "Nantes",
+    "id": "city:Q12191",
+    "country": "FR",
+    "lat": 47.217224,
+    "lon": -1.5538889
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 367,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 25,
+    "first": "05:13",
+    "last": "20:14",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "Trenitalia Frecciarossa",
+     "DB SNCF en coopération",
+     "SNCF Car",
+     "SNCF OUIGO Train Classique"
+    ]
+   }
+  },
+  {
+   "slug": "marseille-strasbourg",
+   "from": {
+    "name": "Marseille",
+    "id": "city:Q23482",
+    "country": "FR",
+    "lat": 43.296665,
+    "lon": 5.376389
+   },
+   "to": {
+    "name": "Strasbourg",
+    "id": "city:Q6602",
+    "country": "FR",
+    "lat": 48.573334,
+    "lon": 7.752222
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 331,
+    "min_transfers": 0,
+    "direct": 3,
+    "count": 32,
+    "first": "05:13",
+    "last": "20:14",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "DB SNCF en coopération",
+     "SNCF Intercités",
+     "SBB",
+     "Trenitalia Eurocity",
+     "Trenitalia Frecciarossa",
+     "SNCF Car"
+    ]
+   }
+  },
+  {
+   "slug": "marseille-montpellier",
+   "from": {
+    "name": "Marseille",
+    "id": "city:Q23482",
+    "country": "FR",
+    "lat": 43.296665,
+    "lon": 5.376389
+   },
+   "to": {
+    "name": "Montpellier",
+    "id": "city:Q6441",
+    "country": "FR",
+    "lat": 43.61092,
+    "lon": 3.8772306
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 87,
+    "min_transfers": 0,
+    "direct": 13,
+    "count": 23,
+    "first": "05:13",
+    "last": "20:14",
+    "train_types": [
+     "SNCF TER",
+     "SNCF Intercités",
+     "SNCF TGV INOUI",
+     "SNCF OUIGO",
+     "Renfe AVE International"
+    ]
+   }
+  },
+  {
+   "slug": "marseille-nice",
+   "from": {
+    "name": "Marseille",
+    "id": "city:Q23482",
+    "country": "FR",
+    "lat": 43.296665,
+    "lon": 5.376389
+   },
+   "to": {
+    "name": "Nice",
+    "id": "city:Q33959",
+    "country": "FR",
+    "lat": 43.701946,
+    "lon": 7.2683334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 221,
+    "min_transfers": 2,
+    "direct": 0,
+    "count": 12,
+    "first": "05:41",
+    "last": "21:42",
+    "train_types": [
+     "SNCF TER"
+    ]
+   }
+  },
+  {
+   "slug": "marseille-rennes",
+   "from": {
+    "name": "Marseille",
+    "id": "city:Q23482",
+    "country": "FR",
+    "lat": 43.296665,
+    "lon": 5.376389
+   },
+   "to": {
+    "name": "Rennes",
+    "id": "city:Q647",
+    "country": "FR",
+    "lat": 48.114166,
+    "lon": -1.6808333
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 339,
+    "min_transfers": 0,
+    "direct": 1,
+    "count": 21,
+    "first": "05:13",
+    "last": "20:14",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF OUIGO",
+     "SNCF TER",
+     "SNCF Intercités",
+     "Trenitalia Frecciarossa",
+     "SNCF Car",
+     "SNCF OUIGO Train Classique"
+    ]
+   }
+  },
+  {
+   "slug": "lille-bordeaux",
+   "from": {
+    "name": "Lille",
+    "id": "city:Q648",
+    "country": "FR",
+    "lat": 50.631943,
+    "lon": 3.0575
+   },
+   "to": {
+    "name": "Bordeaux",
+    "id": "city:Q1479",
+    "country": "FR",
+    "lat": 44.837776,
+    "lon": -0.57944447
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 242,
+    "min_transfers": 0,
+    "direct": 2,
+    "count": 21,
+    "first": "05:52",
+    "last": "21:02",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "SNCF Intercités de nuit",
+     "SNCF Train",
+     "SNCF OUIGO Train Classique"
+    ]
+   }
+  },
+  {
+   "slug": "lille-toulouse",
+   "from": {
+    "name": "Lille",
+    "id": "city:Q648",
+    "country": "FR",
+    "lat": 50.631943,
+    "lon": 3.0575
+   },
+   "to": {
+    "name": "Toulouse",
+    "id": "city:Q7880",
+    "country": "FR",
+    "lat": 43.604443,
+    "lon": 1.4433334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 388,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 16,
+    "first": "05:52",
+    "last": "21:02",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "lille-nantes",
+   "from": {
+    "name": "Lille",
+    "id": "city:Q648",
+    "country": "FR",
+    "lat": 50.631943,
+    "lon": 3.0575
+   },
+   "to": {
+    "name": "Nantes",
+    "id": "city:Q12191",
+    "country": "FR",
+    "lat": 47.217224,
+    "lon": -1.5538889
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 238,
+    "min_transfers": 0,
+    "direct": 2,
+    "count": 34,
+    "first": "05:53",
+    "last": "21:35",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF OUIGO Train Classique",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "SNCF Train",
+     "SNCF Car TER"
+    ]
+   }
+  },
+  {
+   "slug": "lille-strasbourg",
+   "from": {
+    "name": "Lille",
+    "id": "city:Q648",
+    "country": "FR",
+    "lat": 50.631943,
+    "lon": 3.0575
+   },
+   "to": {
+    "name": "Strasbourg",
+    "id": "city:Q6602",
+    "country": "FR",
+    "lat": 48.573334,
+    "lon": 7.752222
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 183,
+    "min_transfers": 0,
+    "direct": 2,
+    "count": 33,
+    "first": "05:52",
+    "last": "22:09",
+    "train_types": [
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "SNCB InterCity",
+     "DB SNCF en coopération",
+     "SNCF OUIGO",
+     "SNCB EuroCity",
+     "NS Intercity",
+     "DB Regional-Express",
+     "NS Nightjet",
+     "ÖBB Nightjet",
+     "eurobahn Regionalbahn",
+     "NS Eurocity Direct",
+     "DB EuroNight",
+     "Arriva Sneltrein",
+     "SWEG Regionalbahn",
+     "Eurostar",
+     "DB ICE"
+    ]
+   }
+  },
+  {
+   "slug": "lille-montpellier",
+   "from": {
+    "name": "Lille",
+    "id": "city:Q648",
+    "country": "FR",
+    "lat": 50.631943,
+    "lon": 3.0575
+   },
+   "to": {
+    "name": "Montpellier",
+    "id": "city:Q6441",
+    "country": "FR",
+    "lat": 43.61092,
+    "lon": 3.8772306
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 291,
+    "min_transfers": 0,
+    "direct": 3,
+    "count": 23,
+    "first": "05:53",
+    "last": "21:02",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "Trenitalia Frecciarossa",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "lille-nice",
+   "from": {
+    "name": "Lille",
+    "id": "city:Q648",
+    "country": "FR",
+    "lat": 50.631943,
+    "lon": 3.0575
+   },
+   "to": {
+    "name": "Nice",
+    "id": "city:Q33959",
+    "country": "FR",
+    "lat": 43.701946,
+    "lon": 7.2683334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 595,
+    "min_transfers": 3,
+    "direct": 0,
+    "count": 14,
+    "first": "05:59",
+    "last": "21:35",
+    "train_types": [
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "SNCF OUIGO",
+     "Trenitalia Frecciarossa",
+     "SNCF Car",
+     "SNCF Intercités de nuit",
+     "SNCF Intercités"
+    ]
+   }
+  },
+  {
+   "slug": "lille-rennes",
+   "from": {
+    "name": "Lille",
+    "id": "city:Q648",
+    "country": "FR",
+    "lat": 50.631943,
+    "lon": 3.0575
+   },
+   "to": {
+    "name": "Rennes",
+    "id": "city:Q647",
+    "country": "FR",
+    "lat": 48.114166,
+    "lon": -1.6808333
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 205,
+    "min_transfers": 0,
+    "direct": 2,
+    "count": 19,
+    "first": "06:42",
+    "last": "21:02",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "SNCF OUIGO Train Classique",
+     "SNCF Car TER",
+     "SNCF Train"
+    ]
+   }
+  },
+  {
+   "slug": "bordeaux-toulouse",
+   "from": {
+    "name": "Bordeaux",
+    "id": "city:Q1479",
+    "country": "FR",
+    "lat": 44.837776,
+    "lon": -0.57944447
+   },
+   "to": {
+    "name": "Toulouse",
+    "id": "city:Q7880",
+    "country": "FR",
+    "lat": 43.604443,
+    "lon": 1.4433334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 140,
+    "min_transfers": 0,
+    "direct": 14,
+    "count": 17,
+    "first": "06:10",
+    "last": "20:24",
+    "train_types": [
+     "SNCF Intercités",
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF OUIGO"
+    ]
+   }
+  },
+  {
+   "slug": "bordeaux-nantes",
+   "from": {
+    "name": "Bordeaux",
+    "id": "city:Q1479",
+    "country": "FR",
+    "lat": 44.837776,
+    "lon": -0.57944447
+   },
+   "to": {
+    "name": "Nantes",
+    "id": "city:Q12191",
+    "country": "FR",
+    "lat": 47.217224,
+    "lon": -1.5538889
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 250,
+    "min_transfers": 0,
+    "direct": 3,
+    "count": 22,
+    "first": "05:55",
+    "last": "21:03",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "SNCF Navette",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "bordeaux-strasbourg",
+   "from": {
+    "name": "Bordeaux",
+    "id": "city:Q1479",
+    "country": "FR",
+    "lat": 44.837776,
+    "lon": -0.57944447
+   },
+   "to": {
+    "name": "Strasbourg",
+    "id": "city:Q6602",
+    "country": "FR",
+    "lat": 48.573334,
+    "lon": 7.752222
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 291,
+    "min_transfers": 0,
+    "direct": 1,
+    "count": 18,
+    "first": "05:27",
+    "last": "21:03",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF Intercités",
+     "DB SNCF en coopération",
+     "SNCF OUIGO",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "bordeaux-montpellier",
+   "from": {
+    "name": "Bordeaux",
+    "id": "city:Q1479",
+    "country": "FR",
+    "lat": 44.837776,
+    "lon": -0.57944447
+   },
+   "to": {
+    "name": "Montpellier",
+    "id": "city:Q6441",
+    "country": "FR",
+    "lat": 43.61092,
+    "lon": 3.8772306
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 282,
+    "min_transfers": 0,
+    "direct": 7,
+    "count": 12,
+    "first": "06:10",
+    "last": "20:50",
+    "train_types": [
+     "SNCF Intercités",
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF OUIGO"
+    ]
+   }
+  },
+  {
+   "slug": "bordeaux-nice",
+   "from": {
+    "name": "Bordeaux",
+    "id": "city:Q1479",
+    "country": "FR",
+    "lat": 44.837776,
+    "lon": -0.57944447
+   },
+   "to": {
+    "name": "Nice",
+    "id": "city:Q33959",
+    "country": "FR",
+    "lat": 43.701946,
+    "lon": 7.2683334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 704,
+    "min_transfers": 3,
+    "direct": 0,
+    "count": 16,
+    "first": "06:10",
+    "last": "21:03",
+    "train_types": [
+     "SNCF TER",
+     "SNCF Intercités",
+     "SNCF TGV INOUI",
+     "SNCF OUIGO",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "bordeaux-rennes",
+   "from": {
+    "name": "Bordeaux",
+    "id": "city:Q1479",
+    "country": "FR",
+    "lat": 44.837776,
+    "lon": -0.57944447
+   },
+   "to": {
+    "name": "Rennes",
+    "id": "city:Q647",
+    "country": "FR",
+    "lat": 48.114166,
+    "lon": -1.6808333
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 244,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 19,
+    "first": "05:27",
+    "last": "21:03",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "SNCF Intercités",
+     "SNCF Tram-train",
+     "SNCF Intercités de nuit",
+     "SNCF OUIGO Train Classique"
+    ]
+   }
+  },
+  {
+   "slug": "toulouse-nantes",
+   "from": {
+    "name": "Toulouse",
+    "id": "city:Q7880",
+    "country": "FR",
+    "lat": 43.604443,
+    "lon": 1.4433334
+   },
+   "to": {
+    "name": "Nantes",
+    "id": "city:Q12191",
+    "country": "FR",
+    "lat": 47.217224,
+    "lon": -1.5538889
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 414,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 18,
+    "first": "06:10",
+    "last": "20:43",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF TER",
+     "SNCF Intercités de nuit",
+     "SNCF OUIGO",
+     "SNCF Navette",
+     "SNCF OUIGO Train Classique"
+    ]
+   }
+  },
+  {
+   "slug": "toulouse-strasbourg",
+   "from": {
+    "name": "Toulouse",
+    "id": "city:Q7880",
+    "country": "FR",
+    "lat": 43.604443,
+    "lon": 1.4433334
+   },
+   "to": {
+    "name": "Strasbourg",
+    "id": "city:Q6602",
+    "country": "FR",
+    "lat": 48.573334,
+    "lon": 7.752222
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 441,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 21,
+    "first": "06:10",
+    "last": "20:43",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "SNCF Intercités de nuit",
+     "DB SNCF en coopération",
+     "Trenitalia Eurocity",
+     "SBB"
+    ]
+   }
+  },
+  {
+   "slug": "toulouse-montpellier",
+   "from": {
+    "name": "Toulouse",
+    "id": "city:Q7880",
+    "country": "FR",
+    "lat": 43.604443,
+    "lon": 1.4433334
+   },
+   "to": {
+    "name": "Montpellier",
+    "id": "city:Q6441",
+    "country": "FR",
+    "lat": 43.61092,
+    "lon": 3.8772306
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 130,
+    "min_transfers": 0,
+    "direct": 13,
+    "count": 21,
+    "first": "05:23",
+    "last": "20:43",
+    "train_types": [
+     "SNCF TER",
+     "SNCF Intercités",
+     "SNCF TGV INOUI"
+    ]
+   }
+  },
+  {
+   "slug": "toulouse-nice",
+   "from": {
+    "name": "Toulouse",
+    "id": "city:Q7880",
+    "country": "FR",
+    "lat": 43.604443,
+    "lon": 1.4433334
+   },
+   "to": {
+    "name": "Nice",
+    "id": "city:Q33959",
+    "country": "FR",
+    "lat": 43.701946,
+    "lon": 7.2683334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 550,
+    "min_transfers": 3,
+    "direct": 0,
+    "count": 9,
+    "first": "06:43",
+    "last": "20:43",
+    "train_types": [
+     "SNCF Intercités",
+     "SNCF TER"
+    ]
+   }
+  },
+  {
+   "slug": "toulouse-rennes",
+   "from": {
+    "name": "Toulouse",
+    "id": "city:Q7880",
+    "country": "FR",
+    "lat": 43.604443,
+    "lon": 1.4433334
+   },
+   "to": {
+    "name": "Rennes",
+    "id": "city:Q647",
+    "country": "FR",
+    "lat": 48.114166,
+    "lon": -1.6808333
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 418,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 16,
+    "first": "06:10",
+    "last": "20:43",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "SNCF Intercités de nuit",
+     "SNCF OUIGO Train Classique"
+    ]
+   }
+  },
+  {
+   "slug": "nantes-strasbourg",
+   "from": {
+    "name": "Nantes",
+    "id": "city:Q12191",
+    "country": "FR",
+    "lat": 47.217224,
+    "lon": -1.5538889
+   },
+   "to": {
+    "name": "Strasbourg",
+    "id": "city:Q6602",
+    "country": "FR",
+    "lat": 48.573334,
+    "lon": 7.752222
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 290,
+    "min_transfers": 0,
+    "direct": 2,
+    "count": 22,
+    "first": "06:04",
+    "last": "20:09",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "DB SNCF en coopération",
+     "SNCF OUIGO Train Classique",
+     "SNCF Intercités",
+     "SNCF OUIGO"
+    ]
+   }
+  },
+  {
+   "slug": "nantes-montpellier",
+   "from": {
+    "name": "Nantes",
+    "id": "city:Q12191",
+    "country": "FR",
+    "lat": 47.217224,
+    "lon": -1.5538889
+   },
+   "to": {
+    "name": "Montpellier",
+    "id": "city:Q6441",
+    "country": "FR",
+    "lat": 43.61092,
+    "lon": 3.8772306
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 367,
+    "min_transfers": 0,
+    "direct": 1,
+    "count": 26,
+    "first": "04:50",
+    "last": "20:09",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF OUIGO",
+     "SNCF Intercités",
+     "SNCF TER",
+     "Trenitalia Frecciarossa",
+     "SNCF OUIGO Train Classique",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "nantes-nice",
+   "from": {
+    "name": "Nantes",
+    "id": "city:Q12191",
+    "country": "FR",
+    "lat": 47.217224,
+    "lon": -1.5538889
+   },
+   "to": {
+    "name": "Nice",
+    "id": "city:Q33959",
+    "country": "FR",
+    "lat": 43.701946,
+    "lon": 7.2683334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 678,
+    "min_transfers": 3,
+    "direct": 0,
+    "count": 17,
+    "first": "06:26",
+    "last": "20:09",
+    "train_types": [
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "SNCF OUIGO Train Classique",
+     "SNCF Car",
+     "Trenitalia Frecciarossa",
+     "SNCF Intercités de nuit",
+     "Trenitalia Regionale Veloce"
+    ]
+   }
+  },
+  {
+   "slug": "nantes-rennes",
+   "from": {
+    "name": "Nantes",
+    "id": "city:Q12191",
+    "country": "FR",
+    "lat": 47.217224,
+    "lon": -1.5538889
+   },
+   "to": {
+    "name": "Rennes",
+    "id": "city:Q647",
+    "country": "FR",
+    "lat": 48.114166,
+    "lon": -1.6808333
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 75,
+    "min_transfers": 0,
+    "direct": 11,
+    "count": 20,
+    "first": "06:05",
+    "last": "20:19",
+    "train_types": [
+     "SNCF TER",
+     "SNCF OUIGO",
+     "SNCF TGV INOUI",
+     "SNCF Tram-train"
+    ]
+   }
+  },
+  {
+   "slug": "strasbourg-montpellier",
+   "from": {
+    "name": "Strasbourg",
+    "id": "city:Q6602",
+    "country": "FR",
+    "lat": 48.573334,
+    "lon": 7.752222
+   },
+   "to": {
+    "name": "Montpellier",
+    "id": "city:Q6441",
+    "country": "FR",
+    "lat": 43.61092,
+    "lon": 3.8772306
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 346,
+    "min_transfers": 0,
+    "direct": 2,
+    "count": 21,
+    "first": "04:44",
+    "last": "23:20",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF Intercités",
+     "DB SNCF en coopération",
+     "SNCF OUIGO",
+     "SNCF Car TER",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "strasbourg-nice",
+   "from": {
+    "name": "Strasbourg",
+    "id": "city:Q6602",
+    "country": "FR",
+    "lat": 48.573334,
+    "lon": 7.752222
+   },
+   "to": {
+    "name": "Nice",
+    "id": "city:Q33959",
+    "country": "FR",
+    "lat": 43.701946,
+    "lon": 7.2683334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 648,
+    "min_transfers": 3,
+    "direct": 0,
+    "count": 16,
+    "first": "04:44",
+    "last": "23:20",
+    "train_types": [
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "DB SNCF en coopération",
+     "SNCF OUIGO",
+     "Trenitalia Eurocity",
+     "Trenitalia Intercity",
+     "SNCF Intercités",
+     "SNCF Car",
+     "SNCF Car TER"
+    ]
+   }
+  },
+  {
+   "slug": "strasbourg-rennes",
+   "from": {
+    "name": "Strasbourg",
+    "id": "city:Q6602",
+    "country": "FR",
+    "lat": 48.573334,
+    "lon": 7.752222
+   },
+   "to": {
+    "name": "Rennes",
+    "id": "city:Q647",
+    "country": "FR",
+    "lat": 48.114166,
+    "lon": -1.6808333
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 243,
+    "min_transfers": 0,
+    "direct": 1,
+    "count": 19,
+    "first": "04:44",
+    "last": "23:20",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "DB SNCF en coopération",
+     "SNCF OUIGO Train Classique",
+     "SNCF OUIGO",
+     "SNCF Intercités"
+    ]
+   }
+  },
+  {
+   "slug": "montpellier-nice",
+   "from": {
+    "name": "Montpellier",
+    "id": "city:Q6441",
+    "country": "FR",
+    "lat": 43.61092,
+    "lon": 3.8772306
+   },
+   "to": {
+    "name": "Nice",
+    "id": "city:Q33959",
+    "country": "FR",
+    "lat": 43.701946,
+    "lon": 7.2683334
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 414,
+    "min_transfers": 3,
+    "direct": 0,
+    "count": 13,
+    "first": "07:32",
+    "last": "20:59",
+    "train_types": [
+     "SNCF TER",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "SNCF TGV INOUI"
+    ]
+   }
+  },
+  {
+   "slug": "montpellier-rennes",
+   "from": {
+    "name": "Montpellier",
+    "id": "city:Q6441",
+    "country": "FR",
+    "lat": 43.61092,
+    "lon": 3.8772306
+   },
+   "to": {
+    "name": "Rennes",
+    "id": "city:Q647",
+    "country": "FR",
+    "lat": 48.114166,
+    "lon": -1.6808333
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 335,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 20,
+    "first": "05:50",
+    "last": "21:05",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF OUIGO",
+     "SNCF TER",
+     "SNCF Intercités",
+     "SNCF OUIGO Train Classique",
+     "Renfe AVE International",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "nice-rennes",
+   "from": {
+    "name": "Nice",
+    "id": "city:Q33959",
+    "country": "FR",
+    "lat": 43.701946,
+    "lon": 7.2683334
+   },
+   "to": {
+    "name": "Rennes",
+    "id": "city:Q647",
+    "country": "FR",
+    "lat": 48.114166,
+    "lon": -1.6808333
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 689,
+    "min_transfers": 3,
+    "direct": 0,
+    "count": 10,
+    "first": "08:41",
+    "last": "18:38",
+    "train_types": [
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "SNCF OUIGO",
+     "SNCF Intercités",
+     "SNCF Car",
+     "SNCF OUIGO Train Classique",
+     "SNCF Car TER"
     ]
    }
   }
