@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { CONTACT_EMAIL } from '../lib/siteInfo';
 
-// Mêmes entrées que le menu du haut (Navbar)
+// Entrées du menu du haut (Navbar), plus la page des liaisons
 const NAV_LINKS = [
   { label: 'Voyager', href: '/trajets' },
   { label: 'Explorer', href: '/explorer' },
   { label: 'Guides', href: '/guides' },
+  { label: 'Liaisons en train', href: '/train' },
   { label: 'Outils TGVmax', href: '/tgvmax' },
 ];
 

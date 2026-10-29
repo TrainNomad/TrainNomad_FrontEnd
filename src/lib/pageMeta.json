@@ -59,6 +59,14 @@
       "Saisissez une gare de départ pour voir sur une carte toutes les destinations avec des places TGVmax disponibles."
     ]
   },
+  "/train": {
+    "title": "Liaisons en train en Europe",
+    "description": "Les grandes liaisons européennes en train : durée, trains directs, correspondances et horaires d'une journée type, relevés chaque semaine.",
+    "heading": "L'Europe en train, ligne par ligne",
+    "intro": [
+      "Durée, trains directs, correspondances et horaires d'une journée type pour les grandes liaisons européennes, relevés chaque semaine dans les horaires des compagnies."
+    ]
+  },
   "/guides": {
     "title": "Guides de voyage en train",
     "image": "/og/guides.jpg",

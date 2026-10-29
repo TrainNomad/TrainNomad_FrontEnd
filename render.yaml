@@ -95,6 +95,11 @@ services:
       - type: rewrite
         source: /guides
         destination: /guides/index.html
+      # Liste des liaisons. Les pages de chaque liaison (/train/paris-londres/) et TGVmax par ville
+      # (/tgvmax/depuis/lyon/) ont une barre finale : Render les sert directement, sans règle.
+      - type: rewrite
+        source: /train
+        destination: /train/index.html
       - type: rewrite
         source: /a-propos
         destination: /a-propos/index.html

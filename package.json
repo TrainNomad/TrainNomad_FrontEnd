@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-icons.mjs && node scripts/fetch-traces.mjs && node scripts/sitemap.mjs && tsc && vite build && node scripts/prerender.mjs",
+    "build": "node scripts/check-icons.mjs && node scripts/fetch-traces.mjs && node --experimental-strip-types --no-warnings scripts/seo-pages.mjs && node scripts/sitemap.mjs && tsc && vite build && node --experimental-strip-types --no-warnings scripts/prerender.mjs",
+    "seo-pages": "node --experimental-strip-types --no-warnings scripts/seo-pages.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

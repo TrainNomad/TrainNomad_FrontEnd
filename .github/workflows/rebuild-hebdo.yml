@@ -1,0 +1,47 @@
+name: Reconstruction hebdomadaire (Render)
+
+# Reconstruit le site chaque lundi matin pour rafraîchir les pages générées au build (liaisons /train/…,
+# TGVmax par ville, encart « Venir en train » des guides : scripts/seo-pages.mjs) et le sitemap.
+#
+# Désactivé par défaut. L'activer : Settings > Secrets and variables > Actions > onglet Variables :
+#   RENDER_WEEKLY_SITE   production ou test
+# Attention : le build reprend la dernière version de main. En production, n'activer que si main ne contient
+# que des modifications déjà validées sur le site de test.
+# Sans cette reconstruction, les visiteurs ont quand même des horaires à jour : une page de liaison dont le
+# relevé a plus de 7 jours le recalcule dans le navigateur, et les pages TGVmax sont toujours calculées en direct.
+# Secrets : les mêmes que deploy.yml (RENDER_PROD_DEPLOY_HOOK, RENDER_TEST_DEPLOY_HOOK).
+
+on:
+  schedule:
+    # Lundi 04:30 UTC, après l'assemblage hebdomadaire du réseau (dimanche 04:00 UTC)
+    - cron: "30 4 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: rebuild-hebdo
+
+jobs:
+  deploy:
+    if: vars.RENDER_WEEKLY_SITE == 'production' || vars.RENDER_WEEKLY_SITE == 'test'
+    runs-on: ubuntu-latest
+    env:
+      SITE: ${{ vars.RENDER_WEEKLY_SITE }}
+    steps:
+      - name: Demander à Render de reconstruire le site (${{ vars.RENDER_WEEKLY_SITE }})
+        env:
+          HOOK: ${{ vars.RENDER_WEEKLY_SITE == 'production' && secrets.RENDER_PROD_DEPLOY_HOOK || secrets.RENDER_TEST_DEPLOY_HOOK }}
+        run: |
+          SECRET=$([ "$SITE" = production ] && echo RENDER_PROD_DEPLOY_HOOK || echo RENDER_TEST_DEPLOY_HOOK)
+          if [ -z "$HOOK" ]; then
+            echo "::error::Secret $SECRET absent (Render > service > Settings > Deploy Hook)"
+            exit 1
+          fi
+          RESP=$(curl -fsS --retry 3 --retry-delay 10 --max-time 60 -X POST "$HOOK")
+          echo "Render : $RESP"
+          {
+            echo "### Reconstruction hebdomadaire : site $SITE"
+            echo ""
+            echo "Branche main, commit \`${GITHUB_SHA::7}\`. Réponse de Render : \`$RESP\`"
+          } >> "$GITHUB_STEP_SUMMARY"

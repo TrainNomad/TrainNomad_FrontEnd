@@ -4,6 +4,7 @@ import { usePageMeta } from '../hooks/usePageMeta';
 import PhotoSpots from '../components/PhotoSpots';
 import { CountryFlag } from '../components/CountryFlag';
 import { ShareButton } from '../components/ShareButton';
+import { GuideAccess } from '../components/GuideAccess';
 
 const STEP_ICONS: Record<string, string> = {
   transport: 'fa-train', visit: 'fa-landmark', food: 'fa-utensils', leisure: 'fa-mug-hot',
@@ -118,6 +119,9 @@ export default function GuideDetailPage() {
       {/* Main Content */}
       <div className="bg-white">
         <div className="max-w-5xl mx-auto px-6 py-12">
+
+          {/* Venir en train : durées relevées chaque semaine (scripts/seo-pages.mjs), avant le contenu touristique */}
+          {slug && <GuideAccess slug={slug} cityName={guide.name} />}
 
           {/* Introduction */}
           {guide.introduction && (

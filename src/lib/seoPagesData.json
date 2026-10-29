@@ -1,0 +1,3683 @@
+{
+ "built_at": "2026-10-29T19:24:44.969Z",
+ "date": "2026-11-10",
+ "liaisons": [
+  {
+   "slug": "paris-londres",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 139,
+    "min_transfers": 0,
+    "direct": 14,
+    "count": 15,
+    "first": "07:09",
+    "last": "21:02",
+    "train_types": [
+     "Eurostar",
+     "SNCF TGV INOUI"
+    ]
+   }
+  },
+  {
+   "slug": "paris-rennes",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Rennes",
+    "id": "city:Q647",
+    "country": "FR",
+    "lat": 48.114166,
+    "lon": -1.6808333
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 85,
+    "min_transfers": 0,
+    "direct": 22,
+    "count": 29,
+    "first": "06:21",
+    "last": "22:52",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "SNCF OUIGO Train Classique",
+     "SNCF Car TER"
+    ]
+   }
+  },
+  {
+   "slug": "paris-barcelone",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Barcelone",
+    "id": "city:Q1492",
+    "country": "ES",
+    "lat": 41.3825,
+    "lon": 2.1769445
+   },
+   "guide": "barcelone",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 410,
+    "min_transfers": 0,
+    "direct": 2,
+    "count": 9,
+    "first": "06:28",
+    "last": "22:13",
+    "train_types": [
+     "SNCF Intercités",
+     "SNCF TER",
+     "Renfe Media Distancia",
+     "Renfe AVE International",
+     "SNCF TGV INOUI",
+     "SNCF OUIGO",
+     "SNCF Intercités de nuit",
+     "Renfe Regional"
+    ]
+   }
+  },
+  {
+   "slug": "paris-lyon",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Lyon",
+    "id": "city:Q456",
+    "country": "FR",
+    "lat": 45.7675,
+    "lon": 4.835
+   },
+   "guide": "lyon",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 113,
+    "min_transfers": 0,
+    "direct": 31,
+    "count": 39,
+    "first": "06:30",
+    "last": "21:26",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "Trenitalia Frecciarossa",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "SNCF Car TER"
+    ]
+   }
+  },
+  {
+   "slug": "paris-milan",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Milan",
+    "id": "city:Q490",
+    "country": "IT",
+    "lat": 45.466946,
+    "lon": 9.19
+   },
+   "guide": "milan",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 402,
+    "min_transfers": 0,
+    "direct": 5,
+    "count": 23,
+    "first": "06:30",
+    "last": "20:25",
+    "train_types": [
+     "Trenitalia Eurocity",
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "Trenitalia Frecciarossa",
+     "SNCF TGV Lyria",
+     "SBB ICE",
+     "SNCF Intercités"
+    ]
+   }
+  },
+  {
+   "slug": "paris-bordeaux",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Bordeaux",
+    "id": "city:Q1479",
+    "country": "FR",
+    "lat": 44.837776,
+    "lon": -0.57944447
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 122,
+    "min_transfers": 0,
+    "direct": 23,
+    "count": 32,
+    "first": "06:11",
+    "last": "22:13",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF Intercités",
+     "SNCF TER",
+     "SNCF OUIGO",
+     "SNCF Intercités de nuit",
+     "SNCF OUIGO Train Classique"
+    ]
+   }
+  },
+  {
+   "slug": "madrid-porto",
+   "from": {
+    "name": "Madrid",
+    "id": "city:Q2807",
+    "country": "ES",
+    "lat": 40.416943,
+    "lon": -3.7033334
+   },
+   "to": {
+    "name": "Porto",
+    "id": "city:Q36433",
+    "country": "PT",
+    "lat": 41.15,
+    "lon": -8.610833
+   },
+   "guide": "porto",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 558,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 6,
+    "first": "08:51",
+    "last": "20:23",
+    "train_types": [
+     "CP Regional",
+     "CP Intercidades",
+     "Renfe Tren Celta",
+     "Renfe Media Distancia",
+     "Renfe Regional Exprés",
+     "Renfe Avlo",
+     "Renfe Alvia",
+     "Renfe AVE",
+     "Renfe Regional"
+    ]
+   }
+  },
+  {
+   "slug": "madrid-barcelone",
+   "from": {
+    "name": "Madrid",
+    "id": "city:Q2807",
+    "country": "ES",
+    "lat": 40.416943,
+    "lon": -3.7033334
+   },
+   "to": {
+    "name": "Barcelone",
+    "id": "city:Q1492",
+    "country": "ES",
+    "lat": 41.3825,
+    "lon": 2.1769445
+   },
+   "guide": "barcelone",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 182,
+    "min_transfers": 0,
+    "direct": 26,
+    "count": 32,
+    "first": "06:16",
+    "last": "21:42",
+    "train_types": [
+     "Renfe AVE",
+     "Ouigo España",
+     "Renfe Regional Exprés",
+     "Renfe Media Distancia",
+     "Renfe Regional",
+     "Renfe Intercity",
+     "Renfe AVE International"
+    ]
+   }
+  },
+  {
+   "slug": "madrid-seville",
+   "from": {
+    "name": "Madrid",
+    "id": "city:Q2807",
+    "country": "ES",
+    "lat": 40.416943,
+    "lon": -3.7033334
+   },
+   "to": {
+    "name": "Séville",
+    "id": "city:Q8717",
+    "country": "ES",
+    "lat": 37.38861,
+    "lon": -5.995
+   },
+   "guide": "seville",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 158,
+    "min_transfers": 0,
+    "direct": 21,
+    "count": 27,
+    "first": "06:55",
+    "last": "21:00",
+    "train_types": [
+     "Renfe AVE",
+     "Renfe Alvia",
+     "Ouigo España",
+     "Renfe Avant",
+     "Renfe Avlo",
+     "Renfe Media Distancia",
+     "Renfe Intercity",
+     "Renfe Regional Exprés"
+    ]
+   }
+  },
+  {
+   "slug": "lyon-milan",
+   "from": {
+    "name": "Lyon",
+    "id": "city:Q456",
+    "country": "FR",
+    "lat": 45.7675,
+    "lon": 4.835
+   },
+   "to": {
+    "name": "Milan",
+    "id": "city:Q490",
+    "country": "IT",
+    "lat": 45.466946,
+    "lon": 9.19
+   },
+   "guide": "milan",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 284,
+    "min_transfers": 0,
+    "direct": 2,
+    "count": 10,
+    "first": "06:38",
+    "last": "20:38",
+    "train_types": [
+     "SNCF TER",
+     "Trenitalia Eurocity",
+     "Trenitalia Frecciarossa",
+     "SNCF TGV INOUI",
+     "SBB"
+    ]
+   }
+  },
+  {
+   "slug": "londres-amsterdam",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Amsterdam",
+    "id": "city:Q727",
+    "country": "NL",
+    "lat": 52.366665,
+    "lon": 4.883333
+   },
+   "guide": "amsterdam",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 244,
+    "min_transfers": 0,
+    "direct": 5,
+    "count": 11,
+    "first": "06:16",
+    "last": "20:01",
+    "train_types": [
+     "Eurostar",
+     "NS Eurocity Direct"
+    ]
+   }
+  },
+  {
+   "slug": "berlin-bruxelles",
+   "from": {
+    "name": "Berlin",
+    "id": "city:Q64",
+    "country": "DE",
+    "lat": 52.516666,
+    "lon": 13.383333
+   },
+   "to": {
+    "name": "Bruxelles",
+    "id": "city:Q239",
+    "country": "BE",
+    "lat": 50.84667,
+    "lon": 4.3516665
+   },
+   "guide": "bruxelles",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 105,
+    "min_transfers": 0,
+    "direct": 1,
+    "count": 33,
+    "first": "05:41",
+    "last": "23:42",
+    "train_types": [
+     "National Express Regional-Express",
+     "Arriva Sneltrein",
+     "SNCB InterCity",
+     "DB ICE",
+     "Eurostar",
+     "European Sleeper",
+     "NS Intercity direct",
+     "NS Eurocity Direct",
+     "DB Regional-Express",
+     "NS Intercity"
+    ]
+   }
+  },
+  {
+   "slug": "berlin-prague",
+   "from": {
+    "name": "Berlin",
+    "id": "city:Q64",
+    "country": "DE",
+    "lat": 52.516666,
+    "lon": 13.383333
+   },
+   "to": {
+    "name": "Prague",
+    "id": "city:Q1085",
+    "country": "CZ",
+    "lat": 50.0875,
+    "lon": 14.421389
+   },
+   "guide": "prague",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 181,
+    "min_transfers": 0,
+    "direct": 1,
+    "count": 18,
+    "first": "05:22",
+    "last": "21:46",
+    "train_types": [
+     "DB Regional-Express",
+     "ZVON Oberlausitz-Niederschlesien Train régional",
+     "DB Fernverkehr",
+     "DB Regionalbahn",
+     "European Sleeper",
+     "ČD Railjet",
+     "ÖBB Nightjet",
+     "Rurtalbahn Regionalbahn",
+     "agilis Regionalbahn",
+     "alex Regional-Express",
+     "MÁV EuroNight",
+     "DB ICE",
+     "ODEG Regionalbahn"
+    ]
+   }
+  },
+  {
+   "slug": "edimbourg-londres",
+   "from": {
+    "name": "Édimbourg",
+    "id": "city:Q23436",
+    "country": "GB",
+    "lat": 55.953335,
+    "lon": -3.1891668
+   },
+   "to": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 250,
+    "min_transfers": 0,
+    "direct": 34,
+    "count": 38,
+    "first": "05:37",
+    "last": "23:50",
+    "train_types": [
+     "LNER",
+     "Lumo",
+     "ScotRail",
+     "Caledonian Sleeper",
+     "TransPennine Express",
+     "West Midlands Trains",
+     "Avanti West Coast"
+    ]
+   }
+  },
+  {
+   "slug": "rome-palerme",
+   "from": {
+    "name": "Rome",
+    "id": "city:Q220",
+    "country": "IT",
+    "lat": 41.893055,
+    "lon": 12.482778
+   },
+   "to": {
+    "name": "Palerme",
+    "id": "city:Q2656",
+    "country": "IT",
+    "lat": 38.115658,
+    "lon": 13.361262
+   },
+   "guide": "palermo",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 658,
+    "min_transfers": 0,
+    "direct": 4,
+    "count": 7,
+    "first": "07:26",
+    "last": "23:00",
+    "train_types": [
+     "Trenitalia Intercity",
+     "Trenitalia InterCityNotte",
+     "Trenitalia Frecciarossa",
+     "Italo Train"
+    ]
+   }
+  },
+  {
+   "slug": "rome-milan",
+   "from": {
+    "name": "Rome",
+    "id": "city:Q220",
+    "country": "IT",
+    "lat": 41.893055,
+    "lon": 12.482778
+   },
+   "to": {
+    "name": "Milan",
+    "id": "city:Q490",
+    "country": "IT",
+    "lat": 45.466946,
+    "lon": 9.19
+   },
+   "guide": "milan",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 172,
+    "min_transfers": 0,
+    "direct": 56,
+    "count": 65,
+    "first": "00:15",
+    "last": "23:51",
+    "train_types": [
+     "Trenitalia Frecciarossa",
+     "Italo Train",
+     "Trenitalia Intercity",
+     "Trenitalia InterCityNotte",
+     "Trenitalia Regionale Veloce",
+     "Trenord RegioExpress",
+     "Trenitalia Regionale"
+    ]
+   }
+  },
+  {
+   "slug": "rome-naples",
+   "from": {
+    "name": "Rome",
+    "id": "city:Q220",
+    "country": "IT",
+    "lat": 41.893055,
+    "lon": 12.482778
+   },
+   "to": {
+    "name": "Naples",
+    "id": "city:Q2634",
+    "country": "IT",
+    "lat": 40.835835,
+    "lon": 14.248611
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 68,
+    "min_transfers": 0,
+    "direct": 92,
+    "count": 97,
+    "first": "05:31",
+    "last": "23:26",
+    "train_types": [
+     "Trenitalia Frecciarossa",
+     "Italo Train",
+     "Trenitalia Intercity",
+     "Trenitalia Regionale",
+     "Trenitalia InterCityNotte",
+     "Trenitalia Autobus"
+    ]
+   }
+  },
+  {
+   "slug": "milan-venise",
+   "from": {
+    "name": "Milan",
+    "id": "city:Q490",
+    "country": "IT",
+    "lat": 45.466946,
+    "lon": 9.19
+   },
+   "to": {
+    "name": "Venise",
+    "id": "city:Q641",
+    "country": "IT",
+    "lat": 45.439724,
+    "lon": 12.331944
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 133,
+    "min_transfers": 0,
+    "direct": 31,
+    "count": 49,
+    "first": "00:22",
+    "last": "22:33",
+    "train_types": [
+     "Trenitalia Frecciarossa",
+     "Trenord RegioExpress",
+     "Italo Train",
+     "Trenitalia Regionale Veloce",
+     "Trenitalia Regionale",
+     "Trenord Regionale",
+     "Trenitalia Eurocity",
+     "DB Fernverkehr",
+     "Trenitalia InterCityNotte"
+    ]
+   }
+  },
+  {
+   "slug": "naples-bari",
+   "from": {
+    "name": "Naples",
+    "id": "city:Q2634",
+    "country": "IT",
+    "lat": 40.835835,
+    "lon": 14.248611
+   },
+   "to": {
+    "name": "Bari",
+    "id": "city:Q3519",
+    "country": "IT",
+    "lat": 41.12528,
+    "lon": 16.866667
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 214,
+    "min_transfers": 0,
+    "direct": 2,
+    "count": 27,
+    "first": "06:45",
+    "last": "23:46",
+    "train_types": [
+     "Trenitalia Regionale",
+     "Trenitalia Autobus",
+     "Trenitalia Frecciarossa",
+     "Trenitalia Intercity",
+     "Trenitalia Regionale Veloce",
+     "Trenitalia Metropolitano",
+     "Italo Train",
+     "Trenitalia InterCityNotte"
+    ]
+   }
+  },
+  {
+   "slug": "porto-lisbonne",
+   "from": {
+    "name": "Porto",
+    "id": "city:Q36433",
+    "country": "PT",
+    "lat": 41.15,
+    "lon": -8.610833
+   },
+   "to": {
+    "name": "Lisbonne",
+    "id": "city:Q597",
+    "country": "PT",
+    "lat": 38.708042,
+    "lon": -9.139016
+   },
+   "guide": "lisbonne",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 162,
+    "min_transfers": 0,
+    "direct": 19,
+    "count": 19,
+    "first": "01:08",
+    "last": "20:40",
+    "train_types": [
+     "CP Alfa Pendular",
+     "CP Intercidades",
+     "CP Regional"
+    ]
+   }
+  },
+  {
+   "slug": "paris-zurich",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Zurich",
+    "id": "city:Q72",
+    "country": "CH",
+    "lat": 47.374443,
+    "lon": 8.541111
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 244,
+    "min_transfers": 0,
+    "direct": 5,
+    "count": 24,
+    "first": "06:42",
+    "last": "20:25",
+    "train_types": [
+     "SNCF TER",
+     "SBB",
+     "Trenitalia Eurocity",
+     "SNCF TGV Lyria",
+     "SNCF TGV INOUI",
+     "SBB ICE",
+     "DB Regionalbahn",
+     "NS Nightjet",
+     "SBB Regionalzug",
+     "DB SNCF en coopération",
+     "SNCF Train",
+     "SNCB InterCity",
+     "Arriva Sneltrein",
+     "SBB EuroCity",
+     "KVV Train régional",
+     "DB Regional-Express"
+    ]
+   }
+  },
+  {
+   "slug": "zurich-munich",
+   "from": {
+    "name": "Zurich",
+    "id": "city:Q72",
+    "country": "CH",
+    "lat": 47.374443,
+    "lon": 8.541111
+   },
+   "to": {
+    "name": "Munich",
+    "id": "city:Q1726",
+    "country": "DE",
+    "lat": 48.1375,
+    "lon": 11.575
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 221,
+    "min_transfers": 0,
+    "direct": 4,
+    "count": 29,
+    "first": "05:35",
+    "last": "22:34",
+    "train_types": [
+     "DB Regional-Express",
+     "DB ICE",
+     "SBB EuroCity",
+     "SBB Intercity",
+     "SBB",
+     "DB EuroCity-Express",
+     "DB Intercity",
+     "Arverio Regional-Express",
+     "SBB Regionalzug",
+     "SBB ICE",
+     "HLB Regionalbahn",
+     "Mitteldeutsche Regiobahn Regionalbahn",
+     "DB Regionalbahn",
+     "SBB Nightjet",
+     "DB EuroNight",
+     "SWEG Regionalbahn",
+     "Albtal-Verkehrs-Gesellschaft Train régional",
+     "Bayerische Regionalbahn Regionalbahn",
+     "WESTbahn",
+     "erixx Regional-Express",
+     "National Express Regional-Express",
+     "Bayerische Regionalbahn Regional-Express"
+    ]
+   }
+  },
+  {
+   "slug": "madrid-malaga",
+   "from": {
+    "name": "Madrid",
+    "id": "city:Q2807",
+    "country": "ES",
+    "lat": 40.416943,
+    "lon": -3.7033334
+   },
+   "to": {
+    "name": "Malaga",
+    "id": "station:7154413",
+    "country": "ES",
+    "lat": 36.71162,
+    "lon": -4.43236
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 167,
+    "min_transfers": 0,
+    "direct": 13,
+    "count": 20,
+    "first": "07:20",
+    "last": "21:00",
+    "train_types": [
+     "Renfe AVE",
+     "Ouigo España",
+     "Renfe Media Distancia",
+     "Renfe Avant",
+     "Renfe Intercity",
+     "Renfe Avlo"
+    ]
+   }
+  },
+  {
+   "slug": "marseille-lyon",
+   "from": {
+    "name": "Marseille",
+    "id": "city:Q23482",
+    "country": "FR",
+    "lat": 43.296665,
+    "lon": 5.376389
+   },
+   "to": {
+    "name": "Lyon",
+    "id": "city:Q456",
+    "country": "FR",
+    "lat": 45.7675,
+    "lon": 4.835
+   },
+   "guide": "lyon",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 101,
+    "min_transfers": 0,
+    "direct": 16,
+    "count": 28,
+    "first": "06:34",
+    "last": "20:14",
+    "train_types": [
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "Trenitalia Frecciarossa",
+     "DB SNCF en coopération",
+     "SNCF OUIGO"
+    ]
+   }
+  },
+  {
+   "slug": "berlin-munich",
+   "from": {
+    "name": "Berlin",
+    "id": "city:Q64",
+    "country": "DE",
+    "lat": 52.516666,
+    "lon": 13.383333
+   },
+   "to": {
+    "name": "Munich",
+    "id": "city:Q1726",
+    "country": "DE",
+    "lat": 48.1375,
+    "lon": 11.575
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 77,
+    "min_transfers": 0,
+    "direct": 23,
+    "count": 48,
+    "first": "00:42",
+    "last": "23:51",
+    "train_types": [
+     "DB ICE",
+     "DB Regionalbahn",
+     "National Express Regional-Express",
+     "DB Regional-Express",
+     "Go-Ahead Regional-Express",
+     "NS Nightjet",
+     "ODEG Regional-Express",
+     "BRB Regionalbahn",
+     "Arverio Regional-Express"
+    ]
+   }
+  },
+  {
+   "slug": "berlin-hambourg",
+   "from": {
+    "name": "Berlin",
+    "id": "city:Q64",
+    "country": "DE",
+    "lat": 52.516666,
+    "lon": 13.383333
+   },
+   "to": {
+    "name": "Hambourg",
+    "id": "city:Q1055",
+    "country": "DE",
+    "lat": 53.55,
+    "lon": 10
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 80,
+    "min_transfers": 0,
+    "direct": 32,
+    "count": 105,
+    "first": "00:17",
+    "last": "23:17",
+    "train_types": [
+     "DB ICE",
+     "DB Regional-Express",
+     "ODEG Regionalbahn",
+     "metronom Regionalbahn",
+     "National Express Regional-Express",
+     "nordbahn Regionalbahn",
+     "DB Regionalbahn",
+     "DB Fernverkehr",
+     "ODEG Regional-Express",
+     "FlixTrain",
+     "DB EuroNight",
+     "RheinRuhrBahn Regionalbahn",
+     "NS ICE",
+     "metronom Regional-Express"
+    ]
+   }
+  },
+  {
+   "slug": "amsterdam-berlin",
+   "from": {
+    "name": "Amsterdam",
+    "id": "city:Q727",
+    "country": "NL",
+    "lat": 52.366665,
+    "lon": 4.883333
+   },
+   "to": {
+    "name": "Berlin",
+    "id": "city:Q64",
+    "country": "DE",
+    "lat": 52.516666,
+    "lon": 13.383333
+   },
+   "guide": "berlin",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 235,
+    "min_transfers": 0,
+    "direct": 1,
+    "count": 66,
+    "first": "00:36",
+    "last": "23:02",
+    "train_types": [
+     "NS Intercity",
+     "National Express Regional-Express",
+     "DB Regional-Express",
+     "Arriva Sneltrein",
+     "VIAS Regional-Express",
+     "Eurostar",
+     "NS ICE",
+     "DB ICE",
+     "DB Intercity",
+     "NS Nightjet",
+     "eurobahn Regional-Express"
+    ]
+   }
+  },
+  {
+   "slug": "munich-vienne",
+   "from": {
+    "name": "Munich",
+    "id": "city:Q1726",
+    "country": "DE",
+    "lat": 48.1375,
+    "lon": 11.575
+   },
+   "to": {
+    "name": "Vienne",
+    "id": "city:Q1741",
+    "country": "AT",
+    "lat": 48.208332,
+    "lon": 16.3725
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 241,
+    "min_transfers": 0,
+    "direct": 9,
+    "count": 21,
+    "first": "00:02",
+    "last": "19:18",
+    "train_types": [
+     "Bayerische Regionalbahn Regional-Express",
+     "ÖBB Railjet Xpress",
+     "WESTbahn",
+     "ÖBB EuroCity",
+     "ÖBB ICE",
+     "NS Nightjet",
+     "SNCB Nightjet",
+     "DB Regionalbahn",
+     "ÖBB Nightjet",
+     "DB ICE",
+     "agilis Regionalbahn",
+     "ZVON Oberlausitz-Niederschlesien Train régional",
+     "MÁV EuroNight",
+     "ÖBB Intercity"
+    ]
+   }
+  },
+  {
+   "slug": "hambourg-copenhague",
+   "from": {
+    "name": "Hambourg",
+    "id": "city:Q1055",
+    "country": "DE",
+    "lat": 53.55,
+    "lon": 10
+   },
+   "to": {
+    "name": "Copenhague",
+    "id": "station:8600626",
+    "country": "DK",
+    "lat": 55.67272,
+    "lon": 12.564617
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 270,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 5,
+    "first": "10:53",
+    "last": "18:53",
+    "train_types": [
+     "DB EuroCity-Express",
+     "DSB EuroCity-Express",
+     "DB Fernverkehr",
+     "DSB Railjet"
+    ]
+   }
+  },
+  {
+   "slug": "londres-manchester",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Manchester",
+    "id": "city:Q21525592",
+    "country": "GB",
+    "lat": 53.41667,
+    "lon": -2.25
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 126,
+    "min_transfers": 0,
+    "direct": 46,
+    "count": 55,
+    "first": "00:51",
+    "last": "23:45",
+    "train_types": [
+     "Avanti West Coast",
+     "TransPennine Express",
+     "West Midlands Trains",
+     "CrossCountry",
+     "Northern",
+     "East Midlands Railway",
+     "Caledonian Sleeper",
+     "LNER"
+    ]
+   }
+  },
+  {
+   "slug": "londres-bristol",
+   "from": {
+    "name": "Londres",
+    "id": "city:Q84",
+    "country": "GB",
+    "lat": 51.50722,
+    "lon": -0.1275
+   },
+   "to": {
+    "name": "Bristol",
+    "id": "city:Q23154",
+    "country": "GB",
+    "lat": 51.45361,
+    "lon": -2.5975
+   },
+   "guide": null,
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 99,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 44,
+    "first": "05:00",
+    "last": "23:02",
+    "train_types": [
+     "Great Western Railway",
+     "Bus",
+     "Heathrow Express"
+    ]
+   }
+  },
+  {
+   "slug": "paris-berlin",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Berlin",
+    "id": "city:Q64",
+    "country": "DE",
+    "lat": 52.516666,
+    "lon": 13.383333
+   },
+   "guide": "berlin",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 202,
+    "min_transfers": 0,
+    "direct": 1,
+    "count": 32,
+    "first": "06:20",
+    "last": "21:23",
+    "train_types": [
+     "National Express Regional-Express",
+     "Eurostar",
+     "DB Regional-Express",
+     "SNCF TER",
+     "DB ICE",
+     "SNCB InterCity",
+     "Arriva Sneltrein",
+     "vlexx Regionalbahn",
+     "SNCF Train",
+     "DB SNCF en coopération",
+     "European Sleeper",
+     "DB EuroNight",
+     "SNCF TGV INOUI",
+     "SNCF Car TER",
+     "SNCF Tram-train",
+     "DB Regionalbahn",
+     "KVV Train régional",
+     "metronom Regionalbahn",
+     "DB Fernverkehr"
+    ]
+   }
+  },
+  {
+   "slug": "paris-bruxelles",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Bruxelles",
+    "id": "city:Q239",
+    "country": "BE",
+    "lat": 50.84667,
+    "lon": 4.3516665
+   },
+   "guide": "bruxelles",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 82,
+    "min_transfers": 0,
+    "direct": 27,
+    "count": 35,
+    "first": "06:20",
+    "last": "21:23",
+    "train_types": [
+     "Eurostar",
+     "SNCF TER",
+     "SNCF Train",
+     "SNCB InterCity",
+     "SNCF TGV INOUI",
+     "European Sleeper"
+    ]
+   }
+  },
+  {
+   "slug": "paris-madrid",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Madrid",
+    "id": "city:Q2807",
+    "country": "ES",
+    "lat": 40.416943,
+    "lon": -3.7033334
+   },
+   "guide": "madrid",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 635,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 5,
+    "first": "07:42",
+    "last": "22:13",
+    "train_types": [
+     "Renfe AVE",
+     "Renfe AVE International",
+     "SNCF TGV INOUI",
+     "SNCF OUIGO",
+     "SNCF Intercités de nuit",
+     "SNCF Intercités"
+    ]
+   }
+  },
+  {
+   "slug": "paris-seville",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Séville",
+    "id": "city:Q8717",
+    "country": "ES",
+    "lat": 37.38861,
+    "lon": -5.995
+   },
+   "guide": "seville",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 837,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 7,
+    "first": "07:42",
+    "last": "22:13",
+    "train_types": [
+     "Renfe AVE",
+     "SNCF TGV INOUI",
+     "Renfe AVE International",
+     "SNCF OUIGO",
+     "Renfe Avlo",
+     "Ouigo España",
+     "Renfe Intercity",
+     "SNCF Intercités de nuit",
+     "SNCF Intercités"
+    ]
+   }
+  },
+  {
+   "slug": "paris-angers",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Angers",
+    "id": "city:Q38380",
+    "country": "FR",
+    "lat": 47.47278,
+    "lon": -0.5555556
+   },
+   "guide": "angers",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 81,
+    "min_transfers": 0,
+    "direct": 16,
+    "count": 30,
+    "first": "06:32",
+    "last": "22:52",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF OUIGO Train Classique",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "SNCF Car TER"
+    ]
+   }
+  },
+  {
+   "slug": "paris-marseille",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Marseille",
+    "id": "city:Q23482",
+    "country": "FR",
+    "lat": 43.296665,
+    "lon": 5.376389
+   },
+   "guide": "marseille",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 184,
+    "min_transfers": 0,
+    "direct": 21,
+    "count": 36,
+    "first": "06:03",
+    "last": "22:13",
+    "train_types": [
+     "SNCF TGV INOUI",
+     "SNCF TER",
+     "SNCF Intercités",
+     "SNCF OUIGO",
+     "Trenitalia Frecciarossa",
+     "SNCF Car TER",
+     "SNCF Car",
+     "SNCF Intercités de nuit"
+    ]
+   }
+  },
+  {
+   "slug": "paris-palerme",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Palerme",
+    "id": "city:Q2656",
+    "country": "IT",
+    "lat": 38.115658,
+    "lon": 13.361262
+   },
+   "guide": "palermo",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 1515,
+    "min_transfers": 2,
+    "direct": 0,
+    "count": 8,
+    "first": "06:42",
+    "last": "15:25",
+    "train_types": [
+     "Trenitalia InterCityNotte",
+     "Trenitalia Eurocity",
+     "Trenitalia Frecciarossa",
+     "SNCF TER",
+     "SNCF TGV INOUI",
+     "SNCF TGV Lyria",
+     "Italo Train",
+     "Trenitalia Intercity"
+    ]
+   }
+  },
+  {
+   "slug": "paris-rome",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Rome",
+    "id": "city:Q220",
+    "country": "IT",
+    "lat": 41.893055,
+    "lon": 12.482778
+   },
+   "guide": "rome",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 639,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 18,
+    "first": "06:30",
+    "last": "20:25",
+    "train_types": [
+     "Trenitalia Eurocity",
+     "SNCF TER",
+     "Italo Train",
+     "Trenitalia Frecciarossa",
+     "SNCF TGV INOUI",
+     "Trenitalia InterCityNotte",
+     "SNCF TGV Lyria",
+     "Trenitalia Regionale Veloce",
+     "Trenitalia Intercity",
+     "Trenord Regionale"
+    ]
+   }
+  },
+  {
+   "slug": "paris-amsterdam",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Amsterdam",
+    "id": "city:Q727",
+    "country": "NL",
+    "lat": 52.366665,
+    "lon": 4.883333
+   },
+   "guide": "amsterdam",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 205,
+    "min_transfers": 0,
+    "direct": 11,
+    "count": 29,
+    "first": "06:20",
+    "last": "21:23",
+    "train_types": [
+     "Eurostar",
+     "SNCF TER",
+     "NS Eurocity Direct",
+     "SNCB InterCity",
+     "SNCF Train",
+     "SNCB EuroCity",
+     "NS Intercity direct",
+     "Arriva Sneltrein",
+     "NS Intercity"
+    ]
+   }
+  },
+  {
+   "slug": "paris-lisbonne",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Lisbonne",
+    "id": "city:Q597",
+    "country": "PT",
+    "lat": 38.708042,
+    "lon": -9.139016
+   },
+   "guide": "lisbonne",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 1866,
+    "min_transfers": 4,
+    "direct": 0,
+    "count": 5,
+    "first": "07:42",
+    "last": "14:42",
+    "train_types": [
+     "Renfe AVE",
+     "CP Intercidades",
+     "SNCF TGV INOUI",
+     "CP Regional",
+     "Renfe Tren Celta",
+     "Renfe Alvia",
+     "Renfe Avlo",
+     "Renfe Regional",
+     "SNCF OUIGO",
+     "Renfe AVE International",
+     "Renfe Avant",
+     "Renfe Regional Exprés"
+    ]
+   }
+  },
+  {
+   "slug": "paris-porto",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Porto",
+    "id": "city:Q36433",
+    "country": "PT",
+    "lat": 41.15,
+    "lon": -8.610833
+   },
+   "guide": "porto",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 1662,
+    "min_transfers": 3,
+    "direct": 0,
+    "count": 3,
+    "first": "07:42",
+    "last": "14:42",
+    "train_types": [
+     "Renfe AVE",
+     "SNCF TGV INOUI",
+     "Renfe Tren Celta",
+     "Renfe Avlo",
+     "Renfe Regional",
+     "SNCF OUIGO",
+     "Renfe AVE International",
+     "Renfe Alvia",
+     "CP Regional",
+     "CP Intercidades"
+    ]
+   }
+  },
+  {
+   "slug": "paris-edimbourg",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Édimbourg",
+    "id": "city:Q23436",
+    "country": "GB",
+    "lat": 55.953335,
+    "lon": -3.1891668
+   },
+   "guide": "edinburgh",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 413,
+    "min_transfers": 1,
+    "direct": 0,
+    "count": 16,
+    "first": "07:09",
+    "last": "21:02",
+    "train_types": [
+     "Eurostar",
+     "LNER",
+     "Lumo",
+     "Caledonian Sleeper",
+     "ScotRail",
+     "West Midlands Trains",
+     "TransPennine Express"
+    ]
+   }
+  },
+  {
+   "slug": "paris-prague",
+   "from": {
+    "name": "Paris",
+    "id": "city:Q90",
+    "country": "FR",
+    "lat": 48.856667,
+    "lon": 2.3522222
+   },
+   "to": {
+    "name": "Prague",
+    "id": "city:Q1085",
+    "country": "CZ",
+    "lat": 50.0875,
+    "lon": 14.421389
+   },
+   "guide": "prague",
+   "date": "2026-11-10",
+   "summary": {
+    "fastest_min": 450,
+    "min_transfers": 2,
+    "direct": 0,
+    "count": 38,
+    "first": "06:41",
+    "last": "21:23",
+    "train_types": [
+     "ZVON Oberlausitz-Niederschlesien Train régional",
+     "DB Regionalbahn",
+     "DB SNCF en coopération",
+     "DB ICE",
+     "Arriva Sneltrein",
+     "Eurostar",
+     "National Express Regional-Express",
+     "SNCB InterCity",
+     "DB Regional-Express",
+     "SNCF TER",
+     "alex Regional-Express",
+     "SNCF Train",
+     "SNCF TGV INOUI",
+     "agilis Regionalbahn",
+     "DB EuroNight",
+     "ČD Railjet",
+     "SÜWEX Regional-Express",
+     "ÖBB Nightjet",
+     "European Sleeper",
+     "DB Fernverkehr",
+     "KVV Train régional",
+     "eurobahn Regionalbahn",
+     "WestfalenBahn Regional-Express",
+     "trilex Train régional",
+     "agilis Regional-Express",
+     "DB Intercity",
+     "waldbahn Regionalbahn",
+     "ČD Rychlík"
+    ]
+   }
+  }
+ ],
+ "guides": {
+  "amsterdam": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Amsterdam",
+     "id": "city:Q727",
+     "country": "NL",
+     "lat": 52.366665,
+     "lon": 4.883333
+    },
+    "summary": {
+     "fastest_min": 205,
+     "min_transfers": 0,
+     "direct": 11,
+     "count": 29,
+     "first": "06:20",
+     "last": "21:23",
+     "train_types": [
+      "Eurostar",
+      "SNCF TER",
+      "NS Eurocity Direct",
+      "SNCB InterCity",
+      "SNCF Train",
+      "SNCB EuroCity",
+      "NS Intercity direct",
+      "Arriva Sneltrein",
+      "NS Intercity"
+     ]
+    },
+    "liaison": "paris-amsterdam",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Amsterdam",
+     "id": "city:Q727",
+     "country": "NL",
+     "lat": 52.366665,
+     "lon": 4.883333
+    },
+    "summary": {
+     "fastest_min": 372,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 33,
+     "first": "06:34",
+     "last": "20:38",
+     "train_types": [
+      "SNCF TER",
+      "NS Eurocity Direct",
+      "Eurostar",
+      "SNCB InterCity",
+      "SNCF TGV INOUI",
+      "SNCF Intercités",
+      "SNCF Train",
+      "Trenitalia Frecciarossa",
+      "SNCB EuroCity",
+      "NS Intercity direct",
+      "NS Intercity",
+      "SNCF Car TER",
+      "SNCF OUIGO",
+      "Arriva Sneltrein",
+      "European Sleeper",
+      "DB EuroNight",
+      "NS Nightjet",
+      "SNCF Car",
+      "Trenitalia Eurocity",
+      "eurobahn Regionalbahn",
+      "DB Regionalbahn"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Amsterdam",
+     "id": "city:Q727",
+     "country": "NL",
+     "lat": 52.366665,
+     "lon": 4.883333
+    },
+    "summary": {
+     "fastest_min": 460,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 23,
+     "first": "05:13",
+     "last": "20:14",
+     "train_types": [
+      "Eurostar",
+      "SNCF TGV INOUI",
+      "NS Eurocity Direct",
+      "SNCF TER",
+      "SNCF OUIGO",
+      "SNCF Intercités",
+      "SNCF Train",
+      "SNCB InterCity",
+      "European Sleeper",
+      "SNCB EuroCity",
+      "NS Intercity direct",
+      "Arriva Sneltrein",
+      "NS Intercity",
+      "Trenitalia Frecciarossa",
+      "DB EuroNight",
+      "NS Nightjet",
+      "SNCF Car TER",
+      "SNCF Car"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ],
+  "angers": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Angers",
+     "id": "city:Q38380",
+     "country": "FR",
+     "lat": 47.47278,
+     "lon": -0.5555556
+    },
+    "summary": {
+     "fastest_min": 81,
+     "min_transfers": 0,
+     "direct": 16,
+     "count": 30,
+     "first": "06:32",
+     "last": "22:52",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "SNCF TER",
+      "SNCF OUIGO Train Classique",
+      "SNCF Intercités",
+      "SNCF OUIGO",
+      "SNCF Car TER"
+     ]
+    },
+    "liaison": "paris-angers",
+    "tgvmax": {
+     "from": "city:TL4916",
+     "to": "station:8748400"
+    }
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Angers",
+     "id": "city:Q38380",
+     "country": "FR",
+     "lat": 47.47278,
+     "lon": -0.5555556
+    },
+    "summary": {
+     "fastest_min": 219,
+     "min_transfers": 0,
+     "direct": 6,
+     "count": 26,
+     "first": "06:30",
+     "last": "20:38",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "SNCF TER",
+      "SNCF Intercités",
+      "Trenitalia Frecciarossa",
+      "SNCF OUIGO",
+      "SNCF OUIGO Train Classique",
+      "SNCF Car"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": {
+     "from": "city:TL4718",
+     "to": "station:8748400"
+    }
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Angers",
+     "id": "city:Q38380",
+     "country": "FR",
+     "lat": 47.47278,
+     "lon": -0.5555556
+    },
+    "summary": {
+     "fastest_min": 326,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 23,
+     "first": "05:13",
+     "last": "20:14",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "SNCF Intercités",
+      "SNCF TER",
+      "SNCF OUIGO",
+      "Trenitalia Frecciarossa",
+      "SNCF OUIGO Train Classique",
+      "DB SNCF en coopération",
+      "SNCF Car"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": {
+     "from": "city:TL4790",
+     "to": "station:8748400"
+    }
+   }
+  ],
+  "barcelone": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Barcelone",
+     "id": "city:Q1492",
+     "country": "ES",
+     "lat": 41.3825,
+     "lon": 2.1769445
+    },
+    "summary": {
+     "fastest_min": 410,
+     "min_transfers": 0,
+     "direct": 2,
+     "count": 9,
+     "first": "06:28",
+     "last": "22:13",
+     "train_types": [
+      "SNCF Intercités",
+      "SNCF TER",
+      "Renfe Media Distancia",
+      "Renfe AVE International",
+      "SNCF TGV INOUI",
+      "SNCF OUIGO",
+      "SNCF Intercités de nuit",
+      "Renfe Regional"
+     ]
+    },
+    "liaison": "paris-barcelone",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Barcelone",
+     "id": "city:Q1492",
+     "country": "ES",
+     "lat": 41.3825,
+     "lon": 2.1769445
+    },
+    "summary": {
+     "fastest_min": 288,
+     "min_transfers": 0,
+     "direct": 1,
+     "count": 14,
+     "first": "06:20",
+     "last": "21:20",
+     "train_types": [
+      "SNCF TER",
+      "Renfe Regional",
+      "Renfe Media Distancia",
+      "SNCF TGV INOUI",
+      "Renfe AVE International",
+      "SNCF Intercités",
+      "Renfe Avant",
+      "SNCF Car TER"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Barcelone",
+     "id": "city:Q1492",
+     "country": "ES",
+     "lat": 41.3825,
+     "lon": 2.1769445
+    },
+    "summary": {
+     "fastest_min": 274,
+     "min_transfers": 0,
+     "direct": 1,
+     "count": 12,
+     "first": "08:02",
+     "last": "19:51",
+     "train_types": [
+      "SNCF TER",
+      "SNCF Intercités",
+      "Renfe Regional",
+      "SNCF TGV INOUI",
+      "Renfe Media Distancia",
+      "Renfe AVE International",
+      "Renfe Avant"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ],
+  "berlin": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Berlin",
+     "id": "city:Q64",
+     "country": "DE",
+     "lat": 52.516666,
+     "lon": 13.383333
+    },
+    "summary": {
+     "fastest_min": 202,
+     "min_transfers": 0,
+     "direct": 1,
+     "count": 32,
+     "first": "06:20",
+     "last": "21:23",
+     "train_types": [
+      "National Express Regional-Express",
+      "Eurostar",
+      "DB Regional-Express",
+      "SNCF TER",
+      "DB ICE",
+      "SNCB InterCity",
+      "Arriva Sneltrein",
+      "vlexx Regionalbahn",
+      "SNCF Train",
+      "DB SNCF en coopération",
+      "European Sleeper",
+      "DB EuroNight",
+      "SNCF TGV INOUI",
+      "SNCF Car TER",
+      "SNCF Tram-train",
+      "DB Regionalbahn",
+      "KVV Train régional",
+      "metronom Regionalbahn",
+      "DB Fernverkehr"
+     ]
+    },
+    "liaison": "paris-berlin",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Berlin",
+     "id": "city:Q64",
+     "country": "DE",
+     "lat": 52.516666,
+     "lon": 13.383333
+    },
+    "summary": {
+     "fastest_min": 372,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 41,
+     "first": "05:50",
+     "last": "20:38",
+     "train_types": [
+      "National Express Regional-Express",
+      "SNCF TER",
+      "SNCF TGV INOUI",
+      "DB Regional-Express",
+      "DB ICE",
+      "Eurostar",
+      "vlexx Regionalbahn",
+      "DB SNCF en coopération",
+      "Trenitalia Frecciarossa",
+      "DB EuroCity-Express",
+      "DB Intercity",
+      "SNCF Car TER",
+      "SÜWEX Regional-Express",
+      "SNCB InterCity",
+      "Arriva Sneltrein",
+      "European Sleeper",
+      "DB EuroNight",
+      "SNCF Intercités",
+      "Rurtalbahn Regionalbahn",
+      "SBB",
+      "SBB Regionalzug",
+      "THURBO Regional-Express",
+      "ZVON Oberlausitz-Niederschlesien Train régional",
+      "SNCF OUIGO",
+      "DB Fernverkehr",
+      "Trenitalia Eurocity",
+      "FlixTrain",
+      "SNCF Tram-train",
+      "CFL Regionalbahn",
+      "ÖBB Nightjet",
+      "metronom Regionalbahn",
+      "CFL Regional-Express",
+      "DB Regionalbahn",
+      "SNCF Train",
+      "SNCF TGV Lyria"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Berlin",
+     "id": "city:Q64",
+     "country": "DE",
+     "lat": 52.516666,
+     "lon": 13.383333
+    },
+    "summary": {
+     "fastest_min": 461,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 37,
+     "first": "05:13",
+     "last": "20:14",
+     "train_types": [
+      "National Express Regional-Express",
+      "SNCF TGV INOUI",
+      "SNCF TER",
+      "Eurostar",
+      "DB ICE",
+      "DB Regional-Express",
+      "DB SNCF en coopération",
+      "vlexx Regionalbahn",
+      "DB EuroNight",
+      "European Sleeper",
+      "Trenitalia Frecciarossa",
+      "SNCB InterCity",
+      "Arriva Sneltrein",
+      "SNCF Intercités",
+      "SNCF Car",
+      "SNCF Train",
+      "SBB",
+      "SÜWEX Regional-Express",
+      "Rurtalbahn Regionalbahn",
+      "metronom Regionalbahn",
+      "DB Fernverkehr",
+      "SNCF OUIGO",
+      "SNCF Car TER",
+      "SBB Regionalzug",
+      "THURBO Regional-Express",
+      "ZVON Oberlausitz-Niederschlesien Train régional",
+      "SNCF TGV Lyria",
+      "SNCB Nightjet"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ],
+  "bruxelles": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Bruxelles",
+     "id": "city:Q239",
+     "country": "BE",
+     "lat": 50.84667,
+     "lon": 4.3516665
+    },
+    "summary": {
+     "fastest_min": 82,
+     "min_transfers": 0,
+     "direct": 27,
+     "count": 35,
+     "first": "06:20",
+     "last": "21:23",
+     "train_types": [
+      "Eurostar",
+      "SNCF TER",
+      "SNCF Train",
+      "SNCB InterCity",
+      "SNCF TGV INOUI",
+      "European Sleeper"
+     ]
+    },
+    "liaison": "paris-bruxelles",
+    "tgvmax": {
+     "from": "city:TL4916",
+     "to": "station:8814001"
+    }
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Bruxelles",
+     "id": "city:Q239",
+     "country": "BE",
+     "lat": 50.84667,
+     "lon": 4.3516665
+    },
+    "summary": {
+     "fastest_min": 223,
+     "min_transfers": 0,
+     "direct": 6,
+     "count": 29,
+     "first": "05:50",
+     "last": "20:38",
+     "train_types": [
+      "Eurostar",
+      "SNCF TGV INOUI",
+      "SNCF TER",
+      "SNCF Intercités",
+      "SNCB InterCity",
+      "Trenitalia Frecciarossa",
+      "SNCF Train",
+      "SNCF Car TER",
+      "SNCF OUIGO",
+      "European Sleeper",
+      "SNCF Car"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": {
+     "from": "city:TL4718",
+     "to": "station:8814001"
+    }
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Bruxelles",
+     "id": "city:Q239",
+     "country": "BE",
+     "lat": 50.84667,
+     "lon": 4.3516665
+    },
+    "summary": {
+     "fastest_min": 325,
+     "min_transfers": 0,
+     "direct": 4,
+     "count": 23,
+     "first": "05:13",
+     "last": "20:14",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "Eurostar",
+      "SNCF TER",
+      "SNCF Intercités",
+      "SNCF OUIGO",
+      "SNCF Train",
+      "Trenitalia Frecciarossa",
+      "SNCB InterCity",
+      "European Sleeper",
+      "SNCF Car TER",
+      "SNCF Car"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": {
+     "from": "city:TL4790",
+     "to": "station:8814001"
+    }
+   }
+  ],
+  "edinburgh": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Édimbourg",
+     "id": "city:Q23436",
+     "country": "GB",
+     "lat": 55.953335,
+     "lon": -3.1891668
+    },
+    "summary": {
+     "fastest_min": 413,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 16,
+     "first": "07:09",
+     "last": "21:02",
+     "train_types": [
+      "Eurostar",
+      "LNER",
+      "Lumo",
+      "Caledonian Sleeper",
+      "ScotRail",
+      "West Midlands Trains",
+      "TransPennine Express"
+     ]
+    },
+    "liaison": "paris-edimbourg",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Édimbourg",
+     "id": "city:Q23436",
+     "country": "GB",
+     "lat": 55.953335,
+     "lon": -3.1891668
+    },
+    "summary": {
+     "fastest_min": 628,
+     "min_transfers": 2,
+     "direct": 0,
+     "count": 13,
+     "first": "06:38",
+     "last": "20:38",
+     "train_types": [
+      "Eurostar",
+      "LNER",
+      "SNCF TGV INOUI",
+      "Trenitalia Frecciarossa",
+      "SNCF OUIGO",
+      "Lumo",
+      "Caledonian Sleeper",
+      "ScotRail",
+      "West Midlands Trains",
+      "TransPennine Express"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Édimbourg",
+     "id": "city:Q23436",
+     "country": "GB",
+     "lat": 55.953335,
+     "lon": -3.1891668
+    },
+    "summary": {
+     "fastest_min": 695,
+     "min_transfers": 2,
+     "direct": 0,
+     "count": 15,
+     "first": "05:13",
+     "last": "20:14",
+     "train_types": [
+      "Eurostar",
+      "SNCF TGV INOUI",
+      "LNER",
+      "Lumo",
+      "SNCF OUIGO",
+      "Caledonian Sleeper",
+      "ScotRail",
+      "Trenitalia Frecciarossa",
+      "West Midlands Trains",
+      "TransPennine Express"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ],
+  "lisbonne": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Lisbonne",
+     "id": "city:Q597",
+     "country": "PT",
+     "lat": 38.708042,
+     "lon": -9.139016
+    },
+    "summary": {
+     "fastest_min": 1866,
+     "min_transfers": 4,
+     "direct": 0,
+     "count": 5,
+     "first": "07:42",
+     "last": "14:42",
+     "train_types": [
+      "Renfe AVE",
+      "CP Intercidades",
+      "SNCF TGV INOUI",
+      "CP Regional",
+      "Renfe Tren Celta",
+      "Renfe Alvia",
+      "Renfe Avlo",
+      "Renfe Regional",
+      "SNCF OUIGO",
+      "Renfe AVE International",
+      "Renfe Avant",
+      "Renfe Regional Exprés"
+     ]
+    },
+    "liaison": "paris-lisbonne",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Lisbonne",
+     "id": "city:Q597",
+     "country": "PT",
+     "lat": 38.708042,
+     "lon": -9.139016
+    },
+    "summary": {
+     "fastest_min": 1697,
+     "min_transfers": 4,
+     "direct": 0,
+     "count": 3,
+     "first": "06:40",
+     "last": "14:35",
+     "train_types": [
+      "CP Intercidades",
+      "SNCF TGV INOUI",
+      "Renfe AVE International",
+      "Renfe Avlo",
+      "Renfe Tren Celta",
+      "Renfe AVE",
+      "Renfe Regional",
+      "Renfe Alvia",
+      "CP Regional"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Lisbonne",
+     "id": "city:Q597",
+     "country": "PT",
+     "lat": 38.708042,
+     "lon": -9.139016
+    },
+    "summary": {
+     "fastest_min": 1767,
+     "min_transfers": 3,
+     "direct": 0,
+     "count": 5,
+     "first": "08:02",
+     "last": "15:26",
+     "train_types": [
+      "CP Intercidades",
+      "SNCF Intercités",
+      "Renfe AVE",
+      "Renfe Tren Celta",
+      "SNCF TGV INOUI",
+      "Renfe AVE International",
+      "Renfe Avlo",
+      "CP Regional",
+      "Renfe Regional",
+      "Renfe Alvia",
+      "Renfe Avant",
+      "Renfe Regional Exprés"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ],
+  "lyon": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "summary": {
+     "fastest_min": 113,
+     "min_transfers": 0,
+     "direct": 31,
+     "count": 39,
+     "first": "06:30",
+     "last": "21:26",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "SNCF TER",
+      "Trenitalia Frecciarossa",
+      "SNCF Intercités",
+      "SNCF OUIGO",
+      "SNCF Car TER"
+     ]
+    },
+    "liaison": "paris-lyon",
+    "tgvmax": {
+     "from": "city:TL4916",
+     "to": "city:TL4718"
+    }
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "summary": {
+     "fastest_min": 101,
+     "min_transfers": 0,
+     "direct": 16,
+     "count": 28,
+     "first": "06:34",
+     "last": "20:14",
+     "train_types": [
+      "SNCF TER",
+      "SNCF TGV INOUI",
+      "Trenitalia Frecciarossa",
+      "DB SNCF en coopération",
+      "SNCF OUIGO"
+     ]
+    },
+    "liaison": "marseille-lyon",
+    "tgvmax": {
+     "from": "city:TL4790",
+     "to": "city:TL4718"
+    }
+   }
+  ],
+  "madrid": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Madrid",
+     "id": "city:Q2807",
+     "country": "ES",
+     "lat": 40.416943,
+     "lon": -3.7033334
+    },
+    "summary": {
+     "fastest_min": 635,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 5,
+     "first": "07:42",
+     "last": "22:13",
+     "train_types": [
+      "Renfe AVE",
+      "Renfe AVE International",
+      "SNCF TGV INOUI",
+      "SNCF OUIGO",
+      "SNCF Intercités de nuit",
+      "SNCF Intercités"
+     ]
+    },
+    "liaison": "paris-madrid",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Madrid",
+     "id": "city:Q2807",
+     "country": "ES",
+     "lat": 40.416943,
+     "lon": -3.7033334
+    },
+    "summary": {
+     "fastest_min": 549,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 6,
+     "first": "06:40",
+     "last": "14:35",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "Renfe AVE",
+      "SNCF TER",
+      "Renfe Regional",
+      "Renfe AVE International",
+      "Renfe Regional Exprés",
+      "Renfe Avant"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Madrid",
+     "id": "city:Q2807",
+     "country": "ES",
+     "lat": 40.416943,
+     "lon": -3.7033334
+    },
+    "summary": {
+     "fastest_min": 496,
+     "min_transfers": 0,
+     "direct": 1,
+     "count": 7,
+     "first": "08:02",
+     "last": "15:26",
+     "train_types": [
+      "Renfe AVE",
+      "SNCF Intercités",
+      "SNCF TGV INOUI",
+      "SNCF TER",
+      "Renfe Regional",
+      "Renfe AVE International",
+      "Renfe Regional Exprés",
+      "Renfe Avant"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ],
+  "marseille": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "summary": {
+     "fastest_min": 184,
+     "min_transfers": 0,
+     "direct": 21,
+     "count": 36,
+     "first": "06:03",
+     "last": "22:13",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "SNCF TER",
+      "SNCF Intercités",
+      "SNCF OUIGO",
+      "Trenitalia Frecciarossa",
+      "SNCF Car TER",
+      "SNCF Car",
+      "SNCF Intercités de nuit"
+     ]
+    },
+    "liaison": "paris-marseille",
+    "tgvmax": {
+     "from": "city:TL4916",
+     "to": "city:TL4790"
+    }
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "summary": {
+     "fastest_min": 100,
+     "min_transfers": 0,
+     "direct": 16,
+     "count": 28,
+     "first": "06:28",
+     "last": "22:06",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "SNCF TER",
+      "SNCF OUIGO",
+      "Renfe AVE International",
+      "DB SNCF en coopération",
+      "SNCF Car TER"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": {
+     "from": "city:TL4718",
+     "to": "city:TL4790"
+    }
+   }
+  ],
+  "milan": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Milan",
+     "id": "city:Q490",
+     "country": "IT",
+     "lat": 45.466946,
+     "lon": 9.19
+    },
+    "summary": {
+     "fastest_min": 402,
+     "min_transfers": 0,
+     "direct": 5,
+     "count": 23,
+     "first": "06:30",
+     "last": "20:25",
+     "train_types": [
+      "Trenitalia Eurocity",
+      "SNCF TER",
+      "SNCF TGV INOUI",
+      "Trenitalia Frecciarossa",
+      "SNCF TGV Lyria",
+      "SBB ICE",
+      "SNCF Intercités"
+     ]
+    },
+    "liaison": "paris-milan",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Milan",
+     "id": "city:Q490",
+     "country": "IT",
+     "lat": 45.466946,
+     "lon": 9.19
+    },
+    "summary": {
+     "fastest_min": 284,
+     "min_transfers": 0,
+     "direct": 2,
+     "count": 10,
+     "first": "06:38",
+     "last": "20:38",
+     "train_types": [
+      "SNCF TER",
+      "Trenitalia Eurocity",
+      "Trenitalia Frecciarossa",
+      "SNCF TGV INOUI",
+      "SBB"
+     ]
+    },
+    "liaison": "lyon-milan",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Milan",
+     "id": "city:Q490",
+     "country": "IT",
+     "lat": 45.466946,
+     "lon": 9.19
+    },
+    "summary": {
+     "fastest_min": 415,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 21,
+     "first": "06:47",
+     "last": "20:14",
+     "train_types": [
+      "SNCF TER",
+      "Trenitalia Eurocity",
+      "SNCF TGV INOUI",
+      "SBB",
+      "Trenitalia Frecciarossa",
+      "DB SNCF en coopération",
+      "SNCF Car"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ],
+  "palermo": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Palerme",
+     "id": "city:Q2656",
+     "country": "IT",
+     "lat": 38.115658,
+     "lon": 13.361262
+    },
+    "summary": {
+     "fastest_min": 1515,
+     "min_transfers": 2,
+     "direct": 0,
+     "count": 8,
+     "first": "06:42",
+     "last": "15:25",
+     "train_types": [
+      "Trenitalia InterCityNotte",
+      "Trenitalia Eurocity",
+      "Trenitalia Frecciarossa",
+      "SNCF TER",
+      "SNCF TGV INOUI",
+      "SNCF TGV Lyria",
+      "Italo Train",
+      "Trenitalia Intercity"
+     ]
+    },
+    "liaison": "paris-palerme",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Palerme",
+     "id": "city:Q2656",
+     "country": "IT",
+     "lat": 38.115658,
+     "lon": 13.361262
+    },
+    "summary": {
+     "fastest_min": 1481,
+     "min_transfers": 2,
+     "direct": 0,
+     "count": 5,
+     "first": "08:32",
+     "last": "17:23",
+     "train_types": [
+      "Trenitalia InterCityNotte",
+      "Trenitalia Frecciarossa",
+      "SNCF TER",
+      "Italo Train",
+      "Trenitalia Eurocity",
+      "SNCF TGV INOUI",
+      "Trenitalia Intercity"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Palerme",
+     "id": "city:Q2656",
+     "country": "IT",
+     "lat": 38.115658,
+     "lon": 13.361262
+    },
+    "summary": {
+     "fastest_min": 1663,
+     "min_transfers": 3,
+     "direct": 0,
+     "count": 4,
+     "first": "08:12",
+     "last": "15:12",
+     "train_types": [
+      "Trenitalia InterCityNotte",
+      "SNCF TGV INOUI",
+      "Trenitalia Frecciarossa",
+      "SNCF TER",
+      "DB SNCF en coopération",
+      "Trenitalia Eurocity",
+      "Italo Train",
+      "Trenitalia Intercity"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ],
+  "paris": [
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "summary": {
+     "fastest_min": 114,
+     "min_transfers": 0,
+     "direct": 35,
+     "count": 42,
+     "first": "06:04",
+     "last": "20:38",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "Trenitalia Frecciarossa",
+      "SNCF TER",
+      "SNCF Intercités",
+      "SNCF OUIGO",
+      "SNCF Car"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": {
+     "from": "city:TL4718",
+     "to": "city:TL4916"
+    }
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "summary": {
+     "fastest_min": 183,
+     "min_transfers": 0,
+     "direct": 20,
+     "count": 35,
+     "first": "05:13",
+     "last": "20:14",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "SNCF TER",
+      "SNCF OUIGO",
+      "SNCF Intercités",
+      "Trenitalia Frecciarossa",
+      "SNCF Intercités de nuit",
+      "SNCF Car"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": {
+     "from": "city:TL4790",
+     "to": "city:TL4916"
+    }
+   }
+  ],
+  "porto": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Porto",
+     "id": "city:Q36433",
+     "country": "PT",
+     "lat": 41.15,
+     "lon": -8.610833
+    },
+    "summary": {
+     "fastest_min": 1662,
+     "min_transfers": 3,
+     "direct": 0,
+     "count": 3,
+     "first": "07:42",
+     "last": "14:42",
+     "train_types": [
+      "Renfe AVE",
+      "SNCF TGV INOUI",
+      "Renfe Tren Celta",
+      "Renfe Avlo",
+      "Renfe Regional",
+      "SNCF OUIGO",
+      "Renfe AVE International",
+      "Renfe Alvia",
+      "CP Regional",
+      "CP Intercidades"
+     ]
+    },
+    "liaison": "paris-porto",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Porto",
+     "id": "city:Q36433",
+     "country": "PT",
+     "lat": 41.15,
+     "lon": -8.610833
+    },
+    "summary": {
+     "fastest_min": 1638,
+     "min_transfers": 3,
+     "direct": 0,
+     "count": 4,
+     "first": "06:40",
+     "last": "14:35",
+     "train_types": [
+      "Renfe AVE International",
+      "Renfe Tren Celta",
+      "Renfe AVE",
+      "SNCF TGV INOUI",
+      "Renfe Avlo",
+      "Renfe Regional",
+      "Renfe Alvia",
+      "CP Regional",
+      "CP Intercidades"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Porto",
+     "id": "city:Q36433",
+     "country": "PT",
+     "lat": 41.15,
+     "lon": -8.610833
+    },
+    "summary": {
+     "fastest_min": 1559,
+     "min_transfers": 2,
+     "direct": 0,
+     "count": 4,
+     "first": "08:02",
+     "last": "15:26",
+     "train_types": [
+      "Renfe Tren Celta",
+      "SNCF Intercités",
+      "Renfe AVE",
+      "Renfe AVE International",
+      "Renfe Avlo",
+      "SNCF TGV INOUI",
+      "Renfe Regional",
+      "Renfe Alvia",
+      "CP Regional",
+      "CP Intercidades"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ],
+  "prague": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Prague",
+     "id": "city:Q1085",
+     "country": "CZ",
+     "lat": 50.0875,
+     "lon": 14.421389
+    },
+    "summary": {
+     "fastest_min": 450,
+     "min_transfers": 2,
+     "direct": 0,
+     "count": 38,
+     "first": "06:41",
+     "last": "21:23",
+     "train_types": [
+      "ZVON Oberlausitz-Niederschlesien Train régional",
+      "DB Regionalbahn",
+      "DB SNCF en coopération",
+      "DB ICE",
+      "Arriva Sneltrein",
+      "Eurostar",
+      "National Express Regional-Express",
+      "SNCB InterCity",
+      "DB Regional-Express",
+      "SNCF TER",
+      "alex Regional-Express",
+      "SNCF Train",
+      "SNCF TGV INOUI",
+      "agilis Regionalbahn",
+      "DB EuroNight",
+      "ČD Railjet",
+      "SÜWEX Regional-Express",
+      "ÖBB Nightjet",
+      "European Sleeper",
+      "DB Fernverkehr",
+      "KVV Train régional",
+      "eurobahn Regionalbahn",
+      "WestfalenBahn Regional-Express",
+      "trilex Train régional",
+      "agilis Regional-Express",
+      "DB Intercity",
+      "waldbahn Regionalbahn",
+      "ČD Rychlík"
+     ]
+    },
+    "liaison": "paris-prague",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Prague",
+     "id": "city:Q1085",
+     "country": "CZ",
+     "lat": 50.0875,
+     "lon": 14.421389
+    },
+    "summary": {
+     "fastest_min": 591,
+     "min_transfers": 2,
+     "direct": 0,
+     "count": 39,
+     "first": "05:50",
+     "last": "20:38",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "ZVON Oberlausitz-Niederschlesien Train régional",
+      "DB SNCF en coopération",
+      "SNCF TER",
+      "alex Regional-Express",
+      "DB ICE",
+      "DB Regional-Express",
+      "SBB",
+      "National Express Regional-Express",
+      "DB Regionalbahn",
+      "DB Fernverkehr",
+      "DB EuroNight",
+      "SBB Regionalzug",
+      "Eurostar",
+      "agilis Regionalbahn",
+      "ČD Railjet",
+      "ÖBB Nightjet",
+      "Trenitalia Frecciarossa",
+      "SÜWEX Regional-Express",
+      "SNCF TGV Lyria",
+      "THURBO Regional-Express",
+      "DB EuroCity-Express",
+      "Süd-Thüringen-Bahn Regionalbahn",
+      "waldbahn Regionalbahn",
+      "ČD Rychlík",
+      "SBB EuroCity",
+      "MÁV EuroNight",
+      "DB Intercity",
+      "European Sleeper",
+      "trilex Train régional",
+      "SNCF OUIGO",
+      "agilis Regional-Express",
+      "SNCB InterCity",
+      "Arriva Sneltrein",
+      "SNCF Intercités"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Prague",
+     "id": "city:Q1085",
+     "country": "CZ",
+     "lat": 50.0875,
+     "lon": 14.421389
+    },
+    "summary": {
+     "fastest_min": 732,
+     "min_transfers": 2,
+     "direct": 0,
+     "count": 34,
+     "first": "05:13",
+     "last": "20:14",
+     "train_types": [
+      "SNCF TGV INOUI",
+      "ZVON Oberlausitz-Niederschlesien Train régional",
+      "DB SNCF en coopération",
+      "DB ICE",
+      "alex Regional-Express",
+      "SNCF TER",
+      "National Express Regional-Express",
+      "DB Regional-Express",
+      "agilis Regionalbahn",
+      "DB Regionalbahn",
+      "DB EuroNight",
+      "ČD Railjet",
+      "Eurostar",
+      "SBB",
+      "SÜWEX Regional-Express",
+      "SNCF OUIGO",
+      "waldbahn Regionalbahn",
+      "ČD Rychlík",
+      "ÖBB Nightjet",
+      "SNCF TGV Lyria",
+      "SBB Regionalzug",
+      "SBB EuroCity",
+      "Trenitalia Frecciarossa",
+      "Süd-Thüringen-Bahn Regionalbahn",
+      "DB Fernverkehr",
+      "trilex Train régional",
+      "SNCF Intercités",
+      "THURBO Regional-Express",
+      "agilis Regional-Express",
+      "SNCB InterCity",
+      "Arriva Sneltrein",
+      "SNCF Car",
+      "DB EuroCity-Express"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ],
+  "rome": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Rome",
+     "id": "city:Q220",
+     "country": "IT",
+     "lat": 41.893055,
+     "lon": 12.482778
+    },
+    "summary": {
+     "fastest_min": 639,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 18,
+     "first": "06:30",
+     "last": "20:25",
+     "train_types": [
+      "Trenitalia Eurocity",
+      "SNCF TER",
+      "Italo Train",
+      "Trenitalia Frecciarossa",
+      "SNCF TGV INOUI",
+      "Trenitalia InterCityNotte",
+      "SNCF TGV Lyria",
+      "Trenitalia Regionale Veloce",
+      "Trenitalia Intercity",
+      "Trenord Regionale"
+     ]
+    },
+    "liaison": "paris-rome",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Rome",
+     "id": "city:Q220",
+     "country": "IT",
+     "lat": 41.893055,
+     "lon": 12.482778
+    },
+    "summary": {
+     "fastest_min": 538,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 9,
+     "first": "08:32",
+     "last": "20:38",
+     "train_types": [
+      "SNCF TER",
+      "Trenitalia Eurocity",
+      "Trenitalia Frecciarossa",
+      "Italo Train",
+      "Trenitalia InterCityNotte",
+      "Trenitalia Intercity",
+      "Trenord Regionale",
+      "SNCF TGV INOUI"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Rome",
+     "id": "city:Q220",
+     "country": "IT",
+     "lat": 41.893055,
+     "lon": 12.482778
+    },
+    "summary": {
+     "fastest_min": 786,
+     "min_transfers": 2,
+     "direct": 0,
+     "count": 12,
+     "first": "08:12",
+     "last": "20:14",
+     "train_types": [
+      "SNCF TER",
+      "Trenitalia Eurocity",
+      "SNCF TGV INOUI",
+      "Trenitalia Frecciarossa",
+      "Italo Train",
+      "Trenitalia Intercity",
+      "DB SNCF en coopération",
+      "Trenitalia InterCityNotte"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ],
+  "seville": [
+   {
+    "from": {
+     "name": "Paris",
+     "id": "city:Q90",
+     "country": "FR",
+     "lat": 48.856667,
+     "lon": 2.3522222
+    },
+    "to": {
+     "name": "Séville",
+     "id": "city:Q8717",
+     "country": "ES",
+     "lat": 37.38861,
+     "lon": -5.995
+    },
+    "summary": {
+     "fastest_min": 837,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 7,
+     "first": "07:42",
+     "last": "22:13",
+     "train_types": [
+      "Renfe AVE",
+      "SNCF TGV INOUI",
+      "Renfe AVE International",
+      "SNCF OUIGO",
+      "Renfe Avlo",
+      "Ouigo España",
+      "Renfe Intercity",
+      "SNCF Intercités de nuit",
+      "SNCF Intercités"
+     ]
+    },
+    "liaison": "paris-seville",
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Lyon",
+     "id": "city:Q456",
+     "country": "FR",
+     "lat": 45.7675,
+     "lon": 4.835
+    },
+    "to": {
+     "name": "Séville",
+     "id": "city:Q8717",
+     "country": "ES",
+     "lat": 37.38861,
+     "lon": -5.995
+    },
+    "summary": {
+     "fastest_min": 797,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 5,
+     "first": "06:40",
+     "last": "14:35",
+     "train_types": [
+      "Renfe AVE",
+      "SNCF TGV INOUI",
+      "Renfe AVE International",
+      "Renfe Avlo",
+      "Ouigo España"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   },
+   {
+    "from": {
+     "name": "Marseille",
+     "id": "city:Q23482",
+     "country": "FR",
+     "lat": 43.296665,
+     "lon": 5.376389
+    },
+    "to": {
+     "name": "Séville",
+     "id": "city:Q8717",
+     "country": "ES",
+     "lat": 37.38861,
+     "lon": -5.995
+    },
+    "summary": {
+     "fastest_min": 715,
+     "min_transfers": 1,
+     "direct": 0,
+     "count": 6,
+     "first": "08:02",
+     "last": "15:26",
+     "train_types": [
+      "SNCF Intercités",
+      "Renfe AVE",
+      "SNCF TGV INOUI",
+      "Renfe AVE International",
+      "Renfe Avlo",
+      "Ouigo España",
+      "Renfe Intercity"
+     ]
+    },
+    "liaison": null,
+    "tgvmax": null
+   }
+  ]
+ },
+ "tgvmax": [
+  {
+   "slug": "paris",
+   "name": "Paris",
+   "id": "city:TL4916",
+   "count": 182
+  },
+  {
+   "slug": "lyon",
+   "name": "Lyon",
+   "id": "city:TL4718",
+   "count": 54
+  },
+  {
+   "slug": "marseille",
+   "name": "Marseille",
+   "id": "city:TL4790",
+   "count": 50
+  },
+  {
+   "slug": "lille",
+   "name": "Lille",
+   "id": "city:TL4652",
+   "count": 29
+  },
+  {
+   "slug": "bordeaux",
+   "name": "Bordeaux",
+   "id": "station:8758100",
+   "count": 39
+  },
+  {
+   "slug": "nantes",
+   "name": "Nantes",
+   "id": "station:8748100",
+   "count": 26
+  },
+  {
+   "slug": "rennes",
+   "name": "Rennes",
+   "id": "station:8747100",
+   "count": 35
+  },
+  {
+   "slug": "toulouse",
+   "name": "Toulouse",
+   "id": "station:8761100",
+   "count": 27
+  },
+  {
+   "slug": "strasbourg",
+   "name": "Strasbourg",
+   "id": "station:8721202",
+   "count": 51
+  },
+  {
+   "slug": "montpellier",
+   "name": "Montpellier",
+   "id": "city:TL22598",
+   "count": 35
+  },
+  {
+   "slug": "nice",
+   "name": "Nice",
+   "id": "station:8775605",
+   "count": 16
+  }
+ ]
+}

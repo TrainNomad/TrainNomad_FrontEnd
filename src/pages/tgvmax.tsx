@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { maxCityPath, SEO_PAGES } from '../lib/seoPages';
 import { ShareButton } from '../components/ShareButton';
 import { TGVMaxSearchForm } from '../components/TGVMax/TGVMaxSearchForm';
 import { FeaturedTrips } from '../components/TGVMax/FeaturedTrips';
@@ -49,6 +50,20 @@ export default function TGVMaxPage() {
                 <span className="material-symbols-outlined text-lg">explore</span>
                 Pas d'idée de destination ? Explorer la carte TGVmax
               </Link>
+              {/* Pages par ville (src/lib/seoPages.json) */}
+              {SEO_PAGES.tgvmax.length > 0 && (
+                <p className="mt-3 text-center text-sm text-slate-500">
+                  Places MAX au départ de{' '}
+                  {SEO_PAGES.tgvmax.map((c, i) => (
+                    <span key={c.slug}>
+                      {i > 0 && ' · '}
+                      <Link to={maxCityPath(c.slug)} className="font-semibold text-slate-700 hover:text-brand">
+                        {c.name}
+                      </Link>
+                    </span>
+                  ))}
+                </p>
+              )}
               {/* Mention placée sous le formulaire pour ne pas le repousser hors de l'écran sur mobile */}
               <p className="mt-4 text-center text-xs text-slate-400">
                 Site indépendant, sans lien avec SNCF Voyageurs. TGVmax, MAX JEUNE et MAX SENIOR sont des marques de SNCF Voyageurs.
