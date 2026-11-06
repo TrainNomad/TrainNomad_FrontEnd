@@ -228,6 +228,11 @@ const BY_OPERATOR: Record<string, string> = {
   FLIXTRAIN: 'FlixTrain.png',
   NS: 'NS.png',
   DB: 'db.png',
+  BRITTANY_FERRIES: 'brittany_ferries.png',
+  DFDS: 'dfds.png',
+  TRANSMANCHE: 'transmanche.png',
+  GW_TRAIN: 'gw_train.png',
+  IRISH_RAIL: 'irish_rail.png',
   // compagnies étrangères des flux allemands (opérateurs créés par build_network.py)
   OBB: 'obb.png',
   PKP: 'pkp.svg',
@@ -237,6 +242,22 @@ const BY_OPERATOR: Record<string, string> = {
   CFL: 'cfl.png',
   ZSSK: 'zssk.png',
   HZPP: 'hzpp.svg',
+  // compagnies du flux tchèque (opérateurs créés par build_network.py, CZ_AGENCY_OPERATOR)
+  REGIOJET: 'regiojet.png',
+  LEO_EXPRESS: 'leo_express.png',
+  ARRIVA_CZ: 'ns_arriva.png',
+  TRILEX: 'laenderbahn.svg',
+  // compagnies du flux polonais (opérateurs créés par build_network.py, PL_AGENCY_OPERATOR)
+  POLREGIO: 'polregio.png',
+  KOLEJE_MAZOWIECKIE: 'koleje_mazowieckie.png',
+  KOLEJE_SLASKIE: 'koleje_slaskie.png',
+  KOLEJE_DOLNOSLASKIE: 'koleje_dolnoslaskie.png',
+  KOLEJE_WIELKOPOLSKIE: 'koleje_wielkopolskie.png',
+  KOLEJE_MALOPOLSKIE: 'koleje_malopolskie.png',
+  LKA: 'lka.png',
+  ARRIVA_PL: 'ns_arriva.png',
+  // flux hongrois (opérateur créé par build_network.py, HU_AGENCY_OPERATOR)
+  GYSEV: 'gysev.png',
 };
 
 // Flux allemands et types "<compagnie> <produit>" (ex. "DB ICE", "ÖBB Railjet Xpress", "HLB Regionalbahn").
@@ -259,12 +280,25 @@ const BY_CATEGORY: [RegExp, string][] = [
   [/^PKP /, 'pkp.svg'],
   [/^ČD /, 'cd.png'],
   [/^MÁV /, 'mav.png'],
+  [/^GYSEV /, 'gysev.png'],
   [/^DSB /, 'dsb.png'],
   [/^CFL /, 'cfl.png'],
   [/^ZSSK /, 'zssk.png'],
   [/^HŽPP /, 'hzpp.svg'],
   [/^WESTbahn/, 'westbahn.png'],
-  [/^LEO Express/, 'leo_express.png'],
+  [/^Leo Express/i, 'leo_express.png'],
+  // compagnies du flux tchèque ("RegioJet Rychlík", "Arriva Osobní vlak", "GW Train Osobní vlak")
+  [/^RegioJet/, 'regiojet.png'],
+  [/^Arriva /, 'ns_arriva.png'],
+  [/^GW Train /, 'gw_train.png'],
+  // compagnies du flux polonais ("PolRegio Osobowy", "Koleje Mazowieckie Przyspieszony", "ŁKA Sprinter")
+  [/^PolRegio /, 'polregio.png'],
+  [/^Koleje Mazowieckie /, 'koleje_mazowieckie.png'],
+  [/^Koleje Śląskie /, 'koleje_slaskie.png'],
+  [/^Koleje Dolnośląskie /, 'koleje_dolnoslaskie.png'],
+  [/^Koleje Wielkopolskie /, 'koleje_wielkopolskie.png'],
+  [/^Koleje Małopolskie /, 'koleje_malopolskie.png'],
+  [/^ŁKA /, 'lka.png'],
   // compagnies régionales allemandes (marque donnée par build_network.py, DE_REGIO_BRANDS)
   [/^HLB /, 'hlb.svg'],
   [/^(alex|trilex|trilex-express|vogtlandbahn|oberpfalzbahn|waldbahn) /, 'laenderbahn.svg'],
@@ -296,6 +330,16 @@ const BY_CATEGORY: [RegExp, string][] = [
   [/^ZVON /, 'zvon.png'],
 ];
 
+/** Compagnies de ferry (operators.json) et types des traversées : « Ferry » des ferries du flux National Rail
+ *  (Holyhead - Dublin, Fishguard - Rosslare...), « Brittany Ferries », « DFDS » (Dieppe - Newhaven). */
+const FERRY_OPERATORS = new Set(['BRITTANY_FERRIES', 'DFDS', 'TRANSMANCHE', 'GW_TRAIN', 'IRISH_RAIL']);
+const FERRY_TYPES = new Set(['Ferry', 'Brittany Ferries', 'DFDS', 'Transmanche', 'GW Train']);
+
+/** Étape en bateau : icône de bateau à la place d'un logo de train. */
+export function isFerry(trainType: string, operator?: string): boolean {
+  return FERRY_TYPES.has(trainType ?? '') || FERRY_OPERATORS.has(operator?.toUpperCase() ?? '');
+}
+
 /** Chemin du logo, ou null si aucun logo n'est disponible (afficher alors le nom du train). */
 export function trainLogo(trainType: string, operator?: string): string | null {
   const tt = trainType ?? '';
@@ -304,7 +348,12 @@ export function trainLogo(trainType: string, operator?: string): string | null {
   // Produits propriétaires : afficher le logo seulement si exploité par une compagnie autorisée
   if (tt.includes('ICE') && op && !['DB', 'SNCB', 'NS', 'OBB'].includes(op)) return null;
   if (tt.includes('Railjet') && op && !['OBB', 'CD', 'MAV', 'ZSSK', 'DSB'].includes(op)) return null;
-  if ((tt.includes('Nightjet') || tt.includes('EuroNight')) && op && !['OBB', 'SWISS', 'NS', 'SNCB'].includes(op)) return null;
+  // Nightjet : aussi les voitures ČD (Prague - Zurich) ; un EuroNight ČD, ZSSK ou MÁV prend le logo de sa compagnie
+  if (tt.includes('Nightjet') && op && !['OBB', 'SWISS', 'NS', 'SNCB', 'CD'].includes(op)) return null;
+  if (tt.includes('EuroNight') && op === 'CD') return `/assets/compagnies/${encodeURIComponent('cd.png')}`;
+  if (tt.includes('EuroNight') && op === 'ZSSK') return `/assets/compagnies/${encodeURIComponent('zssk.png')}`;
+  if (tt.includes('EuroNight') && op === 'MAV') return `/assets/compagnies/${encodeURIComponent('mav.png')}`;
+  if (tt.includes('EuroNight') && op && !['OBB', 'SWISS', 'NS', 'SNCB'].includes(op)) return null;
   if (tt.includes('Trenitalia') && op !== 'TRENITALIA') return null;
   if (tt.includes('Renfe') && op !== 'RENFE') return null;
   // SNCF : seulement pour ses propres produits (TGV INOUI, TER, OUIGO, TGV Lyria, trains de nuit SNCF)

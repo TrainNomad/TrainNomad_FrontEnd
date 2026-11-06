@@ -38,10 +38,39 @@ const OPERATORS: Record<string, { label: string; logo?: string; size?: string }>
   CFL: { label: 'CFL', logo: 'cfl.png' },
   ZSSK: { label: 'ZSSK', logo: 'zssk.png' },
   HZPP: { label: 'HŽPP', logo: 'hzpp.svg' },
+  // Compagnies du flux tchèque (build_network.py, CZ_AGENCY_OPERATOR)
+  REGIOJET: { label: 'RegioJet', logo: 'regiojet.png' },
+  LEO_EXPRESS: { label: 'Leo Express', logo: 'leo_express.png' },
+  ARRIVA_CZ: { label: 'Arriva', logo: 'ns_arriva.png' },
+  GW_TRAIN: { label: 'GW Train', logo: 'gw_train.png' },
+  TRILEX: { label: 'trilex', logo: 'laenderbahn.svg' },
+  // Compagnies des flux polonais et hongrois (build_network.py)
+  POLREGIO: { label: 'PolRegio', logo: 'polregio.png' },
+  KOLEJE_DOLNOSLASKIE: { label: 'Koleje Dolnośląskie', logo: 'koleje_dolnoslaskie.png' },
+  KOLEJE_MALOPOLSKIE: { label: 'Koleje Małopolskie', logo: 'koleje_malopolskie.png' },
+  KOLEJE_MAZOWIECKIE: { label: 'Koleje Mazowieckie', logo: 'koleje_mazowieckie.png' },
+  KOLEJE_SLASKIE: { label: 'Koleje Śląskie', logo: 'koleje_slaskie.png' },
+  KOLEJE_WIELKOPOLSKIE: { label: 'Koleje Wielkopolskie', logo: 'koleje_wielkopolskie.png' },
+  LKA: { label: 'ŁKA', logo: 'lka.png' },
+  GYSEV: { label: 'GYSEV', logo: 'gysev.png' },
+  // Compagnies de ferry
+  BRITTANY_FERRIES: { label: 'Brittany Ferries', logo: 'brittany_ferries.png' },
+  DFDS: { label: 'DFDS', logo: 'dfds.png' },
+  TRANSMANCHE: { label: 'Transmanche', logo: 'transmanche.png' },
+  IRISH_RAIL: { label: 'Irish Rail', logo: 'irish_rail.png' },
 };
 
 /** Flux distincts dans l'API, une seule compagnie pour le visiteur : grandes lignes et régional de la DB. */
-const SAME_COMPANY: Record<string, string> = { DB_REGIO: 'DB' };
+const SAME_COMPANY: Record<string, string> = { DB_REGIO: 'DB', ARRIVA_PL: 'ARRIVA_CZ' };
+
+/**
+ * Compagnies régionales : leurs horaires sont intégrés et comptés dans « Horaires de N opérateurs »,
+ * mais le bandeau ne montre que les compagnies nationales et les marques connues du visiteur.
+ */
+const NOT_IN_STRIP = new Set([
+  'POLREGIO', 'KOLEJE_DOLNOSLASKIE', 'KOLEJE_MALOPOLSKIE', 'KOLEJE_MAZOWIECKIE', 'KOLEJE_SLASKIE',
+  'KOLEJE_WIELKOPOLSKIE', 'LKA', 'GYSEV', 'GW_TRAIN', 'TRILEX', 'ARRIVA_CZ', 'TRENORD',
+]);
 
 /** Secondes de défilement par logo : la vitesse reste la même quel que soit le nombre de compagnies. */
 const SECONDS_PER_LOGO = 3;
@@ -52,6 +81,7 @@ const SECONDS_PER_LOGO = 3;
  */
 export function OperatorsStrip() {
   const [operators, setOperators] = useState<Operator[]>([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -67,7 +97,8 @@ export function OperatorsStrip() {
             companies.push({ ...op, id });
           }
         }
-        setOperators(companies);
+        setTotal(companies.length);
+        setOperators(companies.filter((op) => !NOT_IN_STRIP.has(op.id)));
       })
       .catch(() => {
         // API injoignable : la ligne reste vide plutôt que d'afficher une erreur
@@ -81,7 +112,7 @@ export function OperatorsStrip() {
       {operators.length > 0 && (
         <>
           <p className="text-xs font-medium text-slate-400 mb-3">
-            Horaires de {operators.length} opérateurs, issus de leurs données ouvertes ·{' '}
+            Horaires de {total} opérateurs, issus de leurs données ouvertes ·{' '}
             <Link to="/comment-ca-marche" className="underline hover:text-slate-600">
               Comment ça marche
             </Link>

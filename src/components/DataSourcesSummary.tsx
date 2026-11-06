@@ -32,6 +32,11 @@ const OPERATOR_COUNTRIES: Record<string, string> = {
   CFL: 'Luxembourg',
   ZSSK: 'Slovaquie',
   HZPP: 'Croatie',
+  REGIOJET: 'République Tchèque',
+  LEO_EXPRESS: 'République Tchèque',
+  ARRIVA_CZ: 'République Tchèque',
+  GW_TRAIN: 'République Tchèque',
+  TRILEX: 'République Tchèque',
 };
 
 export function DataSourcesSummary() {

@@ -12,7 +12,15 @@ interface DataSource {
   license?: string;
 }
 
-const SAME_COMPANY: Record<string, string> = { DB_REGIO: 'DB' };
+// compagnies tirées d'un autre flux : une seule source (le flux tchèque pour RegioJet, Leo Express...)
+const SAME_COMPANY: Record<string, string> = {
+  DB_REGIO: 'DB',
+  REGIOJET: 'CD',
+  LEO_EXPRESS: 'CD',
+  ARRIVA_CZ: 'CD',
+  GW_TRAIN: 'CD',
+  TRILEX: 'CD',
+};
 
 const OPERATOR_SOURCES: Record<string, Omit<DataSource, 'operatorName'>> = {
   SNCF: {
@@ -73,6 +81,7 @@ const OPERATOR_SOURCES: Record<string, Omit<DataSource, 'operatorName'>> = {
     license: 'Données ouvertes',
   },
   CD: {
+    url: 'https://data.jr.ggu.cz',
     license: 'Données ouvertes',
   },
   MAV: {

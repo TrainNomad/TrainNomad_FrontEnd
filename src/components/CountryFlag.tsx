@@ -142,6 +142,47 @@ const FLAGS: Record<string, ReactNode> = {
       <path d="M1.25 0.5 h0.167 v0.2 h-0.167 Z M1.583 0.5 h0.167 v0.2 h-0.167 Z M1.417 0.7 h0.166 v0.2 h-0.166 Z M1.25 0.9 h0.167 v0.2 h-0.167 Z M1.583 0.9 h0.167 v0.2 h-0.167 Z" fill="#FF0000" />
     </>
   ),
+  // Pays desservis par les trains polonais, slovaques et hongrois (PKP, ZSSK, MÁV)
+  UA: (
+    <>
+      <rect width="3" height="1" fill="#0057B7" />
+      <rect y="1" width="3" height="1" fill="#FFD700" />
+    </>
+  ),
+  RO: (
+    <>
+      <rect width="1" height="2" fill="#002B7F" />
+      <rect x="1" width="1" height="2" fill="#FCD116" />
+      <rect x="2" width="1" height="2" fill="#CE1126" />
+    </>
+  ),
+  RS: (
+    <>
+      <rect width="3" height="0.667" fill="#C6363C" />
+      <rect y="0.667" width="3" height="0.667" fill="#0C4076" />
+      <rect y="1.333" width="3" height="0.667" fill="#fff" />
+    </>
+  ),
+  LT: (
+    <>
+      <rect width="3" height="0.667" fill="#FDB913" />
+      <rect y="0.667" width="3" height="0.667" fill="#006A44" />
+      <rect y="1.333" width="3" height="0.667" fill="#C1272D" />
+    </>
+  ),
+  IE: (
+    <>
+      <rect width="1" height="2" fill="#169B62" />
+      <rect x="1" width="1" height="2" fill="#fff" />
+      <rect x="2" width="1" height="2" fill="#FF883E" />
+    </>
+  ),
+  LI: (
+    <>
+      <rect width="3" height="1" fill="#002B7F" />
+      <rect y="1" width="3" height="1" fill="#CE1126" />
+    </>
+  ),
   MC: (
     <>
       <rect width="3" height="1" fill="#CE1126" />

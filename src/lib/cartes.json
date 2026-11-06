@@ -1,0 +1,9175 @@
+{
+ "cities": [
+  {
+   "name": "Paris",
+   "slug": "paris",
+   "id": "city:Q90",
+   "x": 809.6,
+   "y": 574.2,
+   "label": [
+    "start",
+    819.6,
+    579.5
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 20,
+     "other": 22,
+     "lines": 49,
+     "title": "Trains au départ de Paris",
+     "alt": "Carte des trains au départ de Paris : Amsterdam, Angers, Barcelone, Berlin, Bordeaux, Bruxelles, Hambourg, Lille, Londres, Lyon, Marseille, Milan, Montpellier, Munich, Nantes, Nice, Rennes, Strasbourg, Toulouse, Zurich, Bath, Birmingham, Brighton, Bristol, Cambridge, Glasgow, Inverness, Leeds, Liverpool, Madrid, Manchester, Naples, Nottingham, Oxford, Plymouth, Rome, Sheffield, Séville, Venise, Vienne, York, Édimbourg",
+     "image": "depuis-paris"
+    },
+    {
+     "mode": "direct",
+     "direct": 20,
+     "other": 0,
+     "lines": 25,
+     "title": "Trains directs au départ de Paris",
+     "alt": "Carte des trains directs au départ de Paris : Amsterdam, Angers, Barcelone, Berlin, Bordeaux, Bruxelles, Hambourg, Lille, Londres, Lyon, Marseille, Milan, Montpellier, Munich, Nantes, Nice, Rennes, Strasbourg, Toulouse, Zurich",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 9,
+     "other": 0,
+     "lines": 10,
+     "title": "À moins de 3 heures de Paris",
+     "alt": "Carte des à moins de 3 heures de Paris : Angers, Bordeaux, Bruxelles, Lille, Londres, Lyon, Nantes, Rennes, Strasbourg",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 8,
+     "other": 0,
+     "lines": 8,
+     "title": "Trains de nuit au départ de Paris",
+     "alt": "Carte des trains de nuit au départ de Paris : Albi, Cerbère, Tarbes, Nice, Berlin, Toulouse, Luc-en-Diois, Aurillac",
+     "image": "depuis-paris-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Lille",
+     "min": 64,
+     "direct": true,
+     "id": "city:Q648",
+     "slug": "paris-lille"
+    },
+    {
+     "name": "Angers",
+     "min": 81,
+     "direct": true,
+     "id": "city:Q38380",
+     "slug": "paris-angers"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 82,
+     "direct": true,
+     "id": "city:Q239",
+     "slug": "paris-bruxelles"
+    },
+    {
+     "name": "Rennes",
+     "min": 85,
+     "direct": true,
+     "id": "city:Q647",
+     "slug": "paris-rennes"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 105,
+     "direct": true,
+     "id": "city:Q6602",
+     "slug": "paris-strasbourg"
+    },
+    {
+     "name": "Lyon",
+     "min": 113,
+     "direct": true,
+     "id": "city:Q456",
+     "slug": "paris-lyon"
+    },
+    {
+     "name": "Nantes",
+     "min": 117,
+     "direct": true,
+     "id": "city:Q12191",
+     "slug": "paris-nantes"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 122,
+     "direct": true,
+     "id": "city:Q1479",
+     "slug": "paris-bordeaux"
+    },
+    {
+     "name": "Londres",
+     "min": 139,
+     "direct": true,
+     "id": "city:Q84",
+     "slug": "paris-londres"
+    },
+    {
+     "name": "Marseille",
+     "min": 183,
+     "direct": true,
+     "id": "city:Q23482",
+     "slug": "paris-marseille"
+    },
+    {
+     "name": "Montpellier",
+     "min": 192,
+     "direct": true,
+     "id": "city:Q6441",
+     "slug": "paris-montpellier"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 205,
+     "direct": true,
+     "id": "city:Q727",
+     "slug": "paris-amsterdam"
+    },
+    {
+     "name": "Cambridge",
+     "min": 208,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Oxford",
+     "min": 240,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Brighton",
+     "min": 243,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Zurich",
+     "min": 244,
+     "direct": true,
+     "id": "city:Q72",
+     "slug": "paris-zurich"
+    },
+    {
+     "name": "Birmingham",
+     "min": 247,
+     "direct": false,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Nottingham",
+     "min": 255,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Bristol",
+     "min": 258,
+     "direct": false,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Toulouse",
+     "min": 269,
+     "direct": true,
+     "id": "city:Q7880",
+     "slug": "paris-toulouse"
+    },
+    {
+     "name": "Bath",
+     "min": 274,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "York",
+     "min": 276,
+     "direct": false,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Leeds",
+     "min": 279,
+     "direct": false,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Sheffield",
+     "min": 291,
+     "direct": false,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Manchester",
+     "min": 295,
+     "direct": false,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Liverpool",
+     "min": 312,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Nice",
+     "min": 342,
+     "direct": true,
+     "id": "city:Q33959",
+     "slug": "paris-nice"
+    },
+    {
+     "name": "Munich",
+     "min": 351,
+     "direct": true,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Plymouth",
+     "min": 384,
+     "direct": false,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Milan",
+     "min": 402,
+     "direct": true,
+     "id": "city:Q490",
+     "slug": "paris-milan"
+    },
+    {
+     "name": "Barcelone",
+     "min": 410,
+     "direct": true,
+     "id": "city:Q1492",
+     "slug": "paris-barcelone"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 413,
+     "direct": false,
+     "id": "city:Q23436",
+     "slug": "paris-edimbourg"
+    },
+    {
+     "name": "Glasgow",
+     "min": 442,
+     "direct": false,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Venise",
+     "min": 554,
+     "direct": false,
+     "id": "city:Q641"
+    },
+    {
+     "name": "Madrid",
+     "min": 635,
+     "direct": false,
+     "id": "city:Q2807",
+     "slug": "paris-madrid"
+    },
+    {
+     "name": "Rome",
+     "min": 639,
+     "direct": false,
+     "id": "city:Q220",
+     "slug": "paris-rome"
+    },
+    {
+     "name": "Vienne",
+     "min": 651,
+     "direct": false,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Inverness",
+     "min": 658,
+     "direct": false,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Naples",
+     "min": 747,
+     "direct": false,
+     "id": "city:Q2634"
+    },
+    {
+     "name": "Hambourg",
+     "min": 774,
+     "direct": true,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Séville",
+     "min": 867,
+     "direct": false,
+     "id": "city:Q8717",
+     "slug": "paris-seville"
+    },
+    {
+     "name": "Berlin",
+     "min": 958,
+     "direct": true,
+     "id": "city:Q64",
+     "slug": "paris-berlin"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Londres",
+   "slug": "londres",
+   "id": "city:Q84",
+   "x": 748.9,
+   "y": 438.2,
+   "label": [
+    "start",
+    758.9,
+    443.5
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 20,
+     "other": 18,
+     "lines": 39,
+     "title": "Trains au départ de Londres",
+     "alt": "Carte des trains au départ de Londres : Amsterdam, Bath, Birmingham, Brighton, Bristol, Bruxelles, Cambridge, Glasgow, Inverness, Leeds, Lille, Liverpool, Manchester, Nottingham, Oxford, Paris, Plymouth, Sheffield, York, Édimbourg, Angers, Barcelone, Berlin, Bordeaux, Dublin, Hambourg, Lyon, Marseille, Milan, Montpellier, Munich, Nantes, Nice, Rennes, Strasbourg, Toulouse, Vienne, Zurich",
+     "image": "depuis-londres"
+    },
+    {
+     "mode": "direct",
+     "direct": 20,
+     "other": 0,
+     "lines": 20,
+     "title": "Trains directs au départ de Londres",
+     "alt": "Carte des trains directs au départ de Londres : Amsterdam, Bath, Birmingham, Brighton, Bristol, Bruxelles, Cambridge, Glasgow, Inverness, Leeds, Lille, Liverpool, Manchester, Nottingham, Oxford, Paris, Plymouth, Sheffield, York, Édimbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 16,
+     "other": 0,
+     "lines": 16,
+     "title": "À moins de 3 heures de Londres",
+     "alt": "Carte des à moins de 3 heures de Londres : Bath, Birmingham, Brighton, Bristol, Bruxelles, Cambridge, Leeds, Lille, Liverpool, Manchester, Nottingham, Oxford, Paris, Plymouth, Sheffield, York",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 2,
+     "other": 0,
+     "lines": 2,
+     "title": "Trains de nuit au départ de Londres",
+     "alt": "Carte des trains de nuit au départ de Londres : Penzance, Glasgow",
+     "image": "depuis-londres-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Cambridge",
+     "min": 45,
+     "direct": true,
+     "id": "city:Q21713103",
+     "slug": "londres-cambridge"
+    },
+    {
+     "name": "Oxford",
+     "min": 45,
+     "direct": true,
+     "id": "station:7031150",
+     "slug": "londres-oxford"
+    },
+    {
+     "name": "Brighton",
+     "min": 49,
+     "direct": true,
+     "id": "city:Q131491",
+     "slug": "londres-brighton"
+    },
+    {
+     "name": "Bristol",
+     "min": 68,
+     "direct": true,
+     "id": "city:Q23154",
+     "slug": "londres-bristol"
+    },
+    {
+     "name": "Bath",
+     "min": 73,
+     "direct": true,
+     "id": "city:Q22889",
+     "slug": "londres-bath"
+    },
+    {
+     "name": "Birmingham",
+     "min": 76,
+     "direct": true,
+     "id": "city:Q20986424",
+     "slug": "londres-birmingham"
+    },
+    {
+     "name": "Lille",
+     "min": 81,
+     "direct": true,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Nottingham",
+     "min": 81,
+     "direct": true,
+     "id": "city:Q21885994",
+     "slug": "londres-nottingham"
+    },
+    {
+     "name": "York",
+     "min": 106,
+     "direct": true,
+     "id": "station:7082630",
+     "slug": "londres-york"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 117,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Sheffield",
+     "min": 119,
+     "direct": true,
+     "id": "city:Q42448",
+     "slug": "londres-sheffield"
+    },
+    {
+     "name": "Manchester",
+     "min": 126,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Leeds",
+     "min": 129,
+     "direct": true,
+     "id": "city:Q39121",
+     "slug": "londres-leeds"
+    },
+    {
+     "name": "Liverpool",
+     "min": 129,
+     "direct": true,
+     "id": "city:Q21665571",
+     "slug": "londres-liverpool"
+    },
+    {
+     "name": "Paris",
+     "min": 140,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Plymouth",
+     "min": 180,
+     "direct": true,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 244,
+     "direct": true,
+     "id": "city:Q727",
+     "slug": "londres-amsterdam"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 246,
+     "direct": true,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Glasgow",
+     "min": 271,
+     "direct": true,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 277,
+     "direct": false,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Angers",
+     "min": 281,
+     "direct": false,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Lyon",
+     "min": 294,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Rennes",
+     "min": 294,
+     "direct": false,
+     "id": "city:Q647"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 316,
+     "direct": false,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Nantes",
+     "min": 322,
+     "direct": false,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Marseille",
+     "min": 373,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Montpellier",
+     "min": 397,
+     "direct": false,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Zurich",
+     "min": 445,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Dublin",
+     "min": 465,
+     "direct": false,
+     "id": "station:7003500",
+     "slug": "londres-dublin"
+    },
+    {
+     "name": "Inverness",
+     "min": 485,
+     "direct": true,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Toulouse",
+     "min": 489,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Nice",
+     "min": 545,
+     "direct": false,
+     "id": "city:Q33959"
+    },
+    {
+     "name": "Hambourg",
+     "min": 569,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Barcelone",
+     "min": 601,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Munich",
+     "min": 615,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Milan",
+     "min": 622,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Berlin",
+     "min": 682,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Vienne",
+     "min": 1295,
+     "direct": false,
+     "id": "city:Q1741"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Rennes",
+   "slug": "rennes",
+   "id": "city:Q647",
+   "x": 677.5,
+   "y": 593.2,
+   "label": [
+    "start",
+    687.5,
+    598.5
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 8,
+     "other": 12,
+     "lines": 20,
+     "title": "Trains au départ de Rennes",
+     "alt": "Carte des trains au départ de Rennes : Angers, Bruxelles, Lille, Lyon, Marseille, Nantes, Paris, Strasbourg, Amsterdam, Barcelone, Berlin, Bordeaux, Hambourg, Londres, Milan, Montpellier, Munich, Nice, Toulouse, Zurich",
+     "image": "depuis-rennes"
+    },
+    {
+     "mode": "direct",
+     "direct": 8,
+     "other": 0,
+     "lines": 8,
+     "title": "Trains directs au départ de Rennes",
+     "alt": "Carte des trains directs au départ de Rennes : Angers, Bruxelles, Lille, Lyon, Marseille, Nantes, Paris, Strasbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 3,
+     "other": 0,
+     "lines": 3,
+     "title": "À moins de 3 heures de Rennes",
+     "alt": "Carte des à moins de 3 heures de Rennes : Angers, Nantes, Paris",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Nantes",
+     "min": 77,
+     "direct": true,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Angers",
+     "min": 87,
+     "direct": true,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Paris",
+     "min": 89,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 224,
+     "direct": false,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Lille",
+     "min": 231,
+     "direct": true,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Lyon",
+     "min": 239,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 276,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 301,
+     "direct": true,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Montpellier",
+     "min": 333,
+     "direct": false,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Marseille",
+     "min": 353,
+     "direct": true,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Londres",
+     "min": 355,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Toulouse",
+     "min": 370,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 375,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Zurich",
+     "min": 411,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Munich",
+     "min": 491,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Nice",
+     "min": 509,
+     "direct": false,
+     "id": "city:Q33959"
+    },
+    {
+     "name": "Milan",
+     "min": 576,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Barcelone",
+     "min": 597,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Hambourg",
+     "min": 922,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Berlin",
+     "min": 1560,
+     "direct": false,
+     "id": "city:Q64"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Lyon",
+   "slug": "lyon",
+   "id": "city:Q456",
+   "x": 877.9,
+   "y": 729.4,
+   "label": [
+    "start",
+    887.9,
+    734.7
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 13,
+     "other": 15,
+     "lines": 34,
+     "title": "Trains au départ de Lyon",
+     "alt": "Carte des trains au départ de Lyon : Angers, Barcelone, Bruxelles, Lille, Marseille, Milan, Montpellier, Nantes, Nice, Paris, Rennes, Strasbourg, Toulouse, Amsterdam, Bari, Berlin, Bilbao, Bordeaux, Hambourg, Londres, Madrid, Malaga, Munich, Naples, Rome, Séville, Venise, Zurich",
+     "image": "depuis-lyon"
+    },
+    {
+     "mode": "direct",
+     "direct": 13,
+     "other": 0,
+     "lines": 15,
+     "title": "Trains directs au départ de Lyon",
+     "alt": "Carte des trains directs au départ de Lyon : Angers, Barcelone, Bruxelles, Lille, Marseille, Milan, Montpellier, Nantes, Nice, Paris, Rennes, Strasbourg, Toulouse",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 4,
+     "other": 0,
+     "lines": 6,
+     "title": "À moins de 3 heures de Lyon",
+     "alt": "Carte des à moins de 3 heures de Lyon : Lille, Marseille, Montpellier, Paris",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Marseille",
+     "min": 99,
+     "direct": true,
+     "id": "city:Q23482",
+     "slug": "lyon-marseille"
+    },
+    {
+     "name": "Montpellier",
+     "min": 100,
+     "direct": true,
+     "id": "city:Q6441",
+     "slug": "lyon-montpellier"
+    },
+    {
+     "name": "Paris",
+     "min": 114,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Lille",
+     "min": 178,
+     "direct": true,
+     "id": "city:Q648",
+     "slug": "lyon-lille"
+    },
+    {
+     "name": "Angers",
+     "min": 219,
+     "direct": true,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 222,
+     "direct": true,
+     "id": "city:Q6602",
+     "slug": "lyon-strasbourg"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 223,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Rennes",
+     "min": 229,
+     "direct": true,
+     "id": "city:Q647",
+     "slug": "lyon-rennes"
+    },
+    {
+     "name": "Toulouse",
+     "min": 249,
+     "direct": true,
+     "id": "city:Q7880",
+     "slug": "lyon-toulouse"
+    },
+    {
+     "name": "Nantes",
+     "min": 260,
+     "direct": true,
+     "id": "city:Q12191",
+     "slug": "lyon-nantes"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 263,
+     "direct": false,
+     "id": "city:Q1479",
+     "slug": "lyon-bordeaux"
+    },
+    {
+     "name": "Zurich",
+     "min": 266,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Nice",
+     "min": 277,
+     "direct": true,
+     "id": "city:Q33959",
+     "slug": "lyon-nice"
+    },
+    {
+     "name": "Milan",
+     "min": 284,
+     "direct": true,
+     "id": "city:Q490",
+     "slug": "lyon-milan"
+    },
+    {
+     "name": "Barcelone",
+     "min": 288,
+     "direct": true,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Londres",
+     "min": 352,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 372,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Venise",
+     "min": 478,
+     "direct": false,
+     "id": "city:Q641"
+    },
+    {
+     "name": "Munich",
+     "min": 508,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Rome",
+     "min": 538,
+     "direct": false,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Madrid",
+     "min": 549,
+     "direct": false,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Berlin",
+     "min": 621,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Hambourg",
+     "min": 628,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Naples",
+     "min": 641,
+     "direct": false,
+     "id": "city:Q2634"
+    },
+    {
+     "name": "Bari",
+     "min": 778,
+     "direct": false,
+     "id": "city:Q3519"
+    },
+    {
+     "name": "Séville",
+     "min": 1452,
+     "direct": false,
+     "id": "city:Q8717"
+    },
+    {
+     "name": "Malaga",
+     "min": 1476,
+     "direct": false,
+     "id": "station:7154413"
+    },
+    {
+     "name": "Bilbao",
+     "min": 1518,
+     "direct": false,
+     "id": "city:Q8692"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Bordeaux",
+   "slug": "bordeaux",
+   "id": "city:Q1479",
+   "x": 691.1,
+   "y": 755.0,
+   "label": [
+    "start",
+    701.1,
+    760.2
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 7,
+     "other": 14,
+     "lines": 24,
+     "title": "Trains au départ de Bordeaux",
+     "alt": "Carte des trains au départ de Bordeaux : Lille, Marseille, Montpellier, Nantes, Paris, Strasbourg, Toulouse, Amsterdam, Angers, Barcelone, Berlin, Bruxelles, Hambourg, Londres, Lyon, Madrid, Milan, Munich, Nice, Rennes, Zurich",
+     "image": "depuis-bordeaux"
+    },
+    {
+     "mode": "direct",
+     "direct": 7,
+     "other": 0,
+     "lines": 7,
+     "title": "Trains directs au départ de Bordeaux",
+     "alt": "Carte des trains directs au départ de Bordeaux : Lille, Marseille, Montpellier, Nantes, Paris, Strasbourg, Toulouse",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 2,
+     "other": 0,
+     "lines": 2,
+     "title": "À moins de 3 heures de Bordeaux",
+     "alt": "Carte des à moins de 3 heures de Bordeaux : Paris, Toulouse",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Paris",
+     "min": 128,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Toulouse",
+     "min": 140,
+     "direct": true,
+     "id": "city:Q7880",
+     "slug": "bordeaux-toulouse"
+    },
+    {
+     "name": "Angers",
+     "min": 192,
+     "direct": false,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Rennes",
+     "min": 244,
+     "direct": false,
+     "id": "city:Q647",
+     "slug": "bordeaux-rennes"
+    },
+    {
+     "name": "Nantes",
+     "min": 250,
+     "direct": true,
+     "id": "city:Q12191",
+     "slug": "bordeaux-nantes"
+    },
+    {
+     "name": "Lyon",
+     "min": 262,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 271,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Montpellier",
+     "min": 282,
+     "direct": true,
+     "id": "city:Q6441",
+     "slug": "bordeaux-montpellier"
+    },
+    {
+     "name": "Lille",
+     "min": 287,
+     "direct": true,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 336,
+     "direct": true,
+     "id": "city:Q6602",
+     "slug": "bordeaux-strasbourg"
+    },
+    {
+     "name": "Londres",
+     "min": 373,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Barcelone",
+     "min": 385,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Marseille",
+     "min": 386,
+     "direct": true,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 395,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Zurich",
+     "min": 434,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Nice",
+     "min": 534,
+     "direct": false,
+     "id": "city:Q33959",
+     "slug": "bordeaux-nice"
+    },
+    {
+     "name": "Munich",
+     "min": 540,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Milan",
+     "min": 595,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Madrid",
+     "min": 608,
+     "direct": false,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Hambourg",
+     "min": 971,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Berlin",
+     "min": 1394,
+     "direct": false,
+     "id": "city:Q64"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Marseille",
+   "slug": "marseille",
+   "id": "city:Q23482",
+   "x": 889.2,
+   "y": 849.3,
+   "label": [
+    "start",
+    899.2,
+    854.5
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 12,
+     "other": 12,
+     "lines": 29,
+     "title": "Trains au départ de Marseille",
+     "alt": "Carte des trains au départ de Marseille : Barcelone, Bordeaux, Bruxelles, Lille, Lyon, Madrid, Montpellier, Nice, Paris, Rennes, Strasbourg, Toulouse, Amsterdam, Angers, Berlin, Bilbao, Hambourg, Londres, Malaga, Milan, Munich, Nantes, Séville, Zurich",
+     "image": "depuis-marseille"
+    },
+    {
+     "mode": "direct",
+     "direct": 12,
+     "other": 0,
+     "lines": 15,
+     "title": "Trains directs au départ de Marseille",
+     "alt": "Carte des trains directs au départ de Marseille : Barcelone, Bordeaux, Bruxelles, Lille, Lyon, Madrid, Montpellier, Nice, Paris, Rennes, Strasbourg, Toulouse",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 3,
+     "other": 0,
+     "lines": 5,
+     "title": "À moins de 3 heures de Marseille",
+     "alt": "Carte des à moins de 3 heures de Marseille : Lyon, Montpellier, Nice",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "Trains de nuit au départ de Marseille",
+     "alt": "Carte des trains de nuit au départ de Marseille : Paris",
+     "image": "depuis-marseille-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Montpellier",
+     "min": 85,
+     "direct": true,
+     "id": "city:Q6441",
+     "slug": "marseille-montpellier"
+    },
+    {
+     "name": "Lyon",
+     "min": 101,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Nice",
+     "min": 156,
+     "direct": true,
+     "id": "city:Q33959",
+     "slug": "marseille-nice"
+    },
+    {
+     "name": "Paris",
+     "min": 183,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Toulouse",
+     "min": 228,
+     "direct": true,
+     "id": "city:Q7880",
+     "slug": "marseille-toulouse"
+    },
+    {
+     "name": "Barcelone",
+     "min": 272,
+     "direct": true,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Lille",
+     "min": 272,
+     "direct": true,
+     "id": "city:Q648",
+     "slug": "marseille-lille"
+    },
+    {
+     "name": "Angers",
+     "min": 326,
+     "direct": false,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 331,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 331,
+     "direct": true,
+     "id": "city:Q6602",
+     "slug": "marseille-strasbourg"
+    },
+    {
+     "name": "Rennes",
+     "min": 357,
+     "direct": true,
+     "id": "city:Q647",
+     "slug": "marseille-rennes"
+    },
+    {
+     "name": "Nantes",
+     "min": 367,
+     "direct": false,
+     "id": "city:Q12191",
+     "slug": "marseille-nantes"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 382,
+     "direct": true,
+     "id": "city:Q1479",
+     "slug": "marseille-bordeaux"
+    },
+    {
+     "name": "Zurich",
+     "min": 390,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Londres",
+     "min": 415,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Milan",
+     "min": 415,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 459,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Madrid",
+     "min": 494,
+     "direct": true,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Munich",
+     "min": 600,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Malaga",
+     "min": 697,
+     "direct": false,
+     "id": "station:7154413"
+    },
+    {
+     "name": "Séville",
+     "min": 713,
+     "direct": false,
+     "id": "city:Q8717"
+    },
+    {
+     "name": "Berlin",
+     "min": 730,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Hambourg",
+     "min": 737,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Bilbao",
+     "min": 898,
+     "direct": false,
+     "id": "city:Q8692"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Lille",
+   "slug": "lille",
+   "id": "city:Q648",
+   "x": 839.7,
+   "y": 491.2,
+   "label": [
+    "end",
+    829.7,
+    496.4
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 12,
+     "other": 26,
+     "lines": 40,
+     "title": "Trains au départ de Lille",
+     "alt": "Carte des trains au départ de Lille : Amsterdam, Angers, Bordeaux, Bruxelles, Londres, Lyon, Marseille, Montpellier, Nantes, Paris, Rennes, Strasbourg, Barcelone, Bath, Berlin, Birmingham, Brighton, Bristol, Cambridge, Glasgow, Hambourg, Inverness, Leeds, Liverpool, Madrid, Manchester, Milan, Munich, Nice, Nottingham, Oxford, Plymouth, Sheffield, Toulouse, Vienne, York, Zurich, Édimbourg",
+     "image": "depuis-lille"
+    },
+    {
+     "mode": "direct",
+     "direct": 12,
+     "other": 0,
+     "lines": 13,
+     "title": "Trains directs au départ de Lille",
+     "alt": "Carte des trains directs au départ de Lille : Amsterdam, Angers, Bordeaux, Bruxelles, Londres, Lyon, Marseille, Montpellier, Nantes, Paris, Rennes, Strasbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 5,
+     "other": 1,
+     "lines": 7,
+     "title": "À moins de 3 heures de Lille",
+     "alt": "Carte des à moins de 3 heures de Lille : Amsterdam, Bruxelles, Londres, Lyon, Paris, Cambridge",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Bruxelles",
+     "min": 34,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 63,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Londres",
+     "min": 81,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Cambridge",
+     "min": 152,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 172,
+     "direct": true,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Lyon",
+     "min": 178,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 183,
+     "direct": true,
+     "id": "city:Q6602",
+     "slug": "lille-strasbourg"
+    },
+    {
+     "name": "Brighton",
+     "min": 186,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Oxford",
+     "min": 186,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Birmingham",
+     "min": 191,
+     "direct": false,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Angers",
+     "min": 197,
+     "direct": true,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Nottingham",
+     "min": 197,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Bristol",
+     "min": 204,
+     "direct": false,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Rennes",
+     "min": 205,
+     "direct": true,
+     "id": "city:Q647",
+     "slug": "lille-rennes"
+    },
+    {
+     "name": "York",
+     "min": 217,
+     "direct": false,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Bath",
+     "min": 222,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Manchester",
+     "min": 223,
+     "direct": false,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Leeds",
+     "min": 225,
+     "direct": false,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Nantes",
+     "min": 238,
+     "direct": true,
+     "id": "city:Q12191",
+     "slug": "lille-nantes"
+    },
+    {
+     "name": "Sheffield",
+     "min": 245,
+     "direct": false,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Liverpool",
+     "min": 257,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Marseille",
+     "min": 280,
+     "direct": true,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 285,
+     "direct": true,
+     "id": "city:Q1479",
+     "slug": "lille-bordeaux"
+    },
+    {
+     "name": "Montpellier",
+     "min": 291,
+     "direct": true,
+     "id": "city:Q6441",
+     "slug": "lille-montpellier"
+    },
+    {
+     "name": "Plymouth",
+     "min": 327,
+     "direct": false,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 357,
+     "direct": false,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Zurich",
+     "min": 363,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Glasgow",
+     "min": 385,
+     "direct": false,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Toulouse",
+     "min": 388,
+     "direct": false,
+     "id": "city:Q7880",
+     "slug": "lille-toulouse"
+    },
+    {
+     "name": "Nice",
+     "min": 464,
+     "direct": false,
+     "id": "city:Q33959",
+     "slug": "lille-nice"
+    },
+    {
+     "name": "Milan",
+     "min": 486,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Barcelone",
+     "min": 504,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Munich",
+     "min": 514,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Hambourg",
+     "min": 626,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Inverness",
+     "min": 693,
+     "direct": false,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Berlin",
+     "min": 810,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Vienne",
+     "min": 1209,
+     "direct": false,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Madrid",
+     "min": 1315,
+     "direct": false,
+     "id": "city:Q2807"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Toulouse",
+   "slug": "toulouse",
+   "id": "city:Q7880",
+   "x": 753.3,
+   "y": 822.7,
+   "label": [
+    "end",
+    743.3,
+    827.9
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 5,
+     "other": 16,
+     "lines": 22,
+     "title": "Trains au départ de Toulouse",
+     "alt": "Carte des trains au départ de Toulouse : Bordeaux, Lyon, Marseille, Montpellier, Paris, Amsterdam, Angers, Barcelone, Berlin, Bruxelles, Hambourg, Lille, Londres, Madrid, Milan, Munich, Nantes, Nice, Rennes, Strasbourg, Zurich",
+     "image": "depuis-toulouse"
+    },
+    {
+     "mode": "direct",
+     "direct": 5,
+     "other": 0,
+     "lines": 5,
+     "title": "Trains directs au départ de Toulouse",
+     "alt": "Carte des trains directs au départ de Toulouse : Bordeaux, Lyon, Marseille, Montpellier, Paris",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 2,
+     "other": 0,
+     "lines": 2,
+     "title": "À moins de 3 heures de Toulouse",
+     "alt": "Carte des à moins de 3 heures de Toulouse : Bordeaux, Montpellier",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "Trains de nuit au départ de Toulouse",
+     "alt": "Carte des trains de nuit au départ de Toulouse : Paris",
+     "image": "depuis-toulouse-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Montpellier",
+     "min": 130,
+     "direct": true,
+     "id": "city:Q6441",
+     "slug": "toulouse-montpellier"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 140,
+     "direct": true,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Barcelone",
+     "min": 221,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Marseille",
+     "min": 232,
+     "direct": true,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Lyon",
+     "min": 235,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Paris",
+     "min": 275,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Angers",
+     "min": 414,
+     "direct": false,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Nantes",
+     "min": 414,
+     "direct": false,
+     "id": "city:Q12191",
+     "slug": "toulouse-nantes"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 417,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Rennes",
+     "min": 418,
+     "direct": false,
+     "id": "city:Q647",
+     "slug": "toulouse-rennes"
+    },
+    {
+     "name": "Lille",
+     "min": 423,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 441,
+     "direct": false,
+     "id": "city:Q6602",
+     "slug": "toulouse-strasbourg"
+    },
+    {
+     "name": "Nice",
+     "min": 442,
+     "direct": false,
+     "id": "city:Q33959",
+     "slug": "toulouse-nice"
+    },
+    {
+     "name": "Madrid",
+     "min": 456,
+     "direct": false,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Londres",
+     "min": 528,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 570,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Zurich",
+     "min": 606,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Munich",
+     "min": 686,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Milan",
+     "min": 820,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Hambourg",
+     "min": 1122,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Berlin",
+     "min": 1306,
+     "direct": false,
+     "id": "city:Q64"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Nantes",
+   "slug": "nantes",
+   "id": "city:Q12191",
+   "x": 675.1,
+   "y": 636.6,
+   "label": [
+    "end",
+    665.1,
+    641.9
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 8,
+     "other": 12,
+     "lines": 20,
+     "title": "Trains au départ de Nantes",
+     "alt": "Carte des trains au départ de Nantes : Angers, Bordeaux, Bruxelles, Lille, Lyon, Paris, Rennes, Strasbourg, Amsterdam, Barcelone, Berlin, Hambourg, Londres, Marseille, Milan, Montpellier, Munich, Nice, Toulouse, Zurich",
+     "image": "depuis-nantes"
+    },
+    {
+     "mode": "direct",
+     "direct": 8,
+     "other": 0,
+     "lines": 8,
+     "title": "Trains directs au départ de Nantes",
+     "alt": "Carte des trains directs au départ de Nantes : Angers, Bordeaux, Bruxelles, Lille, Lyon, Paris, Rennes, Strasbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 3,
+     "other": 0,
+     "lines": 3,
+     "title": "À moins de 3 heures de Nantes",
+     "alt": "Carte des à moins de 3 heures de Nantes : Angers, Paris, Rennes",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Angers",
+     "min": 37,
+     "direct": true,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Rennes",
+     "min": 75,
+     "direct": true,
+     "id": "city:Q647",
+     "slug": "nantes-rennes"
+    },
+    {
+     "name": "Paris",
+     "min": 124,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 250,
+     "direct": true,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Lille",
+     "min": 258,
+     "direct": true,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Lyon",
+     "min": 266,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 302,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 304,
+     "direct": true,
+     "id": "city:Q6602",
+     "slug": "nantes-strasbourg"
+    },
+    {
+     "name": "Montpellier",
+     "min": 367,
+     "direct": false,
+     "id": "city:Q6441",
+     "slug": "nantes-montpellier"
+    },
+    {
+     "name": "Marseille",
+     "min": 369,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Londres",
+     "min": 382,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 406,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Toulouse",
+     "min": 412,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Zurich",
+     "min": 442,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Nice",
+     "min": 540,
+     "direct": false,
+     "id": "city:Q33959",
+     "slug": "nantes-nice"
+    },
+    {
+     "name": "Barcelone",
+     "min": 628,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Munich",
+     "min": 642,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Milan",
+     "min": 646,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Hambourg",
+     "min": 1013,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Berlin",
+     "min": 1273,
+     "direct": false,
+     "id": "city:Q64"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Strasbourg",
+   "slug": "strasbourg",
+   "id": "city:Q6602",
+   "x": 979.8,
+   "y": 599.1,
+   "label": [
+    "start",
+    989.8,
+    604.4
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 12,
+     "other": 12,
+     "lines": 29,
+     "title": "Trains au départ de Strasbourg",
+     "alt": "Carte des trains au départ de Strasbourg : Angers, Bordeaux, Bruxelles, Lille, Lyon, Marseille, Montpellier, Munich, Nantes, Nice, Paris, Rennes, Amsterdam, Barcelone, Berlin, Budapest, Hambourg, Londres, Madrid, Milan, Prague, Toulouse, Vienne, Zurich",
+     "image": "depuis-strasbourg"
+    },
+    {
+     "mode": "direct",
+     "direct": 12,
+     "other": 0,
+     "lines": 12,
+     "title": "Trains directs au départ de Strasbourg",
+     "alt": "Carte des trains directs au départ de Strasbourg : Angers, Bordeaux, Bruxelles, Lille, Lyon, Marseille, Montpellier, Munich, Nantes, Nice, Paris, Rennes",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 2,
+     "other": 1,
+     "lines": 4,
+     "title": "À moins de 3 heures de Strasbourg",
+     "alt": "Carte des à moins de 3 heures de Strasbourg : Lille, Paris, Zurich",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Paris",
+     "min": 103,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Zurich",
+     "min": 155,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Lille",
+     "min": 179,
+     "direct": true,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Lyon",
+     "min": 223,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 224,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Munich",
+     "min": 240,
+     "direct": true,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Angers",
+     "min": 279,
+     "direct": true,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Rennes",
+     "min": 286,
+     "direct": true,
+     "id": "city:Q647",
+     "slug": "strasbourg-rennes"
+    },
+    {
+     "name": "Londres",
+     "min": 308,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Nantes",
+     "min": 322,
+     "direct": true,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 328,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Marseille",
+     "min": 333,
+     "direct": true,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Hambourg",
+     "min": 343,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Milan",
+     "min": 359,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 361,
+     "direct": true,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Montpellier",
+     "min": 363,
+     "direct": true,
+     "id": "city:Q6441",
+     "slug": "strasbourg-montpellier"
+    },
+    {
+     "name": "Berlin",
+     "min": 364,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Toulouse",
+     "min": 438,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Vienne",
+     "min": 540,
+     "direct": false,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Nice",
+     "min": 546,
+     "direct": true,
+     "id": "city:Q33959",
+     "slug": "strasbourg-nice"
+    },
+    {
+     "name": "Barcelone",
+     "min": 619,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Budapest",
+     "min": 916,
+     "direct": false,
+     "id": "city:Q1781"
+    },
+    {
+     "name": "Prague",
+     "min": 995,
+     "direct": false,
+     "id": "city:Q1085"
+    },
+    {
+     "name": "Madrid",
+     "min": 1443,
+     "direct": false,
+     "id": "city:Q2807"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Montpellier",
+   "slug": "montpellier",
+   "id": "city:Q6441",
+   "x": 837.8,
+   "y": 830.5,
+   "label": [
+    "middle",
+    837.8,
+    818.5
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 12,
+     "other": 12,
+     "lines": 28,
+     "title": "Trains au départ de Montpellier",
+     "alt": "Carte des trains au départ de Montpellier : Angers, Barcelone, Bordeaux, Bruxelles, Lille, Lyon, Madrid, Marseille, Nantes, Paris, Strasbourg, Toulouse, Amsterdam, Berlin, Bilbao, Hambourg, Londres, Malaga, Milan, Munich, Nice, Rennes, Séville, Zurich",
+     "image": "depuis-montpellier"
+    },
+    {
+     "mode": "direct",
+     "direct": 12,
+     "other": 0,
+     "lines": 15,
+     "title": "Trains directs au départ de Montpellier",
+     "alt": "Carte des trains directs au départ de Montpellier : Angers, Barcelone, Bordeaux, Bruxelles, Lille, Lyon, Madrid, Marseille, Nantes, Paris, Strasbourg, Toulouse",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 4,
+     "other": 0,
+     "lines": 6,
+     "title": "À moins de 3 heures de Montpellier",
+     "alt": "Carte des à moins de 3 heures de Montpellier : Barcelone, Lyon, Marseille, Toulouse",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Marseille",
+     "min": 95,
+     "direct": true,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Lyon",
+     "min": 98,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Toulouse",
+     "min": 128,
+     "direct": true,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Barcelone",
+     "min": 175,
+     "direct": true,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Paris",
+     "min": 193,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 282,
+     "direct": true,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Lille",
+     "min": 288,
+     "direct": true,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Nice",
+     "min": 303,
+     "direct": false,
+     "id": "city:Q33959",
+     "slug": "montpellier-nice"
+    },
+    {
+     "name": "Rennes",
+     "min": 335,
+     "direct": false,
+     "id": "city:Q647",
+     "slug": "montpellier-rennes"
+    },
+    {
+     "name": "Angers",
+     "min": 349,
+     "direct": true,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 349,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 355,
+     "direct": true,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Nantes",
+     "min": 390,
+     "direct": true,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Madrid",
+     "min": 404,
+     "direct": true,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Milan",
+     "min": 433,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Zurich",
+     "min": 455,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Londres",
+     "min": 459,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 479,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Malaga",
+     "min": 607,
+     "direct": false,
+     "id": "station:7154413"
+    },
+    {
+     "name": "Séville",
+     "min": 623,
+     "direct": false,
+     "id": "city:Q8717"
+    },
+    {
+     "name": "Munich",
+     "min": 667,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Bilbao",
+     "min": 808,
+     "direct": false,
+     "id": "city:Q8692"
+    },
+    {
+     "name": "Hambourg",
+     "min": 963,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Berlin",
+     "min": 1147,
+     "direct": false,
+     "id": "city:Q64"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Nice",
+   "slug": "nice",
+   "id": "city:Q33959",
+   "x": 956.2,
+   "y": 833.0,
+   "label": [
+    "middle",
+    956.2,
+    821.0
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 4,
+     "other": 18,
+     "lines": 25,
+     "title": "Trains au départ de Nice",
+     "alt": "Carte des trains au départ de Nice : Lyon, Marseille, Paris, Strasbourg, Amsterdam, Angers, Barcelone, Berlin, Bordeaux, Bruxelles, Hambourg, Lille, Londres, Madrid, Milan, Montpellier, Munich, Nantes, Rennes, Rome, Toulouse, Zurich",
+     "image": "depuis-nice"
+    },
+    {
+     "mode": "direct",
+     "direct": 4,
+     "other": 0,
+     "lines": 4,
+     "title": "Trains directs au départ de Nice",
+     "alt": "Carte des trains directs au départ de Nice : Lyon, Marseille, Paris, Strasbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "À moins de 3 heures de Nice",
+     "alt": "Carte des à moins de 3 heures de Nice : Marseille",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Marseille",
+     "min": 154,
+     "direct": true,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Lyon",
+     "min": 271,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Milan",
+     "min": 298,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Montpellier",
+     "min": 302,
+     "direct": false,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Paris",
+     "min": 344,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Toulouse",
+     "min": 440,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Lille",
+     "min": 457,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Angers",
+     "min": 496,
+     "direct": false,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 501,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Rennes",
+     "min": 507,
+     "direct": false,
+     "id": "city:Q647",
+     "slug": "nice-rennes"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 531,
+     "direct": false,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Nantes",
+     "min": 536,
+     "direct": false,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 537,
+     "direct": true,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Zurich",
+     "min": 569,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Londres",
+     "min": 634,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 652,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Barcelone",
+     "min": 746,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Munich",
+     "min": 889,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Rome",
+     "min": 1072,
+     "direct": false,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Hambourg",
+     "min": 1259,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Madrid",
+     "min": 1402,
+     "direct": false,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Berlin",
+     "min": 1443,
+     "direct": false,
+     "id": "city:Q64"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Madrid",
+   "slug": "madrid",
+   "id": "city:Q2807",
+   "x": 550.2,
+   "y": 948.0,
+   "label": [
+    "start",
+    560.2,
+    953.3
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 6,
+     "other": 10,
+     "lines": 24,
+     "title": "Trains au départ de Madrid",
+     "alt": "Carte des trains au départ de Madrid : Barcelone, Bilbao, Malaga, Marseille, Montpellier, Séville, Bordeaux, Bruxelles, Lille, Lyon, Nice, Paris, Porto, Rennes, Strasbourg, Toulouse",
+     "image": "depuis-madrid"
+    },
+    {
+     "mode": "direct",
+     "direct": 6,
+     "other": 0,
+     "lines": 9,
+     "title": "Trains directs au départ de Madrid",
+     "alt": "Carte des trains directs au départ de Madrid : Barcelone, Bilbao, Malaga, Marseille, Montpellier, Séville",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 2,
+     "other": 0,
+     "lines": 4,
+     "title": "À moins de 3 heures de Madrid",
+     "alt": "Carte des à moins de 3 heures de Madrid : Malaga, Séville",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Séville",
+     "min": 158,
+     "direct": true,
+     "id": "city:Q8717",
+     "slug": "madrid-seville"
+    },
+    {
+     "name": "Malaga",
+     "min": 167,
+     "direct": true,
+     "id": "station:7154413",
+     "slug": "madrid-malaga"
+    },
+    {
+     "name": "Barcelone",
+     "min": 182,
+     "direct": true,
+     "id": "city:Q1492",
+     "slug": "madrid-barcelone"
+    },
+    {
+     "name": "Bilbao",
+     "min": 310,
+     "direct": true,
+     "id": "city:Q8692"
+    },
+    {
+     "name": "Montpellier",
+     "min": 415,
+     "direct": true,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Toulouse",
+     "min": 463,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Marseille",
+     "min": 522,
+     "direct": true,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Lyon",
+     "min": 528,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Porto",
+     "min": 558,
+     "direct": false,
+     "id": "city:Q36433",
+     "slug": "madrid-porto"
+    },
+    {
+     "name": "Paris",
+     "min": 651,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Lille",
+     "min": 1322,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 1384,
+     "direct": false,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 1401,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 1414,
+     "direct": false,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Nice",
+     "min": 1454,
+     "direct": false,
+     "id": "city:Q33959"
+    },
+    {
+     "name": "Rennes",
+     "min": 1901,
+     "direct": false,
+     "id": "city:Q647"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Berlin",
+   "slug": "berlin",
+   "id": "city:Q64",
+   "x": 1150.6,
+   "y": 408.0,
+   "label": [
+    "start",
+    1160.6,
+    413.3
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 5,
+     "other": 14,
+     "lines": 30,
+     "title": "Trains au départ de Berlin",
+     "alt": "Carte des trains au départ de Berlin : Amsterdam, Cracovie, Hambourg, Munich, Prague, Bruxelles, Budapest, Copenhague, Lille, Londres, Lyon, Marseille, Milan, Paris, Rome, Strasbourg, Varsovie, Vienne, Zurich",
+     "image": "depuis-berlin"
+    },
+    {
+     "mode": "direct",
+     "direct": 5,
+     "other": 0,
+     "lines": 9,
+     "title": "Trains directs au départ de Berlin",
+     "alt": "Carte des trains directs au départ de Berlin : Amsterdam, Cracovie, Hambourg, Munich, Prague",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 1,
+     "other": 0,
+     "lines": 4,
+     "title": "À moins de 3 heures de Berlin",
+     "alt": "Carte des à moins de 3 heures de Berlin : Hambourg",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 9,
+     "other": 0,
+     "lines": 9,
+     "title": "Trains de nuit au départ de Berlin",
+     "alt": "Carte des trains de nuit au départ de Berlin : Przemyśl Główny, Munich, Guntzbourg, Bâle, Norrköping, Bruxelles, Paris, Francfort-sur-le-Main, Břeclav",
+     "image": "depuis-berlin-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Hambourg",
+     "min": 94,
+     "direct": true,
+     "id": "city:Q1055",
+     "slug": "berlin-hambourg"
+    },
+    {
+     "name": "Prague",
+     "min": 231,
+     "direct": true,
+     "id": "city:Q1085",
+     "slug": "berlin-prague"
+    },
+    {
+     "name": "Munich",
+     "min": 274,
+     "direct": true,
+     "id": "city:Q1726",
+     "slug": "berlin-munich"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 365,
+     "direct": false,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 400,
+     "direct": true,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Cracovie",
+     "min": 402,
+     "direct": true,
+     "id": "station:TL17584"
+    },
+    {
+     "name": "Copenhague",
+     "min": 414,
+     "direct": false,
+     "id": "station:8600626"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 465,
+     "direct": false,
+     "id": "city:Q239",
+     "slug": "berlin-bruxelles"
+    },
+    {
+     "name": "Paris",
+     "min": 479,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Zurich",
+     "min": 497,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Vienne",
+     "min": 540,
+     "direct": false,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Varsovie",
+     "min": 562,
+     "direct": false,
+     "id": "station:5100066",
+     "slug": "berlin-varsovie"
+    },
+    {
+     "name": "Lyon",
+     "min": 623,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Budapest",
+     "min": 724,
+     "direct": false,
+     "id": "city:Q1781"
+    },
+    {
+     "name": "Marseille",
+     "min": 733,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Milan",
+     "min": 787,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Lille",
+     "min": 840,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Rome",
+     "min": 1162,
+     "direct": false,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Londres",
+     "min": 1178,
+     "direct": false,
+     "id": "city:Q84"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Milan",
+   "slug": "milan",
+   "id": "city:Q490",
+   "x": 1024.1,
+   "y": 749.6,
+   "label": [
+    "start",
+    1034.1,
+    754.9
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 8,
+     "other": 19,
+     "lines": 34,
+     "title": "Trains au départ de Milan",
+     "alt": "Carte des trains au départ de Milan : Bari, Lyon, Naples, Palerme, Paris, Rome, Venise, Zurich, Amsterdam, Angers, Barcelone, Berlin, Bordeaux, Bruxelles, Budapest, Hambourg, Lille, Londres, Marseille, Montpellier, Munich, Nantes, Nice, Rennes, Strasbourg, Toulouse, Vienne",
+     "image": "depuis-milan"
+    },
+    {
+     "mode": "direct",
+     "direct": 8,
+     "other": 0,
+     "lines": 12,
+     "title": "Trains directs au départ de Milan",
+     "alt": "Carte des trains directs au départ de Milan : Bari, Lyon, Naples, Palerme, Paris, Rome, Venise, Zurich",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 2,
+     "other": 0,
+     "lines": 4,
+     "title": "À moins de 3 heures de Milan",
+     "alt": "Carte des à moins de 3 heures de Milan : Rome, Venise",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 4,
+     "other": 0,
+     "lines": 4,
+     "title": "Trains de nuit au départ de Milan",
+     "alt": "Carte des trains de nuit au départ de Milan : Palerme, Lecce, Ostuni, Salerne",
+     "image": "depuis-milan-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Venise",
+     "min": 133,
+     "direct": true,
+     "id": "city:Q641",
+     "slug": "milan-venise"
+    },
+    {
+     "name": "Rome",
+     "min": 175,
+     "direct": true,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Zurich",
+     "min": 197,
+     "direct": true,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Naples",
+     "min": 258,
+     "direct": true,
+     "id": "city:Q2634"
+    },
+    {
+     "name": "Lyon",
+     "min": 279,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Nice",
+     "min": 293,
+     "direct": false,
+     "id": "city:Q33959"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 358,
+     "direct": false,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Bari",
+     "min": 402,
+     "direct": true,
+     "id": "city:Q3519"
+    },
+    {
+     "name": "Paris",
+     "min": 403,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Marseille",
+     "min": 419,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Montpellier",
+     "min": 457,
+     "direct": false,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Munich",
+     "min": 474,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Rennes",
+     "min": 555,
+     "direct": false,
+     "id": "city:Q647"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 562,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Lille",
+     "min": 572,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Angers",
+     "min": 587,
+     "direct": false,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Toulouse",
+     "min": 595,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 614,
+     "direct": false,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Nantes",
+     "min": 628,
+     "direct": false,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Londres",
+     "min": 665,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 685,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Berlin",
+     "min": 727,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Hambourg",
+     "min": 739,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Vienne",
+     "min": 739,
+     "direct": false,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Barcelone",
+     "min": 778,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Palerme",
+     "min": 1245,
+     "direct": true,
+     "id": "city:Q2656"
+    },
+    {
+     "name": "Budapest",
+     "min": 1492,
+     "direct": false,
+     "id": "city:Q1781"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Édimbourg",
+   "slug": "edimbourg",
+   "id": "city:Q23436",
+   "x": 697.6,
+   "y": 212.9,
+   "label": [
+    "start",
+    707.6,
+    218.1
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 10,
+     "other": 10,
+     "lines": 23,
+     "title": "Trains au départ de Édimbourg",
+     "alt": "Carte des trains au départ de Édimbourg : Birmingham, Bristol, Glasgow, Inverness, Leeds, Londres, Manchester, Plymouth, Sheffield, York, Amsterdam, Bath, Brighton, Bruxelles, Cambridge, Lille, Liverpool, Nottingham, Oxford, Paris",
+     "image": "depuis-edimbourg"
+    },
+    {
+     "mode": "direct",
+     "direct": 10,
+     "other": 0,
+     "lines": 10,
+     "title": "Trains directs au départ de Édimbourg",
+     "alt": "Carte des trains directs au départ de Édimbourg : Birmingham, Bristol, Glasgow, Inverness, Leeds, Londres, Manchester, Plymouth, Sheffield, York",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 3,
+     "other": 0,
+     "lines": 3,
+     "title": "À moins de 3 heures de Édimbourg",
+     "alt": "Carte des à moins de 3 heures de Édimbourg : Glasgow, Leeds, York",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 2,
+     "other": 0,
+     "lines": 2,
+     "title": "Trains de nuit au départ de Édimbourg",
+     "alt": "Carte des trains de nuit au départ de Édimbourg : Londres, Helensburgh",
+     "image": "depuis-edimbourg-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Glasgow",
+     "min": 40,
+     "direct": true,
+     "id": "city:Q4093",
+     "slug": "edimbourg-glasgow"
+    },
+    {
+     "name": "York",
+     "min": 134,
+     "direct": true,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Leeds",
+     "min": 177,
+     "direct": true,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Manchester",
+     "min": 184,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Liverpool",
+     "min": 197,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Inverness",
+     "min": 204,
+     "direct": true,
+     "id": "city:Q160493",
+     "slug": "edimbourg-inverness"
+    },
+    {
+     "name": "Sheffield",
+     "min": 227,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Birmingham",
+     "min": 248,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Londres",
+     "min": 250,
+     "direct": true,
+     "id": "city:Q84",
+     "slug": "edimbourg-londres"
+    },
+    {
+     "name": "Nottingham",
+     "min": 252,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Cambridge",
+     "min": 280,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Oxford",
+     "min": 336,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Brighton",
+     "min": 341,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Bristol",
+     "min": 372,
+     "direct": true,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Bath",
+     "min": 378,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Lille",
+     "min": 409,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 448,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 471,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Plymouth",
+     "min": 519,
+     "direct": true,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 585,
+     "direct": false,
+     "id": "city:Q727"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Rome",
+   "slug": "rome",
+   "id": "city:Q220",
+   "x": 1140.7,
+   "y": 920.2,
+   "label": [
+    "start",
+    1150.7,
+    925.5
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 7,
+     "other": 9,
+     "lines": 21,
+     "title": "Trains au départ de Rome",
+     "alt": "Carte des trains au départ de Rome : Bari, Milan, Munich, Naples, Palerme, Venise, Vienne, Berlin, Bruxelles, Budapest, Hambourg, Lyon, Nice, Paris, Prague, Zurich",
+     "image": "depuis-rome"
+    },
+    {
+     "mode": "direct",
+     "direct": 7,
+     "other": 0,
+     "lines": 11,
+     "title": "Trains directs au départ de Rome",
+     "alt": "Carte des trains directs au départ de Rome : Bari, Milan, Munich, Naples, Palerme, Venise, Vienne",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 2,
+     "other": 0,
+     "lines": 4,
+     "title": "À moins de 3 heures de Rome",
+     "alt": "Carte des à moins de 3 heures de Rome : Milan, Naples",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 7,
+     "other": 0,
+     "lines": 8,
+     "title": "Trains de nuit au départ de Rome",
+     "alt": "Carte des trains de nuit au départ de Rome : Trieste, Palerme, Turin, Munich, Vienne, Tarvisio Boscoverde, Tarvisio",
+     "image": "depuis-rome-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Naples",
+     "min": 68,
+     "direct": true,
+     "id": "city:Q2634",
+     "slug": "rome-naples"
+    },
+    {
+     "name": "Milan",
+     "min": 172,
+     "direct": true,
+     "id": "city:Q490",
+     "slug": "rome-milan"
+    },
+    {
+     "name": "Venise",
+     "min": 196,
+     "direct": true,
+     "id": "city:Q641"
+    },
+    {
+     "name": "Bari",
+     "min": 254,
+     "direct": true,
+     "id": "city:Q3519"
+    },
+    {
+     "name": "Zurich",
+     "min": 407,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Lyon",
+     "min": 492,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Paris",
+     "min": 616,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Palerme",
+     "min": 692,
+     "direct": true,
+     "id": "city:Q2656",
+     "slug": "rome-palerme"
+    },
+    {
+     "name": "Vienne",
+     "min": 889,
+     "direct": true,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Nice",
+     "min": 898,
+     "direct": false,
+     "id": "city:Q33959"
+    },
+    {
+     "name": "Munich",
+     "min": 919,
+     "direct": true,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Budapest",
+     "min": 1083,
+     "direct": false,
+     "id": "city:Q1781"
+    },
+    {
+     "name": "Berlin",
+     "min": 1265,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Hambourg",
+     "min": 1294,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Prague",
+     "min": 1331,
+     "direct": false,
+     "id": "city:Q1085"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 2151,
+     "direct": false,
+     "id": "city:Q239"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Porto",
+   "slug": "porto",
+   "id": "city:Q36433",
+   "x": 382.0,
+   "y": 876.0,
+   "label": [
+    "start",
+    392.0,
+    881.3
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 1,
+     "other": 2,
+     "lines": 4,
+     "title": "Trains au départ de Porto",
+     "alt": "Carte des trains au départ de Porto : Lisbonne, Barcelone, Madrid",
+     "image": "depuis-porto"
+    },
+    {
+     "mode": "direct",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "Trains directs au départ de Porto",
+     "alt": "Carte des trains directs au départ de Porto : Lisbonne",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "À moins de 3 heures de Porto",
+     "alt": "Carte des à moins de 3 heures de Porto : Lisbonne",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Lisbonne",
+     "min": 162,
+     "direct": true,
+     "id": "city:Q597",
+     "slug": "porto-lisbonne"
+    },
+    {
+     "name": "Madrid",
+     "min": 507,
+     "direct": false,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Barcelone",
+     "min": 1530,
+     "direct": false,
+     "id": "city:Q1492"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Lisbonne",
+   "slug": "lisbonne",
+   "id": "city:Q597",
+   "x": 336.9,
+   "y": 986.1,
+   "label": [
+    "start",
+    346.9,
+    991.3
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "Trains au départ de Lisbonne",
+     "alt": "Carte des trains au départ de Lisbonne : Porto",
+     "image": "depuis-lisbonne"
+    },
+    {
+     "mode": "direct",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "Trains directs au départ de Lisbonne",
+     "alt": "Carte des trains directs au départ de Lisbonne : Porto",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "À moins de 3 heures de Lisbonne",
+     "alt": "Carte des à moins de 3 heures de Lisbonne : Porto",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Porto",
+     "min": 159,
+     "direct": true,
+     "id": "city:Q36433"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Amsterdam",
+   "slug": "amsterdam",
+   "id": "city:Q727",
+   "x": 901.1,
+   "y": 412.3,
+   "label": [
+    "start",
+    911.1,
+    417.6
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 9,
+     "other": 33,
+     "lines": 44,
+     "title": "Trains au départ de Amsterdam",
+     "alt": "Carte des trains au départ de Amsterdam : Berlin, Bruxelles, Hambourg, Lille, Londres, Munich, Paris, Vienne, Zurich, Angers, Barcelone, Bath, Birmingham, Bordeaux, Brighton, Bristol, Budapest, Cambridge, Cracovie, Glasgow, Inverness, Leeds, Liverpool, Lyon, Manchester, Marseille, Milan, Montpellier, Nantes, Nice, Nottingham, Oxford, Plymouth, Prague, Rennes, Rome, Sheffield, Strasbourg, Toulouse, Venise, York, Édimbourg",
+     "image": "depuis-amsterdam"
+    },
+    {
+     "mode": "direct",
+     "direct": 9,
+     "other": 0,
+     "lines": 11,
+     "title": "Trains directs au départ de Amsterdam",
+     "alt": "Carte des trains directs au départ de Amsterdam : Berlin, Bruxelles, Hambourg, Lille, Londres, Munich, Paris, Vienne, Zurich",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 2,
+     "other": 0,
+     "lines": 3,
+     "title": "À moins de 3 heures de Amsterdam",
+     "alt": "Carte des à moins de 3 heures de Amsterdam : Bruxelles, Lille",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 4,
+     "other": 0,
+     "lines": 4,
+     "title": "Trains de nuit au départ de Amsterdam",
+     "alt": "Carte des trains de nuit au départ de Amsterdam : Baden-Baden, Innsbruck, Vienne, Prague",
+     "image": "depuis-amsterdam-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Bruxelles",
+     "min": 116,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Lille",
+     "min": 165,
+     "direct": true,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Paris",
+     "min": 206,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Londres",
+     "min": 257,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Hambourg",
+     "min": 277,
+     "direct": true,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 328,
+     "direct": false,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Cambridge",
+     "min": 329,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Angers",
+     "min": 340,
+     "direct": false,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Oxford",
+     "min": 362,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Brighton",
+     "min": 363,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Birmingham",
+     "min": 368,
+     "direct": false,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Lyon",
+     "min": 368,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Rennes",
+     "min": 368,
+     "direct": false,
+     "id": "city:Q647"
+    },
+    {
+     "name": "Nottingham",
+     "min": 373,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Bristol",
+     "min": 381,
+     "direct": false,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Nantes",
+     "min": 381,
+     "direct": false,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 396,
+     "direct": false,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "York",
+     "min": 396,
+     "direct": false,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Bath",
+     "min": 398,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Berlin",
+     "min": 398,
+     "direct": true,
+     "id": "city:Q64",
+     "slug": "amsterdam-berlin"
+    },
+    {
+     "name": "Manchester",
+     "min": 399,
+     "direct": false,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Leeds",
+     "min": 401,
+     "direct": false,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Sheffield",
+     "min": 421,
+     "direct": false,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Munich",
+     "min": 429,
+     "direct": true,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Liverpool",
+     "min": 433,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Marseille",
+     "min": 464,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Montpellier",
+     "min": 470,
+     "direct": false,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Plymouth",
+     "min": 513,
+     "direct": false,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 532,
+     "direct": false,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Toulouse",
+     "min": 558,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Glasgow",
+     "min": 561,
+     "direct": false,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Nice",
+     "min": 654,
+     "direct": false,
+     "id": "city:Q33959"
+    },
+    {
+     "name": "Milan",
+     "min": 657,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Zurich",
+     "min": 710,
+     "direct": true,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Prague",
+     "min": 736,
+     "direct": false,
+     "id": "city:Q1085"
+    },
+    {
+     "name": "Barcelone",
+     "min": 742,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Inverness",
+     "min": 868,
+     "direct": false,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Vienne",
+     "min": 938,
+     "direct": true,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Cracovie",
+     "min": 994,
+     "direct": false,
+     "id": "station:TL17584"
+    },
+    {
+     "name": "Venise",
+     "min": 1049,
+     "direct": false,
+     "id": "city:Q641"
+    },
+    {
+     "name": "Budapest",
+     "min": 1141,
+     "direct": false,
+     "id": "city:Q1781"
+    },
+    {
+     "name": "Rome",
+     "min": 1534,
+     "direct": false,
+     "id": "city:Q220"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Prague",
+   "slug": "prague",
+   "id": "city:Q1085",
+   "x": 1188.0,
+   "y": 523.2,
+   "label": [
+    "start",
+    1198.0,
+    528.5
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 7,
+     "other": 12,
+     "lines": 21,
+     "title": "Trains au départ de Prague",
+     "alt": "Carte des trains au départ de Prague : Amsterdam, Berlin, Bruxelles, Budapest, Hambourg, Munich, Vienne, Angers, Cracovie, Lille, Londres, Lyon, Marseille, Montpellier, Nantes, Paris, Rome, Varsovie, Zurich",
+     "image": "depuis-prague"
+    },
+    {
+     "mode": "direct",
+     "direct": 7,
+     "other": 0,
+     "lines": 7,
+     "title": "Trains directs au départ de Prague",
+     "alt": "Carte des trains directs au départ de Prague : Amsterdam, Berlin, Bruxelles, Budapest, Hambourg, Munich, Vienne",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "Trains de nuit au départ de Prague",
+     "alt": "Carte des trains de nuit au départ de Prague : Bruxelles",
+     "image": "depuis-prague-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Vienne",
+     "min": 253,
+     "direct": true,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Berlin",
+     "min": 288,
+     "direct": true,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Munich",
+     "min": 333,
+     "direct": true,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Budapest",
+     "min": 412,
+     "direct": true,
+     "id": "city:Q1781"
+    },
+    {
+     "name": "Cracovie",
+     "min": 525,
+     "direct": false,
+     "id": "station:TL17584"
+    },
+    {
+     "name": "Zurich",
+     "min": 643,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Varsovie",
+     "min": 703,
+     "direct": false,
+     "id": "station:5100066"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 808,
+     "direct": true,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Hambourg",
+     "min": 910,
+     "direct": true,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 987,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 1061,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Lille",
+     "min": 1131,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Rome",
+     "min": 1230,
+     "direct": false,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Londres",
+     "min": 1257,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Lyon",
+     "min": 1379,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Marseille",
+     "min": 1486,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Angers",
+     "min": 1509,
+     "direct": false,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Nantes",
+     "min": 1550,
+     "direct": false,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Montpellier",
+     "min": 1683,
+     "direct": false,
+     "id": "city:Q6441"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Birmingham",
+   "slug": "birmingham",
+   "id": "city:Q20986424",
+   "x": 704.1,
+   "y": 384.0,
+   "label": [
+    "start",
+    714.1,
+    389.3
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 13,
+     "other": 8,
+     "lines": 22,
+     "title": "Trains au départ de Birmingham",
+     "alt": "Carte des trains au départ de Birmingham : Bristol, Cambridge, Glasgow, Leeds, Liverpool, Londres, Manchester, Nottingham, Oxford, Plymouth, Sheffield, York, Édimbourg, Amsterdam, Bath, Brighton, Bruxelles, Dublin, Inverness, Lille, Paris",
+     "image": "depuis-birmingham"
+    },
+    {
+     "mode": "direct",
+     "direct": 13,
+     "other": 0,
+     "lines": 13,
+     "title": "Trains directs au départ de Birmingham",
+     "alt": "Carte des trains directs au départ de Birmingham : Bristol, Cambridge, Glasgow, Leeds, Liverpool, Londres, Manchester, Nottingham, Oxford, Plymouth, Sheffield, York, Édimbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 10,
+     "other": 1,
+     "lines": 11,
+     "title": "À moins de 3 heures de Birmingham",
+     "alt": "Carte des à moins de 3 heures de Birmingham : Bristol, Cambridge, Leeds, Liverpool, Londres, Manchester, Nottingham, Oxford, Sheffield, York, Bath",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Sheffield",
+     "min": 59,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Oxford",
+     "min": 63,
+     "direct": true,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Bristol",
+     "min": 68,
+     "direct": true,
+     "id": "city:Q23154",
+     "slug": "birmingham-bristol"
+    },
+    {
+     "name": "Nottingham",
+     "min": 69,
+     "direct": true,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Londres",
+     "min": 79,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Liverpool",
+     "min": 86,
+     "direct": true,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Manchester",
+     "min": 88,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Bath",
+     "min": 108,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "York",
+     "min": 112,
+     "direct": true,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Leeds",
+     "min": 118,
+     "direct": true,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Cambridge",
+     "min": 160,
+     "direct": true,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Brighton",
+     "min": 181,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Plymouth",
+     "min": 211,
+     "direct": true,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Lille",
+     "min": 235,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 245,
+     "direct": true,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Glasgow",
+     "min": 246,
+     "direct": true,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 277,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 300,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 410,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Inverness",
+     "min": 481,
+     "direct": false,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Dublin",
+     "min": 675,
+     "direct": false,
+     "id": "station:7003500"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Leeds",
+   "slug": "leeds",
+   "id": "city:Q39121",
+   "x": 724.5,
+   "y": 322.9,
+   "label": [
+    "middle",
+    724.5,
+    301.9
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 11,
+     "other": 9,
+     "lines": 21,
+     "title": "Trains au départ de Leeds",
+     "alt": "Carte des trains au départ de Leeds : Birmingham, Bristol, Glasgow, Liverpool, Londres, Manchester, Nottingham, Plymouth, Sheffield, York, Édimbourg, Amsterdam, Bath, Brighton, Bruxelles, Cambridge, Inverness, Lille, Oxford, Paris",
+     "image": "depuis-leeds"
+    },
+    {
+     "mode": "direct",
+     "direct": 11,
+     "other": 0,
+     "lines": 11,
+     "title": "Trains directs au départ de Leeds",
+     "alt": "Carte des trains directs au départ de Leeds : Birmingham, Bristol, Glasgow, Liverpool, Londres, Manchester, Nottingham, Plymouth, Sheffield, York, Édimbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 8,
+     "other": 1,
+     "lines": 10,
+     "title": "À moins de 3 heures de Leeds",
+     "alt": "Carte des à moins de 3 heures de Leeds : Birmingham, Liverpool, Londres, Manchester, Nottingham, Sheffield, York, Édimbourg, Cambridge",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "York",
+     "min": 14,
+     "direct": true,
+     "id": "station:7082630",
+     "slug": "leeds-york"
+    },
+    {
+     "name": "Sheffield",
+     "min": 40,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Manchester",
+     "min": 48,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Liverpool",
+     "min": 89,
+     "direct": true,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Birmingham",
+     "min": 109,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Nottingham",
+     "min": 109,
+     "direct": true,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Londres",
+     "min": 119,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Cambridge",
+     "min": 159,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 175,
+     "direct": true,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Bristol",
+     "min": 185,
+     "direct": true,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Oxford",
+     "min": 201,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Brighton",
+     "min": 223,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Bath",
+     "min": 225,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Glasgow",
+     "min": 245,
+     "direct": true,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Lille",
+     "min": 285,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 325,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Plymouth",
+     "min": 328,
+     "direct": true,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Paris",
+     "min": 336,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Inverness",
+     "min": 394,
+     "direct": false,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 460,
+     "direct": false,
+     "id": "city:Q727"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "York",
+   "slug": "york",
+   "id": "station:7082630",
+   "x": 738.3,
+   "y": 317.3,
+   "label": [
+    "start",
+    748.3,
+    322.5
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 12,
+     "other": 8,
+     "lines": 22,
+     "title": "Trains au départ de York",
+     "alt": "Carte des trains au départ de York : Birmingham, Bristol, Glasgow, Inverness, Leeds, Liverpool, Londres, Manchester, Oxford, Plymouth, Sheffield, Édimbourg, Amsterdam, Bath, Brighton, Bruxelles, Cambridge, Lille, Nottingham, Paris",
+     "image": "depuis-york"
+    },
+    {
+     "mode": "direct",
+     "direct": 12,
+     "other": 0,
+     "lines": 12,
+     "title": "Trains directs au départ de York",
+     "alt": "Carte des trains directs au départ de York : Birmingham, Bristol, Glasgow, Inverness, Leeds, Liverpool, Londres, Manchester, Oxford, Plymouth, Sheffield, Édimbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 8,
+     "other": 2,
+     "lines": 12,
+     "title": "À moins de 3 heures de York",
+     "alt": "Carte des à moins de 3 heures de York : Birmingham, Leeds, Liverpool, Londres, Manchester, Oxford, Sheffield, Édimbourg, Cambridge, Nottingham",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Leeds",
+     "min": 14,
+     "direct": true,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Sheffield",
+     "min": 44,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Manchester",
+     "min": 73,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Nottingham",
+     "min": 100,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Birmingham",
+     "min": 109,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Londres",
+     "min": 111,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Liverpool",
+     "min": 114,
+     "direct": true,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 137,
+     "direct": true,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Cambridge",
+     "min": 147,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Oxford",
+     "min": 180,
+     "direct": true,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Brighton",
+     "min": 202,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Bristol",
+     "min": 218,
+     "direct": true,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Glasgow",
+     "min": 219,
+     "direct": true,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Bath",
+     "min": 240,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Lille",
+     "min": 255,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 294,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 320,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Plymouth",
+     "min": 361,
+     "direct": true,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Inverness",
+     "min": 362,
+     "direct": true,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 438,
+     "direct": false,
+     "id": "city:Q727"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Manchester",
+   "slug": "manchester",
+   "id": "city:Q21525592",
+   "x": 701.5,
+   "y": 337.8,
+   "label": [
+    "end",
+    688.2,
+    360.1
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 11,
+     "other": 10,
+     "lines": 22,
+     "title": "Trains au départ de Manchester",
+     "alt": "Carte des trains au départ de Manchester : Birmingham, Bristol, Glasgow, Leeds, Liverpool, Londres, Nottingham, Oxford, Sheffield, York, Édimbourg, Amsterdam, Bath, Brighton, Bruxelles, Cambridge, Dublin, Inverness, Lille, Paris, Plymouth",
+     "image": "depuis-manchester"
+    },
+    {
+     "mode": "direct",
+     "direct": 11,
+     "other": 0,
+     "lines": 11,
+     "title": "Trains directs au départ de Manchester",
+     "alt": "Carte des trains directs au départ de Manchester : Birmingham, Bristol, Glasgow, Leeds, Liverpool, Londres, Nottingham, Oxford, Sheffield, York, Édimbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 9,
+     "other": 0,
+     "lines": 9,
+     "title": "À moins de 3 heures de Manchester",
+     "alt": "Carte des à moins de 3 heures de Manchester : Birmingham, Bristol, Leeds, Liverpool, Londres, Nottingham, Oxford, Sheffield, York",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Liverpool",
+     "min": 36,
+     "direct": true,
+     "id": "city:Q21665571",
+     "slug": "manchester-liverpool"
+    },
+    {
+     "name": "Sheffield",
+     "min": 44,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Leeds",
+     "min": 47,
+     "direct": true,
+     "id": "city:Q39121",
+     "slug": "manchester-leeds"
+    },
+    {
+     "name": "York",
+     "min": 73,
+     "direct": true,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Birmingham",
+     "min": 88,
+     "direct": true,
+     "id": "city:Q20986424",
+     "slug": "manchester-birmingham"
+    },
+    {
+     "name": "Nottingham",
+     "min": 106,
+     "direct": true,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Londres",
+     "min": 119,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Oxford",
+     "min": 168,
+     "direct": true,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Bristol",
+     "min": 174,
+     "direct": true,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 183,
+     "direct": true,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Cambridge",
+     "min": 189,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Glasgow",
+     "min": 190,
+     "direct": true,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Bath",
+     "min": 211,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Brighton",
+     "min": 223,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Lille",
+     "min": 282,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Plymouth",
+     "min": 318,
+     "direct": false,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 321,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 337,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Dublin",
+     "min": 417,
+     "direct": false,
+     "id": "station:7003500"
+    },
+    {
+     "name": "Inverness",
+     "min": 422,
+     "direct": false,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 466,
+     "direct": false,
+     "id": "city:Q727"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Barcelone",
+   "slug": "barcelone",
+   "id": "city:Q1492",
+   "x": 768.5,
+   "y": 931.8,
+   "label": [
+    "start",
+    778.5,
+    937.1
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 8,
+     "other": 16,
+     "lines": 29,
+     "title": "Trains au départ de Barcelone",
+     "alt": "Carte des trains au départ de Barcelone : Bilbao, Lyon, Madrid, Malaga, Marseille, Montpellier, Paris, Séville, Amsterdam, Angers, Berlin, Bordeaux, Bruxelles, Hambourg, Lille, Londres, Milan, Nantes, Nice, Porto, Rennes, Strasbourg, Toulouse, Zurich",
+     "image": "depuis-barcelone"
+    },
+    {
+     "mode": "direct",
+     "direct": 8,
+     "other": 0,
+     "lines": 10,
+     "title": "Trains directs au départ de Barcelone",
+     "alt": "Carte des trains directs au départ de Barcelone : Bilbao, Lyon, Madrid, Malaga, Marseille, Montpellier, Paris, Séville",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Madrid",
+     "min": 182,
+     "direct": true,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Montpellier",
+     "min": 186,
+     "direct": true,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Toulouse",
+     "min": 227,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Marseille",
+     "min": 301,
+     "direct": true,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Lyon",
+     "min": 306,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Séville",
+     "min": 377,
+     "direct": true,
+     "id": "city:Q8717"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 381,
+     "direct": false,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Malaga",
+     "min": 401,
+     "direct": true,
+     "id": "station:7154413"
+    },
+    {
+     "name": "Paris",
+     "min": 406,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Bilbao",
+     "min": 423,
+     "direct": true,
+     "id": "city:Q8692"
+    },
+    {
+     "name": "Lille",
+     "min": 525,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 561,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Rennes",
+     "min": 583,
+     "direct": false,
+     "id": "city:Q647"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 585,
+     "direct": false,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Angers",
+     "min": 588,
+     "direct": false,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Nantes",
+     "min": 594,
+     "direct": false,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Zurich",
+     "min": 660,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Londres",
+     "min": 672,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 684,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Nice",
+     "min": 767,
+     "direct": false,
+     "id": "city:Q33959"
+    },
+    {
+     "name": "Milan",
+     "min": 833,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Hambourg",
+     "min": 1291,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Berlin",
+     "min": 1475,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Porto",
+     "min": 1579,
+     "direct": false,
+     "id": "city:Q36433"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Séville",
+   "slug": "seville",
+   "id": "city:Q8717",
+   "x": 440.5,
+   "y": 1075.0,
+   "label": [
+    "start",
+    450.5,
+    1080.2
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 3,
+     "other": 5,
+     "lines": 9,
+     "title": "Trains au départ de Séville",
+     "alt": "Carte des trains au départ de Séville : Barcelone, Madrid, Malaga, Bilbao, Lyon, Marseille, Montpellier, Paris",
+     "image": "depuis-seville"
+    },
+    {
+     "mode": "direct",
+     "direct": 3,
+     "other": 0,
+     "lines": 4,
+     "title": "Trains directs au départ de Séville",
+     "alt": "Carte des trains directs au départ de Séville : Barcelone, Madrid, Malaga",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 2,
+     "other": 0,
+     "lines": 3,
+     "title": "À moins de 3 heures de Séville",
+     "alt": "Carte des à moins de 3 heures de Séville : Madrid, Malaga",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Malaga",
+     "min": 124,
+     "direct": true,
+     "id": "station:7154413"
+    },
+    {
+     "name": "Madrid",
+     "min": 156,
+     "direct": true,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Barcelone",
+     "min": 377,
+     "direct": true,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Bilbao",
+     "min": 587,
+     "direct": false,
+     "id": "city:Q8692"
+    },
+    {
+     "name": "Montpellier",
+     "min": 611,
+     "direct": false,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Marseille",
+     "min": 718,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Paris",
+     "min": 881,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Lyon",
+     "min": 1263,
+     "direct": false,
+     "id": "city:Q456"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Bruxelles",
+   "slug": "bruxelles",
+   "id": "city:Q239",
+   "x": 879.9,
+   "y": 484.2,
+   "label": [
+    "start",
+    889.9,
+    489.5
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 13,
+     "other": 27,
+     "lines": 46,
+     "title": "Trains au départ de Bruxelles",
+     "alt": "Carte des trains au départ de Bruxelles : Amsterdam, Angers, Berlin, Hambourg, Lille, Londres, Lyon, Marseille, Montpellier, Nantes, Paris, Rennes, Strasbourg, Barcelone, Bath, Birmingham, Bordeaux, Brighton, Bristol, Cambridge, Cracovie, Glasgow, Inverness, Leeds, Liverpool, Madrid, Manchester, Milan, Munich, Nice, Nottingham, Oxford, Plymouth, Prague, Sheffield, Toulouse, Vienne, York, Zurich, Édimbourg",
+     "image": "depuis-bruxelles"
+    },
+    {
+     "mode": "direct",
+     "direct": 13,
+     "other": 0,
+     "lines": 16,
+     "title": "Trains directs au départ de Bruxelles",
+     "alt": "Carte des trains directs au départ de Bruxelles : Amsterdam, Angers, Berlin, Hambourg, Lille, Londres, Lyon, Marseille, Montpellier, Nantes, Paris, Rennes, Strasbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 4,
+     "other": 0,
+     "lines": 7,
+     "title": "À moins de 3 heures de Bruxelles",
+     "alt": "Carte des à moins de 3 heures de Bruxelles : Amsterdam, Lille, Londres, Paris",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 5,
+     "other": 0,
+     "lines": 5,
+     "title": "Trains de nuit au départ de Bruxelles",
+     "alt": "Carte des trains de nuit au départ de Bruxelles : Prague, Vienne, Milan, Arth-Goldau RB, Berlin",
+     "image": "depuis-bruxelles-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Lille",
+     "min": 34,
+     "direct": true,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Paris",
+     "min": 82,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 117,
+     "direct": true,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Londres",
+     "min": 117,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Cambridge",
+     "min": 189,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Lyon",
+     "min": 222,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Brighton",
+     "min": 224,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Oxford",
+     "min": 225,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Birmingham",
+     "min": 228,
+     "direct": false,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 228,
+     "direct": true,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Nottingham",
+     "min": 237,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Bristol",
+     "min": 243,
+     "direct": false,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Angers",
+     "min": 246,
+     "direct": true,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "York",
+     "min": 256,
+     "direct": false,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Manchester",
+     "min": 259,
+     "direct": false,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Bath",
+     "min": 261,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Leeds",
+     "min": 264,
+     "direct": false,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 271,
+     "direct": false,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Rennes",
+     "min": 277,
+     "direct": true,
+     "id": "city:Q647"
+    },
+    {
+     "name": "Sheffield",
+     "min": 284,
+     "direct": false,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Nantes",
+     "min": 287,
+     "direct": true,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Liverpool",
+     "min": 295,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Marseille",
+     "min": 329,
+     "direct": true,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Montpellier",
+     "min": 341,
+     "direct": true,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Plymouth",
+     "min": 366,
+     "direct": false,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Munich",
+     "min": 389,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 396,
+     "direct": false,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Zurich",
+     "min": 404,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Toulouse",
+     "min": 417,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Glasgow",
+     "min": 425,
+     "direct": false,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Nice",
+     "min": 501,
+     "direct": false,
+     "id": "city:Q33959"
+    },
+    {
+     "name": "Milan",
+     "min": 530,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Hambourg",
+     "min": 552,
+     "direct": true,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Barcelone",
+     "min": 554,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Berlin",
+     "min": 736,
+     "direct": true,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Inverness",
+     "min": 737,
+     "direct": false,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Vienne",
+     "min": 974,
+     "direct": false,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Cracovie",
+     "min": 1334,
+     "direct": false,
+     "id": "station:TL17584"
+    },
+    {
+     "name": "Madrid",
+     "min": 1441,
+     "direct": false,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Prague",
+     "min": 1591,
+     "direct": false,
+     "id": "city:Q1085"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Palerme",
+   "slug": "palerme",
+   "id": "city:Q2656",
+   "x": 1179.5,
+   "y": 1100.1,
+   "label": [
+    "start",
+    1189.5,
+    1105.4
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 3,
+     "other": 5,
+     "lines": 9,
+     "title": "Trains au départ de Palerme",
+     "alt": "Carte des trains au départ de Palerme : Milan, Naples, Rome, Bari, Lyon, Paris, Venise, Zurich",
+     "image": "depuis-palerme"
+    },
+    {
+     "mode": "direct",
+     "direct": 3,
+     "other": 0,
+     "lines": 3,
+     "title": "Trains directs au départ de Palerme",
+     "alt": "Carte des trains directs au départ de Palerme : Milan, Naples, Rome",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 2,
+     "other": 0,
+     "lines": 3,
+     "title": "Trains de nuit au départ de Palerme",
+     "alt": "Carte des trains de nuit au départ de Palerme : Salerne, Rome",
+     "image": "depuis-palerme-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Naples",
+     "min": 543,
+     "direct": true,
+     "id": "city:Q2634"
+    },
+    {
+     "name": "Rome",
+     "min": 679,
+     "direct": true,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Bari",
+     "min": 771,
+     "direct": false,
+     "id": "city:Q3519"
+    },
+    {
+     "name": "Venise",
+     "min": 877,
+     "direct": false,
+     "id": "city:Q641"
+    },
+    {
+     "name": "Milan",
+     "min": 1272,
+     "direct": true,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Zurich",
+     "min": 1529,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Lyon",
+     "min": 1894,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Paris",
+     "min": 1936,
+     "direct": false,
+     "id": "city:Q90"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Naples",
+   "slug": "naples",
+   "id": "city:Q2634",
+   "x": 1206.7,
+   "y": 968.2,
+   "label": [
+    "start",
+    1216.7,
+    973.4
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 5,
+     "other": 5,
+     "lines": 14,
+     "title": "Trains au départ de Naples",
+     "alt": "Carte des trains au départ de Naples : Bari, Milan, Palerme, Rome, Venise, Lyon, Munich, Paris, Vienne, Zurich",
+     "image": "depuis-naples"
+    },
+    {
+     "mode": "direct",
+     "direct": 5,
+     "other": 0,
+     "lines": 8,
+     "title": "Trains directs au départ de Naples",
+     "alt": "Carte des trains directs au départ de Naples : Bari, Milan, Palerme, Rome, Venise",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 1,
+     "other": 0,
+     "lines": 2,
+     "title": "À moins de 3 heures de Naples",
+     "alt": "Carte des à moins de 3 heures de Naples : Rome",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 2,
+     "other": 0,
+     "lines": 2,
+     "title": "Trains de nuit au départ de Naples",
+     "alt": "Carte des trains de nuit au départ de Naples : Turin, Palerme",
+     "image": "depuis-naples-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Rome",
+     "min": 66,
+     "direct": true,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Bari",
+     "min": 214,
+     "direct": true,
+     "id": "city:Q3519",
+     "slug": "naples-bari"
+    },
+    {
+     "name": "Milan",
+     "min": 255,
+     "direct": true,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Venise",
+     "min": 305,
+     "direct": true,
+     "id": "city:Q641"
+    },
+    {
+     "name": "Zurich",
+     "min": 505,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Palerme",
+     "min": 553,
+     "direct": true,
+     "id": "city:Q2656"
+    },
+    {
+     "name": "Lyon",
+     "min": 577,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Paris",
+     "min": 701,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Vienne",
+     "min": 859,
+     "direct": false,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Munich",
+     "min": 889,
+     "direct": false,
+     "id": "city:Q1726"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Zurich",
+   "slug": "zurich",
+   "id": "city:Q72",
+   "x": 1003.8,
+   "y": 657.5,
+   "label": [
+    "start",
+    1013.8,
+    662.7
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 6,
+     "other": 23,
+     "lines": 33,
+     "title": "Trains au départ de Zurich",
+     "alt": "Carte des trains au départ de Zurich : Budapest, Milan, Munich, Paris, Venise, Vienne, Amsterdam, Angers, Barcelone, Bari, Berlin, Bordeaux, Bruxelles, Cracovie, Hambourg, Lille, Londres, Lyon, Marseille, Montpellier, Nantes, Naples, Nice, Palerme, Prague, Rennes, Rome, Strasbourg, Toulouse",
+     "image": "depuis-zurich"
+    },
+    {
+     "mode": "direct",
+     "direct": 6,
+     "other": 0,
+     "lines": 6,
+     "title": "Trains directs au départ de Zurich",
+     "alt": "Carte des trains directs au départ de Zurich : Budapest, Milan, Munich, Paris, Venise, Vienne",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 0,
+     "other": 1,
+     "lines": 2,
+     "title": "À moins de 3 heures de Zurich",
+     "alt": "Carte des à moins de 3 heures de Zurich : Strasbourg",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "Trains de nuit au départ de Zurich",
+     "alt": "Carte des trains de nuit au départ de Zurich : Graz",
+     "image": "depuis-zurich-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Strasbourg",
+     "min": 154,
+     "direct": false,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Milan",
+     "min": 197,
+     "direct": true,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Munich",
+     "min": 212,
+     "direct": true,
+     "id": "city:Q1726",
+     "slug": "zurich-munich"
+    },
+    {
+     "name": "Paris",
+     "min": 244,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Lyon",
+     "min": 264,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Venise",
+     "min": 357,
+     "direct": true,
+     "id": "city:Q641"
+    },
+    {
+     "name": "Marseille",
+     "min": 371,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 373,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Lille",
+     "min": 374,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Angers",
+     "min": 376,
+     "direct": false,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Rennes",
+     "min": 411,
+     "direct": false,
+     "id": "city:Q647"
+    },
+    {
+     "name": "Rome",
+     "min": 412,
+     "direct": false,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Nantes",
+     "min": 417,
+     "direct": false,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 433,
+     "direct": false,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Montpellier",
+     "min": 454,
+     "direct": false,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Naples",
+     "min": 495,
+     "direct": false,
+     "id": "city:Q2634"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 496,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Berlin",
+     "min": 498,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Vienne",
+     "min": 503,
+     "direct": true,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Hambourg",
+     "min": 510,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Londres",
+     "min": 536,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Nice",
+     "min": 549,
+     "direct": false,
+     "id": "city:Q33959"
+    },
+    {
+     "name": "Toulouse",
+     "min": 606,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Prague",
+     "min": 639,
+     "direct": false,
+     "id": "city:Q1085"
+    },
+    {
+     "name": "Bari",
+     "min": 654,
+     "direct": false,
+     "id": "city:Q3519"
+    },
+    {
+     "name": "Budapest",
+     "min": 660,
+     "direct": true,
+     "id": "city:Q1781"
+    },
+    {
+     "name": "Barcelone",
+     "min": 718,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Cracovie",
+     "min": 1266,
+     "direct": false,
+     "id": "station:TL17584"
+    },
+    {
+     "name": "Palerme",
+     "min": 1522,
+     "direct": false,
+     "id": "city:Q2656"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Munich",
+   "slug": "munich",
+   "id": "city:Q1726",
+   "x": 1102.1,
+   "y": 620.7,
+   "label": [
+    "start",
+    1112.1,
+    625.9
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 11,
+     "other": 19,
+     "lines": 41,
+     "title": "Trains au départ de Munich",
+     "alt": "Carte des trains au départ de Munich : Amsterdam, Berlin, Bruxelles, Budapest, Hambourg, Paris, Prague, Rome, Strasbourg, Vienne, Zurich, Angers, Barcelone, Bari, Bordeaux, Cracovie, Lille, Londres, Lyon, Marseille, Milan, Montpellier, Nantes, Naples, Nice, Palerme, Rennes, Toulouse, Varsovie, Venise",
+     "image": "depuis-munich"
+    },
+    {
+     "mode": "direct",
+     "direct": 11,
+     "other": 0,
+     "lines": 17,
+     "title": "Trains directs au départ de Munich",
+     "alt": "Carte des trains directs au départ de Munich : Amsterdam, Berlin, Bruxelles, Budapest, Hambourg, Paris, Prague, Rome, Strasbourg, Vienne, Zurich",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 14,
+     "other": 0,
+     "lines": 15,
+     "title": "Trains de nuit au départ de Munich",
+     "alt": "Carte des trains de nuit au départ de Munich : Brême, Berlin, Halle-sur-Saale, Budapest, Hambourg, Jesenice, Rome, Bruxelles, Arnhem, Tarvisio Boscoverde, Tarvisio, Vienne, Cologne, Amsterdam",
+     "image": "depuis-munich-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Zurich",
+     "min": 220,
+     "direct": true,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 229,
+     "direct": true,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Vienne",
+     "min": 241,
+     "direct": true,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Berlin",
+     "min": 276,
+     "direct": true,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Prague",
+     "min": 327,
+     "direct": true,
+     "id": "city:Q1085"
+    },
+    {
+     "name": "Paris",
+     "min": 344,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Hambourg",
+     "min": 347,
+     "direct": true,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 429,
+     "direct": true,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Lille",
+     "min": 447,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Venise",
+     "min": 449,
+     "direct": false,
+     "id": "city:Q641"
+    },
+    {
+     "name": "Milan",
+     "min": 473,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Angers",
+     "min": 498,
+     "direct": false,
+     "id": "city:Q38380"
+    },
+    {
+     "name": "Lyon",
+     "min": 502,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Rennes",
+     "min": 514,
+     "direct": false,
+     "id": "city:Q647"
+    },
+    {
+     "name": "Nantes",
+     "min": 539,
+     "direct": false,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Budapest",
+     "min": 548,
+     "direct": true,
+     "id": "city:Q1781"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 557,
+     "direct": false,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Londres",
+     "min": 609,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Marseille",
+     "min": 612,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 632,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Montpellier",
+     "min": 680,
+     "direct": false,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Cracovie",
+     "min": 751,
+     "direct": false,
+     "id": "station:TL17584"
+    },
+    {
+     "name": "Toulouse",
+     "min": 769,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Nice",
+     "min": 793,
+     "direct": false,
+     "id": "city:Q33959"
+    },
+    {
+     "name": "Varsovie",
+     "min": 826,
+     "direct": false,
+     "id": "station:5100066"
+    },
+    {
+     "name": "Naples",
+     "min": 833,
+     "direct": false,
+     "id": "city:Q2634"
+    },
+    {
+     "name": "Rome",
+     "min": 835,
+     "direct": true,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Barcelone",
+     "min": 881,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Bari",
+     "min": 1093,
+     "direct": false,
+     "id": "city:Q3519"
+    },
+    {
+     "name": "Palerme",
+     "min": 1608,
+     "direct": false,
+     "id": "city:Q2656"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Hambourg",
+   "slug": "hambourg",
+   "id": "city:Q1055",
+   "x": 1051.4,
+   "y": 360.5,
+   "label": [
+    "start",
+    1061.4,
+    365.8
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 4,
+     "other": 14,
+     "lines": 29,
+     "title": "Trains au départ de Hambourg",
+     "alt": "Carte des trains au départ de Hambourg : Amsterdam, Berlin, Munich, Vienne, Bruxelles, Budapest, Copenhague, Cracovie, Lille, Londres, Lyon, Marseille, Milan, Paris, Prague, Rome, Strasbourg, Zurich",
+     "image": "depuis-hambourg"
+    },
+    {
+     "mode": "direct",
+     "direct": 4,
+     "other": 0,
+     "lines": 9,
+     "title": "Trains directs au départ de Hambourg",
+     "alt": "Carte des trains directs au départ de Hambourg : Amsterdam, Berlin, Munich, Vienne",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 1,
+     "other": 0,
+     "lines": 4,
+     "title": "À moins de 3 heures de Hambourg",
+     "alt": "Carte des à moins de 3 heures de Hambourg : Berlin",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 9,
+     "other": 0,
+     "lines": 9,
+     "title": "Trains de nuit au départ de Hambourg",
+     "alt": "Carte des trains de nuit au départ de Hambourg : Francfort-sur-le-Main, Eschhofen Bahnhofstraße, Bâle, Innsbruck, Wiesbaden, Stockholm, Munich, Paris, Kufstein",
+     "image": "depuis-hambourg-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Berlin",
+     "min": 90,
+     "direct": true,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Copenhague",
+     "min": 270,
+     "direct": false,
+     "id": "station:8600626",
+     "slug": "hambourg-copenhague"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 281,
+     "direct": true,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 320,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Munich",
+     "min": 338,
+     "direct": true,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 379,
+     "direct": false,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Prague",
+     "min": 397,
+     "direct": false,
+     "id": "city:Q1085"
+    },
+    {
+     "name": "Zurich",
+     "min": 477,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Paris",
+     "min": 478,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Cracovie",
+     "min": 588,
+     "direct": false,
+     "id": "station:TL17584"
+    },
+    {
+     "name": "Lyon",
+     "min": 629,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Marseille",
+     "min": 739,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Milan",
+     "min": 773,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Vienne",
+     "min": 796,
+     "direct": true,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Budapest",
+     "min": 895,
+     "direct": false,
+     "id": "city:Q1781"
+    },
+    {
+     "name": "Lille",
+     "min": 967,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Londres",
+     "min": 1059,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Rome",
+     "min": 1312,
+     "direct": false,
+     "id": "city:Q220"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Vienne",
+   "slug": "vienne",
+   "id": "city:Q1741",
+   "x": 1255.7,
+   "y": 609.1,
+   "label": [
+    "start",
+    1265.7,
+    614.4
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 8,
+     "other": 13,
+     "lines": 27,
+     "title": "Trains au départ de Vienne",
+     "alt": "Carte des trains au départ de Vienne : Bruxelles, Budapest, Cracovie, Hambourg, Munich, Prague, Rome, Zurich, Amsterdam, Bari, Berlin, Lille, Londres, Marseille, Milan, Naples, Palerme, Paris, Strasbourg, Varsovie, Venise",
+     "image": "depuis-vienne"
+    },
+    {
+     "mode": "direct",
+     "direct": 8,
+     "other": 0,
+     "lines": 10,
+     "title": "Trains directs au départ de Vienne",
+     "alt": "Carte des trains directs au départ de Vienne : Bruxelles, Budapest, Cracovie, Hambourg, Munich, Prague, Rome, Zurich",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 1,
+     "other": 0,
+     "lines": 2,
+     "title": "À moins de 3 heures de Vienne",
+     "alt": "Carte des à moins de 3 heures de Vienne : Budapest",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 10,
+     "other": 0,
+     "lines": 11,
+     "title": "Trains de nuit au départ de Vienne",
+     "alt": "Carte des trains de nuit au départ de Vienne : Przemyśl Główny, Bludenz, Bruxelles, Arnhem, Aix-la-Chapelle, Tarvisio, Děčín, Rome, Buchs, Amsterdam",
+     "image": "depuis-vienne-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Budapest",
+     "min": 140,
+     "direct": true,
+     "id": "city:Q1781",
+     "slug": "vienne-budapest"
+    },
+    {
+     "name": "Munich",
+     "min": 241,
+     "direct": true,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Prague",
+     "min": 253,
+     "direct": true,
+     "id": "city:Q1085",
+     "slug": "vienne-prague"
+    },
+    {
+     "name": "Venise",
+     "min": 412,
+     "direct": false,
+     "id": "city:Q641"
+    },
+    {
+     "name": "Cracovie",
+     "min": 469,
+     "direct": true,
+     "id": "station:TL17584"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 483,
+     "direct": false,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Varsovie",
+     "min": 486,
+     "direct": false,
+     "id": "station:5100066"
+    },
+    {
+     "name": "Zurich",
+     "min": 498,
+     "direct": true,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Berlin",
+     "min": 554,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Paris",
+     "min": 601,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Milan",
+     "min": 728,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 794,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Hambourg",
+     "min": 821,
+     "direct": true,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Naples",
+     "min": 831,
+     "direct": false,
+     "id": "city:Q2634"
+    },
+    {
+     "name": "Rome",
+     "min": 833,
+     "direct": true,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 928,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Bari",
+     "min": 1091,
+     "direct": false,
+     "id": "city:Q3519"
+    },
+    {
+     "name": "Lille",
+     "min": 1150,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Londres",
+     "min": 1237,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Marseille",
+     "min": 1466,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Palerme",
+     "min": 1606,
+     "direct": false,
+     "id": "city:Q2656"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Bristol",
+   "slug": "bristol",
+   "id": "city:Q23154",
+   "x": 675.4,
+   "y": 429.5,
+   "label": [
+    "end",
+    665.4,
+    434.8
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 12,
+     "other": 8,
+     "lines": 20,
+     "title": "Trains au départ de Bristol",
+     "alt": "Carte des trains au départ de Bristol : Bath, Birmingham, Cambridge, Glasgow, Leeds, Londres, Manchester, Oxford, Plymouth, Sheffield, York, Édimbourg, Amsterdam, Brighton, Bruxelles, Inverness, Lille, Liverpool, Nottingham, Paris",
+     "image": "depuis-bristol"
+    },
+    {
+     "mode": "direct",
+     "direct": 12,
+     "other": 0,
+     "lines": 12,
+     "title": "Trains directs au départ de Bristol",
+     "alt": "Carte des trains directs au départ de Bristol : Bath, Birmingham, Cambridge, Glasgow, Leeds, Londres, Manchester, Oxford, Plymouth, Sheffield, York, Édimbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 7,
+     "other": 4,
+     "lines": 11,
+     "title": "À moins de 3 heures de Bristol",
+     "alt": "Carte des à moins de 3 heures de Bristol : Bath, Birmingham, Londres, Manchester, Oxford, Plymouth, Sheffield, Brighton, Cambridge, Liverpool, Nottingham",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Bath",
+     "min": 11,
+     "direct": true,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Birmingham",
+     "min": 68,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Oxford",
+     "min": 71,
+     "direct": true,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Londres",
+     "min": 73,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Plymouth",
+     "min": 118,
+     "direct": true,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Nottingham",
+     "min": 156,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Sheffield",
+     "min": 156,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Manchester",
+     "min": 169,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Liverpool",
+     "min": 176,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Brighton",
+     "min": 178,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Leeds",
+     "min": 199,
+     "direct": true,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "York",
+     "min": 226,
+     "direct": true,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Lille",
+     "min": 265,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Cambridge",
+     "min": 266,
+     "direct": true,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 305,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 322,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 383,
+     "direct": true,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 437,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Glasgow",
+     "min": 453,
+     "direct": true,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Inverness",
+     "min": 618,
+     "direct": false,
+     "id": "city:Q160493"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Varsovie",
+   "slug": "varsovie",
+   "id": "station:5100066",
+   "x": 1376.0,
+   "y": 398.8,
+   "label": [
+    "start",
+    1386.0,
+    404.0
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 0,
+     "other": 6,
+     "lines": 8,
+     "title": "Trains au départ de Varsovie",
+     "alt": "Carte des trains au départ de Varsovie : Berlin, Budapest, Cracovie, Munich, Prague, Vienne",
+     "image": "depuis-varsovie"
+    },
+    {
+     "mode": "nuit",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "Trains de nuit au départ de Varsovie",
+     "alt": "Carte des trains de nuit au départ de Varsovie : Břeclav",
+     "image": "depuis-varsovie-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Cracovie",
+     "min": 246,
+     "direct": false,
+     "id": "station:TL17584",
+     "slug": "varsovie-cracovie"
+    },
+    {
+     "name": "Berlin",
+     "min": 571,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Vienne",
+     "min": 592,
+     "direct": false,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Budapest",
+     "min": 776,
+     "direct": false,
+     "id": "city:Q1781"
+    },
+    {
+     "name": "Prague",
+     "min": 830,
+     "direct": false,
+     "id": "city:Q1085"
+    },
+    {
+     "name": "Munich",
+     "min": 906,
+     "direct": false,
+     "id": "city:Q1726"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Dublin",
+   "slug": "dublin",
+   "id": "station:7003500",
+   "x": 587.8,
+   "y": 319.7,
+   "label": [
+    "start",
+    597.8,
+    325.0
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 0,
+     "other": 3,
+     "lines": 4,
+     "title": "Trains au départ de Dublin",
+     "alt": "Carte des trains au départ de Dublin : Birmingham, Londres, Manchester",
+     "image": "depuis-dublin"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Manchester",
+     "min": 440,
+     "direct": false,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Londres",
+     "min": 547,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Birmingham",
+     "min": 921,
+     "direct": false,
+     "id": "city:Q20986424"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Liverpool",
+   "slug": "liverpool",
+   "id": "city:Q21665571",
+   "x": 682.7,
+   "y": 334.6,
+   "label": null,
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 8,
+     "other": 12,
+     "lines": 21,
+     "title": "Trains au départ de Liverpool",
+     "alt": "Carte des trains au départ de Liverpool : Birmingham, Glasgow, Leeds, Londres, Manchester, Nottingham, Sheffield, York, Amsterdam, Bath, Brighton, Bristol, Bruxelles, Cambridge, Inverness, Lille, Oxford, Paris, Plymouth, Édimbourg",
+     "image": "depuis-liverpool"
+    },
+    {
+     "mode": "direct",
+     "direct": 8,
+     "other": 0,
+     "lines": 8,
+     "title": "Trains directs au départ de Liverpool",
+     "alt": "Carte des trains directs au départ de Liverpool : Birmingham, Glasgow, Leeds, Londres, Manchester, Nottingham, Sheffield, York",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 7,
+     "other": 2,
+     "lines": 9,
+     "title": "À moins de 3 heures de Liverpool",
+     "alt": "Carte des à moins de 3 heures de Liverpool : Birmingham, Leeds, Londres, Manchester, Nottingham, Sheffield, York, Bristol, Oxford",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Manchester",
+     "min": 34,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Leeds",
+     "min": 83,
+     "direct": true,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Birmingham",
+     "min": 84,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Sheffield",
+     "min": 87,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "York",
+     "min": 110,
+     "direct": true,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Londres",
+     "min": 129,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Nottingham",
+     "min": 148,
+     "direct": true,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Oxford",
+     "min": 169,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Bristol",
+     "min": 176,
+     "direct": false,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Cambridge",
+     "min": 195,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Glasgow",
+     "min": 198,
+     "direct": true,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 213,
+     "direct": false,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Brighton",
+     "min": 229,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Bath",
+     "min": 264,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Lille",
+     "min": 271,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 311,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Plymouth",
+     "min": 319,
+     "direct": false,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Paris",
+     "min": 343,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Inverness",
+     "min": 436,
+     "direct": false,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 446,
+     "direct": false,
+     "id": "city:Q727"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Newcastle",
+   "slug": "newcastle",
+   "id": "station:7077280",
+   "x": 731.6,
+   "y": 266.9,
+   "label": [
+    "start",
+    741.6,
+    272.1
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 13,
+     "other": 8,
+     "lines": 23,
+     "title": "Trains au départ de Newcastle",
+     "alt": "Carte des trains au départ de Newcastle : Birmingham, Bristol, Glasgow, Inverness, Leeds, Liverpool, Londres, Manchester, Oxford, Plymouth, Sheffield, York, Édimbourg, Amsterdam, Bath, Brighton, Bruxelles, Cambridge, Lille, Nottingham, Paris",
+     "image": "depuis-newcastle"
+    },
+    {
+     "mode": "direct",
+     "direct": 13,
+     "other": 0,
+     "lines": 13,
+     "title": "Trains directs au départ de Newcastle",
+     "alt": "Carte des trains directs au départ de Newcastle : Birmingham, Bristol, Glasgow, Inverness, Leeds, Liverpool, Londres, Manchester, Oxford, Plymouth, Sheffield, York, Édimbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 9,
+     "other": 1,
+     "lines": 11,
+     "title": "À moins de 3 heures de Newcastle",
+     "alt": "Carte des à moins de 3 heures de Newcastle : Birmingham, Glasgow, Leeds, Liverpool, Londres, Manchester, Sheffield, York, Édimbourg, Nottingham",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "York",
+     "min": 50,
+     "direct": true,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 84,
+     "direct": true,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Leeds",
+     "min": 85,
+     "direct": true,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Sheffield",
+     "min": 107,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Manchester",
+     "min": 136,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Glasgow",
+     "min": 153,
+     "direct": true,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Londres",
+     "min": 162,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Nottingham",
+     "min": 164,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Birmingham",
+     "min": 172,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Liverpool",
+     "min": 177,
+     "direct": true,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Cambridge",
+     "min": 191,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Oxford",
+     "min": 242,
+     "direct": true,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Brighton",
+     "min": 257,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Bristol",
+     "min": 280,
+     "direct": true,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Bath",
+     "min": 293,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Inverness",
+     "min": 305,
+     "direct": true,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Lille",
+     "min": 322,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 361,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 383,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Plymouth",
+     "min": 425,
+     "direct": true,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 498,
+     "direct": false,
+     "id": "city:Q727"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Plymouth",
+   "slug": "plymouth",
+   "id": "city:Q43382",
+   "x": 620.0,
+   "y": 472.6,
+   "label": [
+    "start",
+    630.0,
+    477.8
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 9,
+     "other": 11,
+     "lines": 21,
+     "title": "Trains au départ de Plymouth",
+     "alt": "Carte des trains au départ de Plymouth : Bath, Birmingham, Bristol, Glasgow, Leeds, Londres, Sheffield, York, Édimbourg, Amsterdam, Brighton, Bruxelles, Cambridge, Inverness, Lille, Liverpool, Manchester, Nottingham, Oxford, Paris",
+     "image": "depuis-plymouth"
+    },
+    {
+     "mode": "direct",
+     "direct": 9,
+     "other": 0,
+     "lines": 9,
+     "title": "Trains directs au départ de Plymouth",
+     "alt": "Carte des trains directs au départ de Plymouth : Bath, Birmingham, Bristol, Glasgow, Leeds, Londres, Sheffield, York, Édimbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 3,
+     "other": 0,
+     "lines": 3,
+     "title": "À moins de 3 heures de Plymouth",
+     "alt": "Carte des à moins de 3 heures de Plymouth : Bath, Bristol, Londres",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Bristol",
+     "min": 117,
+     "direct": true,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Bath",
+     "min": 143,
+     "direct": true,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Londres",
+     "min": 180,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Oxford",
+     "min": 198,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Birmingham",
+     "min": 207,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Cambridge",
+     "min": 284,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Nottingham",
+     "min": 291,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Sheffield",
+     "min": 291,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Brighton",
+     "min": 302,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Manchester",
+     "min": 331,
+     "direct": false,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Leeds",
+     "min": 334,
+     "direct": true,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Liverpool",
+     "min": 338,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "York",
+     "min": 361,
+     "direct": true,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Lille",
+     "min": 370,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 410,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 416,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 518,
+     "direct": true,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 545,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Glasgow",
+     "min": 588,
+     "direct": true,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Inverness",
+     "min": 761,
+     "direct": false,
+     "id": "city:Q160493"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Venise",
+   "slug": "venise",
+   "id": "city:Q641",
+   "x": 1130.3,
+   "y": 749.9,
+   "label": [
+    "start",
+    1140.3,
+    755.1
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 5,
+     "other": 5,
+     "lines": 16,
+     "title": "Trains au départ de Venise",
+     "alt": "Carte des trains au départ de Venise : Bari, Milan, Naples, Rome, Zurich, Lyon, Munich, Palerme, Paris, Vienne",
+     "image": "depuis-venise"
+    },
+    {
+     "mode": "direct",
+     "direct": 5,
+     "other": 0,
+     "lines": 9,
+     "title": "Trains directs au départ de Venise",
+     "alt": "Carte des trains directs au départ de Venise : Bari, Milan, Naples, Rome, Zurich",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 1,
+     "other": 0,
+     "lines": 2,
+     "title": "À moins de 3 heures de Venise",
+     "alt": "Carte des à moins de 3 heures de Venise : Milan",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 2,
+     "other": 0,
+     "lines": 2,
+     "title": "Trains de nuit au départ de Venise",
+     "alt": "Carte des trains de nuit au départ de Venise : Chiusi, Terni",
+     "image": "depuis-venise-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Milan",
+     "min": 126,
+     "direct": true,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Rome",
+     "min": 195,
+     "direct": true,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Naples",
+     "min": 310,
+     "direct": true,
+     "id": "city:Q2634"
+    },
+    {
+     "name": "Zurich",
+     "min": 357,
+     "direct": true,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Munich",
+     "min": 397,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Bari",
+     "min": 443,
+     "direct": true,
+     "id": "city:Q3519"
+    },
+    {
+     "name": "Lyon",
+     "min": 452,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Vienne",
+     "min": 453,
+     "direct": false,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Paris",
+     "min": 576,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Palerme",
+     "min": 920,
+     "direct": false,
+     "id": "city:Q2656"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Bari",
+   "slug": "bari",
+   "id": "city:Q3519",
+   "x": 1300.9,
+   "y": 947.4,
+   "label": [
+    "start",
+    1310.9,
+    952.7
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 4,
+     "other": 6,
+     "lines": 14,
+     "title": "Trains au départ de Bari",
+     "alt": "Carte des trains au départ de Bari : Milan, Naples, Rome, Venise, Lyon, Munich, Palerme, Paris, Vienne, Zurich",
+     "image": "depuis-bari"
+    },
+    {
+     "mode": "direct",
+     "direct": 4,
+     "other": 0,
+     "lines": 6,
+     "title": "Trains directs au départ de Bari",
+     "alt": "Carte des trains directs au départ de Bari : Milan, Naples, Rome, Venise",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 3,
+     "other": 0,
+     "lines": 3,
+     "title": "Trains de nuit au départ de Bari",
+     "alt": "Carte des trains de nuit au départ de Bari : Turin, Parme, Reggio de Calabre",
+     "image": "depuis-bari-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Naples",
+     "min": 210,
+     "direct": true,
+     "id": "city:Q2634"
+    },
+    {
+     "name": "Rome",
+     "min": 263,
+     "direct": true,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Milan",
+     "min": 405,
+     "direct": true,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Venise",
+     "min": 446,
+     "direct": true,
+     "id": "city:Q641"
+    },
+    {
+     "name": "Zurich",
+     "min": 652,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Palerme",
+     "min": 705,
+     "direct": false,
+     "id": "city:Q2656"
+    },
+    {
+     "name": "Lyon",
+     "min": 782,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Paris",
+     "min": 879,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Vienne",
+     "min": 989,
+     "direct": false,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Munich",
+     "min": 1019,
+     "direct": false,
+     "id": "city:Q1726"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Malaga",
+   "slug": "malaga",
+   "id": "station:7154413",
+   "x": 494.0,
+   "y": 1118.7,
+   "label": [
+    "start",
+    504.0,
+    1123.9
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 3,
+     "other": 5,
+     "lines": 9,
+     "title": "Trains au départ de Malaga",
+     "alt": "Carte des trains au départ de Malaga : Barcelone, Madrid, Séville, Bilbao, Lyon, Marseille, Montpellier, Paris",
+     "image": "depuis-malaga"
+    },
+    {
+     "mode": "direct",
+     "direct": 3,
+     "other": 0,
+     "lines": 4,
+     "title": "Trains directs au départ de Malaga",
+     "alt": "Carte des trains directs au départ de Malaga : Barcelone, Madrid, Séville",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 2,
+     "other": 0,
+     "lines": 3,
+     "title": "À moins de 3 heures de Malaga",
+     "alt": "Carte des à moins de 3 heures de Malaga : Madrid, Séville",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Séville",
+     "min": 127,
+     "direct": true,
+     "id": "city:Q8717"
+    },
+    {
+     "name": "Madrid",
+     "min": 164,
+     "direct": true,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Barcelone",
+     "min": 429,
+     "direct": true,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Bilbao",
+     "min": 556,
+     "direct": false,
+     "id": "city:Q8692"
+    },
+    {
+     "name": "Montpellier",
+     "min": 618,
+     "direct": false,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Marseille",
+     "min": 725,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Lyon",
+     "min": 1290,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Paris",
+     "min": 1462,
+     "direct": false,
+     "id": "city:Q90"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Copenhague",
+   "slug": "copenhague",
+   "id": "station:8600626",
+   "x": 1121.2,
+   "y": 257.2,
+   "label": [
+    "start",
+    1131.2,
+    262.4
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 1,
+     "other": 4,
+     "lines": 5,
+     "title": "Trains au départ de Copenhague",
+     "alt": "Carte des trains au départ de Copenhague : Hambourg, Amsterdam, Berlin, Munich, Vienne",
+     "image": "depuis-copenhague"
+    },
+    {
+     "mode": "direct",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "Trains directs au départ de Copenhague",
+     "alt": "Carte des trains directs au départ de Copenhague : Hambourg",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Hambourg",
+     "min": 279,
+     "direct": true,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Berlin",
+     "min": 409,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 693,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Munich",
+     "min": 700,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Vienne",
+     "min": 1157,
+     "direct": false,
+     "id": "city:Q1741"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Budapest",
+   "slug": "budapest",
+   "id": "city:Q1781",
+   "x": 1344.9,
+   "y": 634.4,
+   "label": [
+    "start",
+    1354.9,
+    639.6
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 2,
+     "other": 8,
+     "lines": 16,
+     "title": "Trains au départ de Budapest",
+     "alt": "Carte des trains au départ de Budapest : Prague, Vienne, Berlin, Bruxelles, Cracovie, Hambourg, Munich, Rome, Varsovie, Zurich",
+     "image": "depuis-budapest"
+    },
+    {
+     "mode": "direct",
+     "direct": 2,
+     "other": 0,
+     "lines": 4,
+     "title": "Trains directs au départ de Budapest",
+     "alt": "Carte des trains directs au départ de Budapest : Prague, Vienne",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 1,
+     "other": 0,
+     "lines": 2,
+     "title": "À moins de 3 heures de Budapest",
+     "alt": "Carte des à moins de 3 heures de Budapest : Vienne",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 5,
+     "other": 0,
+     "lines": 5,
+     "title": "Trains de nuit au départ de Budapest",
+     "alt": "Carte des trains de nuit au départ de Budapest : Děčín, Salzbourg, Kiev, Uzhhorod, Bucarest",
+     "image": "depuis-budapest-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Vienne",
+     "min": 145,
+     "direct": true,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Prague",
+     "min": 416,
+     "direct": true,
+     "id": "city:Q1085"
+    },
+    {
+     "name": "Munich",
+     "min": 425,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Cracovie",
+     "min": 617,
+     "direct": false,
+     "id": "station:TL17584"
+    },
+    {
+     "name": "Zurich",
+     "min": 718,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Berlin",
+     "min": 724,
+     "direct": false,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Varsovie",
+     "min": 773,
+     "direct": false,
+     "id": "station:5100066"
+    },
+    {
+     "name": "Hambourg",
+     "min": 912,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Rome",
+     "min": 1030,
+     "direct": false,
+     "id": "city:Q220"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 1073,
+     "direct": false,
+     "id": "city:Q239"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Cracovie",
+   "slug": "cracovie",
+   "id": "station:TL17584",
+   "x": 1357.9,
+   "y": 507.8,
+   "label": [
+    "start",
+    1367.9,
+    513.1
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 3,
+     "other": 7,
+     "lines": 12,
+     "title": "Trains au départ de Cracovie",
+     "alt": "Carte des trains au départ de Cracovie : Berlin, Munich, Vienne, Amsterdam, Bruxelles, Budapest, Hambourg, Prague, Varsovie, Zurich",
+     "image": "depuis-cracovie"
+    },
+    {
+     "mode": "direct",
+     "direct": 3,
+     "other": 0,
+     "lines": 3,
+     "title": "Trains directs au départ de Cracovie",
+     "alt": "Carte des trains directs au départ de Cracovie : Berlin, Munich, Vienne",
+     "image": null
+    },
+    {
+     "mode": "nuit",
+     "direct": 2,
+     "other": 0,
+     "lines": 2,
+     "title": "Trains de nuit au départ de Cracovie",
+     "alt": "Carte des trains de nuit au départ de Cracovie : Berlin, Munich",
+     "image": "depuis-cracovie-trains-de-nuit"
+    }
+   ],
+   "dests": [
+    {
+     "name": "Varsovie",
+     "min": 263,
+     "direct": false,
+     "id": "station:5100066"
+    },
+    {
+     "name": "Berlin",
+     "min": 433,
+     "direct": true,
+     "id": "city:Q64"
+    },
+    {
+     "name": "Vienne",
+     "min": 508,
+     "direct": true,
+     "id": "city:Q1741"
+    },
+    {
+     "name": "Hambourg",
+     "min": 630,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Budapest",
+     "min": 692,
+     "direct": false,
+     "id": "city:Q1781"
+    },
+    {
+     "name": "Prague",
+     "min": 746,
+     "direct": false,
+     "id": "city:Q1085"
+    },
+    {
+     "name": "Munich",
+     "min": 822,
+     "direct": true,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 1100,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 1357,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Zurich",
+     "min": 1496,
+     "direct": false,
+     "id": "city:Q72"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Angers",
+   "slug": "angers",
+   "id": "city:Q38380",
+   "x": 709.0,
+   "y": 629.2,
+   "label": [
+    "start",
+    719.0,
+    634.4
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 8,
+     "other": 12,
+     "lines": 21,
+     "title": "Trains au départ de Angers",
+     "alt": "Carte des trains au départ de Angers : Bruxelles, Lille, Lyon, Montpellier, Nantes, Paris, Rennes, Strasbourg, Amsterdam, Barcelone, Berlin, Bordeaux, Hambourg, Londres, Marseille, Milan, Munich, Nice, Toulouse, Zurich",
+     "image": "depuis-angers"
+    },
+    {
+     "mode": "direct",
+     "direct": 8,
+     "other": 0,
+     "lines": 8,
+     "title": "Trains directs au départ de Angers",
+     "alt": "Carte des trains directs au départ de Angers : Bruxelles, Lille, Lyon, Montpellier, Nantes, Paris, Rennes, Strasbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 3,
+     "other": 0,
+     "lines": 3,
+     "title": "À moins de 3 heures de Angers",
+     "alt": "Carte des à moins de 3 heures de Angers : Nantes, Paris, Rennes",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Nantes",
+     "min": 37,
+     "direct": true,
+     "id": "city:Q12191"
+    },
+    {
+     "name": "Paris",
+     "min": 84,
+     "direct": true,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Rennes",
+     "min": 92,
+     "direct": true,
+     "id": "city:Q647"
+    },
+    {
+     "name": "Bordeaux",
+     "min": 204,
+     "direct": false,
+     "id": "city:Q1479"
+    },
+    {
+     "name": "Lille",
+     "min": 216,
+     "direct": true,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Lyon",
+     "min": 226,
+     "direct": true,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 261,
+     "direct": true,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Strasbourg",
+     "min": 264,
+     "direct": true,
+     "id": "city:Q6602"
+    },
+    {
+     "name": "Marseille",
+     "min": 329,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Londres",
+     "min": 342,
+     "direct": false,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Montpellier",
+     "min": 352,
+     "direct": true,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 366,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Toulouse",
+     "min": 390,
+     "direct": false,
+     "id": "city:Q7880"
+    },
+    {
+     "name": "Zurich",
+     "min": 402,
+     "direct": false,
+     "id": "city:Q72"
+    },
+    {
+     "name": "Nice",
+     "min": 500,
+     "direct": false,
+     "id": "city:Q33959"
+    },
+    {
+     "name": "Barcelone",
+     "min": 588,
+     "direct": false,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Munich",
+     "min": 602,
+     "direct": false,
+     "id": "city:Q1726"
+    },
+    {
+     "name": "Milan",
+     "min": 606,
+     "direct": false,
+     "id": "city:Q490"
+    },
+    {
+     "name": "Hambourg",
+     "min": 973,
+     "direct": false,
+     "id": "city:Q1055"
+    },
+    {
+     "name": "Berlin",
+     "min": 1228,
+     "direct": false,
+     "id": "city:Q64"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Glasgow",
+   "slug": "glasgow",
+   "id": "city:Q4093",
+   "x": 668.6,
+   "y": 211.9,
+   "label": [
+    "end",
+    658.6,
+    217.1
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 11,
+     "other": 9,
+     "lines": 21,
+     "title": "Trains au départ de Glasgow",
+     "alt": "Carte des trains au départ de Glasgow : Birmingham, Bristol, Inverness, Leeds, Liverpool, Londres, Manchester, Plymouth, Sheffield, York, Édimbourg, Amsterdam, Bath, Brighton, Bruxelles, Cambridge, Lille, Nottingham, Oxford, Paris",
+     "image": "depuis-glasgow"
+    },
+    {
+     "mode": "direct",
+     "direct": 11,
+     "other": 0,
+     "lines": 11,
+     "title": "Trains directs au départ de Glasgow",
+     "alt": "Carte des trains directs au départ de Glasgow : Birmingham, Bristol, Inverness, Leeds, Liverpool, Londres, Manchester, Plymouth, Sheffield, York, Édimbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 1,
+     "other": 0,
+     "lines": 1,
+     "title": "À moins de 3 heures de Glasgow",
+     "alt": "Carte des à moins de 3 heures de Glasgow : Édimbourg",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Édimbourg",
+     "min": 40,
+     "direct": true,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Manchester",
+     "min": 191,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Inverness",
+     "min": 197,
+     "direct": true,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Liverpool",
+     "min": 215,
+     "direct": true,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "York",
+     "min": 230,
+     "direct": true,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Birmingham",
+     "min": 246,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Leeds",
+     "min": 257,
+     "direct": true,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Londres",
+     "min": 272,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Sheffield",
+     "min": 307,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Nottingham",
+     "min": 317,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Oxford",
+     "min": 345,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Cambridge",
+     "min": 355,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Brighton",
+     "min": 370,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Bath",
+     "min": 400,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Lille",
+     "min": 443,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Bristol",
+     "min": 452,
+     "direct": true,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 482,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 493,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Plymouth",
+     "min": 599,
+     "direct": true,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 642,
+     "direct": false,
+     "id": "city:Q727"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Inverness",
+   "slug": "inverness",
+   "id": "city:Q160493",
+   "x": 685.1,
+   "y": 135.3,
+   "label": [
+    "start",
+    695.1,
+    140.6
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 4,
+     "other": 16,
+     "lines": 23,
+     "title": "Trains au départ de Inverness",
+     "alt": "Carte des trains au départ de Inverness : Glasgow, Londres, York, Édimbourg, Amsterdam, Bath, Birmingham, Brighton, Bristol, Bruxelles, Cambridge, Leeds, Lille, Liverpool, Manchester, Nottingham, Oxford, Paris, Plymouth, Sheffield",
+     "image": "depuis-inverness"
+    },
+    {
+     "mode": "direct",
+     "direct": 4,
+     "other": 0,
+     "lines": 4,
+     "title": "Trains directs au départ de Inverness",
+     "alt": "Carte des trains directs au départ de Inverness : Glasgow, Londres, York, Édimbourg",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Édimbourg",
+     "min": 193,
+     "direct": true,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Glasgow",
+     "min": 199,
+     "direct": true,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "York",
+     "min": 357,
+     "direct": true,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Leeds",
+     "min": 387,
+     "direct": false,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Sheffield",
+     "min": 427,
+     "direct": false,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Manchester",
+     "min": 447,
+     "direct": false,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Nottingham",
+     "min": 467,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Londres",
+     "min": 487,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Birmingham",
+     "min": 497,
+     "direct": false,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Liverpool",
+     "min": 534,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Cambridge",
+     "min": 554,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Oxford",
+     "min": 586,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Brighton",
+     "min": 589,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Bristol",
+     "min": 607,
+     "direct": false,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Bath",
+     "min": 626,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Lille",
+     "min": 631,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 670,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 718,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Plymouth",
+     "min": 745,
+     "direct": false,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 865,
+     "direct": false,
+     "id": "city:Q727"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Oxford",
+   "slug": "oxford",
+   "id": "station:7031150",
+   "x": 716.9,
+   "y": 421.6,
+   "label": [
+    "start",
+    726.9,
+    426.8
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 7,
+     "other": 13,
+     "lines": 23,
+     "title": "Trains au départ de Oxford",
+     "alt": "Carte des trains au départ de Oxford : Bath, Birmingham, Bristol, Londres, Manchester, Sheffield, York, Amsterdam, Brighton, Bruxelles, Cambridge, Glasgow, Inverness, Leeds, Lille, Liverpool, Nottingham, Paris, Plymouth, Édimbourg",
+     "image": "depuis-oxford"
+    },
+    {
+     "mode": "direct",
+     "direct": 7,
+     "other": 0,
+     "lines": 7,
+     "title": "Trains directs au départ de Oxford",
+     "alt": "Carte des trains directs au départ de Oxford : Bath, Birmingham, Bristol, Londres, Manchester, Sheffield, York",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 6,
+     "other": 4,
+     "lines": 11,
+     "title": "À moins de 3 heures de Oxford",
+     "alt": "Carte des à moins de 3 heures de Oxford : Bath, Birmingham, Bristol, Londres, Manchester, Sheffield, Brighton, Cambridge, Liverpool, Nottingham",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Londres",
+     "min": 51,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Bath",
+     "min": 52,
+     "direct": true,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Birmingham",
+     "min": 60,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Bristol",
+     "min": 68,
+     "direct": true,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Sheffield",
+     "min": 133,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Nottingham",
+     "min": 149,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Cambridge",
+     "min": 151,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Brighton",
+     "min": 154,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Manchester",
+     "min": 168,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Liverpool",
+     "min": 171,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "York",
+     "min": 185,
+     "direct": true,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Plymouth",
+     "min": 197,
+     "direct": false,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Leeds",
+     "min": 204,
+     "direct": false,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Lille",
+     "min": 232,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 272,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 290,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 331,
+     "direct": false,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Glasgow",
+     "min": 334,
+     "direct": false,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 408,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Inverness",
+     "min": 596,
+     "direct": false,
+     "id": "city:Q160493"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Cambridge",
+   "slug": "cambridge",
+   "id": "city:Q21713103",
+   "x": 761.0,
+   "y": 406.3,
+   "label": [
+    "start",
+    789.0,
+    411.6
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 3,
+     "other": 17,
+     "lines": 24,
+     "title": "Trains au départ de Cambridge",
+     "alt": "Carte des trains au départ de Cambridge : Birmingham, Brighton, Londres, Amsterdam, Bath, Bristol, Bruxelles, Glasgow, Inverness, Leeds, Lille, Liverpool, Manchester, Nottingham, Oxford, Paris, Plymouth, Sheffield, York, Édimbourg",
+     "image": "depuis-cambridge"
+    },
+    {
+     "mode": "direct",
+     "direct": 3,
+     "other": 0,
+     "lines": 3,
+     "title": "Trains directs au départ de Cambridge",
+     "alt": "Carte des trains directs au départ de Cambridge : Birmingham, Brighton, Londres",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 3,
+     "other": 6,
+     "lines": 11,
+     "title": "À moins de 3 heures de Cambridge",
+     "alt": "Carte des à moins de 3 heures de Cambridge : Birmingham, Brighton, Londres, Bath, Bristol, Leeds, Nottingham, Oxford, York",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Londres",
+     "min": 46,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Nottingham",
+     "min": 136,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Brighton",
+     "min": 143,
+     "direct": true,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Oxford",
+     "min": 143,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "York",
+     "min": 146,
+     "direct": false,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Birmingham",
+     "min": 158,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Bristol",
+     "min": 160,
+     "direct": false,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Leeds",
+     "min": 169,
+     "direct": false,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Bath",
+     "min": 176,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Sheffield",
+     "min": 181,
+     "direct": false,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Lille",
+     "min": 189,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Manchester",
+     "min": 199,
+     "direct": false,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Liverpool",
+     "min": 217,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 229,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 245,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Plymouth",
+     "min": 287,
+     "direct": false,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 304,
+     "direct": false,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Glasgow",
+     "min": 345,
+     "direct": false,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 364,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Inverness",
+     "min": 548,
+     "direct": false,
+     "id": "city:Q160493"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Bath",
+   "slug": "bath",
+   "id": "city:Q22889",
+   "x": 681.9,
+   "y": 434.1,
+   "label": [
+    "middle",
+    681.9,
+    456.1
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 4,
+     "other": 16,
+     "lines": 20,
+     "title": "Trains au départ de Bath",
+     "alt": "Carte des trains au départ de Bath : Bristol, Londres, Oxford, Plymouth, Amsterdam, Birmingham, Brighton, Bruxelles, Cambridge, Glasgow, Inverness, Leeds, Lille, Liverpool, Manchester, Nottingham, Paris, Sheffield, York, Édimbourg",
+     "image": "depuis-bath"
+    },
+    {
+     "mode": "direct",
+     "direct": 4,
+     "other": 0,
+     "lines": 4,
+     "title": "Trains directs au départ de Bath",
+     "alt": "Carte des trains directs au départ de Bath : Bristol, Londres, Oxford, Plymouth",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 4,
+     "other": 2,
+     "lines": 6,
+     "title": "À moins de 3 heures de Bath",
+     "alt": "Carte des à moins de 3 heures de Bath : Bristol, Londres, Oxford, Plymouth, Birmingham, Cambridge",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Bristol",
+     "min": 11,
+     "direct": true,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Oxford",
+     "min": 58,
+     "direct": true,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Londres",
+     "min": 76,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Birmingham",
+     "min": 114,
+     "direct": false,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Plymouth",
+     "min": 138,
+     "direct": true,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Cambridge",
+     "min": 175,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Brighton",
+     "min": 192,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Sheffield",
+     "min": 199,
+     "direct": false,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Manchester",
+     "min": 209,
+     "direct": false,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Nottingham",
+     "min": 220,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "York",
+     "min": 241,
+     "direct": false,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Leeds",
+     "min": 244,
+     "direct": false,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Lille",
+     "min": 252,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Liverpool",
+     "min": 257,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 292,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 338,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 383,
+     "direct": false,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Glasgow",
+     "min": 408,
+     "direct": false,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 427,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Inverness",
+     "min": 625,
+     "direct": false,
+     "id": "city:Q160493"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Brighton",
+   "slug": "brighton",
+   "id": "city:Q131491",
+   "x": 744.1,
+   "y": 471.0,
+   "label": [
+    "start",
+    754.1,
+    476.3
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 2,
+     "other": 18,
+     "lines": 20,
+     "title": "Trains au départ de Brighton",
+     "alt": "Carte des trains au départ de Brighton : Cambridge, Londres, Amsterdam, Bath, Birmingham, Bristol, Bruxelles, Glasgow, Inverness, Leeds, Lille, Liverpool, Manchester, Nottingham, Oxford, Paris, Plymouth, Sheffield, York, Édimbourg",
+     "image": "depuis-brighton"
+    },
+    {
+     "mode": "direct",
+     "direct": 2,
+     "other": 0,
+     "lines": 2,
+     "title": "Trains directs au départ de Brighton",
+     "alt": "Carte des trains directs au départ de Brighton : Cambridge, Londres",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 2,
+     "other": 2,
+     "lines": 4,
+     "title": "À moins de 3 heures de Brighton",
+     "alt": "Carte des à moins de 3 heures de Brighton : Cambridge, Londres, Birmingham, Oxford",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Londres",
+     "min": 47,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Cambridge",
+     "min": 141,
+     "direct": true,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Oxford",
+     "min": 151,
+     "direct": false,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Birmingham",
+     "min": 178,
+     "direct": false,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Nottingham",
+     "min": 181,
+     "direct": false,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Bath",
+     "min": 183,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Bristol",
+     "min": 192,
+     "direct": false,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "York",
+     "min": 198,
+     "direct": false,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Leeds",
+     "min": 215,
+     "direct": false,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Lille",
+     "min": 221,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Sheffield",
+     "min": 227,
+     "direct": false,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Manchester",
+     "min": 230,
+     "direct": false,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Liverpool",
+     "min": 235,
+     "direct": false,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 261,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 277,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Plymouth",
+     "min": 297,
+     "direct": false,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 338,
+     "direct": false,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Glasgow",
+     "min": 377,
+     "direct": false,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 396,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Inverness",
+     "min": 580,
+     "direct": false,
+     "id": "city:Q160493"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Sheffield",
+   "slug": "sheffield",
+   "id": "city:Q42448",
+   "x": 723.3,
+   "y": 343.1,
+   "label": [
+    "start",
+    733.3,
+    348.4
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 12,
+     "other": 8,
+     "lines": 21,
+     "title": "Trains au départ de Sheffield",
+     "alt": "Carte des trains au départ de Sheffield : Birmingham, Bristol, Glasgow, Leeds, Liverpool, Londres, Manchester, Nottingham, Oxford, Plymouth, York, Édimbourg, Amsterdam, Bath, Brighton, Bruxelles, Cambridge, Inverness, Lille, Paris",
+     "image": "depuis-sheffield"
+    },
+    {
+     "mode": "direct",
+     "direct": 12,
+     "other": 0,
+     "lines": 12,
+     "title": "Trains directs au départ de Sheffield",
+     "alt": "Carte des trains directs au départ de Sheffield : Birmingham, Bristol, Glasgow, Leeds, Liverpool, Londres, Manchester, Nottingham, Oxford, Plymouth, York, Édimbourg",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 9,
+     "other": 1,
+     "lines": 12,
+     "title": "À moins de 3 heures de Sheffield",
+     "alt": "Carte des à moins de 3 heures de Sheffield : Birmingham, Bristol, Leeds, Liverpool, Londres, Manchester, Nottingham, Oxford, York, Cambridge",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Leeds",
+     "min": 39,
+     "direct": true,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "York",
+     "min": 43,
+     "direct": true,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Nottingham",
+     "min": 44,
+     "direct": true,
+     "id": "city:Q21885994"
+    },
+    {
+     "name": "Manchester",
+     "min": 50,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Birmingham",
+     "min": 61,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Liverpool",
+     "min": 91,
+     "direct": true,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Londres",
+     "min": 121,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "Oxford",
+     "min": 132,
+     "direct": true,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Bristol",
+     "min": 144,
+     "direct": true,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Bath",
+     "min": 184,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Cambridge",
+     "min": 184,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Brighton",
+     "min": 223,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 224,
+     "direct": true,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Plymouth",
+     "min": 287,
+     "direct": true,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Lille",
+     "min": 290,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Glasgow",
+     "min": 293,
+     "direct": true,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 330,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Paris",
+     "min": 346,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Inverness",
+     "min": 425,
+     "direct": false,
+     "id": "city:Q160493"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 465,
+     "direct": false,
+     "id": "city:Q727"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Nottingham",
+   "slug": "nottingham",
+   "id": "city:Q21885994",
+   "x": 729.3,
+   "y": 364.8,
+   "label": [
+    "start",
+    739.3,
+    370.1
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 7,
+     "other": 13,
+     "lines": 24,
+     "title": "Trains au départ de Nottingham",
+     "alt": "Carte des trains au départ de Nottingham : Birmingham, Leeds, Liverpool, Londres, Manchester, Oxford, Sheffield, Amsterdam, Bath, Brighton, Bristol, Bruxelles, Cambridge, Glasgow, Inverness, Lille, Paris, Plymouth, York, Édimbourg",
+     "image": "depuis-nottingham"
+    },
+    {
+     "mode": "direct",
+     "direct": 7,
+     "other": 0,
+     "lines": 7,
+     "title": "Trains directs au départ de Nottingham",
+     "alt": "Carte des trains directs au départ de Nottingham : Birmingham, Leeds, Liverpool, Londres, Manchester, Oxford, Sheffield",
+     "image": null
+    },
+    {
+     "mode": "3h",
+     "direct": 7,
+     "other": 3,
+     "lines": 13,
+     "title": "À moins de 3 heures de Nottingham",
+     "alt": "Carte des à moins de 3 heures de Nottingham : Birmingham, Leeds, Liverpool, Londres, Manchester, Oxford, Sheffield, Bristol, Cambridge, York",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Sheffield",
+     "min": 45,
+     "direct": true,
+     "id": "city:Q42448"
+    },
+    {
+     "name": "Birmingham",
+     "min": 71,
+     "direct": true,
+     "id": "city:Q20986424"
+    },
+    {
+     "name": "Londres",
+     "min": 82,
+     "direct": true,
+     "id": "city:Q84"
+    },
+    {
+     "name": "York",
+     "min": 96,
+     "direct": false,
+     "id": "station:7082630"
+    },
+    {
+     "name": "Manchester",
+     "min": 110,
+     "direct": true,
+     "id": "city:Q21525592"
+    },
+    {
+     "name": "Leeds",
+     "min": 116,
+     "direct": true,
+     "id": "city:Q39121"
+    },
+    {
+     "name": "Cambridge",
+     "min": 133,
+     "direct": false,
+     "id": "city:Q21713103"
+    },
+    {
+     "name": "Bristol",
+     "min": 140,
+     "direct": false,
+     "id": "city:Q23154"
+    },
+    {
+     "name": "Liverpool",
+     "min": 147,
+     "direct": true,
+     "id": "city:Q21665571"
+    },
+    {
+     "name": "Oxford",
+     "min": 156,
+     "direct": true,
+     "id": "station:7031150"
+    },
+    {
+     "name": "Brighton",
+     "min": 181,
+     "direct": false,
+     "id": "city:Q131491"
+    },
+    {
+     "name": "Bath",
+     "min": 213,
+     "direct": false,
+     "id": "city:Q22889"
+    },
+    {
+     "name": "Lille",
+     "min": 240,
+     "direct": false,
+     "id": "city:Q648"
+    },
+    {
+     "name": "Édimbourg",
+     "min": 246,
+     "direct": false,
+     "id": "city:Q23436"
+    },
+    {
+     "name": "Bruxelles",
+     "min": 270,
+     "direct": false,
+     "id": "city:Q239"
+    },
+    {
+     "name": "Plymouth",
+     "min": 285,
+     "direct": false,
+     "id": "city:Q43382"
+    },
+    {
+     "name": "Paris",
+     "min": 293,
+     "direct": false,
+     "id": "city:Q90"
+    },
+    {
+     "name": "Glasgow",
+     "min": 320,
+     "direct": false,
+     "id": "city:Q4093"
+    },
+    {
+     "name": "Amsterdam",
+     "min": 397,
+     "direct": false,
+     "id": "city:Q727"
+    },
+    {
+     "name": "Inverness",
+     "min": 496,
+     "direct": false,
+     "id": "city:Q160493"
+    }
+   ],
+   "date": "2026-11-17"
+  },
+  {
+   "name": "Bilbao",
+   "slug": "bilbao",
+   "id": "city:Q8692",
+   "x": 599.5,
+   "y": 817.5,
+   "label": [
+    "end",
+    589.5,
+    822.8
+   ],
+   "maps": [
+    {
+     "mode": "correspondance",
+     "direct": 2,
+     "other": 6,
+     "lines": 8,
+     "title": "Trains au départ de Bilbao",
+     "alt": "Carte des trains au départ de Bilbao : Barcelone, Madrid, Lyon, Malaga, Marseille, Montpellier, Paris, Séville",
+     "image": "depuis-bilbao"
+    },
+    {
+     "mode": "direct",
+     "direct": 2,
+     "other": 0,
+     "lines": 2,
+     "title": "Trains directs au départ de Bilbao",
+     "alt": "Carte des trains directs au départ de Bilbao : Barcelone, Madrid",
+     "image": null
+    }
+   ],
+   "dests": [
+    {
+     "name": "Madrid",
+     "min": 275,
+     "direct": true,
+     "id": "city:Q2807"
+    },
+    {
+     "name": "Barcelone",
+     "min": 431,
+     "direct": true,
+     "id": "city:Q1492"
+    },
+    {
+     "name": "Malaga",
+     "min": 512,
+     "direct": false,
+     "id": "station:7154413"
+    },
+    {
+     "name": "Séville",
+     "min": 526,
+     "direct": false,
+     "id": "city:Q8717"
+    },
+    {
+     "name": "Montpellier",
+     "min": 772,
+     "direct": false,
+     "id": "city:Q6441"
+    },
+    {
+     "name": "Marseille",
+     "min": 879,
+     "direct": false,
+     "id": "city:Q23482"
+    },
+    {
+     "name": "Lyon",
+     "min": 1338,
+     "direct": false,
+     "id": "city:Q456"
+    },
+    {
+     "name": "Paris",
+     "min": 1510,
+     "direct": false,
+     "id": "city:Q90"
+    }
+   ],
+   "date": "2026-11-17"
+  }
+ ],
+ "built_at": "2026-11-05T21:07:27",
+ "width": 1600,
+ "height": 1200,
+ "proj": "2759.660/1051.4/531.5"
+}

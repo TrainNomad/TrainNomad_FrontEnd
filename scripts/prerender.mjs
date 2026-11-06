@@ -16,6 +16,9 @@ const DIST = new URL('../dist/', import.meta.url);
 const PAGES = JSON.parse(readFileSync(new URL('../src/lib/pageMeta.json', import.meta.url), 'utf8'));
 const FAQ = JSON.parse(readFileSync(new URL('../src/lib/faq.json', import.meta.url), 'utf8'));
 const SEO = JSON.parse(readFileSync(new URL('../src/lib/seoPagesData.json', import.meta.url), 'utf8'));
+const CARTES = existsSync(new URL('../src/lib/cartes.json', import.meta.url))
+  ? JSON.parse(readFileSync(new URL('../src/lib/cartes.json', import.meta.url), 'utf8'))
+  : { cities: [] };
 const readPublic = (path) => JSON.parse(readFileSync(new URL(`../public/${path}`, import.meta.url), 'utf8'));
 
 const NAV = [
@@ -134,13 +137,33 @@ for (const [path, page] of Object.entries(PAGES)) {
       .map((g) => `<li><a class="font-semibold underline" href="/guides/${esc(g.slug)}">${esc(g.name)}, ${esc(g.country)}</a> — ${esc(g.description)}</li>`)
       .join('')}</ul>`;
   }
+  let jsonLd;
+  // Cartes « Depuis <ville> » (Backend/gtfs/traces/cartes_villes.py) : les images, avec leur texte, pour Google Images
+  let image = page.image;
+  if (path === '/train' && CARTES.cities.length) {
+    const maps = CARTES.cities.flatMap((c) => c.maps).filter((m) => m.image);
+    if (maps.length) image = `/cartes/${maps[0].image}.webp`;
+    body += maps
+      .map((m) => `<figure class="mb-6"><img src="/cartes/${esc(m.image)}.webp" alt="${esc(m.alt)}" width="1600" height="1200" loading="lazy"><figcaption class="text-slate-600">${esc(m.title)}</figcaption></figure>`)
+      .join('');
+    jsonLd = {
+      '@context': 'https://schema.org',
+      '@graph': maps.map((m) => ({
+        '@type': 'ImageObject',
+        contentUrl: `${SITE}/cartes/${m.image}.webp`,
+        name: m.title,
+        description: m.alt,
+        creditText: SITE_NAME,
+        copyrightNotice: SITE_NAME,
+      })),
+    };
+  }
   if (path === '/train' && SEO.liaisons.length) {
     body += `<ul class="text-slate-600 mb-4">${SEO.liaisons
       .map((l) => `<li><a class="font-semibold underline" href="/train/${esc(l.slug)}/">${esc(l.from.name)} → ${esc(l.to.name)}</a> — ${esc(formatDuration(l.summary.fastest_min))}, ${esc(liaisonHow(l.summary))}</li>`)
       .join('')}</ul>`;
   }
   // Accueil : questions fréquentes (src/lib/faq.json), en texte et en données structurées FAQPage
-  let jsonLd;
   if (path === '/') {
     body += h2('Questions fréquentes') + FAQ.map((f) => `<h3 class="font-bold mt-6 mb-2">${esc(f.question)}</h3>${p(f.answer)}`).join('');
     jsonLd = {
@@ -149,7 +172,7 @@ for (const [path, page] of Object.entries(PAGES)) {
       mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
     };
   }
-  writePage(path, { title: page.title, description: page.description, body, jsonLd, image: page.image });
+  writePage(path, { title: page.title, description: page.description, body, jsonLd, image });
   count++;
 }
 

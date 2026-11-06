@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { TrainLogo } from '../components/TrainLogo';
+import { EuropeGlobe } from '../components/ui/EuropeGlobe';
+import { legPath, type LatLng } from '../lib/traces';
+import { isTrainLeg, type Journey } from '../types/api';
 import { API_BASE_URL } from '../config';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { estimateCarbon, formatKg } from '../lib/carbon';
@@ -52,6 +55,59 @@ function DepartureRow({ journey }: { journey: LiaisonJourney }) {
         </div>
       )}
     </li>
+  );
+}
+
+// Le vert du bandeau (#1d7a5a) : la carte ne fait pas un bloc d'une autre teinte
+const GLOBE_PALETTE = { body: ['#1d7a5a', '#1d7a5a'] as [string, string], glow: '255,255,255', land: 'rgba(255,255,255,0.45)' };
+
+/**
+ * Le trajet le plus rapide de la journée sur le globe en pointillés, comme sur la page Voyage : traits droits
+ * d'arrêt en arrêt, puis le parcours sur les voies une fois les tracés chargés.
+ */
+function LiaisonGlobe({ journey }: { journey: Journey | null }) {
+  const [track, setTrack] = useState<LatLng[]>([]);
+  useEffect(() => {
+    if (!journey) return;
+    const trains = journey.legs.filter(isTrainLeg);
+    setTrack(trains.flatMap((leg) => leg.stops.map((s): LatLng => [s.lat, s.lon])));
+    let current = true;
+    Promise.all(trains.map(legPath))
+      .then((paths) => {
+        const points = paths.flatMap((p) => p.points);
+        if (current && points.length > 1) setTrack(points);
+      })
+      .catch(() => {
+        // pas de tracé : on garde les traits droits
+      });
+    return () => {
+      current = false;
+    };
+  }, [journey]);
+  const dots = useMemo(() => {
+    if (!journey) return [];
+    const { from, to } = journey;
+    return [{
+      start: { lat: from.lat, lng: from.lon, label: from.city || from.name },
+      end: { lat: to.lat, lng: to.lon, label: to.city || to.name },
+      path: track,
+    }];
+  }, [journey, track]);
+  if (!journey) return null;
+  // Rectangle à droite du titre ; le globe a le vert du bandeau, il s'y fond sans cadre
+  return (
+    <div className="hidden md:block shrink-0 w-96 h-64">
+      <EuropeGlobe
+        dots={dots}
+        lineColor="#bbf7d0"
+        fitRoutes
+        sway={0}
+        loop={false}
+        draggable={false}
+        palette={GLOBE_PALETTE}
+        className="w-full h-full"
+      />
+    </div>
   );
 }
 
@@ -154,32 +210,36 @@ export default function LiaisonPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="bg-[#1d7a5a] text-white">
-        <div className="max-w-[80rem] mx-auto px-10 py-12 md:py-16">
-          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/70">Liaison en train</p>
-          <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
-            {page.from.name} → {page.to.name}
-          </h1>
-          <p className="mt-4 text-lg text-white/90 max-w-2xl">
-            {formatDuration(summary.fastest_min)} au plus rapide, {liaisonHow(summary)}.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              to={tripsPath('/trajets', page.from, page.to, searchDate)}
-              className="inline-flex items-center gap-2 bg-white text-[#1d7a5a] hover:bg-white/90 px-6 py-3 rounded-xl text-sm font-bold transition-colors"
-            >
-              <span className="material-symbols-outlined text-base">search</span>
-              Voir les trajets et réserver
-            </Link>
-            {page.guide && (
+        <div className="max-w-[80rem] mx-auto px-10 py-12 md:py-16 flex flex-col md:flex-row md:items-center gap-8">
+          <div className="flex-1 min-w-0">
+            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/70">Liaison en train</p>
+            <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05]">
+              {page.from.name} → {page.to.name}
+            </h1>
+            <p className="mt-4 text-lg text-white/90 max-w-2xl">
+              {formatDuration(summary.fastest_min)} au plus rapide, {liaisonHow(summary)}.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
               <Link
-                to={`/guides/${page.guide}`}
-                className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 border border-white/30 px-6 py-3 rounded-xl text-sm font-bold transition-colors"
+                to={tripsPath('/trajets', page.from, page.to, searchDate)}
+                className="inline-flex items-center gap-2 bg-white text-[#1d7a5a] hover:bg-white/90 px-6 py-3 rounded-xl text-sm font-bold transition-colors"
               >
-                <span className="material-symbols-outlined text-base">menu_book</span>
-                Guide de {page.to.name}
+                <span className="material-symbols-outlined text-base">search</span>
+                Voir les trajets et réserver
               </Link>
-            )}
+              {page.guide && (
+                <Link
+                  to={`/guides/${page.guide}`}
+                  className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 border border-white/30 px-6 py-3 rounded-xl text-sm font-bold transition-colors"
+                >
+                  <span className="material-symbols-outlined text-base">menu_book</span>
+                  Guide de {page.to.name}
+                </Link>
+              )}
+            </div>
           </div>
+          {/* Le trajet en petit, à droite du titre (sous le titre sur mobile) */}
+          <LiaisonGlobe journey={day?.fastest ?? null} />
         </div>
       </section>
 

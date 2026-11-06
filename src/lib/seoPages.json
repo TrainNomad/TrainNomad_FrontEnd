@@ -23,7 +23,12 @@
     ["Manchester", "Birmingham"],
     ["Leeds", "York"],
     ["York", "Newcastle"],
-    ["Birmingham", "Bristol"]
+    ["Birmingham", "Bristol"],
+    ["Rennes", "Dublin"],
+    ["Rennes", "Cork"],
+    ["Londres", "Dublin"],
+    ["Madrid", "Plymouth"],
+    ["Bilbao", "Plymouth"]
   ],
   "guideDepuis": ["Paris", "Lyon", "Marseille"],
   "tgvmaxDepuis": ["Paris", "Lyon", "Marseille", "Lille", "Bordeaux", "Nantes", "Rennes", "Toulouse", "Strasbourg", "Montpellier", "Nice"]

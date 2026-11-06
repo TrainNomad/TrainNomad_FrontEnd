@@ -40,7 +40,7 @@ export default function AboutPage() {
           <p className="text-xl text-slate-700 max-w-2xl mx-auto font-semibold mb-6">
             Créé et développé par Goulven Robin
           </p>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed text-justify">
             À 24 ans, entre mes racines bretonnes et ma conviction que le voyage de demain doit simplifier notre façon de traverser les frontières, j'ai imaginé TrainNomad. Un outil que j'ai développé de zéro en solo, de la conception initiale jusqu'à l'expérience utilisateur finale.
           </p>
         </div>
@@ -54,17 +54,17 @@ export default function AboutPage() {
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">
                 Comment tout a commencé avec TGVmax
               </h2>
-              <p className="text-base md:text-lg text-slate-600 mb-4 leading-relaxed">
+              <p className="text-base md:text-lg text-slate-600 mb-4 leading-relaxed text-justify">
                 Après avoir passé d'innombrables heures à parcourir la France grâce à la liberté offerte par l'abonnement TGVmax, une évidence s'est imposée. Le potentiel est immense, mais l'expérience manquait d'une carte centralisée et vivante pour révéler toutes les destinations sans y passer des heures.
               </p>
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed">
+              <p className="text-base md:text-lg text-slate-600 leading-relaxed text-justify">
                 En développant TrainNomad de zéro, mon objectif était de transcender cette complexité pour transformer la recherche de billets en une exploration inspirante.
               </p>
             </div>
             <div className="bg-slate-100 rounded-3xl p-4 flex items-center justify-center shadow-sm overflow-hidden aspect-[4/3] md:aspect-square">
-              <img 
-                src="/assets/about/goulven_robin.webp" 
-                alt="Goulven Robin" 
+              <img
+                src="/assets/about/goulven_robin_v2.webp"
+                alt="Goulven Robin"
                 className="w-full h-full object-cover rounded-2xl"
               />
             </div>
@@ -99,10 +99,10 @@ export default function AboutPage() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">
             L'Europe comme nouveau terrain de jeu
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto mb-6 leading-relaxed">
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto mb-6 leading-relaxed text-justify">
             Après avoir cartographié les destinations à travers la France, une ambition plus grande s'est naturellement imposée : pourquoi s'arrêter aux frontières ? L'Europe ferroviaire est un réseau gigantesque, reliant des centaines de villes en quelques heures, et pourtant elle reste difficile à appréhender dans sa globalité.
           </p>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto mb-12 leading-relaxed">
+          <p className="text-lg text-slate-600 max-w-3xl mx-auto mb-12 leading-relaxed text-justify">
             TrainNomad évolue donc pour devenir une boussole à l'échelle européenne, permettant à chaque voyageur de visualiser d'un seul coup d'œil l'ensemble des trajets accessibles. Aujourd'hui, la plateforme se distingue par sa rapidité et sa capacité à gérer de véritables correspondances fluides entre différentes compagnies, décloisonnant totalement le voyage international.
           </p>
 
@@ -143,7 +143,7 @@ export default function AboutPage() {
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-slate-900">
             Le projet & ma vision
           </h2>
-          <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+          <div className="space-y-6 text-lg text-slate-600 leading-relaxed text-justify">
             <p>
               Actuellement étudiant aux Arts et Métiers à Angers, ma formation d'ingénieur m'a apporté la rigueur indispensable pour donner vie à ce projet.
             </p>

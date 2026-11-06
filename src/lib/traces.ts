@@ -7,7 +7,10 @@ import type { StopTime, TrainLeg } from '../types/api';
 export type LatLng = [number, number];
 
 /** Pays dont les tracés sont dans public/traces/ (ailleurs, aucun fichier à demander). */
-export const TRACED_COUNTRIES = new Set(['AT', 'BE', 'CH', 'CZ', 'DE', 'DK', 'ES', 'FR', 'GB', 'IT', 'LU', 'NL', 'PL', 'PT']);
+export const TRACED_COUNTRIES = new Set([
+  'AT', 'BE', 'CH', 'CZ', 'DE', 'DK', 'ES', 'FR', 'GB', 'HR', 'HU', 'IE', 'IT', 'LT', 'LU', 'MC', 'NL', 'PL', 'PT', 'RO',
+  'RS', 'SE', 'SI', 'SK', 'UA',
+]);
 
 interface Variant {
   km: number;
