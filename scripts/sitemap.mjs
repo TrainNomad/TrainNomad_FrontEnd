@@ -26,6 +26,10 @@ try {
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const { guides } = await res.json();
   const seo = JSON.parse(readFileSync(new URL('../src/lib/seoPagesData.json', import.meta.url), 'utf8'));
+  // pays et villes masqués temporairement (src/lib/masques.json)
+  const masques = JSON.parse(readFileSync(new URL('../src/lib/masques.json', import.meta.url), 'utf8'));
+  const hidden = (p) => masques.pays.includes(p.country) || masques.lieux.includes(p.id);
+  seo.liaisons = seo.liaisons.filter((l) => !hidden(l.from) && !hidden(l.to));
   const urls = [
     ...PAGES,
     ...guides.map((g) => [`/guides/${g.slug}`, '0.7']),
@@ -33,7 +37,7 @@ try {
     ...seo.tgvmax.map((c) => [`/tgvmax/depuis/${c.slug}/`, '0.6']),
   ];
   const cartesFile = new URL('../src/lib/cartes.json', import.meta.url);
-  const cartes = existsSync(cartesFile) ? JSON.parse(readFileSync(cartesFile, 'utf8')).cities.flatMap((c) => c.maps) : [];
+  const cartes = existsSync(cartesFile) ? JSON.parse(readFileSync(cartesFile, 'utf8')).cities.filter((c) => !hidden(c)).flatMap((c) => c.maps) : [];
   const images = { '/train': cartes.filter((m) => m.image).map((m) => `${SITE}/cartes/${m.image}.webp`) };
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',

@@ -1,0 +1,6 @@
+{
+  "_lisez-moi": "Pays et villes masqués temporairement sur le site (globe de l'accueil, pages liaisons, carte /train, sitemap, pages pré-rendues). Les données restent générées : vider les listes suffit pour tout réactiver.",
+  "pays": ["IE"],
+  "lieux": ["station:7003500"],
+  "villesGlobe": ["dublin", "cork"]
+}

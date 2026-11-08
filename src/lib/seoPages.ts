@@ -2,6 +2,7 @@
 // à chaque build) : liaisons, encart « Venir en train » des guides, pages TGVmax par ville.
 import data from './seoPagesData.json';
 import type { LiaisonSummary } from './liaisons';
+import { isHiddenPlace } from './masques';
 
 export interface PlaceRef {
   name: string;
@@ -49,7 +50,15 @@ interface SeoPagesData {
   tgvmax: MaxCityPage[];
 }
 
-export const SEO_PAGES = data as unknown as SeoPagesData;
+const raw = data as unknown as SeoPagesData;
+const shown = (r: { from: PlaceRef; to: PlaceRef }) => !isHiddenPlace(r.from) && !isHiddenPlace(r.to);
+
+/** Sans les pays et villes masqués temporairement (src/lib/masques.json) */
+export const SEO_PAGES: SeoPagesData = {
+  ...raw,
+  liaisons: raw.liaisons.filter(shown),
+  guides: Object.fromEntries(Object.entries(raw.guides).map(([slug, rows]) => [slug, rows.filter(shown)])),
+};
 
 /** Adresses avec la barre finale : Render sert alors directement la page générée (dist/train/…/index.html). */
 export const liaisonPath = (slug: string) => `/train/${slug}/`;

@@ -4,6 +4,7 @@
 //   public/cartes/reseau/<ville>.json lignes d'une ville pour chaque filtre (chargées au clic)
 //   public/cartes/depuis-<ville>….webp  images cadrées sur une ville, pour les moteurs d'images
 import data from './cartes.json';
+import { isHiddenPlace } from './masques';
 
 /** correspondance : direct et une correspondance au plus ; 3h : 3 heures au plus ; nuit : trains de nuit */
 export type CarteMode = 'correspondance' | 'direct' | '3h' | 'nuit';
@@ -84,7 +85,29 @@ export interface CarteLayer {
 export type CarteLayers = Partial<Record<CarteMode, CarteLayer>> & { proj?: string };
 
 /** proj : signature du cadrage de la carte ; un calque d'un autre cadrage (calculé avant l'ajout de villes) est décalé */
-export const CARTES = data as unknown as { built_at: string; width: number; height: number; proj?: string; cities: CarteCity[] };
+const raw = data as unknown as { built_at: string; width: number; height: number; proj?: string; cities: CarteCity[] };
+
+/** Sans les villes masquées temporairement (src/lib/masques.json) : ni point, ni carte, ni destination */
+export const CARTES = {
+  ...raw,
+  cities: raw.cities.filter((c) => !isHiddenPlace(c)).map((c) => (c.dests ? { ...c, dests: c.dests.filter((d) => !isHiddenPlace(d)) } : c)),
+};
+
+/** Calques d'une ville sans les lignes ni les points des villes masquées */
+export function withoutHidden(layers: CarteLayers): CarteLayers {
+  const out: CarteLayers = { ...layers };
+  for (const { mode } of CARTE_MODES) {
+    const layer = layers[mode];
+    if (!layer) continue;
+    const hidden = new Set(layer.lines.filter((l) => isHiddenPlace(l)).map((l) => l.dest));
+    out[mode] = {
+      ...layer,
+      lines: layer.lines.filter((l) => !hidden.has(l.dest)),
+      nodes: layer.nodes.filter((n) => !isHiddenPlace(n) && !hidden.has(n.name)),
+    };
+  }
+  return out;
+}
 
 export const CARTE_MODES: { mode: CarteMode; label: string }[] = [
   { mode: 'correspondance', label: 'Direct et 1 correspondance' },

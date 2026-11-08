@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { CARTES, CARTE_MODES, carteLayerUrl, type CarteCity, type CarteLabel, type CarteLayers, type CarteLine, type CarteMode } from '../lib/cartes';
+import { CARTES, CARTE_MODES, carteLayerUrl, withoutHidden, type CarteCity, type CarteLabel, type CarteLayers, type CarteLine, type CarteMode } from '../lib/cartes';
 import { typicalDay } from '../lib/liaisons';
 import { liaisonPath, tripsPath } from '../lib/seoPages';
 
@@ -57,7 +57,7 @@ export default function CityRailMap() {
     const ctrl = new AbortController();
     fetch(carteLayerUrl(selected), { signal: ctrl.signal })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
-      .then((data) => setLayers({ city: selected.name, data }))
+      .then((data: CarteLayers) => setLayers({ city: selected.name, data: withoutHidden(data) }))
       .catch(() => {});
     return () => ctrl.abort();
   }, [selected]);

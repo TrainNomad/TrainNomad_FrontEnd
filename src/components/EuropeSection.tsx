@@ -2,6 +2,7 @@ import { EuropeGlobe } from "./ui/EuropeGlobe";
 import { decodePolyline } from "../lib/traces";
 import NETWORK from "../lib/globeNetwork.json";
 import TRACES from "../lib/globeTraces.json";
+import { isHiddenGlobeCity } from "../lib/masques";
 
 // Villes et liaisons du globe : src/lib/globeNetwork.json (« label » : nom affiché en permanence ; une ville sans
 // « label » garde son point, et son « name » apparaît au survol ou au toucher ; « labelSide » place le nom en dessous,
@@ -12,10 +13,13 @@ import TRACES from "../lib/globeTraces.json";
 type CityKey = keyof typeof NETWORK.cities;
 const paths: Record<string, string | undefined> = TRACES;
 
-const europeanDots = (NETWORK.routes as Array<[CityKey, CityKey]>).map(([a, b]) => {
-  const encoded = paths[`${a}-${b}`];
-  return { start: NETWORK.cities[a], end: NETWORK.cities[b], path: encoded ? decodePolyline(encoded) : undefined };
-});
+const europeanDots = (NETWORK.routes as Array<[CityKey, CityKey]>)
+  // villes masquées temporairement (src/lib/masques.json)
+  .filter(([a, b]) => !isHiddenGlobeCity(a) && !isHiddenGlobeCity(b))
+  .map(([a, b]) => {
+    const encoded = paths[`${a}-${b}`];
+    return { start: NETWORK.cities[a], end: NETWORK.cities[b], path: encoded ? decodePolyline(encoded) : undefined };
+  });
 
 export function EuropeSection() {
   return (

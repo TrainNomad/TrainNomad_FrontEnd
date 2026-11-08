@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url><loc>https://trainnomad.eu/</loc><priority>1.0</priority></url>
   <url><loc>https://trainnomad.eu/trajets</loc><priority>0.9</priority></url>
   <url><loc>https://trainnomad.eu/explorer</loc><priority>0.9</priority></url>
   <url><loc>https://trainnomad.eu/tgvmax</loc><priority>0.9</priority></url>
   <url><loc>https://trainnomad.eu/tgvmax/explorer</loc><priority>0.8</priority></url>
   <url><loc>https://trainnomad.eu/guides</loc><priority>0.9</priority></url>
-  <url><loc>https://trainnomad.eu/train</loc><priority>0.8</priority></url>
+  <url><loc>https://trainnomad.eu/train</loc><priority>0.8</priority><image:image><image:loc>https://trainnomad.eu/cartes/depuis-paris.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-paris-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-londres.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-londres-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-rennes.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-lyon.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-bordeaux.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-marseille.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-marseille-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-lille.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-toulouse.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-toulouse-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-nantes.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-strasbourg.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-montpellier.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-nice.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-madrid.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-berlin.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-berlin-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-milan.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-milan-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-edimbourg.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-edimbourg-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-rome.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-rome-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-porto.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-lisbonne.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-amsterdam.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-amsterdam-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-prague.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-prague-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-birmingham.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-leeds.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-york.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-manchester.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-barcelone.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-seville.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-bruxelles.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-bruxelles-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-palerme.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-palerme-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-naples.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-naples-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-zurich.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-zurich-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-munich.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-munich-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-hambourg.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-hambourg-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-vienne.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-vienne-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-bristol.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-varsovie.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-varsovie-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-liverpool.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-newcastle.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-plymouth.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-venise.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-venise-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-bari.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-bari-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-malaga.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-copenhague.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-budapest.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-budapest-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-cracovie.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-cracovie-trains-de-nuit.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-angers.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-glasgow.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-inverness.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-oxford.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-cambridge.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-bath.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-brighton.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-sheffield.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-nottingham.webp</image:loc></image:image><image:image><image:loc>https://trainnomad.eu/cartes/depuis-bilbao.webp</image:loc></image:image></url>
   <url><loc>https://trainnomad.eu/a-propos</loc><priority>0.5</priority></url>
   <url><loc>https://trainnomad.eu/comment-ca-marche</loc><priority>0.5</priority></url>
   <url><loc>https://trainnomad.eu/mentions-legales</loc><priority>0.3</priority></url>
@@ -38,6 +38,7 @@
   <url><loc>https://trainnomad.eu/train/madrid-porto/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/madrid-barcelone/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/madrid-seville/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/madrid-lisbonne/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/lyon-milan/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/londres-amsterdam/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/berlin-bruxelles/</loc><priority>0.7</priority></url>
@@ -52,14 +53,16 @@
   <url><loc>https://trainnomad.eu/train/paris-zurich/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/zurich-munich/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/madrid-malaga/</loc><priority>0.7</priority></url>
-  <url><loc>https://trainnomad.eu/train/marseille-lyon/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/marseille-bordeaux/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/berlin-munich/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/berlin-hambourg/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/amsterdam-berlin/</loc><priority>0.7</priority></url>
-  <url><loc>https://trainnomad.eu/train/munich-vienne/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/vienne-prague/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/hambourg-copenhague/</loc><priority>0.7</priority></url>
-  <url><loc>https://trainnomad.eu/train/londres-manchester/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/londres-bristol/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/vienne-budapest/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/berlin-varsovie/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/varsovie-cracovie/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/paris-berlin/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/paris-bruxelles/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/paris-madrid/</loc><priority>0.7</priority></url>
@@ -73,6 +76,77 @@
   <url><loc>https://trainnomad.eu/train/paris-porto/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/paris-edimbourg/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/train/paris-prague/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/paris-lille/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/paris-toulouse/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/paris-nantes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/paris-strasbourg/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/paris-montpellier/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/paris-nice/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lyon-marseille/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lyon-lille/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lyon-bordeaux/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lyon-toulouse/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lyon-nantes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lyon-strasbourg/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lyon-montpellier/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lyon-nice/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lyon-rennes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/marseille-lille/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/marseille-toulouse/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/marseille-nantes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/marseille-strasbourg/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/marseille-montpellier/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/marseille-nice/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/marseille-rennes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lille-bordeaux/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lille-toulouse/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lille-nantes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lille-strasbourg/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lille-montpellier/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lille-nice/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/lille-rennes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/bordeaux-toulouse/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/bordeaux-nantes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/bordeaux-strasbourg/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/bordeaux-montpellier/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/bordeaux-nice/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/bordeaux-rennes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/toulouse-nantes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/toulouse-strasbourg/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/toulouse-montpellier/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/toulouse-nice/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/toulouse-rennes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/nantes-strasbourg/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/nantes-montpellier/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/nantes-nice/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/nantes-rennes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/strasbourg-montpellier/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/strasbourg-nice/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/strasbourg-rennes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/montpellier-nice/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/montpellier-rennes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/nice-rennes/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/edimbourg-glasgow/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/edimbourg-inverness/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/londres-birmingham/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/londres-liverpool/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/londres-leeds/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/londres-york/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/londres-newcastle/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/londres-oxford/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/londres-cambridge/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/londres-bath/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/londres-brighton/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/londres-sheffield/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/londres-nottingham/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/manchester-liverpool/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/manchester-leeds/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/manchester-birmingham/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/leeds-york/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/york-newcastle/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/birmingham-bristol/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/madrid-plymouth/</loc><priority>0.7</priority></url>
+  <url><loc>https://trainnomad.eu/train/bilbao-plymouth/</loc><priority>0.7</priority></url>
   <url><loc>https://trainnomad.eu/tgvmax/depuis/paris/</loc><priority>0.6</priority></url>
   <url><loc>https://trainnomad.eu/tgvmax/depuis/lyon/</loc><priority>0.6</priority></url>
   <url><loc>https://trainnomad.eu/tgvmax/depuis/marseille/</loc><priority>0.6</priority></url>

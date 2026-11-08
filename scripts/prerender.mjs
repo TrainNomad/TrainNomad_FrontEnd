@@ -19,6 +19,13 @@ const SEO = JSON.parse(readFileSync(new URL('../src/lib/seoPagesData.json', impo
 const CARTES = existsSync(new URL('../src/lib/cartes.json', import.meta.url))
   ? JSON.parse(readFileSync(new URL('../src/lib/cartes.json', import.meta.url), 'utf8'))
   : { cities: [] };
+// Pays et villes masqués temporairement (src/lib/masques.json) : ni page, ni lien, ni image
+const MASQUES = JSON.parse(readFileSync(new URL('../src/lib/masques.json', import.meta.url), 'utf8'));
+const hiddenPlace = (p) => MASQUES.pays.includes(p.country) || MASQUES.lieux.includes(p.id);
+SEO.liaisons = SEO.liaisons.filter((l) => !hiddenPlace(l.from) && !hiddenPlace(l.to));
+const hiddenNames = CARTES.cities.filter(hiddenPlace).map((c) => c.name);
+const dropNames = (text) => text.replace(/: (.+)$/, (_, list) => `: ${list.split(', ').filter((n) => !hiddenNames.includes(n)).join(', ')}`);
+CARTES.cities = CARTES.cities.filter((c) => !hiddenPlace(c)).map((c) => ({ ...c, maps: c.maps.map((m) => ({ ...m, alt: dropNames(m.alt) })) }));
 const readPublic = (path) => JSON.parse(readFileSync(new URL(`../public/${path}`, import.meta.url), 'utf8'));
 
 const NAV = [
