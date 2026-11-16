@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { LEGAL_LINKS } from './Footer';
+import { MesVoyagesHeart } from '../mes-voyages/links';
 // import type { NavLink } from '../pages';
 
 // Changer les hrefs dans NAV_LINKS
@@ -51,8 +52,8 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Mobile burger */}
-          <div className="flex items-center gap-4">
+          {/* Menu mobile, puis Mes voyages (cœur, tout à droite) */}
+          <div className="flex items-center gap-1 ml-auto">
             <button
               onClick={toggleMobile}
               className={`md:hidden flex items-center justify-center w-9 h-9 rounded-xl transition-colors ${green ? 'hover:bg-white/10' : 'hover:bg-slate-100'}`}
@@ -62,6 +63,7 @@ export default function Navbar() {
                 {mobileOpen ? 'close' : 'menu'}
               </span>
             </button>
+            <MesVoyagesHeart light={green} />
           </div>
         </div>
       </nav>

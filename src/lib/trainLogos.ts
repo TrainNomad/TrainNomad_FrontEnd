@@ -242,6 +242,7 @@ const BY_OPERATOR: Record<string, string> = {
   CFL: 'cfl.png',
   ZSSK: 'zssk.png',
   HZPP: 'hzpp.svg',
+  SZ: 'sz.png',
   // compagnies du flux tchèque (opérateurs créés par build_network.py, CZ_AGENCY_OPERATOR)
   REGIOJET: 'regiojet.png',
   LEO_EXPRESS: 'leo_express.png',
@@ -285,6 +286,7 @@ const BY_CATEGORY: [RegExp, string][] = [
   [/^CFL /, 'cfl.png'],
   [/^ZSSK /, 'zssk.png'],
   [/^HŽPP /, 'hzpp.svg'],
+  [/^SŽ /, 'sz.png'],
   [/^WESTbahn/, 'westbahn.png'],
   [/^Leo Express/i, 'leo_express.png'],
   // compagnies du flux tchèque ("RegioJet Rychlík", "Arriva Osobní vlak", "GW Train Osobní vlak")

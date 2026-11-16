@@ -20,6 +20,7 @@ import { placeCity } from '../lib/cityGuides';
 import { NoTripSuggestions } from '../components/NoTripSuggestions';
 import { ShareButton } from '../components/ShareButton';
 import { RoundTripHeader } from '../components/RoundTripHeader';
+import { SaveSearchLink } from '../mes-voyages/links';
 import { createVoyage, getVoyage, readOutboundDraft, saveOutboundDraft, saveVoyage, type VoyageLeg } from '../lib/voyages';
 
 interface Query {
@@ -27,6 +28,22 @@ interface Query {
   destination: string;
   date: string;
   time: string;
+}
+
+const pad = (n: number) => String(n).padStart(2, '0');
+/** Date du jour (AAAA-MM-JJ) à l'heure de l'appareil */
+const localToday = (d = new Date()) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+/**
+ * Heure envoyée à l'API : pour une recherche du jour, pas avant maintenant. Une heure de marge, car l'API lit
+ * l'heure à la gare de départ, qui peut avoir une heure de retard sur l'appareil (Londres, Lisbonne) ; les trains
+ * déjà partis sont de toute façon retirés de la liste.
+ */
+function apiTime(date: string, time: string): string {
+  if (date !== localToday()) return time;
+  const earliest = new Date(Date.now() - 60 * 60_000);
+  if (localToday(earliest) !== date) return time;
+  const hhmm = `${pad(earliest.getHours())}:${pad(earliest.getMinutes())}`;
+  return !time || time < hhmm ? hhmm : time;
 }
 
 /** Recherche du retour : de l'arrivée de l'aller vers son départ, sans partir avant d'être arrivé. */
@@ -102,7 +119,7 @@ export default function Trajets() {
         from: query.origin,
         to: query.destination,
         date: query.date,
-        time: query.time,
+        time: apiTime(query.date, query.time),
         limit: 10,
         ...filterParams(activeFilters),
       });
@@ -128,14 +145,22 @@ export default function Trajets() {
     }
   };
 
-  // Filtrer les trajets par date
+  // Heure courante, rafraîchie chaque minute : la page laissée ouverte retire les trains qui viennent de partir
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(Date.now()), 60_000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  // Trajets du jour recherché ; si c'est aujourd'hui, sans ceux déjà partis (l'heure de départ porte son fuseau)
   const trips = useMemo(() => {
     if (!currentDate) return allTrips;
-    return allTrips.filter(trip => {
-      const tripDate = trip.departure.split('T')[0];
-      return tripDate === currentDate;
+    const today = currentDate === localToday(new Date(now));
+    return allTrips.filter((trip) => {
+      if (trip.departure.split('T')[0] !== currentDate) return false;
+      return !today || Date.parse(trip.departure) >= now;
     });
-  }, [allTrips, currentDate]);
+  }, [allTrips, currentDate, now]);
 
   // Trajets suivants : on repart de l'heure renvoyée par l'API (`next`)
   const fetchMore = async () => {
@@ -316,7 +341,7 @@ export default function Trajets() {
   const chooseJourney = (journey: Journey) => {
     if (!meta || !lastQuery) return;
     const leg: VoyageLeg = { from: meta.from, to: meta.to, date: lastQuery.date || journey.departure.slice(0, 10), journey };
-    track('choix-trajet', { reseau: network.id, sens: outbound ? 'retour' : 'aller' });
+    track('choix-trajet', { reseau: network.id, sens: outbound ? 'retour' : 'aller', de: meta.from.name, vers: meta.to.name });
     const edited = editing && getVoyage(editing.voyageId);
     if (editing && edited) {
       saveVoyage(editing.leg === 'retour' ? { ...edited, inbound: leg } : { ...edited, outbound: leg });
@@ -428,11 +453,14 @@ export default function Trajets() {
                     </span>
                   )}
                 </h2>
-                {/* l'adresse de la page contient déjà la recherche (gares, date) */}
-                <ShareButton
-                  title={meta ? `${meta.from.name} → ${meta.to.name} en train` : 'Trajets en train'}
-                  source="trajets"
-                />
+                <div className="flex flex-wrap justify-end gap-2">
+                  <SaveSearchLink search={window.location.search} network={network.id} />
+                  {/* l'adresse de la page contient déjà la recherche (gares, date) */}
+                  <ShareButton
+                    title={meta ? `${meta.from.name} → ${meta.to.name} en train` : 'Trajets en train'}
+                    source="trajets"
+                  />
+                </div>
               </div>
               
               {filteredTrips.length > 0 ? (

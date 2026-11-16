@@ -15,6 +15,7 @@ import { usePageMeta } from './hooks/usePageMeta';
 import { LEGACY_PAGES, LegacyGuideRedirect } from './pages/LegacyRedirects';
 import NotFound from './pages/NotFound';
 import PAGE_META from './lib/pageMeta.json';
+import { MES_VOYAGES_ENABLED } from './mes-voyages/config';
 import './styles/global.css';
 
 // Pages chargées à la demande : la carte (Leaflet, MapTiler) et les pages secondaires
@@ -33,6 +34,8 @@ const Voyage = lazy(() => import('./pages/Voyage'));
 const LiaisonsPage = lazy(() => import('./pages/Liaisons'));
 const LiaisonPage = lazy(() => import('./pages/Liaison'));
 const TgvmaxDepuisPage = lazy(() => import('./pages/TgvmaxDepuis'));
+// Espace personnel « Mes voyages » : module autonome (src/mes-voyages), avec ses propres routes
+const MesVoyages = lazy(() => import('./mes-voyages/MesVoyagesApp'));
 
 function HomePage() {
   usePageMeta(undefined, PAGE_META['/'].description);
@@ -93,6 +96,7 @@ export default function App() {
           <Route path="/conditions" element={<Page path="/conditions"><Conditions /></Page>} />
           <Route path="/confidentialite" element={<Page path="/confidentialite"><Confidentialites /></Page>} />
           <Route path="/mentions-legales" element={<Page path="/mentions-legales"><MentionLegal /></Page>} />
+          {MES_VOYAGES_ENABLED && <Route path="/mes-voyages/*" element={<MesVoyages />} />}
 
           {/* Anciennes URLs du site statique */}
           <Route path="/guide/guide.html" element={<LegacyGuideRedirect />} />

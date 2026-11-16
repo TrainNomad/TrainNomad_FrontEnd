@@ -2,8 +2,9 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import type { Journey } from '../types/api';
 import { isSeatChange, isTrainLeg } from '../types/api';
 import { useNetwork } from '../network/NetworkContext';
-import { dayOffset, formatDate, formatDuration, formatTime } from '../lib/format';
+import { dayOffset, formatDate, formatDuration } from '../lib/format';
 import { JourneySteps } from './JourneySteps';
+import { journeyRealtime, RealtimeBadge, RealTimeValue } from './Realtime';
 import { estimateCarbon, estimateCarbonOnTracks, formatKg } from '../lib/carbon';
 import { TRACED_COUNTRIES } from '../lib/traces';
 import { omioLink } from '../lib/omio';
@@ -53,6 +54,9 @@ export default function CardTrajet({ journey, onChoose, chooseLabel = 'Choisir' 
     .map((l) => ({ name: l.from.name, seat: isSeatChange(l) }));
   const viaLabel = via.map((v) => (v.seat ? `${v.name} (changement de siège)` : v.name)).join(', ');
   const arrivalOffset = dayOffset(journey.departure, journey.arrival);
+  // Temps réel : état précis du trajet ; supprimé ou gare non desservie = trajet impossible tel quel
+  const live = journeyRealtime(journey);
+  const impossible = live?.status === 'cancelled' || live?.status === 'stop_skipped';
   // Empreinte carbone : estimation immédiate, puis recalculée avec la longueur sur les voies une fois les tracés chargés
   const [carbon, setCarbon] = useState(() => estimateCarbon(journey));
   useEffect(() => {
@@ -113,6 +117,13 @@ export default function CardTrajet({ journey, onChoose, chooseLabel = 'Choisir' 
             </span>
           )}
           <span className="text-xs font-medium text-slate-400 first-letter:uppercase">{formatDate(journey.departure)}</span>
+          {/* Temps réel : à l'heure, retard, train supprimé, gare non desservie, correspondance compromise */}
+          {live && (
+            <RealtimeBadge
+              status={live.status}
+              delayMin={Math.max(journey.realtime!.delay_departure_min, journey.realtime!.delay_arrival_min)}
+            />
+          )}
         </div>
 
         <div className="flex items-center gap-4 ml-auto">
@@ -160,12 +171,25 @@ export default function CardTrajet({ journey, onChoose, chooseLabel = 'Choisir' 
         </div>
       </div>
 
-      {/* Corps principal (version réduite) */}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+      {/* Temps réel : ce qui empêche ou compromet ce trajet, en une phrase */}
+      {live?.problem && (
+        <div className="mb-4 flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-800">
+          <span className="material-symbols-outlined text-base leading-5 text-red-600">error</span>
+          <span>
+            {live.problem}
+            {impossible && ' Ce trajet n’est pas possible : choisissez-en un autre.'}
+          </span>
+        </div>
+      )}
+
+      {/* Corps principal (version réduite) ; grisé quand le trajet n'est plus possible */}
+      <div className={`flex flex-col lg:flex-row items-center justify-between gap-6 ${impossible ? 'opacity-50' : ''}`}>
 
         {/* Départ */}
         <div className="text-left min-w-[140px]">
-          <div className="text-3xl font-extrabold text-slate-900">{formatTime(journey.departure, 'h')}</div>
+          <div className="text-3xl font-extrabold text-slate-900">
+            <RealTimeValue theo={journey.departure} real={journey.realtime?.departure} stack />
+          </div>
           <div className="text-sm font-semibold text-slate-800">{journey.from.name}</div>
           <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mt-0.5">Départ</div>
         </div>
@@ -195,7 +219,7 @@ export default function CardTrajet({ journey, onChoose, chooseLabel = 'Choisir' 
         {/* Arrivée */}
         <div className="text-right min-w-[140px]">
           <div className="text-3xl font-extrabold text-slate-900">
-            {formatTime(journey.arrival, 'h')}
+            <RealTimeValue theo={journey.arrival} real={journey.realtime?.arrival} stack />
             {arrivalOffset > 0 && (
               <sup className="ml-1 text-xs font-bold text-amber-600" title="Arrivée un jour suivant">
                 +{arrivalOffset}j

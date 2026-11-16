@@ -14,6 +14,7 @@ import { isTrainLeg, type Journey } from '../types/api';
 import { ticketsOf, type Ticket } from '../lib/tickets';
 import { affiliatesFor } from '../lib/affiliates';
 import { track } from '../lib/analytics';
+import { SaveJourneyButton } from '../mes-voyages/links';
 
 type LegKey = 'aller' | 'retour';
 
@@ -293,6 +294,7 @@ export default function VoyagePage() {
               <span className="first-letter:uppercase">{formatDateShort(outbound.journey.departure)}</span>
               {inbound && ` – ${formatDateShort(inbound.journey.departure)}`}
             </p>
+            <SaveJourneyButton voyageId={voyage.id} />
           </header>
 
 

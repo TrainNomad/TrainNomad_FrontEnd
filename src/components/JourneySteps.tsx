@@ -3,6 +3,7 @@ import type { Journey, StopTime, TrainLeg, TransferLeg } from '../types/api';
 import { isSeatChange } from '../types/api';
 import { dayOffset, formatDuration, formatTime } from '../lib/format';
 import { TrainLogo } from './TrainLogo';
+import { RealtimeNotice, RealTimeValue, transferProblem } from './Realtime';
 
 interface Props {
   journey: Journey;
@@ -49,6 +50,7 @@ export function JourneySteps({ journey }: Props) {
               nextTrainNumber={nextTrain(journey, i)?.train_number}
               nextCheckin={nextTrain(journey, i)?.checkin_min ?? 0}
               overnight={isOvernight(journey, i)}
+              problem={leg.connection_at_risk ? transferProblem(journey.legs[i - 1], leg, journey.legs[i + 1]) : undefined}
             />
           ),
         )}
@@ -101,12 +103,14 @@ const MajorDot = ({ filled = false }: { filled?: boolean }) => (
 
 const MinorDot = () => <span className="block w-2 h-2 rounded-full bg-white border-2 border-tone-400 z-10" />;
 
-function TimeLabel({ iso, reference, strong }: { iso?: string; reference: string; strong?: boolean }) {
+function TimeLabel({ iso, real, reference, strong }: { iso?: string; real?: string; reference: string; strong?: boolean }) {
   if (!iso) return null;
   const offset = dayOffset(reference, iso);
+  const style = strong ? 'text-sm font-extrabold text-slate-900' : 'text-xs font-medium text-slate-400';
   return (
-    <span className={strong ? 'text-sm font-extrabold text-slate-900' : 'text-xs font-medium text-slate-400'}>
-      {formatTime(iso, 'h')}
+    <span className={style}>
+      {/* temps réel : heure prévue barrée, heure réelle dessous */}
+      <RealTimeValue theo={iso} real={real} className={style} stack />
       {offset > 0 && (
         <sup className="ml-0.5 text-[9px] font-bold text-amber-600" title="Arrivée un jour suivant">
           +{offset}j
@@ -136,8 +140,12 @@ function TrainSegment({ leg, journeyStart, isFirst, isLast, totalDuration, seatB
   return (
     <div>
       {/* Gare de départ */}
-      <Row time={<TimeLabel iso={leg.departure} reference={journeyStart} strong />} marker={<MajorDot />} rail="train">
-        <div className="text-sm font-extrabold text-slate-900">{leg.from.name}</div>
+      <Row
+        time={<TimeLabel iso={leg.departure} real={leg.realtime?.departure} reference={journeyStart} strong />}
+        marker={<MajorDot />}
+        rail="train"
+      >
+        <StationName name={leg.from.name} skipped={leg.stops[0]?.skipped} />
         <div className="text-[11px] text-slate-400">
           {isFirst ? 'Départ' : seatBefore ? 'Billet suivant · même train, nouvelle place' : 'Montée'}
         </div>
@@ -151,6 +159,8 @@ function TrainSegment({ leg, journeyStart, isFirst, isLast, totalDuration, seatB
           <span className="text-xs text-slate-500">Direction {leg.headsign}</span>
           <span className="text-[11px] text-slate-400">{leg.operator_name}</span>
         </div>
+        {/* Temps réel : à l'heure (discret), ou retard / suppression / gare non desservie expliqués */}
+        <RealtimeNotice leg={leg} />
 
         <div className="mt-2 flex items-center gap-1.5 text-xs font-semibold text-tone-700">
           <span className="material-symbols-outlined text-sm">schedule</span>
@@ -170,11 +180,11 @@ function TrainSegment({ leg, journeyStart, isFirst, isLast, totalDuration, seatB
 
       {/* Gare d'arrivée */}
       <Row
-        time={<TimeLabel iso={leg.arrival} reference={journeyStart} strong />}
+        time={<TimeLabel iso={leg.arrival} real={leg.realtime?.arrival} reference={journeyStart} strong />}
         marker={<MajorDot filled={isLast} />}
         rail={isLast ? 'none' : 'transfer'}
       >
-        <div className="text-sm font-extrabold text-slate-900">{leg.to.name}</div>
+        <StationName name={leg.to.name} skipped={leg.stops[leg.stops.length - 1]?.skipped} />
         <div className="text-[11px] text-slate-400">
           {isLast
             ? `Arrivée · durée totale ${formatDuration(totalDuration)}`
@@ -187,15 +197,44 @@ function TrainSegment({ leg, journeyStart, isFirst, isLast, totalDuration, seatB
   );
 }
 
+/** Gare de montée ou de descente ; barrée avec « non desservie » si le train ne s'y arrête pas (temps réel). */
+function StationName({ name, skipped }: { name: string; skipped?: boolean }) {
+  return (
+    <div className="text-sm font-extrabold text-slate-900">
+      <span className={skipped ? 'line-through decoration-2 text-slate-400' : ''}>{name}</span>
+      {skipped && (
+        <span className="ml-2 align-middle bg-red-50 border border-red-200 text-red-700 px-1.5 py-0.5 rounded text-[10px] font-bold">
+          non desservie
+        </span>
+      )}
+    </div>
+  );
+}
+
 function StopRow({ stop, reference }: { stop: StopTime; reference: string }) {
   const dwell =
     stop.arrival && stop.departure && formatTime(stop.arrival) !== formatTime(stop.departure)
       ? formatTime(stop.departure, 'h')
       : null;
   return (
-    <Row time={<TimeLabel iso={stop.arrival ?? stop.departure} reference={reference} />} marker={<MinorDot />} rail="train" compact>
-      <span className="text-xs text-slate-500">{stop.name}</span>
-      {dwell && <span className="ml-1.5 text-[10px] text-slate-400">(départ {dwell})</span>}
+    <Row
+      time={
+        <TimeLabel
+          iso={stop.arrival ?? stop.departure}
+          real={stop.arrival ? stop.real_arrival : stop.real_departure}
+          reference={reference}
+        />
+      }
+      marker={<MinorDot />}
+      rail="train"
+      compact
+    >
+      <span className={`text-xs text-slate-500 ${stop.skipped ? 'line-through' : ''}`}>{stop.name}</span>
+      {stop.skipped ? (
+        <span className="ml-1.5 text-[10px] font-bold text-red-600">non desservi</span>
+      ) : (
+        dwell && <span className="ml-1.5 text-[10px] text-slate-400">(départ {dwell})</span>
+      )}
     </Row>
   );
 }
@@ -207,9 +246,11 @@ interface TransferSegmentProps {
   nextTrainNumber?: string;
   nextCheckin: number;
   overnight: boolean;
+  /** Temps réel : pourquoi cette correspondance n'est plus possible (train supprimé, gare non desservie, retard) */
+  problem?: string;
 }
 
-function TransferSegment({ leg, nextTrainNumber, nextCheckin, overnight }: TransferSegmentProps) {
+function TransferSegment({ leg, nextTrainNumber, nextCheckin, overnight, problem }: TransferSegmentProps) {
   const wait = leg.wait_min ?? 0;
   const seat = leg.transfer_kind === 'seat_change';
   let how: string;
@@ -255,6 +296,14 @@ function TransferSegment({ leg, nextTrainNumber, nextCheckin, overnight }: Trans
           <div className="text-[11px] text-amber-700/60 mt-0.5">Temps minimum prévu : {formatDuration(leg.min_transfer_min)}</div>
         ) : null}
       </div>
+      {problem && (
+        <div className="mt-2 flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-2.5 py-2 text-xs text-red-800">
+          <span className="material-symbols-outlined text-sm leading-4 text-red-600">error</span>
+          <span>
+            <strong className="font-bold">Correspondance compromise.</strong> {problem}
+          </span>
+        </div>
+      )}
       {nextCheckin > 0 && <CheckinNotice minutes={nextCheckin} />}
     </Row>
   );

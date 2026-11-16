@@ -38,6 +38,7 @@ const OPERATORS: Record<string, { label: string; logo?: string; size?: string }>
   CFL: { label: 'CFL', logo: 'cfl.png' },
   ZSSK: { label: 'ZSSK', logo: 'zssk.png' },
   HZPP: { label: 'HŽPP', logo: 'hzpp.svg' },
+  SZ: { label: 'SŽ', logo: 'sz.png' },
   // Compagnies du flux tchèque (build_network.py, CZ_AGENCY_OPERATOR)
   REGIOJET: { label: 'RegioJet', logo: 'regiojet.png' },
   LEO_EXPRESS: { label: 'Leo Express', logo: 'leo_express.png' },

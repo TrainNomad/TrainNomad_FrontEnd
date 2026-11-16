@@ -31,6 +31,66 @@ export interface StopRef {
 export interface StopTime extends StopRef {
   arrival?: string;
   departure?: string;
+  /** Temps réel (API Europe, SNCF) : heures réelles, arrêt non desservi */
+  real_arrival?: string;
+  real_departure?: string;
+  skipped?: boolean;
+}
+
+/**
+ * Temps réel d'un train (API Europe avec REALTIME_SNCF=1). Absent : pas d'information (autre compagnie, train qui ne
+ * circule pas encore : la SNCF publie un train environ 1 h avant son départ).
+ */
+export interface LegRealtime {
+  status: 'on_time' | 'delayed' | 'cancelled' | 'stop_skipped';
+  departure?: string;
+  arrival?: string;
+  delay_departure_min: number;
+  delay_arrival_min: number;
+  messages?: string[];
+}
+
+export interface JourneyRealtime {
+  status: 'on_time' | 'delayed' | 'connection_at_risk' | 'disrupted';
+  departure?: string;
+  arrival?: string;
+  delay_departure_min: number;
+  delay_arrival_min: number;
+}
+
+/** État du temps réel côté API (`realtime` de /search, /realtime et /health) */
+export interface RealtimeInfo {
+  operators: string[];
+  updated?: string;
+  fresh?: boolean;
+  trains?: number;
+  error?: string;
+}
+
+/** GET /realtime?trains=SNCF:8593:2026-11-07,… : état de trains enregistrés */
+export interface RealtimeTrain {
+  operator: string;
+  train_number: string;
+  date: string;
+  status: 'unknown' | 'on_time' | 'delayed' | 'cancelled';
+  delay_max_min: number;
+  messages?: string[];
+  stops?: {
+    station: StopRef;
+    scheduled_arrival?: string;
+    real_arrival?: string;
+    scheduled_departure?: string;
+    real_departure?: string;
+    delay_min: number;
+    skipped?: boolean;
+    /** Position dans le trajet (Eurostar : arrêts sans gare ni heure) */
+    sequence?: number;
+  }[];
+}
+
+export interface RealtimeResponse {
+  realtime: RealtimeInfo;
+  trains: RealtimeTrain[];
 }
 
 export interface TrainLeg {
@@ -49,6 +109,9 @@ export interface TrainLeg {
   checkin_min?: number;
   /** Tous les arrêts, de la montée à la descente incluses */
   stops: StopTime[];
+  realtime?: LegRealtime;
+  /** Position de la gare de montée dans le trajet du train (1 = départ) : retrouve les arrêts du temps réel Eurostar */
+  board_sequence?: number;
 }
 
 /**
@@ -66,6 +129,8 @@ export interface TransferLeg {
   min_transfer_min?: number;
   /** Temps total entre l'arrivée et le départ suivant */
   wait_min?: number;
+  /** Temps réel : avec les retards, il ne reste plus le temps de changer (ou un des trains est supprimé) */
+  connection_at_risk?: boolean;
 }
 
 export type Leg = TrainLeg | TransferLeg;
@@ -87,6 +152,7 @@ export interface Journey {
   /** Plus de 5 h d'attente en correspondance : nuit en gare */
   long_wait?: boolean;
   legs: Leg[];
+  realtime?: JourneyRealtime;
 }
 
 export interface TrainTypeInfo {
@@ -106,6 +172,8 @@ export interface SearchResponse {
   journeys: Journey[];
   /** Types de train desservant le départ et l'arrivée : choix possibles pour le filtre train_types */
   available_train_types?: TrainTypeInfo[];
+  /** Présent quand l'API a le temps réel activé */
+  realtime?: RealtimeInfo;
 }
 
 export interface ExplorerDestination {

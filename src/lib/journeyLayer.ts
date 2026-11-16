@@ -25,6 +25,8 @@ export interface JourneyLayerOptions {
   labels?: 'tooltip' | 'popup' | 'none';
   /** Rayon des points d'arrêt intermédiaires */
   stopRadius?: number;
+  /** Une seule couleur pour tout le trajet (carte d'un voyage : une couleur par étape) ; sinon une par train */
+  color?: string;
 }
 
 export interface JourneyLayer {
@@ -50,7 +52,7 @@ function cumulative(points: LatLng[]): number[] {
 }
 
 export function drawJourney(map: LeafletMap, journey: Journey, options: JourneyLayerOptions = {}): JourneyLayer {
-  const { renderer, pane, labels = 'none', stopRadius = 4 } = options;
+  const { renderer, pane, labels = 'none', stopRadius = 4, color: singleColor } = options;
   const interactive = labels !== 'none';
   const base = { ...(renderer && { renderer }), ...(pane && { pane }), interactive };
   const group = layerGroup().addTo(map);
@@ -94,7 +96,8 @@ export function drawJourney(map: LeafletMap, journey: Journey, options: JourneyL
       const steps = journey.legs.map((leg) => {
         if (!isTrainLeg(leg)) return { leg, path: null, cum: [0], color: '' };
         const path = paths[t];
-        const color = LEG_COLORS[t++ % LEG_COLORS.length];
+        const color = singleColor ?? LEG_COLORS[t % LEG_COLORS.length];
+        t++;
         return { leg, path, cum: cumulative(path.points), color };
       });
       const totalKm = steps.reduce((n, s) => n + s.cum[s.cum.length - 1], 0);
